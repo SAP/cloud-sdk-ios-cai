@@ -1,0 +1,13 @@
+{
+	"results": {
+		"id": "f90ec53f-2265-4210-96f4-2c31d784e018",
+		"channel": "c11ea08e-3e10-4838-9322-6ad2062297c4",
+		"connector": "90f862a3-6ec3-4ea1-836b-4b34d1d0aef2",
+		"chatId": "f90ec53f-2265-4210-96f4-2c31d784e018",
+		"fallbacked": false,
+		"fallbackConfig": {},
+		"participant": [],
+		"messages": []
+	},
+	"message": "Conversation successfully created"
+}

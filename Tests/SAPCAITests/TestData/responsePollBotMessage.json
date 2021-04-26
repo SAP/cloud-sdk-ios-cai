@@ -1,0 +1,24 @@
+{
+	"message": "1 messages",
+	"results": {
+		"messages": [{
+			"id": "fe0b20b2-56aa-4415-bc90-9d49b93c5720",
+			"attachment": {
+				"type": "text",
+				"delay": 0,
+				"markdown": false,
+				"content": {
+					"text": "Hi there!"
+				}
+			},
+			"participant": {
+				"id": "0188c53f-1900-49df-af30-435b8afede15",
+				"isBot": true,
+				"senderId": "90f862a3-6ec3-4ea1-836b-4b34d1d0aef2"
+			},
+			"conversation": "f90ec53f-2265-4210-96f4-2c31d784e018",
+			"receivedAt": "2021-03-19T19:11:15.833Z"
+		}],
+		"waitTime": 0
+	}
+}

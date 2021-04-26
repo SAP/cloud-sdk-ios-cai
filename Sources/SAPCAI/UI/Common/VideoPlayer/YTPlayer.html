@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html, body {
+                width: 100%;
+                height: 100%;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div id="player"></div>
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script>
+            var player;
+            YT.ready(function() {
+                     player = new YT.Player('player', %@);
+                        window.location.href = 'ytplayer://onYouTubeIframeAPIReady';
+                     });
+                     function onReady(event) {
+                         window.location.href = 'ytplayer://onReady?data=' + event.data;
+                     }
+        
+        function onStateChange(event) {
+            window.location.href = 'ytplayer://onStateChange?data=' + event.data;
+        }
+        
+        function onPlaybackQualityChange(event) {
+            window.location.href = 'ytplayer://onPlaybackQualityChange?data=' + event.data;
+        }
+        function onPlayerError(event) {
+            window.location.href = 'ytplayer://onError?data=' + event.data;
+        }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{
+	"message": "1 messages",
+	"results": {
+		"messages": [{
+			"id": "4de52015-f281-4343-a3dd-04dff697e6bc",
+			"attachment": {
+				"type": "text",
+				"content": {
+					"text": "Hi"
+				}
+			},
+			"participant": {
+				"id": "7ce41cce-561c-4031-8db8-66aaa171d7e4",
+				"isBot": false,
+				"senderId": "p-f90ec53f-2265-4210-96f4-2c31d784e018"
+			},
+			"conversation": "f90ec53f-2265-4210-96f4-2c31d784e018",
+			"receivedAt": "2021-03-19T19:11:14.954Z"
+		}],
+		"waitTime": 0
+	}
+}

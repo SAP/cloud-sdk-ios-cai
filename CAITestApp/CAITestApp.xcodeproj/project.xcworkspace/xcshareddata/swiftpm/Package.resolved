@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Down",
+        "repositoryURL": "https://github.com/johnxnguyen/Down",
+        "state": {
+          "branch": null,
+          "revision": "f2e4658f79f2c1a482b1e73fbfce6ac9e0aad8b8",
+          "version": "0.9.5"
+        }
+      },
+      {
+        "package": "sap-cloud-sdk-ios",
+        "repositoryURL": "https://github.wdf.sap.corp/d041771/sap-cloud-sdk-ios",
+        "state": {
+          "branch": null,
+          "revision": "4dbbe85efd8781f5adf6d35e6514613813da9374",
+          "version": "6.0.0"
+        }
+      },
+      {
+        "package": "SnapshotTesting",
+        "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing",
+        "state": {
+          "branch": null,
+          "revision": "c466812aa2e22898f27557e2e780d3aad7a27203",
+          "version": "1.8.2"
+        }
+      },
+      {
+        "package": "URLImage",
+        "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
+        "state": {
+          "branch": null,
+          "revision": "c1a906515b0a440927b96204b778058871b22f23",
+          "version": "2.2.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

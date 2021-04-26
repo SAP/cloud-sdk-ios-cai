@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>All Msg Types (S)</string>
+		<key>baseURL</key>
+		<string>https://sapcai-community-staging.sapcai-staging.eu10.hana.ondemand.com/public/api</string>
+		<key>authorizationEndpointURL</key>
+		<string>https://sapcai-community-staging.authentication.eu10.hana.ondemand.com/oauth/authorize</string>
+		<key>tokenEndpointURL</key>
+		<string>https://sapcai-community-staging.authentication.eu10.hana.ondemand.com/oauth/token</string>
+		<key>redirectURL</key>
+		<string>https://sapcai-community-staging.sapcai-staging.eu10.hana.ondemand.com/login/callback</string>
+		<key>clientId</key>
+		<string>sb-23290e3f-6b75-490f-8e4a-310ac90fd6aa-CLONE-DT!b32743|cai-staging!b20673</string>
+        <key>clientSecret</key>
+        <string>HfnALMS/VUBXV8CmuO6Qwt6j00k=</string>
+        <key>developerToken</key>
+        <string>7de4ca3e74dc0a8d7d2d004b3e15b73e</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Custom</string>
+		<key>baseURL</key>
+		<string>https://sapcai-community-staging.sapcai-staging.eu10.hana.ondemand.com/public/api</string>
+		<key>authorizationEndpointURL</key>
+		<string>https://sapcai-community-staging.authentication.eu10.hana.ondemand.com/oauth/authorize</string>
+		<key>tokenEndpointURL</key>
+		<string>https://sapcai-community-staging.authentication.eu10.hana.ondemand.com/oauth/token</string>
+		<key>redirectURL</key>
+		<string>https://sapcai-community-staging.sapcai-staging.eu10.hana.ondemand.com/login/callback</string>
+		<key>clientId</key>
+		<string>sb-23290e3f-6b75-490f-8e4a-310ac90fd6aa-CLONE-DT!b32743|cai-staging!b20673</string>
+		<key>clientSecret</key>
+		<string></string>
+		<key>developerToken</key>
+		<string></string>
+	</dict>
+</array>
+</plist>

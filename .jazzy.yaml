@@ -1,0 +1,6 @@
+module: CAIFoundation
+author: SAP SE
+author_url: https://www.sap.com
+theme: jony
+copyright: '© 2021 [https://github.com/SAP/cloud-sdk-ios-cai](https://github.com/SAP/cloud-sdk-ios-cai) under Apache-2.0.'
+exclude: Sources/CAIFoundation/Foundation/Utility/SAPIcons.swift

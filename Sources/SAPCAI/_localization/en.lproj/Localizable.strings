@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  CAIFoundation
+
+  Created by Syren, Franck on 6/24/19.
+  Copyright © 2019 Syren, Franck. All rights reserved.
+*/
+
+
+"Write a message" = "Ask me please";
+
+"error.server" = "A server error occurred";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Failed to parse data";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Request was cancelled";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Conversation is not found. Please ask me again";
