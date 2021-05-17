@@ -1,0 +1,26 @@
+name: PR
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+
+  conventionalcommit-verification:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v1
+        with:
+            configFile: '.github/configActions/commitlint.config.js'
+
+  ReuseComplianceCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: REUSE Compliance Check
+        uses: fsfe/reuse-action@v1.1
