@@ -42,6 +42,7 @@ Files:
   jazzy/**
   Makefile
   Package.resolved
+  translation_v2.json
   *.yaml
   *.yml
   .swift-version
