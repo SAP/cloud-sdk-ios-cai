@@ -37,6 +37,7 @@ License: Apache-2.0
 # Metadata, config, tools and project-information
 Files:
   *.md
+  .czrc
   .github/**
   .gitignore
   jazzy/**
