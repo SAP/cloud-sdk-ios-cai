@@ -13,7 +13,8 @@
 
 [![Build and Test Status Check](https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg)](https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22)
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai)](https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai)
-
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 </div>
 
 ***
