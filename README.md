@@ -157,23 +157,38 @@ self.navigationController?.pushViewController(vc, animated: true)
 
 ## Theming
 
-One key aspect of the SDK is to provide as much flexibility as possible when it comes to customizing the look N feel of any UI components.
-
-As of iOS 13, Apple allow users to change their preferences and switch between a light and a dark mode. A theme must leverage the user's preferences and adapt to the light or dark mode.
-
 `SAPCAI` will provide two standard themes
-- a default theme (Apple standard) and
-- a Fiori (SAP Fiori Design Language) theme
-  
+- a Default theme and
+- a Fiori theme
+
+<img width="835" alt="Themes" src="https://user-images.githubusercontent.com/4176826/118736415-6426c680-b7f7-11eb-88a1-3e081bb35500.png">
+
 Each theme will come with its color palette, that supports both light and dark mode.
 
-You can also provide an alternative color palette or provide a custom theme.
+<table>
+<tr>
+<td> Default Design </td> <td> Fiori Design </td>
+</tr>
+<tr>
+<td>
 
-```Swift
-ThemeManager.shared.setCurrentTheme( CAITheme.default(DefaultColorPalette()) ) 	// Apple design
-
-ThemeManager.shared.setCurrentTheme( CAITheme.fiori(FioriColorPalette()) ) 		// SAP Fiori design
+```swift
+ThemeManager.shared.setCurrentTheme( .default(DefaultColorPalette()) )
 ```
+
+</td>
+<td>
+    
+```swift
+ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
+```
+
+</td>
+</tr>
+</table>
+
+
+You can also provide an alternative color palette or provide a custom theme.
 
 # Limitations
 

@@ -248,17 +248,20 @@ public struct URLOpenerData {
 
     let testData: MessagingViewModel = {
         let viewModel = MessagingViewModel(publisher: MockPublisher())
+
         viewModel.addMessages(contentsOf: [
-            CAIResponseMessageData(text: "Hi"),
-            CAIResponseMessageData(text: "Hey! How are you today?", true),
-            CAIResponseMessageData(text: "**Some bold text**", true, markdown: true),
-            CAIResponseMessageData(text: "Can you show me a movie released last year in July?"),
-            CAIResponseMessageData("Avengers",
-                                   "Adrift in space with no food or water, Tony Stark sends a message to Pepper Potts as his oxygen supply starts to dwindle.",
-                                   nil, nil, nil, nil, nil, nil, nil, true),
-            CAIResponseMessageData(imageName: "Product1")
+            CAIResponseMessageData(text: "Hi", false),
+            CAIResponseMessageData(text: "Hi! What can I do for you?", true),
+            CAIResponseMessageData(text: "Show me the latest product", false),
+            CAIResponseMessageData(text: "**This product was just released**", true, markdown: true),
+            CAIResponseMessageData("Laptop Lenovo",
+                                   "This is a great Laptop",
+                                   "sap-icon://order-status",
+                                   nil,
+                                   [UIModelDataAction("Order", "Order", .text), UIModelDataAction("Call Support", "Call Support", .text)],
+                                   nil,
+                                   "Available")
         ])
-    
         return viewModel
     
     }()

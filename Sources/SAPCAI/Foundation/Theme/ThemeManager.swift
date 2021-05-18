@@ -294,7 +294,7 @@ public final class ThemeManager: ObservableObject, Identifiable {
     /// Singleton instance
     public static let shared = ThemeManager()
 
-    private init() {}
+    internal init() {}
     
     /// Set active theme. Triggers UI Binding.
     /// - Parameter theme: CAITheme
