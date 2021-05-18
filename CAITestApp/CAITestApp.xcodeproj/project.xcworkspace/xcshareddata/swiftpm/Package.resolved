@@ -2,6 +2,33 @@
   "object": {
     "pins": [
       {
+        "package": "AnyCodable",
+        "repositoryURL": "https://github.com/Flight-School/AnyCodable.git",
+        "state": {
+          "branch": null,
+          "revision": "ceef60316be3151faaaa6b0166132ae6d2162e26",
+          "version": "0.5.0"
+        }
+      },
+      {
+        "package": "cloud-sdk-ios",
+        "repositoryURL": "https://github.com/SAP/cloud-sdk-ios",
+        "state": {
+          "branch": null,
+          "revision": "8084e4b72d8a9e586c10408fa1151378754eeb34",
+          "version": "5.1.3-xcfrwk"
+        }
+      },
+      {
+        "package": "FioriSwiftUI",
+        "repositoryURL": "https://github.com/SAP/cloud-sdk-ios-fiori.git",
+        "state": {
+          "branch": null,
+          "revision": "8ae0813ae6279669f74912bfdb417173964041ac",
+          "version": "0.9.0"
+        }
+      },
+      {
         "package": "Down",
         "repositoryURL": "https://github.com/johnxnguyen/Down",
         "state": {
@@ -11,12 +38,12 @@
         }
       },
       {
-        "package": "sap-cloud-sdk-ios",
-        "repositoryURL": "https://github.wdf.sap.corp/d041771/sap-cloud-sdk-ios",
+        "package": "ObservableArray",
+        "repositoryURL": "https://github.com/sstadelman/observable-array.git",
         "state": {
           "branch": null,
-          "revision": "4dbbe85efd8781f5adf6d35e6514613813da9374",
-          "version": "6.0.0"
+          "revision": "8cc76410f71b6653897f974b453e9a15ef8f96b4",
+          "version": "1.2.0"
         }
       },
       {
@@ -29,12 +56,30 @@
         }
       },
       {
+        "package": "TinyNetworking",
+        "repositoryURL": "https://github.com/objcio/tiny-networking",
+        "state": {
+          "branch": null,
+          "revision": "a9af2917018e513c77061139fe3ce4e4d67cf259",
+          "version": "0.4.1"
+        }
+      },
+      {
         "package": "URLImage",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
         "state": {
           "branch": null,
-          "revision": "c1a906515b0a440927b96204b778058871b22f23",
-          "version": "2.2.3"
+          "revision": "ee499599b1e830300cfbad4fb13c3d36cfda092f",
+          "version": "3.0.1"
+        }
+      },
+      {
+        "package": "Zip",
+        "repositoryURL": "https://github.com/marmelroy/Zip.git",
+        "state": {
+          "branch": null,
+          "revision": "bd19d974e8a38cc8d3a88c90c8a107386c3b8ccf",
+          "version": "2.1.1"
         }
       }
     ]

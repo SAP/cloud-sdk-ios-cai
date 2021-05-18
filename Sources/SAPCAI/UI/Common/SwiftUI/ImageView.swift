@@ -10,7 +10,7 @@ struct ImageView: View {
             if imageUrl.absoluteString.range(of: "sap-icon") != nil {
                 IconImageView(iconUrl: imageUrl.absoluteString, iconSize: CGSize(width: 50, height: 50))
             } else {
-                URLImage(url: imageUrl,
+                URLImage(imageUrl,
                          failure: { _, _ in
                              Image(systemName: "photo")
                          },
