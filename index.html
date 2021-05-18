@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SAPCAI  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="SAPCAI  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p>
+          <a href="index.html">SAPCAI Docs</a>
+          <span class="no-mobile"></span>
+        </p>
+    
+    
+      </div>
+    </header>
+    <div id="breadcrumbs-container">
+      <div class="content-wrapper">
+        <p id="breadcrumbs">
+          <span class="no-mobile">
+            <a href="index.html">SAPCAI Reference</a>
+            <img id="carat" src="img/carat.png" />
+          </span>
+          SAPCAI  Reference
+        </p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="article-wrapper">
+        <article class="main-content">
+          <section>
+            <section class="section">
+              
+              <h1 id='cloud-sdk-ios-cai' class='heading'>cloud-sdk-ios-cai</h1>
+
+<p align="center">
+  <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
+  </br>
+  <span><b>SAP Conversational AI SDK for iOS</b></span>
+</p>
+
+<p>The <code>SAPCAI</code> Swift Package is a module to connect to a bot on the end-to-end chatbot platform <a href="https://www.sap.com/products/conversational-ai.html">SAP Conversation AI</a> (CAI) and to provide a pluggable SwiftUI <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> to initiate a conversation and render the various <a href="https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html">message types</a>.</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>The package is intended for consumption via Swift Package Manager. To add <code>SAPCAI</code> to your application target, navigate to the  <kbd>File </kbd> &gt;  <kbd>Swift Packages </kbd> &gt;  <kbd>Add Package Dependency... </kbd>, then add the repository URL <a href="https://github.com/SAP/cloud-sdk-ios-cai">https://github.com/SAP/cloud-sdk-ios-cai</a>.</p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 13 or higher</li>
+<li>Xcode 12 (Swift 5.3) or higher
+## Prerequisites</li>
+</ul>
+
+<p>Your bots in SAP Conversational AI have to be connected to a mobile channel. As long as activation is not possible in the SAP Conversational AI you can perform this one-time activity via the <a href="https://reverseproxy.cai.tools.sap/docs/api-reference/#channels">/channel</a> API.</p>
+<pre class="highlight shell"><code><span class="c"># create a mobile channel</span>
+curl <span class="nt">-X</span> POST <span class="s2">"&lt;BaseUrl&gt;/connect/v1/channels"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"X-Token: Token &lt;DeveloperToken&gt;"</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{"type":"mobile","slug":"&lt;desiredChannelSlug&gt;","connectionTarget": "SAP_Product","targetSystem": "MobileBot","isActivated":true}'</span>
+</code></pre>
+<h2 id='dependencies' class='heading'>Dependencies</h2>
+
+<ul>
+<li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPCommon/index.html">SAPCommon</a> for Logging</li>
+<li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPFoundation/index.html">SAPFoundation</a> for Network Connectivity and Authentication</li>
+<li><a href="https://github.com/dmytro-anokhin/url-image">URLImage</a> for asynchronous image loading in SwiftUI</li>
+<li><a href="https://github.com/johnxnguyen/Down">Down</a> for Markdown / CommonMark rendering in Swift</li>
+</ul>
+<h2 id='getting-started' class='heading'>Getting Started</h2>
+
+<p>The code snippet below illustrates how to set up the <code><a href="Classes/CAIConversation.html">CAIConversation</a></code> Combine publisher in order to initialize the <code><a href="Classes/MessagingViewModel.html">MessagingViewModel</a></code> for the <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code>.</p>
+
+<p>Note: the example is setting up an <code>OAuth2Observer</code> observer for communication directly against the SAP Conversational AI tenant. This is possible but for productive usage not recommended. To avoid shipping the CAI client secret in your iOS source code we recommend to reuse the <code>SAPURLSession</code> connecting to your SAP Mobile Services tenant and proxy requests to SAP Conversational AI through SAP Mobile Services. On SAP Mobile Services you can exchange the user token or use CAI client credentials securely.</p>
+<h3 id='setting-up-the-data-publisher' class='heading'>Setting up the data publisher</h3>
+<pre class="highlight plaintext"><code>// create the CAIChannel object by providing the channel id, channel token and channel slug that was created in CAI Platform.
+let caiChannel = CAIChannel(id: "&lt;channelId&gt;", token: "&lt;channelToken&gt;", slug: "&lt;channelSlug&gt;").
+
+let delivery: MessageDelivering
+
+let session = SAPURLSession()
+
+// add extension to CAIServiceConfig with the following method to build oauth observer
+// use this method if oauth is required for login into the server
+private static func buildOAuthObserver(redirectURL: URL, baseURL: URL, clientId: String, clientSecret: String) -&gt; OAuth2Observer? {
+
+        let compositeStore = CompositeStorage()
+        do {
+            let secureKeyValueStore = SecureKeyValueStore()
+            try secureKeyValueStore.open(with: "cai_secure_store")
+            try compositeStore.setPersistentStore(secureKeyValueStore)
+
+            let params = OAuth2AuthenticationParameters(authorizationEndpointURL: baseURL.appendingPathComponent("/oauth/authorize"),
+                                                        clientID: clientId,
+                                                        redirectURL: redirectURL.appendingPathComponent("login/callback"),
+                                                        tokenEndpointURL: baseURL.appendingPathComponent("/oauth/token"),
+                                                        clientSecret: clientSecret)
+
+            let authenticator = OAuth2Authenticator(authenticationParameters: params, webViewPresenter: WKWebViewPresenter())
+            let oauthObserver = OAuth2Observer(authenticator: authenticator, tokenStore: OAuth2TokenStorage(store: compositeStore))
+
+            return oauthObserver
+        }
+        catch  {
+            // error handling
+            return nil
+        }
+    }
+
+if let o = CAIServiceConfig.buildOAuthObserver(redirectURL: &lt;serverURL&gt;,
+                                                       baseURL: &lt;oauthBaseURL&gt;,
+                                                       clientId: "&lt;clientid&gt;",
+                                                       clientSecret: "&lt;clientSecret&gt;") {
+   session.register(o)
+}
+
+// create CAI service config for the provided SAPURLSession and backend URL
+let serviceConfig = CAIServiceConfig(urlSession: session, host: &lt;backendURL&gt;)
+
+// Provide the message delivery object for polling
+delivery = PollMessageDelivery(channelId: "&lt;channelId&gt;", serviceConfig: serviceConfig)
+
+// create CAIConversation object and use it as publisher
+let dataPublisher = CAIConversation(config: serviceConfig, channel: caiChannel, messageDelivery: delivery)
+
+// set the theme
+ThemeManager.shared.setCurrentTheme( CAITheme.fiori(FioriColorPalette()) )
+</code></pre>
+<h3 id='user-interface' class='heading'>User Interface</h3>
+
+<p>Using the SwiftUI implementation is the <strong>preferred</strong> approach</p>
+<pre class="highlight plaintext"><code>AssistantView()
+  .navigationBarTitle(Text("Chat"), displayMode: .inline) // if you are in navigation controller
+  .environmentObject(MessagingViewModel(publisher: dataPublisher)
+  .environmentObject(themeManager)
+
+</code></pre>
+
+<p>but <code>SAPCAI</code> also provides a UIKit wrapper</p>
+<pre class="highlight plaintext"><code>let vc = MessagingViewController(MessagingViewModel(publisher: dataPublisher))
+
+self.navigationController?.pushViewController(vc, animated: true)
+</code></pre>
+<h2 id='theming' class='heading'>Theming</h2>
+
+<p>One key aspect of the SDK is to provide as much flexibility as possible when it comes to customizing the look N feel of any UI components.</p>
+
+<p>As of iOS 13, Apple allow users to change their preferences and switch between a light and a dark mode. A theme must leverage the user&rsquo;s preferences and adapt to the light or dark mode.</p>
+
+<p><code>SAPCAI</code> will provide two standard themes</p>
+
+<ul>
+<li>a default theme (Apple standard) and</li>
+<li>a Fiori (SAP Fiori Design Language) theme</li>
+</ul>
+
+<p>Each theme will come with its color palette, that supports both light and dark mode.</p>
+
+<p>You can also provide an alternative color palette or provide a custom theme.</p>
+<pre class="highlight plaintext"><code>ThemeManager.shared.setCurrentTheme( CAITheme.default(DefaultColorPalette()) )  // Apple design
+
+ThemeManager.shared.setCurrentTheme( CAITheme.fiori(FioriColorPalette()) )      // SAP Fiori design
+</code></pre>
+<h1 id='limitations' class='heading'>Limitations</h1>
+<h2 id='markdown-related' class='heading'>Markdown related</h2>
+
+<ul>
+<li><strong>No support for <a href="https://github.github.com/gfm/">GitHub Flavored Markdown</a></strong> (e.g. <del>strikethrough</del>). Bot responses containing <a href="https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/3a3b6e09e96249b884dcf6e69eecd830.html#loio3a3b6e09e96249b884dcf6e69eecd830__section_markdown">Markdown</a> will be rendered by the <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> according to the <a href="https://spec.commonmark.org/0.29/">Commonmark specification</a> only and unknown syntax will be treated as text.</li>
+</ul>
+<h2 id='trigger-skill-button-related' class='heading'>Trigger Skill button related</h2>
+
+<ul>
+<li><code>Trigger Skill</code> buttons are still enabled after execution / next interaction. This behavior differs from SAP CAI WebClient as once you click the button or type an utterance, the corresponding skill can&rsquo;t be triggered anymore at a later point in time, since the context in which it was created might not be valid anymore.</li>
+</ul>
+<h2 id='image-related' class='heading'>Image related</h2>
+
+<ul>
+<li>Not being able to save, copy, or share an image as part of a bot reponse. Currently there is no gesture handler attached an image view which  could allow to open a contextual menu offering such features (similar to iMessage or WhatsApp).</li>
+<li>Animated images (GIF), as part of a bot response, will be viewed as static image (dependency to <a href="https://github.com/dmytro-anokhin/url-image/issues/43">https://github.com/dmytro-anokhin/url-image/issues/43</a>)</li>
+</ul>
+
+            </section>
+          </section>
+        </article>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="nav-bottom">
+          <ul class="nav-groups">
+            <li class="nav-group-name">
+              <a href="Classes.html">Classes</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Classes/BaseQuickReplyButtonStyle.html">BaseQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/CAIChannelService.html">CAIChannelService</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/CAIConversation.html">CAIConversation</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/DefaultQuickReplyButtonStyle.html">DefaultQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/FioriQuickReplyButtonStyle.html">FioriQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/MessagingViewController.html">MessagingViewController</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/MessagingViewModel.html">MessagingViewModel</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/MockPublisher.html">MockPublisher</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/PollMessageDelivery.html">PollMessageDelivery</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/ThemeManager.html">ThemeManager</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/TypingIndicatorData.html">TypingIndicatorData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Classes/TypingIndicatorData/Dot.html">– Dot</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Enums.html">Enumerations</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Enums/CAIMessageType.html">CAIMessageType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/CAITheme.html">CAITheme</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/MenuActionType.html">MenuActionType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/MessageType.html">MessageType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/PostbackDataType.html">PostbackDataType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/PostbackType.html">PostbackType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/SAPFontName.html">SAPFontName</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/VisualizationType.html">VisualizationType</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Extensions.html">Extensions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Extensions/String.html">String</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UIFont.html">UIFont</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UIImage.html">UIImage</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UITextView.html">UITextView</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Protocols.html">Protocols</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Protocols/AnyViewable.html">AnyViewable</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/ButtonsMessageData.html">ButtonsMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/CarouselItemMessageData.html">CarouselItemMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/CarouselMessageData.html">CarouselMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/ColorPalette.html">ColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/FormMessageData.html">FormMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/HeaderMessageData.html">HeaderMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/ListMessageData.html">ListMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/MediaItem.html">MediaItem</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/MenuAction.html">MenuAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/MenuData.html">MenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/MessageData.html">MessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/MessageDelivering.html">MessageDelivering</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/MessagingPublisher.html">MessagingPublisher</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/ObjectMessageData.html">ObjectMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/ObjectSectionData.html">ObjectSectionData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/PostbackData.html">PostbackData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/PreferencesMenuData.html">PreferencesMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/ResponseMessageData.html">ResponseMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/SenderInfo.html">SenderInfo</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/ValueData.html">ValueData</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Structs.html">Structures</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/BannerView.html">BannerView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIChannel.html">CAIChannel</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIChannelMenuData.html">CAIChannelMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIChannelMenuDataAction.html">CAIChannelMenuDataAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIChannelPreferencesData.html">CAIChannelPreferencesData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIChannelPreferencesMenuData.html">CAIChannelPreferencesMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIConversationResultData.html">CAIConversationResultData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIError.html">CAIError</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIResponseMessageData.html">CAIResponseMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIResponseParticipantData.html">CAIResponseParticipantData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CAIServiceConfig.html">CAIServiceConfig</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/ChatView.html">ChatView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/DefaultColorPalette.html">DefaultColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/FioriColorPalette.html">FioriColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs.html#/s:6SAPCAI12InputBarViewV">InputBarView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/SearchBar.html">SearchBar</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/Theme.html">Theme</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/Theme/Key.html">– Key</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/Theme/Color.html">– Color</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/TypingIndicatorView.html">TypingIndicatorView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelData.html">UIModelData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelData/ValueType.html">– ValueType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelData/ValueState.html">– ValueState</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelDataAction.html">UIModelDataAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelDataContent.html">UIModelDataContent</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelDataHeader.html">UIModelDataHeader</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelDataImage.html">UIModelDataImage</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelDataMedia.html">UIModelDataMedia</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelDataMedia/MediaType.html">– MediaType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelDataSection.html">UIModelDataSection</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/UIModelDataValue.html">UIModelDataValue</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs.html#/s:6SAPCAI13URLNavigationV">URLNavigation</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Typealiases.html">Type Aliases</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Typealiases.html#/s:6SAPCAI13MessagingViewa">MessagingView</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-wrapper">
+        <section id="footer">
+          <p>© 2021 <a class="link" href="https://github.com/SAP/cloud-sdk-ios-cai" target="_blank" rel="external">https://github.com/SAP/cloud-sdk-ios-cai</a> under Apache-2.0.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </div>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CAIConversation Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/CAIConversation" class="dashAnchor"></a>
+    <a title="CAIConversation Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p>
+          <a href="../index.html">SAPCAI Docs</a>
+          <span class="no-mobile"></span>
+        </p>
+    
+    
+      </div>
+    </header>
+    <div id="breadcrumbs-container">
+      <div class="content-wrapper">
+        <p id="breadcrumbs">
+          <span class="no-mobile">
+            <a href="../index.html">SAPCAI Reference</a>
+            <img id="carat" src="../img/carat.png" />
+          </span>
+          CAIConversation Class Reference
+        </p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="article-wrapper">
+        <article class="main-content">
+          <section>
+            <section class="section">
+              <h1>CAIConversation</h1>
+                <div class="declaration">
+                  <div class="language">
+                    
+                    <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">CAIConversation</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/MessagingPublisher.html">MessagingPublisher</a></span></code></pre>
+
+                  </div>
+                </div>
+              <p>This class is the standard implementation of <code><a href="../Protocols/MessagingPublisher.html">MessagingPublisher</a></code> for connecting
+to a bot of the CAI platform via the Channel Connector.</p>
+
+            </section>
+            <section class="section task-group-section">
+              <div class="task-group">
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7Combine9PublisherP6OutputQa"></a>
+                      <a name="//apple_ref/swift/Alias/Output" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7Combine9PublisherP6OutputQa">Output</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Output</span> <span class="o">=</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/ResponseMessageData.html">ResponseMessageData</a></span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7Combine9PublisherP7FailureQa"></a>
+                      <a name="//apple_ref/swift/Alias/Failure" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7Combine9PublisherP7FailureQa">Failure</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Failure</span> <span class="o">=</span> <span class="kt">Never</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC14conversationIDSSSgvp"></a>
+                      <a name="//apple_ref/swift/Property/conversationID" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC14conversationIDSSSgvp">conversationID</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>CAI Conversation ID.
+Read-only getter to get the current conersation ID set with this object.
+It&rsquo;s created for you in <code><a href="../Classes/CAIConversation.html#/s:6SAPCAI18MessagingPublisherP4loadyyF">load()</a></code> or you can pass it in constructor</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">private(set)</span> <span class="k">var</span> <span class="nv">conversationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <div class="task-name-container">
+                  <a name="/Lifecycle"></a>
+                  <a name="//apple_ref/swift/Section/Lifecycle" class="dashAnchor"></a>
+                  <div class="section-name-container">
+                    <a class="section-name-link" href="#/Lifecycle"></a>
+                    <h3 class="section-name"><p>Lifecycle</p>
+</h3>
+                  </div>
+                </div>
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC6config9channelId0D5Token18withExistingConvIDAcA16CAIServiceConfigV_S2SSgAJtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(config:channelId:channelToken:withExistingConvID:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC6config9channelId0D5Token18withExistingConvIDAcA16CAIServiceConfigV_S2SSgAJtcfc">init(config:<wbr>channelId:<wbr>channelToken:<wbr>withExistingConvID:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Creates a new CAI conversation object.</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt"><a href="../Structs/CAIServiceConfig.html">CAIServiceConfig</a></span><span class="p">,</span> <span class="nv">channelId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">channelToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="n">withExistingConvID</span> <span class="nv">conversationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Parameters</h4>
+                          <table class="graybox">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>config</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>The configuration object holding central config properties</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>channelId</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>The channel ID (from channel connector)</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>channelToken</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>The channel connector token</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>conversationID</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>An existing conversation ID (stored somewhere externally).
+                        If this is supplied, no new conversation will be created in the backend.
+                        Optional.
+                        Default is nil hence a request to the backend will be triggered to create one.</p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC6config7channel18withExistingConvIDAcA16CAIServiceConfigV_AA10CAIChannelVSSSgtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(config:channel:withExistingConvID:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC6config7channel18withExistingConvIDAcA16CAIServiceConfigV_AA10CAIChannelVSSSgtcfc">init(config:<wbr>channel:<wbr>withExistingConvID:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Creates a new CAI conversation object. Convenience init using CAIChannel struct</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt"><a href="../Structs/CAIServiceConfig.html">CAIServiceConfig</a></span><span class="p">,</span> <span class="nv">channel</span><span class="p">:</span> <span class="kt"><a href="../Structs/CAIChannel.html">CAIChannel</a></span><span class="p">,</span> <span class="n">withExistingConvID</span> <span class="nv">conversationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Parameters</h4>
+                          <table class="graybox">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>config</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>CAIServiceConfig</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>channel</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>CAIChannel. Channel you want to create a conversation to</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>conversationID</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>An existing conversation ID (stored somewhere externally).
+                        If this is supplied, no new conversation will be created in the backend.
+                        Optional.
+                        Default is nil hence a request to the backend will be triggered to create one.</p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC6config7channel15messageDelivery18withExistingConvIDAcA16CAIServiceConfigV_AA10CAIChannelVAA17MessageDelivering_pSSSgtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(config:channel:messageDelivery:withExistingConvID:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC6config7channel15messageDelivery18withExistingConvIDAcA16CAIServiceConfigV_AA10CAIChannelVAA17MessageDelivering_pSSSgtcfc">init(config:<wbr>channel:<wbr>messageDelivery:<wbr>withExistingConvID:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Creates a new CAI conversation object. Convenience init using CAIChannel struct</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">config</span><span class="p">:</span> <span class="kt"><a href="../Structs/CAIServiceConfig.html">CAIServiceConfig</a></span><span class="p">,</span> <span class="nv">channel</span><span class="p">:</span> <span class="kt"><a href="../Structs/CAIChannel.html">CAIChannel</a></span><span class="p">,</span> <span class="nv">messageDelivery</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MessageDelivering.html">MessageDelivering</a></span><span class="p">,</span> <span class="n">withExistingConvID</span> <span class="nv">conversationID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Parameters</h4>
+                          <table class="graybox">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>config</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>CAIServiceConfig</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>channel</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>CAIChannel. Channel you want to create a conversation to</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>messageDelivery</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>Method / UI Protocol on how to retrieve messages from backend. Polling &amp; WebSocket are supported.</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>conversationID</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>An existing conversation ID (stored somewhere externally).
+                    If this is supplied, no new conversation will be created in the backend.
+                    Optional.
+                    Default is nil hence a request to the backend will be triggered to create one.</p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <div class="task-name-container">
+                  <a name="/Public%20API"></a>
+                  <a name="//apple_ref/swift/Section/Public API" class="dashAnchor"></a>
+                  <div class="section-name-container">
+                    <a class="section-name-link" href="#/Public%20API"></a>
+                    <h3 class="section-name"><p>Public API</p>
+</h3>
+                  </div>
+                </div>
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI18MessagingPublisherP4loadyyF"></a>
+                      <a name="//apple_ref/swift/Method/load()" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI18MessagingPublisherP4loadyyF">load()</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">load</span><span class="p">()</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC17resetConversationyyF"></a>
+                      <a name="//apple_ref/swift/Method/resetConversation()" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC17resetConversationyyF">resetConversation()</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Reset an existing conversation. Next time a message is sent, this will trigger a creation of a new conversation.</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resetConversation</span><span class="p">()</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC26resetAndCreateConversationyyF"></a>
+                      <a name="//apple_ref/swift/Method/resetAndCreateConversation()" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC26resetAndCreateConversationyyF">resetAndCreateConversation()</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Reset an existing conversation and create a new conversation.</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resetAndCreateConversation</span><span class="p">()</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC11postMessage4textySS_tF"></a>
+                      <a name="//apple_ref/swift/Method/postMessage(text:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC11postMessage4textySS_tF">postMessage(text:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Post a text message to CAI platform</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">postMessage</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Parameters</h4>
+                          <table class="graybox">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>text</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>String</p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC11postMessage4type12postbackDatayAA12PostbackTypeO_AA0hG0_ptF"></a>
+                      <a name="//apple_ref/swift/Method/postMessage(type:postbackData:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC11postMessage4type12postbackDatayAA12PostbackTypeO_AA0hG0_ptF">postMessage(type:<wbr>postbackData:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Post a postback action to CAI platform. Used by buttons and quickReplies</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">postMessage</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/PostbackType.html">PostbackType</a></span><span class="p">,</span> <span class="nv">postbackData</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PostbackData.html">PostbackData</a></span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Parameters</h4>
+                          <table class="graybox">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>type</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>UIModelPostbackRequestDataType</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>postbackData</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>ButtonData</p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC18createConversationyyys6ResultOySSAA8CAIErrorVGcF"></a>
+                      <a name="//apple_ref/swift/Method/createConversation(_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC18createConversationyyys6ResultOySSAA8CAIErrorVGcF">createConversation(_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Creates a conversation in the backend and returns the newly created conversation ID</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">createConversation</span><span class="p">(</span><span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">((</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt"><a href="../Structs/CAIError.html">CAIError</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">))</span></code></pre>
+
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Parameters</h4>
+                          <table class="graybox">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>completionHandler</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>Handler function</p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC17getConversationId7Combine12AnyPublisherVySSAA8CAIErrorVGyF"></a>
+                      <a name="//apple_ref/swift/Method/getConversationId()" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC17getConversationId7Combine12AnyPublisherVySSAA8CAIErrorVGyF">getConversationId()</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Returns a publisher that emits the current conversationId. If no conversationId is available, it will trigger a backend call to
+create a new one.</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getConversationId</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt"><a href="../Structs/CAIError.html">CAIError</a></span><span class="o">&gt;</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC16loadConversationyySS_ys6ResultOyAA15CAIResponseDataVAA8CAIErrorVGctF"></a>
+                      <a name="//apple_ref/swift/Method/loadConversation(_:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC16loadConversationyySS_ys6ResultOyAA15CAIResponseDataVAA8CAIErrorVGctF">loadConversation(_:<wbr>_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Loads content for an existing conversation ID</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">loadConversation</span><span class="p">(</span><span class="n">_</span> <span class="nv">conversationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt">CAIResponseData</span><span class="p">,</span> <span class="kt"><a href="../Structs/CAIError.html">CAIError</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Parameters</h4>
+                          <table class="graybox">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>conversationId</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>String</p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>completionHandler</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>Handler function called once finished</p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <div class="task-name-container">
+                  <a name="/Publisher%20impl"></a>
+                  <a name="//apple_ref/swift/Section/Publisher impl" class="dashAnchor"></a>
+                  <div class="section-name-container">
+                    <a class="section-name-link" href="#/Publisher%20impl"></a>
+                    <h3 class="section-name"><p>Publisher impl</p>
+</h3>
+                  </div>
+                </div>
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:7Combine9PublisherP7receive10subscriberyqd___tAA10SubscriberRd__7FailureQyd__AGRtz5InputQyd__6OutputRtzlF"></a>
+                      <a name="//apple_ref/swift/Method/receive(subscriber:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7Combine9PublisherP7receive10subscriberyqd___tAA10SubscriberRd__7FailureQyd__AGRtz5InputQyd__6OutputRtzlF">receive(subscriber:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">receive</span><span class="o">&lt;</span><span class="kt">S</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">subscriber</span><span class="p">:</span> <span class="kt">S</span><span class="p">)</span> <span class="k">where</span> <span class="kt">S</span> <span class="p">:</span> <span class="kt">Subscriber</span><span class="p">,</span> <span class="kt">S</span><span class="o">.</span><span class="kt"><a href="../Classes/CAIConversation.html#/s:7Combine9PublisherP7FailureQa">Failure</a></span> <span class="o">==</span> <span class="kt">CAIConversation</span><span class="o">.</span><span class="kt"><a href="../Classes/CAIConversation.html#/s:7Combine9PublisherP7FailureQa">Failure</a></span><span class="p">,</span> <span class="kt">S</span><span class="o">.</span><span class="kt">Input</span> <span class="o">==</span> <span class="kt">CAIConversation</span><span class="o">.</span><span class="kt"><a href="../Classes/CAIConversation.html#/s:7Combine9PublisherP6OutputQa">Output</a></span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <div class="task-name-container">
+                  <a name="/Combin-ify%20APIs"></a>
+                  <a name="//apple_ref/swift/Section/Combin-ify APIs" class="dashAnchor"></a>
+                  <div class="section-name-container">
+                    <a class="section-name-link" href="#/Combin-ify%20APIs"></a>
+                    <h3 class="section-name"><p>Combin-ify APIs</p>
+</h3>
+                  </div>
+                </div>
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CAIConversationC16loadConversationy7Combine12AnyPublisherVyAA15CAIResponseDataVAA8CAIErrorVGSSF"></a>
+                      <a name="//apple_ref/swift/Method/loadConversation(_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CAIConversationC16loadConversationy7Combine12AnyPublisherVyAA15CAIResponseDataVAA8CAIErrorVGSSF">loadConversation(_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Loads a conversation and returns a Publisher.
+Always emits on <code>Main</code> thread.</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">loadConversation</span><span class="p">(</span><span class="n">_</span> <span class="nv">conversationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">CAIResponseData</span><span class="p">,</span> <span class="kt"><a href="../Structs/CAIError.html">CAIError</a></span><span class="o">&gt;</span></code></pre>
+
+                          </div>
+                        </div>
+                        <div>
+                          <h4>Parameters</h4>
+                          <table class="graybox">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <code>
+                                  <em>conversationId</em>
+                                  </code>
+                                </td>
+                                <td>
+                                  <div>
+                                    <p>String</p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </section>
+        </article>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="nav-bottom">
+          <ul class="nav-groups">
+            <li class="nav-group-name">
+              <a href="../Classes.html">Classes</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Classes/BaseQuickReplyButtonStyle.html">BaseQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/CAIChannelService.html">CAIChannelService</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/CAIConversation.html">CAIConversation</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/DefaultQuickReplyButtonStyle.html">DefaultQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/FioriQuickReplyButtonStyle.html">FioriQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/MessagingViewController.html">MessagingViewController</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/MessagingViewModel.html">MessagingViewModel</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/MockPublisher.html">MockPublisher</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/PollMessageDelivery.html">PollMessageDelivery</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/ThemeManager.html">ThemeManager</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/TypingIndicatorData.html">TypingIndicatorData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/TypingIndicatorData/Dot.html">– Dot</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Enums.html">Enumerations</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Enums/CAIMessageType.html">CAIMessageType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/CAITheme.html">CAITheme</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/MenuActionType.html">MenuActionType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/MessageType.html">MessageType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/PostbackDataType.html">PostbackDataType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/PostbackType.html">PostbackType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/SAPFontName.html">SAPFontName</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/VisualizationType.html">VisualizationType</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Extensions.html">Extensions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Extensions/String.html">String</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/UIFont.html">UIFont</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/UIImage.html">UIImage</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/UITextView.html">UITextView</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Protocols.html">Protocols</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Protocols/AnyViewable.html">AnyViewable</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ButtonsMessageData.html">ButtonsMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/CarouselItemMessageData.html">CarouselItemMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/CarouselMessageData.html">CarouselMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ColorPalette.html">ColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/FormMessageData.html">FormMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/HeaderMessageData.html">HeaderMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ListMessageData.html">ListMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MediaItem.html">MediaItem</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MenuAction.html">MenuAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MenuData.html">MenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MessageData.html">MessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MessageDelivering.html">MessageDelivering</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MessagingPublisher.html">MessagingPublisher</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ObjectMessageData.html">ObjectMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ObjectSectionData.html">ObjectSectionData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/PostbackData.html">PostbackData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/PreferencesMenuData.html">PreferencesMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ResponseMessageData.html">ResponseMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/SenderInfo.html">SenderInfo</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ValueData.html">ValueData</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Structs.html">Structures</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/BannerView.html">BannerView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannel.html">CAIChannel</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannelMenuData.html">CAIChannelMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannelMenuDataAction.html">CAIChannelMenuDataAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannelPreferencesData.html">CAIChannelPreferencesData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannelPreferencesMenuData.html">CAIChannelPreferencesMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIConversationResultData.html">CAIConversationResultData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIError.html">CAIError</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIResponseMessageData.html">CAIResponseMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIResponseParticipantData.html">CAIResponseParticipantData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIServiceConfig.html">CAIServiceConfig</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/ChatView.html">ChatView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/DefaultColorPalette.html">DefaultColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/FioriColorPalette.html">FioriColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs.html#/s:6SAPCAI12InputBarViewV">InputBarView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/SearchBar.html">SearchBar</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/Theme.html">Theme</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/Theme/Key.html">– Key</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/Theme/Color.html">– Color</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/TypingIndicatorView.html">TypingIndicatorView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelData.html">UIModelData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelData/ValueType.html">– ValueType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelData/ValueState.html">– ValueState</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataAction.html">UIModelDataAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataContent.html">UIModelDataContent</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataHeader.html">UIModelDataHeader</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataImage.html">UIModelDataImage</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataMedia.html">UIModelDataMedia</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataMedia/MediaType.html">– MediaType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataSection.html">UIModelDataSection</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataValue.html">UIModelDataValue</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs.html#/s:6SAPCAI13URLNavigationV">URLNavigation</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Typealiases.html">Type Aliases</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Typealiases.html#/s:6SAPCAI13MessagingViewa">MessagingView</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-wrapper">
+        <section id="footer">
+          <p>© 2021 <a class="link" href="https://github.com/SAP/cloud-sdk-ios-cai" target="_blank" rel="external">https://github.com/SAP/cloud-sdk-ios-cai</a> under Apache-2.0.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </div>
+    </div>
+  </body>
+</div>
+</html>

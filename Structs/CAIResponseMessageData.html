@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CAIResponseMessageData Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/CAIResponseMessageData" class="dashAnchor"></a>
+    <a title="CAIResponseMessageData Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p>
+          <a href="../index.html">SAPCAI Docs</a>
+          <span class="no-mobile"></span>
+        </p>
+    
+    
+      </div>
+    </header>
+    <div id="breadcrumbs-container">
+      <div class="content-wrapper">
+        <p id="breadcrumbs">
+          <span class="no-mobile">
+            <a href="../index.html">SAPCAI Reference</a>
+            <img id="carat" src="../img/carat.png" />
+          </span>
+          CAIResponseMessageData Structure Reference
+        </p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="article-wrapper">
+        <article class="main-content">
+          <section>
+            <section class="section">
+              <h1>CAIResponseMessageData</h1>
+                <div class="declaration">
+                  <div class="language">
+                    
+                    <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CAIResponseMessageData</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Identifiable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CAIResponseMessageData</span><span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CAIResponseMessageData</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MessageData.html">MessageData</a></span></code></pre>
+
+                  </div>
+                </div>
+              <p>Data Model structure for messages returned by CAI platform</p>
+
+            </section>
+            <section class="section task-group-section">
+              <div class="task-group">
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:s12IdentifiableP2id2IDQzvp"></a>
+                      <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
+                      <a class="token" href="#/s:s12IdentifiableP2id2IDQzvp">id</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV11participantAA0b11ParticipantD0Vvp"></a>
+                      <a name="//apple_ref/swift/Property/participant" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV11participantAA0b11ParticipantD0Vvp">participant</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">participant</span><span class="p">:</span> <span class="kt"><a href="../Structs/CAIResponseParticipantData.html">CAIResponseParticipantData</a></span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV10attachmentAA07UIModelD0Vvp"></a>
+                      <a name="//apple_ref/swift/Property/attachment" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV10attachmentAA07UIModelD0Vvp">attachment</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">attachment</span><span class="p">:</span> <span class="kt"><a href="../Structs/UIModelData.html">UIModelData</a></span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV12conversationSSvp"></a>
+                      <a name="//apple_ref/swift/Property/conversation" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV12conversationSSvp">conversation</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">conversation</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV10receivedAt10Foundation4DateVSgvp"></a>
+                      <a name="//apple_ref/swift/Property/receivedAt" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV10receivedAt10Foundation4DateVSgvp">receivedAt</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">receivedAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV2id11participant10attachment12conversation10receivedAtACSS_AA0b11ParticipantD0VAA07UIModelD0VSS10Foundation4DateVSgtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(id:participant:attachment:conversation:receivedAt:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV2id11participant10attachment12conversation10receivedAtACSS_AA0b11ParticipantD0VAA07UIModelD0VSS10Foundation4DateVSgtcfc">init(id:<wbr>participant:<wbr>attachment:<wbr>conversation:<wbr>receivedAt:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">participant</span><span class="p">:</span> <span class="kt"><a href="../Structs/CAIResponseParticipantData.html">CAIResponseParticipantData</a></span><span class="p">,</span> <span class="nv">attachment</span><span class="p">:</span> <span class="kt"><a href="../Structs/UIModelData.html">UIModelData</a></span><span class="p">,</span> <span class="nv">conversation</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">receivedAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:Se4fromxs7Decoder_p_tKcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:Se4fromxs7Decoder_p_tKcfc">init(from:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:SQ2eeoiySbx_xtFZ"></a>
+                      <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:SQ2eeoiySbx_xtFZ">==(_:<wbr>_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <div class="task-name-container">
+                  <a name="/Conformance%20to%20MessageData%20protocol"></a>
+                  <a name="//apple_ref/swift/Section/Conformance to MessageData protocol" class="dashAnchor"></a>
+                  <div class="section-name-container">
+                    <a class="section-name-link" href="#/Conformance%20to%20MessageData%20protocol"></a>
+                    <h3 class="section-name"><p>Conformance to MessageData protocol</p>
+</h3>
+                  </div>
+                </div>
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI11MessageDataP6senderAA10SenderInfo_pvp"></a>
+                      <a name="//apple_ref/swift/Property/sender" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI11MessageDataP6senderAA10SenderInfo_pvp">sender</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SenderInfo.html">SenderInfo</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI11MessageDataP8sentDate10Foundation0E0Vvp"></a>
+                      <a name="//apple_ref/swift/Property/sentDate" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI11MessageDataP8sentDate10Foundation0E0Vvp">sentDate</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sentDate</span><span class="p">:</span> <span class="kt">Date</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI11MessageDataP4typeAA0B4TypeOvp"></a>
+                      <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI11MessageDataP4typeAA0B4TypeOvp">type</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/MessageType.html">MessageType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI11MessageDataP7buttonsSayAA08PostbackC0_pGSgvp"></a>
+                      <a name="//apple_ref/swift/Property/buttons" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI11MessageDataP7buttonsSayAA08PostbackC0_pGSgvp">buttons</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">buttons</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/PostbackData.html">PostbackData</a></span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI11MessageDataP06isLastB0Sbvp"></a>
+                      <a name="//apple_ref/swift/Property/isLastMessage" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI11MessageDataP06isLastB0Sbvp">isLastMessage</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isLastMessage</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <div class="task-name-container">
+                  <a name="/Helper%20functions%20to%20create%20CAI%20message%20data%20objects"></a>
+                  <a name="//apple_ref/swift/Section/Helper functions to create CAI message data objects" class="dashAnchor"></a>
+                  <div class="section-name-container">
+                    <a class="section-name-link" href="#/Helper%20functions%20to%20create%20CAI%20message%20data%20objects"></a>
+                    <h3 class="section-name"><p>Helper functions to create CAI message data objects</p>
+</h3>
+                  </div>
+                </div>
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV4text_8markdownACSS_S2btcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(text:_:markdown:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV4text_8markdownACSS_S2btcfc">init(text:<wbr>_:<wbr>markdown:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">markdown</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV4text_10buttonType_ACSS_SayAA07UIModelD6ActionVGSgAA013VisualizationG0OSbtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(text:_:buttonType:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV4text_10buttonType_ACSS_SayAA07UIModelD6ActionVGSgAA013VisualizationG0OSbtcfc">init(text:<wbr>_:<wbr>buttonType:<wbr>_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">inlineButtons</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataAction.html">UIModelDataAction</a></span><span class="p">]?,</span> <span class="nv">buttonType</span><span class="p">:</span> <span class="kt"><a href="../Enums/VisualizationType.html">VisualizationType</a></span><span class="p">,</span> <span class="n">_</span> <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataVyACSS_S2SSgADSayAA07UIModelD6ActionVGSgSayAA0eD7SectionVGSgA3DSbtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(_:_:_:_:_:_:_:_:_:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataVyACSS_S2SSgADSayAA07UIModelD6ActionVGSgSayAA0eD7SectionVGSgA3DSbtcfc">init(_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">subtitle</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">imageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">inlineButtons</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataAction.html">UIModelDataAction</a></span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">sections</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataSection.html">UIModelDataSection</a></span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">status1</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">status2</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">status3</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV9imageName_ACSS_Sbtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(imageName:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV9imageName_ACSS_Sbtcfc">init(imageName:<wbr>_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">imageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV8videoUrl_ACSS_Sbtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(videoUrl:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV8videoUrl_ACSS_Sbtcfc">init(videoUrl:<wbr>_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">videoUrl</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataVyACSayAA07UIModelD7ContentVG_SayAA0eD6ActionVGSgS3SSgSbtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(_:_:_:_:_:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataVyACSayAA07UIModelD7ContentVG_SayAA0eD6ActionVGSgS3SSgSbtcfc">init(_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">mockData</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataContent.html">UIModelDataContent</a></span><span class="p">],</span> <span class="n">_</span> <span class="nv">inlineButtons</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataAction.html">UIModelDataAction</a></span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">_</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">subtitle</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">_</span> <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataVyACSayAA07UIModelD7ContentVG_Sbtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(_:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataVyACSayAA07UIModelD7ContentVG_Sbtcfc">init(_:<wbr>_:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">mockData</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataContent.html">UIModelDataContent</a></span><span class="p">],</span> <span class="n">_</span> <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </section>
+        </article>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="nav-bottom">
+          <ul class="nav-groups">
+            <li class="nav-group-name">
+              <a href="../Classes.html">Classes</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Classes/BaseQuickReplyButtonStyle.html">BaseQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/CAIChannelService.html">CAIChannelService</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/CAIConversation.html">CAIConversation</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/DefaultQuickReplyButtonStyle.html">DefaultQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/FioriQuickReplyButtonStyle.html">FioriQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/MessagingViewController.html">MessagingViewController</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/MessagingViewModel.html">MessagingViewModel</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/MockPublisher.html">MockPublisher</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/PollMessageDelivery.html">PollMessageDelivery</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/ThemeManager.html">ThemeManager</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/TypingIndicatorData.html">TypingIndicatorData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Classes/TypingIndicatorData/Dot.html">– Dot</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Enums.html">Enumerations</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Enums/CAIMessageType.html">CAIMessageType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/CAITheme.html">CAITheme</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/MenuActionType.html">MenuActionType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/MessageType.html">MessageType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/PostbackDataType.html">PostbackDataType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/PostbackType.html">PostbackType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/SAPFontName.html">SAPFontName</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/VisualizationType.html">VisualizationType</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Extensions.html">Extensions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Extensions/String.html">String</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/UIFont.html">UIFont</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/UIImage.html">UIImage</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Extensions/UITextView.html">UITextView</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Protocols.html">Protocols</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Protocols/AnyViewable.html">AnyViewable</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ButtonsMessageData.html">ButtonsMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/CarouselItemMessageData.html">CarouselItemMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/CarouselMessageData.html">CarouselMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ColorPalette.html">ColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/FormMessageData.html">FormMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/HeaderMessageData.html">HeaderMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ListMessageData.html">ListMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MediaItem.html">MediaItem</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MenuAction.html">MenuAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MenuData.html">MenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MessageData.html">MessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MessageDelivering.html">MessageDelivering</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/MessagingPublisher.html">MessagingPublisher</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ObjectMessageData.html">ObjectMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ObjectSectionData.html">ObjectSectionData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/PostbackData.html">PostbackData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/PreferencesMenuData.html">PreferencesMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ResponseMessageData.html">ResponseMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/SenderInfo.html">SenderInfo</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols/ValueData.html">ValueData</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Structs.html">Structures</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/BannerView.html">BannerView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannel.html">CAIChannel</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannelMenuData.html">CAIChannelMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannelMenuDataAction.html">CAIChannelMenuDataAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannelPreferencesData.html">CAIChannelPreferencesData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIChannelPreferencesMenuData.html">CAIChannelPreferencesMenuData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIConversationResultData.html">CAIConversationResultData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIError.html">CAIError</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIResponseMessageData.html">CAIResponseMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIResponseParticipantData.html">CAIResponseParticipantData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/CAIServiceConfig.html">CAIServiceConfig</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/ChatView.html">ChatView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/DefaultColorPalette.html">DefaultColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/FioriColorPalette.html">FioriColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs.html#/s:6SAPCAI12InputBarViewV">InputBarView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/SearchBar.html">SearchBar</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/Theme.html">Theme</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/Theme/Key.html">– Key</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/Theme/Color.html">– Color</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/TypingIndicatorView.html">TypingIndicatorView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelData.html">UIModelData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelData/ValueType.html">– ValueType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelData/ValueState.html">– ValueState</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataAction.html">UIModelDataAction</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataContent.html">UIModelDataContent</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataHeader.html">UIModelDataHeader</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataImage.html">UIModelDataImage</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataMedia.html">UIModelDataMedia</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataMedia/MediaType.html">– MediaType</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataSection.html">UIModelDataSection</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/UIModelDataValue.html">UIModelDataValue</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs.html#/s:6SAPCAI13URLNavigationV">URLNavigation</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="../Typealiases.html">Type Aliases</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="../Typealiases.html#/s:6SAPCAI13MessagingViewa">MessagingView</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-wrapper">
+        <section id="footer">
+          <p>© 2021 <a class="link" href="https://github.com/SAP/cloud-sdk-ios-cai" target="_blank" rel="external">https://github.com/SAP/cloud-sdk-ios-cai</a> under Apache-2.0.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </div>
+    </div>
+  </body>
+</div>
+</html>
