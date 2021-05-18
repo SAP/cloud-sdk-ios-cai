@@ -10,11 +10,22 @@
 ***
 
 <div align="center">
-
-[![Build and Test Status Check](https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg)](https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22)
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai)](https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22">
+        <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
+             alt="Build Status">
+    </a>
+    <a href="https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai">
+        <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
+             alt="REUSE status">
+    </a>
+    <a href="http://commitizen.github.io/cz-cli/">
+        <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
+             alt="Commitizen friendly">
+    </a>
+    <a href="https://conventionalcommits.org">
+        <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
+             alt="Conventional Commits">
+    </a>
 </div>
 
 ***
@@ -29,10 +40,14 @@ The package is intended for consumption via Swift Package Manager. To add `SAPCA
 
 - iOS 13 or higher
 - Xcode 12 (Swift 5.3) or higher
+  
 ## Prerequisites
 
-Your bots in SAP Conversational AI have to be connected to a mobile channel. As long as activation is not possible in the SAP Conversational AI you can perform this one-time activity via the [/channel](https://reverseproxy.cai.tools.sap/docs/api-reference/#channels) API.
+- You have existing bot(s) on the SAP Conversational AI platform (either Enterprise or Community edition)
+- Your bot(s) are connected to a mobile channel
 
+As long as mobile channel activation is not possible in the SAP Conversational AI you can perform this one-time activity via the [/channel](https://reverseproxy.cai.tools.sap/docs/api-reference/#channels) API.
+ 
 ```bash
 # create a mobile channel
 curl -X POST "<BaseUrl>/connect/v1/channels" \
@@ -52,64 +67,73 @@ curl -X POST "<BaseUrl>/connect/v1/channels" \
 
 The code snippet below illustrates how to set up the `CAIConversation` Combine publisher in order to initialize the `MessagingViewModel` for the `AssistantView`.
 
-Note: the example is setting up an `OAuth2Observer` observer for communication directly against the SAP Conversational AI tenant. This is possible but for productive usage not recommended. To avoid shipping the CAI client secret in your iOS source code we recommend to reuse the `SAPURLSession` connecting to your SAP Mobile Services tenant and proxy requests to SAP Conversational AI through SAP Mobile Services. On SAP Mobile Services you can exchange the user token or use CAI client credentials securely.
-
 ### Setting up the data publisher
 
 ```Swift
+import SAPCAI
+import SAPFoundation
+import SwiftUI
+
 // create the CAIChannel object by providing the channel id, channel token and channel slug that was created in CAI Platform.
 let caiChannel = CAIChannel(id: "<channelId>", token: "<channelToken>", slug: "<channelSlug>").
         
-let delivery: MessageDelivering
+let polling: MessageDelivering
 
 let session = SAPURLSession()
 
-// add extension to CAIServiceConfig with the following method to build oauth observer
-// use this method if oauth is required for login into the server
-private static func buildOAuthObserver(redirectURL: URL, baseURL: URL, clientId: String, clientSecret: String) -> OAuth2Observer? {
-        
-        let compositeStore = CompositeStorage()
-        do {
-            let secureKeyValueStore = SecureKeyValueStore()
-            try secureKeyValueStore.open(with: "cai_secure_store")
-            try compositeStore.setPersistentStore(secureKeyValueStore)
-                    
-            let params = OAuth2AuthenticationParameters(authorizationEndpointURL: baseURL.appendingPathComponent("/oauth/authorize"),
-                                                        clientID: clientId,
-                                                        redirectURL: redirectURL.appendingPathComponent("login/callback"),
-                                                        tokenEndpointURL: baseURL.appendingPathComponent("/oauth/token"),
-                                                        clientSecret: clientSecret)
-            
-            let authenticator = OAuth2Authenticator(authenticationParameters: params, webViewPresenter: WKWebViewPresenter())
-            let oauthObserver = OAuth2Observer(authenticator: authenticator, tokenStore: OAuth2TokenStorage(store: compositeStore))
-            
-            return oauthObserver
-        }
-        catch  {
-            // error handling
-            return nil
-        }
-    }
-  
-if let o = CAIServiceConfig.buildOAuthObserver(redirectURL: <serverURL>,
-                                                       baseURL: <oauthBaseURL>,
+// example-specific extension for `CAIServiceConfig` to build oauth observer (see next code snippet for implementation details)
+if let observer = CAIServiceConfig.buildOAuthObserver(redirectURL:  URL(string:"<serverURL>")!,
+                                                       baseURL: URL(string:"<oauthBaseURL>")!,
                                                        clientId: "<clientid>",
                                                        clientSecret: "<clientSecret>") {
-   session.register(o)
+   session.register(observer)
 }
 
 // create CAI service config for the provided SAPURLSession and backend URL
-let serviceConfig = CAIServiceConfig(urlSession: session, host: <backendURL>)
+let serviceConfig = CAIServiceConfig(urlSession: session, host: URL(string:"<backendURL>")!)
      
 // Provide the message delivery object for polling
-delivery = PollMessageDelivery(channelId: "<channelId>", serviceConfig: serviceConfig)
+polling = PollMessageDelivery(channelId: "<channelId>", serviceConfig: serviceConfig)
    
 // create CAIConversation object and use it as publisher
-let dataPublisher = CAIConversation(config: serviceConfig, channel: caiChannel, messageDelivery: delivery)
+let dataPublisher = CAIConversation(config: serviceConfig, channel: caiChannel, messageDelivery: polling)
 
 // set the theme
 ThemeManager.shared.setCurrentTheme( CAITheme.fiori(FioriColorPalette()) )
 ```
+
+Example-specific extension for `CAIServiceConfig` to build oauth observer
+
+```swift
+extension CAIServiceConfig {
+    public static func buildOAuthObserver(redirectURL: URL, baseURL: URL, clientId: String, clientSecret: String) -> OAuth2Observer? {
+
+            let compositeStore = CompositeStorage()
+            do {
+                let secureKeyValueStore = SecureKeyValueStore()
+                try secureKeyValueStore.open(with: "cai_secure_store")
+                try compositeStore.setPersistentStore(secureKeyValueStore)
+
+                let params = OAuth2AuthenticationParameters(authorizationEndpointURL: baseURL.appendingPathComponent("/oauth/authorize"),
+                                                            clientID: clientId,
+                                                            redirectURL: redirectURL.appendingPathComponent("login/callback"),
+                                                            tokenEndpointURL: baseURL.appendingPathComponent("/oauth/token"),
+                                                            clientSecret: clientSecret)
+
+                let authenticator = OAuth2Authenticator(authenticationParameters: params, webViewPresenter: WKWebViewPresenter())
+                let oauthObserver = OAuth2Observer(authenticator: authenticator, tokenStore: OAuth2TokenStorage(store: compositeStore))
+
+                return oauthObserver
+            }
+            catch  {
+                // error handling
+                return nil
+            }
+        }
+}
+```
+
+Note: it is possible to set up an `OAuth2Observer` observer for communication directly against the SAP Conversational AI tenant but it is not recommended for productive usage. To avoid shipping the CAI client secret in your iOS source code we recommend to reuse the `SAPURLSession` connecting to your SAP Mobile Services tenant and proxy requests to SAP Conversational AI through SAP Mobile Services. On SAP Mobile Services you can exchange the user token or use CAI client credentials securely.
 
 ### User Interface
 
