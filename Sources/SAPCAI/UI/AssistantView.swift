@@ -31,7 +31,7 @@ public struct AssistantView: View {
     @State private var inputBarViewHeight: CGFloat = 0
 
     @State private var chartViewBottomInsert: CGFloat = 0
-        
+
     private var data: TypingIndicatorData = {
         let d = TypingIndicatorData()
         d.dotColor = Color.secondary
@@ -89,8 +89,31 @@ public struct AssistantView: View {
 
 #if DEBUG
     struct AssistantView_Previews: PreviewProvider {
+        static func getDefaultThemeManager() -> ThemeManager {
+            let t = ThemeManager()
+            t.setCurrentTheme(.default(DefaultColorPalette()))
+            return t
+        }
+
+        static func getFioriThemeManager() -> ThemeManager {
+            let t = ThemeManager()
+            t.setCurrentTheme(.fiori(FioriColorPalette()))
+            return t
+        }
+
         static var previews: some View {
-            AssistantView().environmentObject(testData).environmentObject(ThemeManager.shared)
+            Group {
+                HStack {
+                    AssistantView().environmentObject(testData).environmentObject(getDefaultThemeManager())
+                    AssistantView().environmentObject(testData).environmentObject(getFioriThemeManager())
+                }
+                .frame(width: 800, height: 800)
+
+            }.previewLayout(PreviewLayout.sizeThatFits).previewDisplayName("Default vs. Fiori Design")
+
+//        AssistantView().environmentObject(testData).environmentObject(getFioriThemeManager())
+//            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+//            .previewDisplayName("Fiori Design")
         }
     }
 #endif
