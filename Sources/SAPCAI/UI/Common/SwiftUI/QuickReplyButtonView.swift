@@ -8,8 +8,8 @@ struct QuickReplyButtonView: View {
     var body: some View {
         ButtonView(button: button, type: .quickReply)
             .buttonStyle(self.themeManager.value(for: .quickReplyButtonStyle,
-                                                 type: BaseQuickReplyButtonStyle.self,
-                                                 defaultValue: BaseQuickReplyButtonStyle()))
+                                                 type: QuickReplyButtonStyleContainer.self,
+                                                 defaultValue: QuickReplyButtonStyleContainer(BaseQuickReplyButtonStyle())))
     }
 }
 

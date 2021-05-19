@@ -131,7 +131,7 @@ public enum CAITheme: CustomStringConvertible {
         .containerLTPadding: CGFloat(16),
         .incomingTextContainerInset: EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12),
         .outgoingTextContainerInset: EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12),
-        .quickReplyButtonStyle: DefaultQuickReplyButtonStyle(),
+        .quickReplyButtonStyle: QuickReplyButtonStyleContainer(DefaultQuickReplyButtonStyle()),
         .sendButton: "arrow.up.circle.fill",
         .borderWidth: CGFloat(0.33)
     ])
@@ -141,7 +141,7 @@ public enum CAITheme: CustomStringConvertible {
         .containerLTPadding: CGFloat(16),
         .incomingTextContainerInset: EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0),
         .outgoingTextContainerInset: EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12),
-        .quickReplyButtonStyle: FioriQuickReplyButtonStyle(),
+        .quickReplyButtonStyle: QuickReplyButtonStyleContainer(FioriQuickReplyButtonStyle()),
         .sendButton: "arrow.up.square.fill",
         .borderWidth: CGFloat(1)
     ])
@@ -196,7 +196,7 @@ public struct Theme {
         /// ChatView container leading & trailing padding. Length (aka CGFloat)
         public static let containerLTPadding = Key(rawValue: "containerPadding")
     
-        /// AbstractButtonStyle
+        /// `QuickReplyButtonStyleContainer` wrapping a struct/enum conforming to `ButtonStyle`
         public static let quickReplyButtonStyle = Key(rawValue: "quickReplyButtonStyle")
         
         /// Send Button SF Symbol name. String
