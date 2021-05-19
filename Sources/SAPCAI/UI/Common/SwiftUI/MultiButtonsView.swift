@@ -23,8 +23,8 @@ struct MultiButtonsView: View {
                 Image(systemName: "ellipsis").frame(minWidth: 15, minHeight: 18)
             }
             .buttonStyle(self.themeManager.value(for: .quickReplyButtonStyle,
-                                                 type: BaseQuickReplyButtonStyle.self,
-                                                 defaultValue: BaseQuickReplyButtonStyle()))
+                                                 type: QuickReplyButtonStyleContainer.self,
+                                                 defaultValue: QuickReplyButtonStyleContainer(BaseQuickReplyButtonStyle())))
         }
         .actionSheet(isPresented: self.$showButtonsActionSheet) { () -> ActionSheet in
             var iButtons: [Alert.Button] = self.buttonsArr.map { btn in

@@ -1,24 +1,64 @@
 import Down
 import SwiftUI
 
-/// Base Button Style for Quick Reply buttons
-/// If you wish to create your own QuickReply button style, do so by extending
-/// this class and override `makeBody()` method.
-open class BaseQuickReplyButtonStyle: ButtonStyle {
-    open func makeBody(configuration: BaseQuickReplyButtonStyle.Configuration) -> AnyView {
+/**
+  Type-erased container to be used when setting own QuickReply button style
+  If you wish to create your own QuickReply button style, do so by conforming to `ButtonStyle`, put it into `QuickReplyButtonStyleContainer`
+  and use `Theme.Key` enum `quickReplyButtonStyle()` to apply it.
+
+  ## Example: define style
+  ```swift
+
+  public struct MyCustomQuickReplyButtonStyle: ButtonStyle {
+      public func makeBody(configuration: MyCustomQuickReplyButtonStyle.Configuration) -> AnyView {
+
+          return AnyView(
+              configuration.label
+                  .font(.body)
+                  .lineLimit(1)
+                  .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+          )
+      }
+  }
+ ```
+
+ ## Example: apply style
+
+  ```swift
+  Theme(name: "myCustomTheme", values: [
+      .quickReplyButtonStyle: QuickReplyButtonStyleContainer(MyCustomQuickReplyButtonStyle())
+  ])
+  ```
+   */
+public struct QuickReplyButtonStyleContainer: ButtonStyle {
+    let view: (ButtonStyleConfiguration) -> AnyView
+
+    init<S: ButtonStyle>(_ style: S) {
+        self.view = {
+            AnyView(style.makeBody(configuration: $0))
+        }
+    }
+
+    public func makeBody(configuration: Configuration) -> some View {
+        self.view(configuration)
+    }
+}
+
+
+/// QuickReply button style applied when using custom theme and no specific button style was provided
+public struct BaseQuickReplyButtonStyle: ButtonStyle {
+    public func makeBody(configuration: BaseQuickReplyButtonStyle.Configuration) -> AnyView {
         AnyView(configuration.label)
     }
 }
 
-/// Fiori Design Langauge implementation for QuickReply button
-public final class FioriQuickReplyButtonStyle: BaseQuickReplyButtonStyle {
-//    var theme: CAITheme
-    
+/// QuickReply button style applied when using Fiori theme
+public struct FioriQuickReplyButtonStyle: ButtonStyle {
     var radius: CGFloat {
         8
     }
-    
-    override public func makeBody(configuration: FioriQuickReplyButtonStyle.Configuration) -> AnyView {
+
+    public func makeBody(configuration: FioriQuickReplyButtonStyle.Configuration) -> AnyView {
         AnyView(
             configuration.label
                 .font(.body)
@@ -30,19 +70,15 @@ public final class FioriQuickReplyButtonStyle: BaseQuickReplyButtonStyle {
                 .cornerRadius(self.radius)
         )
     }
-    
-//    init() {}
-//    init(_ theme: CAITheme) {
-//        self.theme = theme
-//    }
 }
 
-public final class DefaultQuickReplyButtonStyle: BaseQuickReplyButtonStyle {
-    override public func makeBody(configuration: FioriQuickReplyButtonStyle.Configuration) -> AnyView {
+/// QuickReply button style applied when using Default theme
+public struct DefaultQuickReplyButtonStyle: ButtonStyle {
+    public func makeBody(configuration: FioriQuickReplyButtonStyle.Configuration) -> AnyView {
         var radius: CGFloat {
             22
         }
-        
+
         return AnyView(
             configuration.label
                 .font(.body)
@@ -75,7 +111,7 @@ struct CAIFontCollection: FontCollection {
     var code = DownFont(name: "menlo", size: 17) ?? .systemFont(ofSize: 17)
 
     var listItemPrefix = DownFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)
-    
+
     init() {}
 }
 
@@ -109,7 +145,7 @@ struct CAIColorCollection: ColorCollection {
     var listItemPrefix: DownColor = .lightGray
 
     var codeBlockBackground = DownColor(red: 0.96, green: 0.97, blue: 0.98, alpha: 1)
-    
+
     init() {}
 }
 
@@ -144,15 +180,15 @@ struct CAIParagraphStyleCollection: ParagraphStyleCollection {
 open class CAIStyler: DownStyler {
     public convenience init() {
         var downConfig = DownStylerConfiguration()
-        
+
         // change font fpr body
         downConfig.fonts = CAIFontCollection()
-        
+
         // change line spacing
         downConfig.paragraphStyles = CAIParagraphStyleCollection()
 
         downConfig.colors = CAIColorCollection()
-        
+
         self.init(configuration: downConfig)
     }
 }
