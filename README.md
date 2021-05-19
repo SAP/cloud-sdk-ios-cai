@@ -32,6 +32,10 @@
 
 The `SAPCAI` Swift Package is a module to connect to a bot on the end-to-end chatbot platform [SAP Conversation AI](https://www.sap.com/products/conversational-ai.html) (CAI) and to provide a pluggable SwiftUI `AssistantView` to initiate a conversation and render the various [message types](https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html).
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/4176826/118739439-558fdd80-b7fe-11eb-9db2-032e210c5746.gif" alt="SwiftUI AssistantView" width="300" height="650" align="center">
+</p>
+
 ## Installation
 
 The package is intended for consumption via Swift Package Manager. To add `SAPCAI` to your application target, navigate to the  <kbd>File </kbd> >  <kbd>Swift Packages </kbd> >  <kbd>Add Package Dependency... </kbd>, then add the repository URL https://github.com/SAP/cloud-sdk-ios-cai.
