@@ -4,7 +4,7 @@ import SwiftUI
 struct ThemePickerView: View {
     @Binding var selectedTheme: Int
 
-    private let themes: [CAITheme] = [.fiori(FioriColorPalette()), .default(DefaultColorPalette())]
+    private let themes: [CAITheme] = [.fiori(FioriColorPalette()), .casual(CasualColorPalette())]
 
     var body: some View {
         Picker(selection: Binding<Int>(get: {
@@ -15,7 +15,7 @@ struct ThemePickerView: View {
             ThemeManager.shared.setCurrentTheme(theme)
         }), label: Text("Theme")) {
             ForEach(0 ..< themes.count) {
-                Text(self.themes[$0].description).tag($0)
+                Text(self.themes[$0].theme.name).tag($0)
             }
         }.pickerStyle(SegmentedPickerStyle())
     }

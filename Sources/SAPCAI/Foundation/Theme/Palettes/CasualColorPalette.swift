@@ -1,10 +1,9 @@
 import SwiftUI
 
-/// Default Color Palette
-/// Using Apple's default color
-public struct DefaultColorPalette: ColorPalette {
+/// Casual Color Palette
+public struct CasualColorPalette: ColorPalette {
     public var name: String {
-        "Apple"
+        "CasualColorPalette"
     }
 
     public init() {}

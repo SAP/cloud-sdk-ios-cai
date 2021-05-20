@@ -86,8 +86,10 @@ struct StaticMenuView: View {
     }
 }
 
-struct StaticMenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        StaticMenuView(isMenuPresented: .constant(false), menuActions: [CAIChannelMenuDataAction("Google", "Link", "https://www.google.com", nil)], menuTitle: "title").environmentObject(testData).environmentObject(ThemeManager.shared)
+#if DEBUG
+    struct StaticMenuView_Previews: PreviewProvider {
+        static var previews: some View {
+            StaticMenuView(isMenuPresented: .constant(false), menuActions: [CAIChannelMenuDataAction("Google", "Link", "https://www.google.com", nil)], menuTitle: "title").environmentObject(testData).environmentObject(ThemeManager.shared)
+        }
     }
-}
+#endif

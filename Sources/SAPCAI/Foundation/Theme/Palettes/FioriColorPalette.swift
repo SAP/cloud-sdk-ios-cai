@@ -3,7 +3,7 @@ import SwiftUI
 /// Fiori Color Palette. Follows SAP Fiori Design Language.
 public struct FioriColorPalette: ColorPalette {
     public var name: String {
-        "FDL"
+        "FioriColorPalette"
     }
 
     public init() {}

@@ -44,7 +44,7 @@ struct TextView: UIViewRepresentable {
         textView.layer.borderColor = UIColor.systemGray4.cgColor
         textView.layer.borderWidth = 1
         switch self.themeManager.theme {
-        case .default:
+        case .casual:
             textView.layer.cornerRadius = self.initialHeight / 2
         default:
             textView.layer.cornerRadius = 8

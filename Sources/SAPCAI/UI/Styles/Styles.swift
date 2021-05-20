@@ -72,8 +72,8 @@ public struct FioriQuickReplyButtonStyle: ButtonStyle {
     }
 }
 
-/// QuickReply button style applied when using Default theme
-public struct DefaultQuickReplyButtonStyle: ButtonStyle {
+/// QuickReply button style applied when using Casual theme
+public struct CasualQuickReplyButtonStyle: ButtonStyle {
     public func makeBody(configuration: FioriQuickReplyButtonStyle.Configuration) -> AnyView {
         var radius: CGFloat {
             22

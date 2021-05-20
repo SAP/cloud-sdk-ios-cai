@@ -109,9 +109,6 @@ polling = PollMessageDelivery(channelId: "<channelId>", serviceConfig: serviceCo
    
 // create CAIConversation object and use it as publisher
 let dataPublisher = CAIConversation(config: serviceConfig, channel: caiChannel, messageDelivery: polling)
-
-// set the theme
-ThemeManager.shared.setCurrentTheme( CAITheme.fiori(FioriColorPalette()) )
 ```
 
 Example-specific extension for `CAIServiceConfig` to build oauth observer
@@ -170,29 +167,29 @@ self.navigationController?.pushViewController(vc, animated: true)
 ## Theming
 
 `SAPCAI` will provide two standard themes
-- a Default theme and
-- a Fiori theme
+- a Fiori theme and
+- a Casual theme
 
-<img width="835" alt="Themes" src="https://user-images.githubusercontent.com/4176826/118736415-6426c680-b7f7-11eb-88a1-3e081bb35500.png">
+<img width="663" alt="Themes" src="https://user-images.githubusercontent.com/4176826/119032300-e1217f80-b960-11eb-8d65-e068958aff36.png">
 
 Each theme will come with its color palette, that supports both light and dark mode.
 
 <table>
 <tr>
-<td> Default Design </td> <td> Fiori Design </td>
+<td> Fiori Design </td> <td> Casual Design </td>
 </tr>
 <tr>
 <td>
 
 ```swift
-ThemeManager.shared.setCurrentTheme( .default(DefaultColorPalette()) )
+ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
 ```
 
 </td>
 <td>
     
 ```swift
-ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
+ThemeManager.shared.setCurrentTheme( .casual(CasualColorPalette()) )
 ```
 
 </td>

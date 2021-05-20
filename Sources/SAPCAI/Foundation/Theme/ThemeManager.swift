@@ -5,20 +5,20 @@ import SwiftUI
 /// Available themes to consume by your application
 ///
 /// CAI provides 2 themes:
-///  - Default. Mostly used in Community context
 ///  - Fiori. Follows SAP Fiori Design Language. Mostly used in Enterprise context
+///  - Casual. Mostly used in Community context
 ///
 /// Both provide support light & dark mode.
 ///
 /// You can also provide you own custom theme.
 ///
-/// For Default and Fiori, you only need to provide a Color palette. We have a default color palette for both of them but you can provide your own Color palette.
+/// For Casual and Fiori, you only need to provide a Color palette. We have a default color palette for both of them but you can provide your own Color palette.
 ///
 /// If you want to use a custom theme, you need to provide a Theme struct as well as a Color palette for it and it's your responsability to support light & dark mode.
 /// @see Theme.Key to know what keys you can configure.
 ///
 public enum CAITheme: CustomStringConvertible {
-    case `default`(ColorPalette)
+    case casual(ColorPalette)
     
     case fiori(ColorPalette)
     
@@ -27,7 +27,7 @@ public enum CAITheme: CustomStringConvertible {
     /// Get ColorPalette (read-only)
     public var palette: ColorPalette {
         switch self {
-        case .default(let palette),
+        case .casual(let palette),
              .fiori(let palette):
             return palette
         case .custom(_, let palette):
@@ -38,8 +38,8 @@ public enum CAITheme: CustomStringConvertible {
     /// Get underlying Theme object (read-only)
     public var theme: Theme {
         switch self {
-        case .default:
-            return CAITheme.defaultTheme
+        case .casual:
+            return CAITheme.casualTheme
         case .fiori:
             return CAITheme.fioriTheme
         case .custom(let t, _):
@@ -52,8 +52,8 @@ public enum CAITheme: CustomStringConvertible {
         switch self {
         case .fiori(let p):
             return "Fiori (\(p.name))"
-        case .default(let p):
-            return "Default (\(p.name))"
+        case .casual(let p):
+            return "Casual (\(p.name))"
         case .custom(let t, let p):
             return "\(t.name) (\(p.name))"
         }
@@ -71,8 +71,8 @@ public enum CAITheme: CustomStringConvertible {
     /// - Returns: Any. Nil if key is not found
     public func value(for key: Theme.Key) -> Any? {
         switch self {
-        case .default:
-            return CAITheme.defaultTheme.values[key]
+        case .casual:
+            return CAITheme.casualTheme.values[key]
         case .fiori:
             return CAITheme.fioriTheme.values[key]
         case .custom(let t, _):
@@ -102,8 +102,8 @@ public enum CAITheme: CustomStringConvertible {
     
     mutating func setValue<T>(_ value: T, forKey key: Theme.Key) {
         switch self {
-        case .default:
-            CAITheme.defaultTheme.setValue(value, forKey: key)
+        case .casual:
+            CAITheme.casualTheme.setValue(value, forKey: key)
         case .fiori:
             assertionFailure("Theme `Fiori` does not allow custom preferences")
         // CAITheme.fioriTheme.setValue(value, forKey: key)
@@ -114,8 +114,8 @@ public enum CAITheme: CustomStringConvertible {
     
     mutating func updateValues(with newValues: [Theme.Key: Any]) {
         switch self {
-        case .default:
-            CAITheme.defaultTheme.updateValues(with: newValues)
+        case .casual:
+            CAITheme.casualTheme.updateValues(with: newValues)
         case .fiori:
             assertionFailure("Theme `Fiori` does not allow custom preferences")
         // CAITheme.fioriTheme.updateValues(with: newValues)
@@ -126,12 +126,12 @@ public enum CAITheme: CustomStringConvertible {
     
     // MARK: Internal CAI Themes definition
     
-    private static var defaultTheme = Theme(name: "default", values: [
+    private static var casualTheme = Theme(name: "casual", values: [
         .cornerRadius: CGFloat(16),
         .containerLTPadding: CGFloat(16),
         .incomingTextContainerInset: EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12),
         .outgoingTextContainerInset: EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12),
-        .quickReplyButtonStyle: QuickReplyButtonStyleContainer(DefaultQuickReplyButtonStyle()),
+        .quickReplyButtonStyle: QuickReplyButtonStyleContainer(CasualQuickReplyButtonStyle()),
         .sendButton: "arrow.up.circle.fill",
         .borderWidth: CGFloat(0.33)
     ])
@@ -150,7 +150,7 @@ public enum CAITheme: CustomStringConvertible {
 /// Use this structure to create and implement your own custom theme. Check out Theme.Key enums to know what can be configured.
 public struct Theme {
     /// Key
-    let name: String
+    public let name: String
     
     /// All configurable properties
     var values: [Theme.Key: Any]
