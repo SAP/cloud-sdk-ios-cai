@@ -253,7 +253,7 @@ public struct URLOpenerData {
             CAIResponseMessageData(text: "Hi", false),
             CAIResponseMessageData(text: "Hi! What can I do for you?", true),
             CAIResponseMessageData(text: "Show me the latest product", false),
-            CAIResponseMessageData(text: "**This product was just released**", true, markdown: true),
+            CAIResponseMessageData(text: "This product was just released today, hurry up before it is gone !!!", true, markdown: true),
             CAIResponseMessageData("Laptop Lenovo",
                                    "This is a great Laptop",
                                    "sap-icon://order-status",

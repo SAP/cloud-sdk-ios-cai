@@ -30,8 +30,10 @@ struct MenuButtonView: View {
     }
 }
 
-struct MenuButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuButtonView(menuActions: [CAIChannelMenuDataAction("Google", "Link", "https://www.google.com", nil)]).environmentObject(testData).environmentObject(ThemeManager.shared)
+#if DEBUG
+    struct MenuButtonView_Previews: PreviewProvider {
+        static var previews: some View {
+            MenuButtonView(menuActions: [CAIChannelMenuDataAction("Google", "Link", "https://www.google.com", nil)]).environmentObject(testData).environmentObject(ThemeManager.shared)
+        }
     }
-}
+#endif

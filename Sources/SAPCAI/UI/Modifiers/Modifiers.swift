@@ -50,7 +50,7 @@ struct MessageBubbleModifier: ViewModifier {
        
         var showTail = false
         switch self.themeManager.theme {
-        case .default:
+        case .casual:
             showTail = true
         default:
             showTail = false

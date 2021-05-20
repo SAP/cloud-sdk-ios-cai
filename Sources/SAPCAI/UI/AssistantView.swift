@@ -89,27 +89,27 @@ public struct AssistantView: View {
 
 #if DEBUG
     struct AssistantView_Previews: PreviewProvider {
-        static func getDefaultThemeManager() -> ThemeManager {
-            let t = ThemeManager()
-            t.setCurrentTheme(.default(DefaultColorPalette()))
-            return t
-        }
-
         static func getFioriThemeManager() -> ThemeManager {
             let t = ThemeManager()
             t.setCurrentTheme(.fiori(FioriColorPalette()))
             return t
         }
 
+        static func getCasualThemeManager() -> ThemeManager {
+            let t = ThemeManager()
+            t.setCurrentTheme(.casual(CasualColorPalette()))
+            return t
+        }
+
         static var previews: some View {
             Group {
                 HStack {
-                    AssistantView().environmentObject(testData).environmentObject(getDefaultThemeManager())
                     AssistantView().environmentObject(testData).environmentObject(getFioriThemeManager())
+                    AssistantView().environmentObject(testData).environmentObject(getCasualThemeManager())
                 }
                 .frame(width: 800, height: 800)
 
-            }.previewLayout(PreviewLayout.sizeThatFits).previewDisplayName("Default vs. Fiori Design")
+            }.previewLayout(PreviewLayout.sizeThatFits).previewDisplayName("Fiori vs. Casual Design")
 
 //        AssistantView().environmentObject(testData).environmentObject(getFioriThemeManager())
 //            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))

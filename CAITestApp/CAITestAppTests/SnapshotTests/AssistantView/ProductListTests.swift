@@ -91,8 +91,8 @@ class ProductListTests: AssistantViewTestCase {
         }
     }
 
-    func testAppleTheme() throws {
-        let view = getAssistantView(with: messsageData, theme: CAITheme.default(DefaultColorPalette()))
+    func testCasualTheme() throws {
+        let view = getAssistantView(with: messsageData, theme: CAITheme.casual(CasualColorPalette()))
 
         for c in self.configs {
             assertSnapshot(view, configs: [c], style: .light)
