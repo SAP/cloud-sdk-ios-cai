@@ -40,6 +40,14 @@ The `SAPCAI` Swift Package is a module to connect to a bot on the end-to-end cha
 
 The package is intended for consumption via Swift Package Manager. To add `SAPCAI` to your application target, navigate to the  <kbd>File </kbd> >  <kbd>Swift Packages </kbd> >  <kbd>Add Package Dependency... </kbd>, then add the repository URL https://github.com/SAP/cloud-sdk-ios-cai.
 
+You can choose one of the following package products to be added to your application / framework target
+
+|Package Product|When to Use
+|---|---|
+|SAPCAI|You did not already embed binary frameworks from SAP BTP SDK for iOS|
+|SAPCAI-requiresToEmbedXCFrameworks|You already embedded `SAPCommon` and `SAPFoundation` binary frameworks to your target|
+
+
 ## Requirements
 
 - iOS 13 or higher
