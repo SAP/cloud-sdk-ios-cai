@@ -5,7 +5,7 @@ struct AvatarView: View {
     var imageUrl: String
     
     var body: some View {
-        URLImage(URL(string: imageUrl)!,
+        URLImage(url: URL(string: imageUrl)!,
                  inProgress: { _ -> Image in
                      Image(systemName: "person.crop.circle")
                  },

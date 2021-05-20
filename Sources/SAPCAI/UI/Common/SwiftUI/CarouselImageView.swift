@@ -13,7 +13,7 @@ struct CarouselImageView: View {
     var body: some View {
         Group {
             if let mediaItem = media, let sourceUrl = mediaItem.sourceUrl {
-                URLImage(sourceUrl,
+                URLImage(url: sourceUrl,
                          inProgress: { _ -> Image in
                              mediaItem.placeholder
                          },

@@ -38,7 +38,7 @@ struct ImageUIView: View {
     var body: some View {
         Group {
             if let sourceUrl = media?.sourceUrl {
-                URLImage(sourceUrl) { image, info in
+                URLImage(url: sourceUrl) { image, info in
                     SizeConverter(
                         CGSize(width: CGFloat(info.cgImage.width), height: CGFloat(info.cgImage.height)),
                         BoundingBox(minWidth: 44,
