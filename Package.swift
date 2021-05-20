@@ -20,7 +20,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "URLImage", url: "https://github.com/dmytro-anokhin/url-image", .upToNextMajor(from: "3.0.0")),
+        .package(name: "URLImage", url: "https://github.com/dmytro-anokhin/url-image", .upToNextMajor(from: "2.0.0")),
         .package(name: "Down", url: "https://github.com/johnxnguyen/Down", .upToNextMinor(from: "0.11.0")),
         .package(name: "cloud-sdk-ios", url: "https://github.com/SAP/cloud-sdk-ios", .exact("5.1.3-xcfrwk")),
     ],
