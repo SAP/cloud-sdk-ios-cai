@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ResponseMessageData Protocol Reference</title>
+    <title>BaseQuickReplyButtonStyle Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -11,8 +11,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/ResponseMessageData" class="dashAnchor"></a>
-    <a title="ResponseMessageData Protocol Reference"></a>
+    <a name="//apple_ref/swift/Struct/BaseQuickReplyButtonStyle" class="dashAnchor"></a>
+    <a title="BaseQuickReplyButtonStyle Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p>
@@ -30,7 +30,7 @@
             <a href="../index.html">SAPCAI Reference</a>
             <img id="carat" src="../img/carat.png" />
           </span>
-          ResponseMessageData Protocol Reference
+          BaseQuickReplyButtonStyle Structure Reference
         </p>
       </div>
     </div>
@@ -39,15 +39,15 @@
         <article class="main-content">
           <section>
             <section class="section">
-              <h1>ResponseMessageData</h1>
+              <h1>BaseQuickReplyButtonStyle</h1>
                 <div class="declaration">
                   <div class="language">
                     
-                    <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ResponseMessageData</span></code></pre>
+                    <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">BaseQuickReplyButtonStyle</span> <span class="p">:</span> <span class="kt">ButtonStyle</span></code></pre>
 
                   </div>
                 </div>
-              <p>Protocol describing a response consumable by the <code><a href="../Protocols/MessagingPublisher.html">MessagingPublisher</a></code></p>
+              <p>QuickReply button style applied when using custom theme and no specific button style was provided</p>
 
             </section>
             <section class="section task-group-section">
@@ -56,9 +56,9 @@
                   <li class="item">
                     <div>
                       <code>
-                      <a name="/s:6SAPCAI19ResponseMessageDataP8isTypingSbvp"></a>
-                      <a name="//apple_ref/swift/Property/isTyping" class="dashAnchor"></a>
-                      <a class="token" href="#/s:6SAPCAI19ResponseMessageDataP8isTypingSbvp">isTyping</a>
+                      <a name="/s:7SwiftUI11ButtonStyleP8makeBody13configuration0F0QzAA0cD13ConfigurationV_tF"></a>
+                      <a name="//apple_ref/swift/Method/makeBody(configuration:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:7SwiftUI11ButtonStyleP8makeBody13configuration0F0QzAA0cD13ConfigurationV_tF">makeBody(configuration:<wbr>)</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -66,41 +66,13 @@
                       <section class="section">
                         <div class="pointer"></div>
                         <div class="abstract">
-                          <p>True when server process the request and notifies the client to show a typing indicator</p>
-
+                          
                         </div>
                         <div class="declaration">
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isTyping</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:6SAPCAI19ResponseMessageDataP07messageD0SayAA0cD0_pGvp"></a>
-                      <a name="//apple_ref/swift/Property/messageData" class="dashAnchor"></a>
-                      <a class="token" href="#/s:6SAPCAI19ResponseMessageDataP07messageD0SayAA0cD0_pGvp">messageData</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Content of the response. Ignored if <code><a href="../Protocols/ResponseMessageData.html#/s:6SAPCAI19ResponseMessageDataP8isTypingSbvp">isTyping</a></code> is true</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">messageData</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/MessageData.html">MessageData</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeBody</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="kt">BaseQuickReplyButtonStyle</span><span class="o">.</span><span class="kt">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyView</span></code></pre>
 
                           </div>
                         </div>

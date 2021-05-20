@@ -926,6 +926,140 @@ Height of the TextView grows as user types longer text.</p>
                       </section>
                     </div>
                   </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI30QuickReplyButtonStyleContainerV"></a>
+                      <a name="//apple_ref/swift/Struct/QuickReplyButtonStyleContainer" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI30QuickReplyButtonStyleContainerV">QuickReplyButtonStyleContainer</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Type-erased container to be used when setting own QuickReply button style
+ If you wish to create your own QuickReply button style, do so by conforming to <code>ButtonStyle</code>, put it into <code>QuickReplyButtonStyleContainer</code>
+ and use <code><a href="Structs/Theme/Key.html">Theme.Key</a></code> enum <code>quickReplyButtonStyle()</code> to apply it.</p>
+
+<p>## Example: define style</p>
+<pre class="highlight swift"><code>
+ <span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MyCustomQuickReplyButtonStyle</span><span class="p">:</span> <span class="kt">ButtonStyle</span> <span class="p">{</span>
+     <span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeBody</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="kt">MyCustomQuickReplyButtonStyle</span><span class="o">.</span><span class="kt">Configuration</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyView</span> <span class="p">{</span>
+
+         <span class="k">return</span> <span class="kt">AnyView</span><span class="p">(</span>
+             <span class="n">configuration</span><span class="o">.</span><span class="n">label</span>
+                 <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+                 <span class="o">.</span><span class="nf">lineLimit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                 <span class="o">.</span><span class="nf">padding</span><span class="p">(</span><span class="kt">EdgeInsets</span><span class="p">(</span><span class="nv">top</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">leading</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="nv">bottom</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">trailing</span><span class="p">:</span> <span class="mi">16</span><span class="p">))</span>
+         <span class="p">)</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre>
+<h2 id='example-apply-style' class='heading'>Example: apply style</h2>
+<pre class="highlight swift"><code> <span class="kt">Theme</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"myCustomTheme"</span><span class="p">,</span> <span class="nv">values</span><span class="p">:</span> <span class="p">[</span>
+     <span class="o">.</span><span class="nv">quickReplyButtonStyle</span><span class="p">:</span> <span class="kt">QuickReplyButtonStyleContainer</span><span class="p">(</span><span class="kt">MyCustomQuickReplyButtonStyle</span><span class="p">())</span>
+ <span class="p">])</span>
+</code></pre>
+
+                          <a href="Structs/QuickReplyButtonStyleContainer.html" class="slightly-smaller">See more</a>
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">QuickReplyButtonStyleContainer</span> <span class="p">:</span> <span class="kt">ButtonStyle</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI25BaseQuickReplyButtonStyleV"></a>
+                      <a name="//apple_ref/swift/Struct/BaseQuickReplyButtonStyle" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI25BaseQuickReplyButtonStyleV">BaseQuickReplyButtonStyle</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>QuickReply button style applied when using custom theme and no specific button style was provided</p>
+
+                          <a href="Structs/BaseQuickReplyButtonStyle.html" class="slightly-smaller">See more</a>
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">BaseQuickReplyButtonStyle</span> <span class="p">:</span> <span class="kt">ButtonStyle</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI26FioriQuickReplyButtonStyleV"></a>
+                      <a name="//apple_ref/swift/Struct/FioriQuickReplyButtonStyle" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI26FioriQuickReplyButtonStyleV">FioriQuickReplyButtonStyle</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>QuickReply button style applied when using Fiori theme</p>
+
+                          <a href="Structs/FioriQuickReplyButtonStyle.html" class="slightly-smaller">See more</a>
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">FioriQuickReplyButtonStyle</span> <span class="p">:</span> <span class="kt">ButtonStyle</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI28DefaultQuickReplyButtonStyleV"></a>
+                      <a name="//apple_ref/swift/Struct/DefaultQuickReplyButtonStyle" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI28DefaultQuickReplyButtonStyleV">DefaultQuickReplyButtonStyle</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>QuickReply button style applied when using Default theme</p>
+
+                          <a href="Structs/DefaultQuickReplyButtonStyle.html" class="slightly-smaller">See more</a>
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DefaultQuickReplyButtonStyle</span> <span class="p">:</span> <span class="kt">ButtonStyle</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </section>
@@ -939,19 +1073,10 @@ Height of the TextView grows as user types longer text.</p>
               <a href="Classes.html">Classes</a>
               <ul class="nav-group-tasks">
                 <li class="nav-group-task">
-                  <a href="Classes/BaseQuickReplyButtonStyle.html">BaseQuickReplyButtonStyle</a>
-                </li>
-                <li class="nav-group-task">
                   <a href="Classes/CAIChannelService.html">CAIChannelService</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="Classes/CAIConversation.html">CAIConversation</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="Classes/DefaultQuickReplyButtonStyle.html">DefaultQuickReplyButtonStyle</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="Classes/FioriQuickReplyButtonStyle.html">FioriQuickReplyButtonStyle</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="Classes/MessagingViewController.html">MessagingViewController</a>
@@ -1100,6 +1225,9 @@ Height of the TextView grows as user types longer text.</p>
                   <a href="Structs/BannerView.html">BannerView</a>
                 </li>
                 <li class="nav-group-task">
+                  <a href="Structs/BaseQuickReplyButtonStyle.html">BaseQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
                   <a href="Structs/CAIChannel.html">CAIChannel</a>
                 </li>
                 <li class="nav-group-task">
@@ -1136,10 +1264,19 @@ Height of the TextView grows as user types longer text.</p>
                   <a href="Structs/DefaultColorPalette.html">DefaultColorPalette</a>
                 </li>
                 <li class="nav-group-task">
+                  <a href="Structs/DefaultQuickReplyButtonStyle.html">DefaultQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
                   <a href="Structs/FioriColorPalette.html">FioriColorPalette</a>
                 </li>
                 <li class="nav-group-task">
+                  <a href="Structs/FioriQuickReplyButtonStyle.html">FioriQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
                   <a href="Structs.html#/s:6SAPCAI12InputBarViewV">InputBarView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/QuickReplyButtonStyleContainer.html">QuickReplyButtonStyleContainer</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="Structs/SearchBar.html">SearchBar</a>
@@ -1208,7 +1345,7 @@ Height of the TextView grows as user types longer text.</p>
       <div class="footer-wrapper">
         <section id="footer">
           <p>© 2021 <a class="link" href="https://github.com/SAP/cloud-sdk-ios-cai" target="_blank" rel="external">https://github.com/SAP/cloud-sdk-ios-cai</a> under Apache-2.0.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </div>
     </div>
