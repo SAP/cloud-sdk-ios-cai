@@ -10,13 +10,11 @@ let package = Package(
     products: [
         .library(
             name: "SAPCAI",
-            type: .static,
-            targets: ["SAPCAI"]
+            targets: ["SAPCAI-withBinaryDependencies"]
         ),
         .library(
-            name: "SAPCAI-Dynamic",
-            type: .dynamic,
-            targets: ["SAPCAI"]
+            name: "SAPCAI-requiresToEmbedXCFrameworks",
+            targets: ["SAPCAI-withoutBinaryDependencies"]
         )
     ],
     dependencies: [
@@ -27,16 +25,32 @@ let package = Package(
     targets: [
         // TODO: split Networking vs. UI
         .target(
+            name: "SAPCAI-withBinaryDependencies",
+            dependencies: [
+                "SAPCAI",
+                .product(name: "SAPFoundation", package: "cloud-sdk-ios"),
+                .product(name: "SAPCommon", package: "cloud-sdk-ios")
+            ]
+        ),
+        .target(
             name: "SAPCAI",
             dependencies: [
                 "URLImage",
-                "Down",
-                .product(name: "SAPFoundation", package: "cloud-sdk-ios"),
-                .product(name: "SAPCommon", package: "cloud-sdk-ios")
+                "Down"
             ],
             resources: [
                 .process("Foundation/Utility/Font/SAP-icons.ttf"),
                 .process("UI/Common/VideoPlayer/YTPlayer.html")
+            ]
+        ),
+        .target(
+            name: "SAPCAI-withoutBinaryDependencies",
+            dependencies: [
+                "SAPCAI"
+            ],
+            linkerSettings: [
+                .linkedFramework("SAPCommon"),
+                .linkedFramework("SAPFoundation")
             ]
         ),
         .testTarget(
