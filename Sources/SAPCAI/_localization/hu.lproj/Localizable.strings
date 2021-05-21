@@ -1,0 +1,14 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Várom a kérdést";
+
+"error.server" = "Szerverhiba történt";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Nem sikerült az adatok elemzése";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Kérelem megszakítva";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "A beszélgetés nem található. Várom a megismételt kérdést";
+

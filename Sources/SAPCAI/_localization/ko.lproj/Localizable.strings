@@ -1,0 +1,14 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "물어보기";
+
+"error.server" = "서버 오류가 발생했습니다.";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "데이터 구문 분석에 실패했습니다.";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "요청이 취소되었습니다.";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "대화가 없습니다. 다시 확인해 주십시오.";
+

@@ -1,14 +1,14 @@
 /* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
-"Write a message" = "Ask me please";
+"Write a message" = "請詢問我";
 
-"error.server" = "A server error occurred";
+"error.server" = "發生伺服器錯誤";
 
 /* XMSG: Failure to parse JSON data */
-"error.JSONParserError" = "Failed to parse data";
+"error.JSONParserError" = "無法剖析資料";
 
 /* XMSG: Error message for request cancelled */
-"error.RequestCancelled" = "Request was cancelled";
+"error.RequestCancelled" = "已取消請求";
 
 /* XMSG: Error message for conversation not found */
-"error.conversationNotFound" = "Conversation is not found. Please ask me again";
+"error.conversationNotFound" = "找不到交談。請再次詢問我";
 

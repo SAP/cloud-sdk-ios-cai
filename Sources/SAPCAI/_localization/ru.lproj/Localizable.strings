@@ -1,0 +1,14 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Спросите меня";
+
+"error.server" = "Возникла ошибка сервера";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Синтаксический анализ данных не удался";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Запрос отменен";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Диалог не найден. Спросите меня снова.";
+

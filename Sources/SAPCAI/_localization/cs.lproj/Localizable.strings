@@ -1,14 +1,14 @@
 /* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
-"Write a message" = "Ask me please";
+"Write a message" = "Zeptejte se mě";
 
-"error.server" = "A server error occurred";
+"error.server" = "Došlo k chybě serveru";
 
 /* XMSG: Failure to parse JSON data */
-"error.JSONParserError" = "Failed to parse data";
+"error.JSONParserError" = "Analýza syntaxe dat neúspěšná";
 
 /* XMSG: Error message for request cancelled */
-"error.RequestCancelled" = "Request was cancelled";
+"error.RequestCancelled" = "Požadavek byl zrušen";
 
 /* XMSG: Error message for conversation not found */
-"error.conversationNotFound" = "Conversation is not found. Please ask me again";
+"error.conversationNotFound" = "Konverzace nebyla nalezena. Zeptejte se mě znovu.";
 
