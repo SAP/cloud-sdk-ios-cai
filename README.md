@@ -1,6 +1,4 @@
 
-# cloud-sdk-ios-cai 
-
 <p align="center">
   <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
   </br>
@@ -10,55 +8,70 @@
 ***
 
 <div align="center">
-    <a href="https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22">
-        <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
-             alt="Build Status">
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai#installation">Installation
     </a>
-    <a href="https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai">
-        <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
-             alt="REUSE status">
+    |
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai#examples"> Examples
     </a>
-    <a href="http://commitizen.github.io/cz-cli/">
-        <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
-             alt="Commitizen friendly">
+    |
+    <a href="https://sap.github.io/cloud-sdk-ios-cai"> API Documentation
     </a>
-    <a href="https://conventionalcommits.org">
-        <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
-             alt="Conventional Commits">
+    |
+    <a href="https://github.com/SAP/cloud-sdk-ios-fiori/blob/main/CHANGELOG.md"> Changelog
     </a>
 </div>
 
 ***
 
-The `SAPCAI` Swift Package is a module to connect to a bot on the end-to-end chatbot platform [SAP Conversation AI](https://www.sap.com/products/conversational-ai.html) (CAI) and to provide a pluggable SwiftUI `AssistantView` to initiate a conversation and render the various [message types](https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html).
+<div align="center">
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22">
+        <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
+             alt="Build Status">
+    </a>
+    <a href="https://conventionalcommits.org">
+        <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
+             alt="Conventional Commits">
+    </a>
+    <a href="http://commitizen.github.io/cz-cli/">
+        <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
+             alt="Commitizen friendly">
+    </a>
+    <a href="https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai">
+        <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
+             alt="REUSE status">
+    </a>
+</div>
+
+***
+
+The `SAPCAI` Swift Package is a module to connect to a bot on the end-to-end chatbot platform [SAP Conversational AI](https://www.sap.com/products/conversational-ai.html) (CAI). It provides a pluggable SwiftUI `AssistantView` to initiate a conversation and render the various [message types](https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html) of a bot.
+
+This Swift Package is an open-source addition to the frameworks of the [SAP BTP SDK for iOS](https://developers.sap.com/topics/sap-btp-sdk-for-ios.html).
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/4176826/118739439-558fdd80-b7fe-11eb-9db2-032e210c5746.gif" alt="SwiftUI AssistantView" width="300" height="650" align="center">
 </p>
 
-## Installation
-
-The package is intended for consumption via Swift Package Manager. To add `SAPCAI` to your application target, navigate to the  <kbd>File </kbd> >  <kbd>Swift Packages </kbd> >  <kbd>Add Package Dependency... </kbd>, then add the repository URL https://github.com/SAP/cloud-sdk-ios-cai.
-
-You can choose one of the following package products to be added to your application / framework target
-
-|Package Product|When to Use
-|---|---|
-|SAPCAI|You did not already embed binary frameworks from SAP BTP SDK for iOS|
-|SAPCAI-requiresToEmbedXCFrameworks|You already embedded `SAPCommon` and `SAPFoundation` binary frameworks to your target|
-
-
 ## Requirements
 
 - iOS 13 or higher
 - Xcode 12 (Swift 5.3) or higher
-  
+
 ## Prerequisites
 
-- You have existing bot(s) on the SAP Conversational AI platform (either Enterprise or Community edition)
+- You have existing bot(s) on the SAP Conversational AI platform
+- You created an OAuth client for Designtime API for your bot (<kbd>Settings</kbd> > <kbd> Tokens</kbd>)
 - Your bot(s) are connected to a mobile channel
 
-As long as mobile channel activation is not possible in the SAP Conversational AI you can perform this one-time activity via the [/channel](https://reverseproxy.cai.tools.sap/docs/api-reference/#channels) API.
+### Create a mobile channel
+
+In the *Enterprise Edition* this can be done via the UI.
+
+<img width="1093" alt="CreateMobileChannel" src="https://user-images.githubusercontent.com/4176826/119203198-549dbc80-ba47-11eb-8b65-d813324c3cc8.png">
+
+However, the option is currently hidden by default and needs to be enabled by filing a [ticket](http://help.sap.com/disclaimer?site=https%3A%2F%2Flaunchpad.support.sap.com%2F%23incident%2Fsolution).
+
+In the *Community Edition* you create a mobile channel via the [/channel](https://reverseproxy.cai.tools.sap/docs/api-reference/#channels) API.
  
 ```bash
 # create a mobile channel
@@ -75,9 +88,24 @@ curl -X POST "<BaseUrl>/connect/v1/channels" \
 - [URLImage](https://github.com/dmytro-anokhin/url-image) for asynchronous image loading in SwiftUI
 - [Down](https://github.com/johnxnguyen/Down) for Markdown / CommonMark rendering in Swift
 
+## Installation
+
+The package is intended for consumption via Swift Package Manager. To add `SAPCAI` to your application target, navigate to the  <kbd>File </kbd> >  <kbd>Swift Packages </kbd> >  <kbd>Add Package Dependency... </kbd>, then add the repository URL https://github.com/SAP/cloud-sdk-ios-cai.
+
+You can choose one of the following package products to be added to your application / framework target
+
+|Package Product|When to Use
+|---|---|
+|SAPCAI|You did not already embed binary frameworks from SAP BTP SDK for iOS|
+|SAPCAI-requiresToEmbedXCFrameworks|You already embedded `SAPCommon` and `SAPFoundation` binary frameworks to your target|
+
 ## Getting Started
 
 The code snippet below illustrates how to set up the `CAIConversation` Combine publisher in order to initialize the `MessagingViewModel` for the `AssistantView`.
+
+See [Enterprise Configuration](https://github.com/SAP/cloud-sdk-ios-cai/blob/main/ENTERPRISE_CONFIG.md) guide for required configuration steps to use `SAPCAI` Swift package and connect indirectly with SAP Conversational AI *Enterprise Edition* through SAP Mobile Services.
+
+The code snippet below contains example values specific for connecting iOS client directly with SAP Conversational AI *Community Edition* for prototyping. You have to replace variable values in angle brackets (e.g. `<channelId>`) with your bot-specific values
 
 ### Setting up the data publisher
 
@@ -86,63 +114,75 @@ import SAPCAI
 import SAPFoundation
 import SwiftUI
 
-// create the CAIChannel object by providing the channel id, channel token and channel slug that was created in CAI Platform.
+/*
+  Create the `CAIChannel` object by providing the channel id, channel token and channel slug which were created in CAI Platform.
+
+  If you do not want to hardcode chanel information on the client then you can retrieve a list of channels for a given Application ID with `CAIChannelService`.
+*/
 let caiChannel = CAIChannel(id: "<channelId>", token: "<channelToken>", slug: "<channelSlug>").
-        
-let polling: MessageDelivering
 
+ /*
+  Create and attach OAuthObserver to `SAPURLSession`
+
+  Example-specific extension for `CAIServiceConfig` to build OAuth observer (see next code snippet for implementation details)
+
+  Use CAI OAuth credentials for prototyping & direct communication between iOS client and SAP Conversational AI *Community Edition* 
+  
+  Use Mobile Service OAuth credentials to connect indirectly with SAP Conversational AI *Enterprise Edition* through SAP Mobile Services. In this case you have to reuse the `SAPURLSession` instance used for authentication against Mobile Services.
+*/
 let session = SAPURLSession()
-
-// example-specific extension for `CAIServiceConfig` to build oauth observer (see next code snippet for implementation details)
-if let observer = CAIServiceConfig.buildOAuthObserver(redirectURL:  URL(string:"<serverURL>")!,
-                                                       baseURL: URL(string:"<oauthBaseURL>")!,
-                                                       clientId: "<clientid>",
-                                                       clientSecret: "<clientSecret>") {
-   session.register(observer)
+if let observer = CAIServiceConfig.buildOAuthObserver(systemBaseURL: URL(string: "<Example: https://sapcai-community.sap.eu10.hana.ondemand.com>")!,                                                  
+                                                       authenticationBaseURL: URL(string: "<Example: https://sapcai-community.authentication.eu10.hana.ondemand.com>")!,                                
+                                                       clientId: "<OAuth client id>",                                                       
+                                                       clientSecret: "<OAuth client secret>") {
+    session.register(observer)
 }
 
-// create CAI service config for the provided SAPURLSession and backend URL
-let serviceConfig = CAIServiceConfig(urlSession: session, host: URL(string:"<backendURL>")!)
+// Create CAI service config for the provided SAPURLSession and URL pointing to CAI API endpoint
+let serviceConfig = CAIServiceConfig(urlSession: session, host: URL(string:"<Example: https://api.cai.tools.sap>")!)
      
 // Provide the message delivery object for polling
-polling = PollMessageDelivery(channelId: "<channelId>", serviceConfig: serviceConfig)
+let polling: MessageDelivering = PollMessageDelivery(channelId: "<channelId>", serviceConfig: serviceConfig)
    
-// create CAIConversation object and use it as publisher
+// Create CAIConversation object and use it as publisher
 let dataPublisher = CAIConversation(config: serviceConfig, channel: caiChannel, messageDelivery: polling)
+
+// Create view model for `AssistantView`
+let viewModel = MessagingViewModel(publisher: dataPublisher)
 ```
 
-Example-specific extension for `CAIServiceConfig` to build oauth observer
+Example-specific extension for `CAIServiceConfig` to build OAuth observer
 
 ```swift
 extension CAIServiceConfig {
-    public static func buildOAuthObserver(redirectURL: URL, baseURL: URL, clientId: String, clientSecret: String) -> OAuth2Observer? {
+    public static func buildOAuthObserver(systemBaseURL: URL, authenticationBaseURL: URL, clientId: String, clientSecret: String) -> OAuth2Observer? {
 
-            let compositeStore = CompositeStorage()
-            do {
-                let secureKeyValueStore = SecureKeyValueStore()
-                try secureKeyValueStore.open(with: "cai_secure_store")
-                try compositeStore.setPersistentStore(secureKeyValueStore)
+        let compositeStore = CompositeStorage()
+        do {
+            let secureKeyValueStore = SecureKeyValueStore()
+            try secureKeyValueStore.open(with: "cai_secure_store")
+            try compositeStore.setPersistentStore(secureKeyValueStore)
 
-                let params = OAuth2AuthenticationParameters(authorizationEndpointURL: baseURL.appendingPathComponent("/oauth/authorize"),
-                                                            clientID: clientId,
-                                                            redirectURL: redirectURL.appendingPathComponent("login/callback"),
-                                                            tokenEndpointURL: baseURL.appendingPathComponent("/oauth/token"),
-                                                            clientSecret: clientSecret)
+            let params = OAuth2AuthenticationParameters(authorizationEndpointURL: authenticationBaseURL.appendingPathComponent("/oauth/authorize"),
+                                                        clientID: clientId,
+                                                        redirectURL: systemBaseURL.appendingPathComponent("login/callback"),
+                                                        tokenEndpointURL: authenticationBaseURL.appendingPathComponent("/oauth/token"),
+                                                        clientSecret: clientSecret)
 
-                let authenticator = OAuth2Authenticator(authenticationParameters: params, webViewPresenter: WKWebViewPresenter())
-                let oauthObserver = OAuth2Observer(authenticator: authenticator, tokenStore: OAuth2TokenStorage(store: compositeStore))
+            let authenticator = OAuth2Authenticator(authenticationParameters: params, webViewPresenter: WKWebViewPresenter())
+            let oauthObserver = OAuth2Observer(authenticator: authenticator, tokenStore: OAuth2TokenStorage(store: compositeStore))
 
-                return oauthObserver
-            }
-            catch  {
-                // error handling
-                return nil
-            }
+            return oauthObserver
         }
+        catch  {
+            // error handling
+            return nil
+        }
+    }
 }
 ```
 
-Note: it is possible to set up an `OAuth2Observer` observer for communication directly against the SAP Conversational AI tenant but it is not recommended for productive usage. To avoid shipping the CAI client secret in your iOS source code we recommend to reuse the `SAPURLSession` connecting to your SAP Mobile Services tenant and proxy requests to SAP Conversational AI through SAP Mobile Services. On SAP Mobile Services you can exchange the user token or use CAI client credentials securely.
+Note: If you are developing your iOS application with SAP BTP SDK for iOS and Mobile Servcies then you can ignore the previous code snippet as you (probably) already have attached an `OAuth2Observer` pointing to Mobile Services.
 
 ### User Interface
 
@@ -151,9 +191,12 @@ Using the SwiftUI implementation is the **preferred** approach
 ```Swift
 AssistantView()
   .navigationBarTitle(Text("Chat"), displayMode: .inline) // if you are in navigation controller
-  .environmentObject(MessagingViewModel(publisher: dataPublisher)
-  .environmentObject(themeManager)
-  
+  .environmentObject(viewModel)
+  .environmentObject(ThemeManager.shared)
+  .onDisappear {
+    viewModel.cancelSubscriptions()
+    dataPublisher.resetConversation()
+  })
 ```
 
 but `SAPCAI` also provides a UIKit wrapper
@@ -174,42 +217,58 @@ self.navigationController?.pushViewController(vc, animated: true)
 
 Each theme will come with its color palette, that supports both light and dark mode.
 
-<table>
-<tr>
-<td> Fiori Design </td> <td> Casual Design </td>
-</tr>
-<tr>
-<td>
+### Fiori theme
 
 ```swift
 ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
 ```
 
-</td>
-<td>
+### Casual theme
     
 ```swift
 ThemeManager.shared.setCurrentTheme( .casual(CasualColorPalette()) )
 ```
 
-</td>
-</tr>
-</table>
-
+### Create your own custom theme
 
 You can also provide an alternative color palette or provide a custom theme.
 
-# Limitations
+## Limitations
 
-## Markdown related
+### Markdown related
 
 - **No support for [GitHub Flavored Markdown](https://github.github.com/gfm/)** (e.g. ~~strikethrough~~). Bot responses containing [Markdown](https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/3a3b6e09e96249b884dcf6e69eecd830.html#loio3a3b6e09e96249b884dcf6e69eecd830__section_markdown) will be rendered by the `AssistantView` according to the [Commonmark specification](https://spec.commonmark.org/0.29/) only and unknown syntax will be treated as text. 
 
-## Trigger Skill button related
+### Trigger Skill button related
 
 - `Trigger Skill` buttons are still enabled after execution / next interaction. This behavior differs from SAP CAI WebClient as once you click the button or type an utterance, the corresponding skill can't be triggered anymore at a later point in time, since the context in which it was created might not be valid anymore.
 
-## Image related
+### Image related
 
-- Not being able to save, copy, or share an image as part of a bot reponse. Currently there is no gesture handler attached an image view which  could allow to open a contextual menu offering such features (similar to iMessage or WhatsApp).
+- Not being able to save, copy, or share an image as part of a bot reponse. Currently there is no gesture handler attached to an image view which  could allow to open a contextual menu offering such features (similar to iMessage or WhatsApp).
 - Animated images (GIF), as part of a bot response, will be viewed as static image (dependency to https://github.com/dmytro-anokhin/url-image/issues/43)
+
+## How to obtain support
+
+Please [raise an issue on GitHub](https://github.com/SAP/cloud-sdk-ios-cai/issues/new/choose). SAP customers can continue to report issues through OSS for SLA tracking.  
+
+Questions around CAI can be raised in the [SAP CAI Answers](https://answers.sap.com/tags/73555000100800001301) forum.
+
+## Contributing
+
+If you want to contribute, please check the [Contribution Guidelines](./CONTRIBUTING.md).
+
+## Examples
+
+The `CAITestApp` in this repository allows you to
+- choose a theme
+- view static mock data or
+- connect against a live system by either
+  - letting the user choose the mobile channel from the list of available mobile channels for given Application ID (a.k.a targetSystem); note: this illustrates the use of `CAIChannelService` and how to build a simple SwiftUI view on top of it
+  - loading the `AssistantView` for a specific mobile channel
+
+See [here](https://github.com/SAP/cloud-sdk-ios-cai/tree/main/CAITestApp) on how to maintain connection settings for the test application.
+
+
+
+
