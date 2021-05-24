@@ -17,7 +17,7 @@
     <a href="https://sap.github.io/cloud-sdk-ios-cai"> API Documentation
     </a>
     |
-    <a href="https://github.com/SAP/cloud-sdk-ios-fiori/blob/main/CHANGELOG.md"> Changelog
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai/blob/main/CHANGELOG.md"> Changelog
     </a>
 </div>
 
