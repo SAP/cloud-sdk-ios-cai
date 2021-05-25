@@ -80,7 +80,7 @@ public class Connection: ObservableObject, Codable {
     // MARK: Codable
 
     enum CodingKeys: CodingKey {
-        case name, baseURL, authorizationEndpointURL, tokenEndpointURL, redirectURL, clientId, clientSecret, developerToken, preferredChannelId, preferredChannelToken, preferredChannelSlug, preferredExistingConversationId
+        case name, baseURL, authorizationEndpointURL, tokenEndpointURL, redirectURL, clientId, clientSecret, developerToken, channelId, channelToken, channelSlug, conversationId
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -94,10 +94,10 @@ public class Connection: ObservableObject, Codable {
         try container.encode(self.clientId, forKey: .clientId)
         try container.encode(self.clientSecret, forKey: .clientSecret)
         try container.encode(self.developerToken, forKey: .developerToken)
-        try container.encode(self.channelId, forKey: .preferredChannelId)
-        try container.encode(self.channelToken, forKey: .preferredChannelToken)
-        try container.encode(self.channelSlug, forKey: .preferredChannelSlug)
-        try container.encode(self.conversationId, forKey: .preferredExistingConversationId)
+        try container.encode(self.channelId, forKey: .channelId)
+        try container.encode(self.channelToken, forKey: .channelToken)
+        try container.encode(self.channelSlug, forKey: .channelSlug)
+        try container.encode(self.conversationId, forKey: .conversationId)
     }
 
     public required init(from decoder: Decoder) throws {
@@ -111,9 +111,9 @@ public class Connection: ObservableObject, Codable {
         self.clientId = try container.decode(String.self, forKey: .clientId)
         self.clientSecret = try container.decodeIfPresent(String.self, forKey: .clientSecret) ?? ""
         self.developerToken = try container.decodeIfPresent(String.self, forKey: .developerToken) ?? ""
-        self.channelId = try container.decodeIfPresent(String.self, forKey: .preferredChannelId) ?? ""
-        self.channelToken = try container.decodeIfPresent(String.self, forKey: .preferredChannelToken) ?? ""
-        self.channelSlug = try container.decodeIfPresent(String.self, forKey: .preferredChannelSlug) ?? ""
-        self.conversationId = try container.decodeIfPresent(String.self, forKey: .preferredExistingConversationId) ?? ""
+        self.channelId = try container.decodeIfPresent(String.self, forKey: .channelId) ?? ""
+        self.channelToken = try container.decodeIfPresent(String.self, forKey: .channelToken) ?? ""
+        self.channelSlug = try container.decodeIfPresent(String.self, forKey: .channelSlug) ?? ""
+        self.conversationId = try container.decodeIfPresent(String.self, forKey: .conversationId) ?? ""
     }
 }
