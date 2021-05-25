@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>name</key>
-		<string>All Msg Types (S)</string>
+		<string>Demo Bot</string>
 		<key>baseURL</key>
 		<string>https://sapcai-community-staging.sapcai-staging.eu10.hana.ondemand.com/public/api</string>
 		<key>authorizationEndpointURL</key>
@@ -15,24 +15,30 @@
 		<string>https://sapcai-community-staging.sapcai-staging.eu10.hana.ondemand.com/login/callback</string>
 		<key>clientId</key>
 		<string>sb-23290e3f-6b75-490f-8e4a-310ac90fd6aa-CLONE-DT!b32743|cai-staging!b20673</string>
-        <key>clientSecret</key>
-        <string>HfnALMS/VUBXV8CmuO6Qwt6j00k=</string>
-        <key>developerToken</key>
-        <string>7de4ca3e74dc0a8d7d2d004b3e15b73e</string>
+		<key>clientSecret</key>
+		<string>HfnALMS/VUBXV8CmuO6Qwt6j00k=</string>
+		<key>developerToken</key>
+		<string>7de4ca3e74dc0a8d7d2d004b3e15b73e</string>
+		<key>channelId</key>
+		<string>4e24e54d-5298-41aa-8ca7-1f4ff2235ad7</string>
+		<key>channelToken</key>
+		<string>b0fede482202c3490bdb13f34a8db2f6</string>
+		<key>channelSlug</key>
+		<string>demo-mobile</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Custom</string>
 		<key>baseURL</key>
-		<string>https://sapcai-community-staging.sapcai-staging.eu10.hana.ondemand.com/public/api</string>
+		<string></string>
 		<key>authorizationEndpointURL</key>
-		<string>https://sapcai-community-staging.authentication.eu10.hana.ondemand.com/oauth/authorize</string>
+		<string></string>
 		<key>tokenEndpointURL</key>
-		<string>https://sapcai-community-staging.authentication.eu10.hana.ondemand.com/oauth/token</string>
+		<string></string>
 		<key>redirectURL</key>
-		<string>https://sapcai-community-staging.sapcai-staging.eu10.hana.ondemand.com/login/callback</string>
+		<string></string>
 		<key>clientId</key>
-		<string>sb-23290e3f-6b75-490f-8e4a-310ac90fd6aa-CLONE-DT!b32743|cai-staging!b20673</string>
+		<string></string>
 		<key>clientSecret</key>
 		<string></string>
 		<key>developerToken</key>

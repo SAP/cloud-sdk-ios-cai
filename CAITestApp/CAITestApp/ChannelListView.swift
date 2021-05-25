@@ -7,7 +7,7 @@ public struct ChannelListView: View {
     
     @ObservedObject public var channelService: CAIChannelService
     
-    @State private var searchText: String = "MobileBot"
+    @State private var searchText: String = "DemoMobileBot"
     
     public init(_ channelService: CAIChannelService, searchText: String = "") {
         self.channelService = channelService
