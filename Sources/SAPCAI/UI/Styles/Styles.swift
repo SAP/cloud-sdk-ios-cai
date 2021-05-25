@@ -2,34 +2,34 @@ import Down
 import SwiftUI
 
 /**
-  Type-erased container to be used when setting own QuickReply button style
-  If you wish to create your own QuickReply button style, do so by conforming to `ButtonStyle`, put it into `QuickReplyButtonStyleContainer`
-  and use `Theme.Key` enum `quickReplyButtonStyle()` to apply it.
+   Type-erased container to be used when setting own QuickReply button style
+   If you wish to create your own QuickReply button style, do so by conforming to `ButtonStyle`, put it into `QuickReplyButtonStyleContainer`
+   and use `Theme.Key` enum `quickReplyButtonStyle()` to apply it.
 
-  ## Example: define style
-  ```swift
+   ## Example: define style
+   ```swift
 
-  public struct MyCustomQuickReplyButtonStyle: ButtonStyle {
-      public func makeBody(configuration: MyCustomQuickReplyButtonStyle.Configuration) -> AnyView {
+   public struct MyCustomQuickReplyButtonStyle: ButtonStyle {
+       public func makeBody(configuration: MyCustomQuickReplyButtonStyle.Configuration) -> AnyView {
 
-          return AnyView(
-              configuration.label
-                  .font(.body)
-                  .lineLimit(1)
-                  .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
-          )
-      }
-  }
- ```
-
- ## Example: apply style
-
-  ```swift
-  Theme(name: "myCustomTheme", values: [
-      .quickReplyButtonStyle: QuickReplyButtonStyleContainer(MyCustomQuickReplyButtonStyle())
-  ])
+           return AnyView(
+               configuration.label
+                   .font(.body)
+                   .lineLimit(1)
+                   .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+           )
+       }
+   }
   ```
-   */
+
+  ## Example: apply style
+
+   ```swift
+   Theme(name: "myCustomTheme", values: [
+       .quickReplyButtonStyle: QuickReplyButtonStyleContainer(MyCustomQuickReplyButtonStyle())
+   ])
+   ```
+ */
 public struct QuickReplyButtonStyleContainer: ButtonStyle {
     let view: (ButtonStyleConfiguration) -> AnyView
 
@@ -43,7 +43,6 @@ public struct QuickReplyButtonStyleContainer: ButtonStyle {
         self.view(configuration)
     }
 }
-
 
 /// QuickReply button style applied when using custom theme and no specific button style was provided
 public struct BaseQuickReplyButtonStyle: ButtonStyle {
