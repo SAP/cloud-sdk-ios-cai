@@ -17,6 +17,7 @@ struct MenuButtonView: View {
             Image(systemName: "list.bullet")
                 .resizable()
                 .frame(width: 20, height: 20)
+                .padding([.bottom, .leading], 5)
         })
             .sheet(isPresented: self.$isMenuPresented, onDismiss: {
                 self.isMenuPresented = false
