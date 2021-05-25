@@ -1,0 +1,14 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Spørg mig";
+
+"error.server" = "Der opstod en serverfejl";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Data kunne ikke parses";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Anmodningen blev annulleret";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Samtalen blev ikke fundet. Spørg mig igen";
+
