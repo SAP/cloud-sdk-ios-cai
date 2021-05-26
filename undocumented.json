@@ -624,16 +624,16 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/Palettes/DefaultColorPalette.swift",
-      "line": 6,
-      "symbol": "DefaultColorPalette.name",
+      "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/Palettes/CasualColorPalette.swift",
+      "line": 5,
+      "symbol": "CasualColorPalette.name",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/Palettes/DefaultColorPalette.swift",
-      "line": 10,
-      "symbol": "DefaultColorPalette.init()",
+      "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/Palettes/CasualColorPalette.swift",
+      "line": 9,
+      "symbol": "CasualColorPalette.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -654,7 +654,7 @@
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/ThemeManager.swift",
       "line": 21,
-      "symbol": "CAITheme.default(_:)",
+      "symbol": "CAITheme.casual(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },

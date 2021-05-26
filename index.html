@@ -39,9 +39,7 @@
           <section>
             <section class="section">
               
-              <h1 id='cloud-sdk-ios-cai' class='heading'>cloud-sdk-ios-cai</h1>
-
-<p align="center">
+              <p align="center">
   <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
   </br>
   <span><b>SAP Conversational AI SDK for iOS</b></span>
@@ -50,31 +48,87 @@
 <hr>
 
 <div align="center">
-    <a href="https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22">
-        <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
-             alt="Build Status">
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai#installation">Installation
     </a>
-    <a href="https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai">
-        <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
-             alt="REUSE status">
+    |
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai#examples"> Examples
     </a>
-    <a href="http://commitizen.github.io/cz-cli/">
-        <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
-             alt="Commitizen friendly">
+    |
+    <a href="https://sap.github.io/cloud-sdk-ios-cai"> API Documentation
     </a>
-    <a href="https://conventionalcommits.org">
-        <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
-             alt="Conventional Commits">
+    |
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai/blob/main/CHANGELOG.md"> Changelog
     </a>
 </div>
 
 <hr>
 
-<p>The <code>SAPCAI</code> Swift Package is a module to connect to a bot on the end-to-end chatbot platform <a href="https://www.sap.com/products/conversational-ai.html">SAP Conversation AI</a> (CAI) and to provide a pluggable SwiftUI <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> to initiate a conversation and render the various <a href="https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html">message types</a>.</p>
+<div align="center">
+    <a href="https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22">
+        <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
+             alt="Build Status">
+    </a>
+    <a href="https://conventionalcommits.org">
+        <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
+             alt="Conventional Commits">
+    </a>
+    <a href="http://commitizen.github.io/cz-cli/">
+        <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
+             alt="Commitizen friendly">
+    </a>
+    <a href="https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai">
+        <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
+             alt="REUSE status">
+    </a>
+</div>
+
+<hr>
+
+<p>The <code>SAPCAI</code> Swift Package is a module to connect to a bot on the end-to-end chatbot platform <a href="https://www.sap.com/products/conversational-ai.html">SAP Conversational AI</a> (CAI). It provides a pluggable SwiftUI <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> to initiate a conversation and render the various <a href="https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html">message types</a> of a bot.</p>
+
+<p>This Swift Package is an open-source addition to the frameworks of the <a href="https://developers.sap.com/topics/sap-btp-sdk-for-ios.html">SAP BTP SDK for iOS</a>.</p>
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/4176826/118739439-558fdd80-b7fe-11eb-9db2-032e210c5746.gif" alt="SwiftUI AssistantView" width="300" height="650" align="center">
 </p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 13 or higher</li>
+<li>Xcode 12 (Swift 5.3) or higher</li>
+</ul>
+<h2 id='prerequisites' class='heading'>Prerequisites</h2>
+
+<ul>
+<li>You have existing bot(s) on the SAP Conversational AI platform</li>
+<li>You created an OAuth client for Designtime API for your bot (<kbd>Settings</kbd> &gt; <kbd> Tokens</kbd>)</li>
+<li>Your bot(s) are connected to a mobile channel</li>
+</ul>
+<h3 id='create-a-mobile-channel' class='heading'>Create a mobile channel</h3>
+
+<p>In the <em>Enterprise Edition</em> this can be done via the UI.</p>
+
+<p><img width="1093" alt="CreateMobileChannel" src="https://user-images.githubusercontent.com/4176826/119203198-549dbc80-ba47-11eb-8b65-d813324c3cc8.png"></p>
+
+<p><img alt="CreateMobileChannelResults" src="https://user-images.githubusercontent.com/4176826/119582931-6a2e2180-bd7a-11eb-8faf-1b801a03d146.png"></p>
+
+<p>However, the option is currently hidden by default and needs to be enabled by filing a <a href="http://help.sap.com/disclaimer?site=https%3A%2F%2Flaunchpad.support.sap.com%2F%23incident%2Fsolution">ticket</a>.</p>
+
+<p>In the <em>Community Edition</em> you create a mobile channel via the <a href="https://reverseproxy.cai.tools.sap/docs/api-reference/#channels">/channel</a> API.</p>
+<pre class="highlight shell"><code><span class="c"># create a mobile channel</span>
+curl -X POST <span class="s2">"&lt;BaseUrl&gt;/connect/v1/channels"</span> <span class="se">\</span>
+-H <span class="s2">"X-Token: Token &lt;DeveloperToken&gt;"</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"type":"mobile","slug":"&lt;desiredChannelSlug&gt;","connectionTarget": "SAP_Product","targetSystem": "MobileBot","isActivated":true}'</span>
+</code></pre>
+<h2 id='dependencies' class='heading'>Dependencies</h2>
+
+<ul>
+<li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPCommon/index.html">SAPCommon</a> for Logging</li>
+<li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPFoundation/index.html">SAPFoundation</a> for Network Connectivity and Authentication</li>
+<li><a href="https://github.com/dmytro-anokhin/url-image">URLImage</a> for asynchronous image loading in SwiftUI</li>
+<li><a href="https://github.com/johnxnguyen/Down">Down</a> for Markdown / CommonMark rendering in Swift</li>
+</ul>
 <h2 id='installation' class='heading'>Installation</h2>
 
 <p>The package is intended for consumption via Swift Package Manager. To add <code>SAPCAI</code> to your application target, navigate to the  <kbd>File </kbd> &gt;  <kbd>Swift Packages </kbd> &gt;  <kbd>Add Package Dependency... </kbd>, then add the repository URL <a href="https://github.com/SAP/cloud-sdk-ios-cai">https://github.com/SAP/cloud-sdk-ios-cai</a>.</p>
@@ -96,108 +150,96 @@
 <td>You already embedded <code>SAPCommon</code> and <code>SAPFoundation</code> binary frameworks to your target</td>
 </tr>
 </tbody></table>
-<h2 id='requirements' class='heading'>Requirements</h2>
-
-<ul>
-<li>iOS 13 or higher</li>
-<li>Xcode 12 (Swift 5.3) or higher</li>
-</ul>
-<h2 id='prerequisites' class='heading'>Prerequisites</h2>
-
-<ul>
-<li>You have existing bot(s) on the SAP Conversational AI platform (either Enterprise or Community edition)</li>
-<li>Your bot(s) are connected to a mobile channel</li>
-</ul>
-
-<p>As long as mobile channel activation is not possible in the SAP Conversational AI you can perform this one-time activity via the <a href="https://reverseproxy.cai.tools.sap/docs/api-reference/#channels">/channel</a> API.</p>
-<pre class="highlight shell"><code><span class="c"># create a mobile channel</span>
-curl -X POST <span class="s2">"&lt;BaseUrl&gt;/connect/v1/channels"</span> <span class="se">\</span>
--H <span class="s2">"X-Token: Token &lt;DeveloperToken&gt;"</span> <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
--d <span class="s1">'{"type":"mobile","slug":"&lt;desiredChannelSlug&gt;","connectionTarget": "SAP_Product","targetSystem": "MobileBot","isActivated":true}'</span>
-</code></pre>
-<h2 id='dependencies' class='heading'>Dependencies</h2>
-
-<ul>
-<li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPCommon/index.html">SAPCommon</a> for Logging</li>
-<li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPFoundation/index.html">SAPFoundation</a> for Network Connectivity and Authentication</li>
-<li><a href="https://github.com/dmytro-anokhin/url-image">URLImage</a> for asynchronous image loading in SwiftUI</li>
-<li><a href="https://github.com/johnxnguyen/Down">Down</a> for Markdown / CommonMark rendering in Swift</li>
-</ul>
 <h2 id='getting-started' class='heading'>Getting Started</h2>
 
 <p>The code snippet below illustrates how to set up the <code><a href="Classes/CAIConversation.html">CAIConversation</a></code> Combine publisher in order to initialize the <code><a href="Classes/MessagingViewModel.html">MessagingViewModel</a></code> for the <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code>.</p>
+
+<p>See <a href="https://github.com/SAP/cloud-sdk-ios-cai/blob/main/ENTERPRISE_CONFIG.md">Enterprise Configuration</a> guide for required configuration steps to use <code>SAPCAI</code> Swift package and connect indirectly with SAP Conversational AI <em>Enterprise Edition</em> through SAP Mobile Services.</p>
+
+<p>The code snippet below contains example values specific for connecting iOS client directly with SAP Conversational AI <em>Community Edition</em> for prototyping. You have to replace variable values in angle brackets (e.g. <code>&lt;channelId&gt;</code>) with your bot-specific values</p>
 <h3 id='setting-up-the-data-publisher' class='heading'>Setting up the data publisher</h3>
 <pre class="highlight plaintext"><code>import SAPCAI
 import SAPFoundation
 import SwiftUI
 
-// create the CAIChannel object by providing the channel id, channel token and channel slug that was created in CAI Platform.
+/*
+  Create the `CAIChannel` object by providing the channel id, channel token and channel slug which were created in CAI Platform.
+
+  If you do not want to hardcode chanel information on the client then you can retrieve a list of channels for a given Application ID with `CAIChannelService`.
+*/
 let caiChannel = CAIChannel(id: "&lt;channelId&gt;", token: "&lt;channelToken&gt;", slug: "&lt;channelSlug&gt;").
 
-let polling: MessageDelivering
+ /*
+  Create and attach OAuthObserver to `SAPURLSession`
 
+  Example-specific extension for `CAIServiceConfig` to build OAuth observer (see next code snippet for implementation details)
+
+  Use CAI OAuth credentials for prototyping &amp; direct communication between iOS client and SAP Conversational AI *Community Edition* 
+
+  Use Mobile Service OAuth credentials to connect indirectly with SAP Conversational AI *Enterprise Edition* through SAP Mobile Services. In this case you have to reuse the `SAPURLSession` instance used for authentication against Mobile Services.
+*/
 let session = SAPURLSession()
-
-// example-specific extension for `CAIServiceConfig` to build oauth observer (see next code snippet for implementation details)
-if let observer = CAIServiceConfig.buildOAuthObserver(redirectURL:  URL(string:"&lt;serverURL&gt;")!,
-                                                       baseURL: URL(string:"&lt;oauthBaseURL&gt;")!,
-                                                       clientId: "&lt;clientid&gt;",
-                                                       clientSecret: "&lt;clientSecret&gt;") {
-   session.register(observer)
+if let observer = CAIServiceConfig.buildOAuthObserver(systemBaseURL: URL(string: "&lt;Example: https://sapcai-community.sap.eu10.hana.ondemand.com&gt;")!,                                                  
+                                                       authenticationBaseURL: URL(string: "&lt;Example: https://sapcai-community.authentication.eu10.hana.ondemand.com&gt;")!,                                
+                                                       clientId: "&lt;OAuth client id&gt;",                                                       
+                                                       clientSecret: "&lt;OAuth client secret&gt;") {
+    session.register(observer)
 }
 
-// create CAI service config for the provided SAPURLSession and backend URL
-let serviceConfig = CAIServiceConfig(urlSession: session, host: URL(string:"&lt;backendURL&gt;")!)
+// Create CAI service config for the provided SAPURLSession and URL pointing to CAI API endpoint
+let serviceConfig = CAIServiceConfig(urlSession: session, host: URL(string:"&lt;Example: https://api.cai.tools.sap&gt;")!)
 
 // Provide the message delivery object for polling
-polling = PollMessageDelivery(channelId: "&lt;channelId&gt;", serviceConfig: serviceConfig)
+let polling: MessageDelivering = PollMessageDelivery(channelId: "&lt;channelId&gt;", serviceConfig: serviceConfig)
 
-// create CAIConversation object and use it as publisher
+// Create CAIConversation object and use it as publisher
 let dataPublisher = CAIConversation(config: serviceConfig, channel: caiChannel, messageDelivery: polling)
 
-// set the theme
-ThemeManager.shared.setCurrentTheme( CAITheme.fiori(FioriColorPalette()) )
+// Create view model for `AssistantView`
+let viewModel = MessagingViewModel(publisher: dataPublisher)
 </code></pre>
 
-<p>Example-specific extension for <code><a href="Structs/CAIServiceConfig.html">CAIServiceConfig</a></code> to build oauth observer</p>
+<p>Example-specific extension for <code><a href="Structs/CAIServiceConfig.html">CAIServiceConfig</a></code> to build OAuth observer</p>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">CAIServiceConfig</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">buildOAuthObserver</span><span class="p">(</span><span class="nv">redirectURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">baseURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientSecret</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">OAuth2Observer</span><span class="p">?</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">buildOAuthObserver</span><span class="p">(</span><span class="nv">systemBaseURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">authenticationBaseURL</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">clientSecret</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">OAuth2Observer</span><span class="p">?</span> <span class="p">{</span>
 
-            <span class="k">let</span> <span class="nv">compositeStore</span> <span class="o">=</span> <span class="kt">CompositeStorage</span><span class="p">()</span>
-            <span class="k">do</span> <span class="p">{</span>
-                <span class="k">let</span> <span class="nv">secureKeyValueStore</span> <span class="o">=</span> <span class="kt">SecureKeyValueStore</span><span class="p">()</span>
-                <span class="k">try</span> <span class="n">secureKeyValueStore</span><span class="o">.</span><span class="nf">open</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="s">"cai_secure_store"</span><span class="p">)</span>
-                <span class="k">try</span> <span class="n">compositeStore</span><span class="o">.</span><span class="nf">setPersistentStore</span><span class="p">(</span><span class="n">secureKeyValueStore</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">compositeStore</span> <span class="o">=</span> <span class="kt">CompositeStorage</span><span class="p">()</span>
+        <span class="k">do</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nv">secureKeyValueStore</span> <span class="o">=</span> <span class="kt">SecureKeyValueStore</span><span class="p">()</span>
+            <span class="k">try</span> <span class="n">secureKeyValueStore</span><span class="o">.</span><span class="nf">open</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="s">"cai_secure_store"</span><span class="p">)</span>
+            <span class="k">try</span> <span class="n">compositeStore</span><span class="o">.</span><span class="nf">setPersistentStore</span><span class="p">(</span><span class="n">secureKeyValueStore</span><span class="p">)</span>
 
-                <span class="k">let</span> <span class="nv">params</span> <span class="o">=</span> <span class="kt">OAuth2AuthenticationParameters</span><span class="p">(</span><span class="nv">authorizationEndpointURL</span><span class="p">:</span> <span class="n">baseURL</span><span class="o">.</span><span class="nf">appendingPathComponent</span><span class="p">(</span><span class="s">"/oauth/authorize"</span><span class="p">),</span>
-                                                            <span class="nv">clientID</span><span class="p">:</span> <span class="n">clientId</span><span class="p">,</span>
-                                                            <span class="nv">redirectURL</span><span class="p">:</span> <span class="n">redirectURL</span><span class="o">.</span><span class="nf">appendingPathComponent</span><span class="p">(</span><span class="s">"login/callback"</span><span class="p">),</span>
-                                                            <span class="nv">tokenEndpointURL</span><span class="p">:</span> <span class="n">baseURL</span><span class="o">.</span><span class="nf">appendingPathComponent</span><span class="p">(</span><span class="s">"/oauth/token"</span><span class="p">),</span>
-                                                            <span class="nv">clientSecret</span><span class="p">:</span> <span class="n">clientSecret</span><span class="p">)</span>
+            <span class="k">let</span> <span class="nv">params</span> <span class="o">=</span> <span class="kt">OAuth2AuthenticationParameters</span><span class="p">(</span><span class="nv">authorizationEndpointURL</span><span class="p">:</span> <span class="n">authenticationBaseURL</span><span class="o">.</span><span class="nf">appendingPathComponent</span><span class="p">(</span><span class="s">"/oauth/authorize"</span><span class="p">),</span>
+                                                        <span class="nv">clientID</span><span class="p">:</span> <span class="n">clientId</span><span class="p">,</span>
+                                                        <span class="nv">redirectURL</span><span class="p">:</span> <span class="n">systemBaseURL</span><span class="o">.</span><span class="nf">appendingPathComponent</span><span class="p">(</span><span class="s">"login/callback"</span><span class="p">),</span>
+                                                        <span class="nv">tokenEndpointURL</span><span class="p">:</span> <span class="n">authenticationBaseURL</span><span class="o">.</span><span class="nf">appendingPathComponent</span><span class="p">(</span><span class="s">"/oauth/token"</span><span class="p">),</span>
+                                                        <span class="nv">clientSecret</span><span class="p">:</span> <span class="n">clientSecret</span><span class="p">)</span>
 
-                <span class="k">let</span> <span class="nv">authenticator</span> <span class="o">=</span> <span class="kt">OAuth2Authenticator</span><span class="p">(</span><span class="nv">authenticationParameters</span><span class="p">:</span> <span class="n">params</span><span class="p">,</span> <span class="nv">webViewPresenter</span><span class="p">:</span> <span class="kt">WKWebViewPresenter</span><span class="p">())</span>
-                <span class="k">let</span> <span class="nv">oauthObserver</span> <span class="o">=</span> <span class="kt">OAuth2Observer</span><span class="p">(</span><span class="nv">authenticator</span><span class="p">:</span> <span class="n">authenticator</span><span class="p">,</span> <span class="nv">tokenStore</span><span class="p">:</span> <span class="kt">OAuth2TokenStorage</span><span class="p">(</span><span class="nv">store</span><span class="p">:</span> <span class="n">compositeStore</span><span class="p">))</span>
+            <span class="k">let</span> <span class="nv">authenticator</span> <span class="o">=</span> <span class="kt">OAuth2Authenticator</span><span class="p">(</span><span class="nv">authenticationParameters</span><span class="p">:</span> <span class="n">params</span><span class="p">,</span> <span class="nv">webViewPresenter</span><span class="p">:</span> <span class="kt">WKWebViewPresenter</span><span class="p">())</span>
+            <span class="k">let</span> <span class="nv">oauthObserver</span> <span class="o">=</span> <span class="kt">OAuth2Observer</span><span class="p">(</span><span class="nv">authenticator</span><span class="p">:</span> <span class="n">authenticator</span><span class="p">,</span> <span class="nv">tokenStore</span><span class="p">:</span> <span class="kt">OAuth2TokenStorage</span><span class="p">(</span><span class="nv">store</span><span class="p">:</span> <span class="n">compositeStore</span><span class="p">))</span>
 
-                <span class="k">return</span> <span class="n">oauthObserver</span>
-            <span class="p">}</span>
-            <span class="k">catch</span>  <span class="p">{</span>
-                <span class="c1">// error handling</span>
-                <span class="k">return</span> <span class="kc">nil</span>
-            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">oauthObserver</span>
         <span class="p">}</span>
+        <span class="k">catch</span>  <span class="p">{</span>
+            <span class="c1">// error handling</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 
-<p>Note: it is possible to set up an <code>OAuth2Observer</code> observer for communication directly against the SAP Conversational AI tenant but it is not recommended for productive usage. To avoid shipping the CAI client secret in your iOS source code we recommend to reuse the <code>SAPURLSession</code> connecting to your SAP Mobile Services tenant and proxy requests to SAP Conversational AI through SAP Mobile Services. On SAP Mobile Services you can exchange the user token or use CAI client credentials securely.</p>
+<p>Note: If you are developing your iOS application with SAP BTP SDK for iOS and Mobile Servcies then you can ignore the previous code snippet as you (probably) already have attached an <code>OAuth2Observer</code> pointing to Mobile Services.</p>
 <h3 id='user-interface' class='heading'>User Interface</h3>
 
 <p>Using the SwiftUI implementation is the <strong>preferred</strong> approach</p>
 <pre class="highlight plaintext"><code>AssistantView()
   .navigationBarTitle(Text("Chat"), displayMode: .inline) // if you are in navigation controller
-  .environmentObject(MessagingViewModel(publisher: dataPublisher)
-  .environmentObject(themeManager)
-
+  .environmentObject(viewModel)
+  .environmentObject(ThemeManager.shared)
+  .onDisappear {
+    viewModel.cancelSubscriptions()
+    dataPublisher.resetConversation()
+  })
 </code></pre>
 
 <p>but <code>SAPCAI</code> also provides a UIKit wrapper</p>
@@ -210,54 +252,63 @@ self.navigationController?.pushViewController(vc, animated: true)
 <p><code>SAPCAI</code> will provide two standard themes</p>
 
 <ul>
-<li>a Default theme and</li>
-<li>a Fiori theme</li>
+<li>a Fiori theme and</li>
+<li>a Casual theme</li>
 </ul>
 
-<p><img width="835" alt="Themes" src="https://user-images.githubusercontent.com/4176826/118736415-6426c680-b7f7-11eb-88a1-3e081bb35500.png"></p>
+<p><img width="663" alt="Themes" src="https://user-images.githubusercontent.com/4176826/119032300-e1217f80-b960-11eb-8d65-e068958aff36.png"></p>
 
 <p>Each theme will come with its color palette, that supports both light and dark mode.</p>
-
-<table>
-<tr>
-<td> Default Design </td> <td> Fiori Design </td>
-</tr>
-<tr>
-<td>
-
-&ldquo;`swift
-ThemeManager.shared.setCurrentTheme( .default(DefaultColorPalette()) )
-&rdquo;`
-
-</td>
-<td>
-    
-&ldquo;`swift
-ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
-&rdquo;`
-
-</td>
-</tr>
-</table>
+<h3 id='fiori-theme' class='heading'>Fiori theme</h3>
+<pre class="highlight swift"><code><span class="kt">ThemeManager</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">setCurrentTheme</span><span class="p">(</span> <span class="o">.</span><span class="nf">fiori</span><span class="p">(</span><span class="kt">FioriColorPalette</span><span class="p">())</span> <span class="p">)</span>
+</code></pre>
+<h3 id='casual-theme' class='heading'>Casual theme</h3>
+<pre class="highlight swift"><code><span class="kt">ThemeManager</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">setCurrentTheme</span><span class="p">(</span> <span class="o">.</span><span class="nf">casual</span><span class="p">(</span><span class="kt">CasualColorPalette</span><span class="p">())</span> <span class="p">)</span>
+</code></pre>
+<h3 id='create-your-own-custom-theme' class='heading'>Create your own custom theme</h3>
 
 <p>You can also provide an alternative color palette or provide a custom theme.</p>
-<h1 id='limitations' class='heading'>Limitations</h1>
-<h2 id='markdown-related' class='heading'>Markdown related</h2>
+<h2 id='limitations' class='heading'>Limitations</h2>
+<h3 id='markdown-related' class='heading'>Markdown related</h3>
 
 <ul>
 <li><strong>No support for <a href="https://github.github.com/gfm/">GitHub Flavored Markdown</a></strong> (e.g. <del>strikethrough</del>). Bot responses containing <a href="https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/3a3b6e09e96249b884dcf6e69eecd830.html#loio3a3b6e09e96249b884dcf6e69eecd830__section_markdown">Markdown</a> will be rendered by the <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> according to the <a href="https://spec.commonmark.org/0.29/">Commonmark specification</a> only and unknown syntax will be treated as text.</li>
 </ul>
-<h2 id='trigger-skill-button-related' class='heading'>Trigger Skill button related</h2>
+<h3 id='trigger-skill-button-related' class='heading'>Trigger Skill button related</h3>
 
 <ul>
 <li><code>Trigger Skill</code> buttons are still enabled after execution / next interaction. This behavior differs from SAP CAI WebClient as once you click the button or type an utterance, the corresponding skill can&rsquo;t be triggered anymore at a later point in time, since the context in which it was created might not be valid anymore.</li>
 </ul>
-<h2 id='image-related' class='heading'>Image related</h2>
+<h3 id='image-related' class='heading'>Image related</h3>
 
 <ul>
-<li>Not being able to save, copy, or share an image as part of a bot reponse. Currently there is no gesture handler attached an image view which  could allow to open a contextual menu offering such features (similar to iMessage or WhatsApp).</li>
+<li>Not being able to save, copy, or share an image as part of a bot reponse. Currently there is no gesture handler attached to an image view which  could allow to open a contextual menu offering such features (similar to iMessage or WhatsApp).</li>
 <li>Animated images (GIF), as part of a bot response, will be viewed as static image (dependency to <a href="https://github.com/dmytro-anokhin/url-image/issues/43">https://github.com/dmytro-anokhin/url-image/issues/43</a>)</li>
 </ul>
+<h2 id='how-to-obtain-support' class='heading'>How to obtain support</h2>
+
+<p>Please <a href="https://github.com/SAP/cloud-sdk-ios-cai/issues/new/choose">raise an issue on GitHub</a>. SAP customers can continue to report issues through OSS for SLA tracking.  </p>
+
+<p>Questions around CAI can be raised in the <a href="https://answers.sap.com/tags/73555000100800001301">SAP CAI Answers</a> forum.</p>
+<h2 id='contributing' class='heading'>Contributing</h2>
+
+<p>If you want to contribute, please check the <a href="./CONTRIBUTING.md">Contribution Guidelines</a>.</p>
+<h2 id='examples' class='heading'>Examples</h2>
+
+<p>The <code>CAITestApp</code> in this repository allows you to</p>
+
+<ul>
+<li>choose a theme</li>
+<li>view static mock data or</li>
+<li>connect against a live system by either
+
+<ul>
+<li>letting the user choose the mobile channel from the list of available mobile channels for given Application ID (a.k.a targetSystem); note: this illustrates the use of <code><a href="Classes/CAIChannelService.html">CAIChannelService</a></code> and how to build a simple SwiftUI view on top of it</li>
+<li>loading the <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> for a specific mobile channel</li>
+</ul></li>
+</ul>
+
+<p>See <a href="https://github.com/SAP/cloud-sdk-ios-cai/tree/main/CAITestApp">here</a> on how to maintain connection settings for the test application.</p>
 
             </section>
           </section>
@@ -455,13 +506,13 @@ ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
                   <a href="Structs/CAIServiceConfig.html">CAIServiceConfig</a>
                 </li>
                 <li class="nav-group-task">
+                  <a href="Structs/CasualColorPalette.html">CasualColorPalette</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/CasualQuickReplyButtonStyle.html">CasualQuickReplyButtonStyle</a>
+                </li>
+                <li class="nav-group-task">
                   <a href="Structs/ChatView.html">ChatView</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="Structs/DefaultColorPalette.html">DefaultColorPalette</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="Structs/DefaultQuickReplyButtonStyle.html">DefaultQuickReplyButtonStyle</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="Structs/FioriColorPalette.html">FioriColorPalette</a>
