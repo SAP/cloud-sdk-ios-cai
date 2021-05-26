@@ -69,6 +69,8 @@ In the *Enterprise Edition* this can be done via the UI.
 
 <img width="1093" alt="CreateMobileChannel" src="https://user-images.githubusercontent.com/4176826/119203198-549dbc80-ba47-11eb-8b65-d813324c3cc8.png">
 
+<img alt="CreateMobileChannelResults" src="https://user-images.githubusercontent.com/4176826/119582931-6a2e2180-bd7a-11eb-8faf-1b801a03d146.png">
+
 However, the option is currently hidden by default and needs to be enabled by filing a [ticket](http://help.sap.com/disclaimer?site=https%3A%2F%2Flaunchpad.support.sap.com%2F%23incident%2Fsolution).
 
 In the *Community Edition* you create a mobile channel via the [/channel](https://reverseproxy.cai.tools.sap/docs/api-reference/#channels) API.
