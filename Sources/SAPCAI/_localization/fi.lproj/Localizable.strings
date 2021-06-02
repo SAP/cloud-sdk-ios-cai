@@ -1,0 +1,14 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Kysy minulta";
+
+"error.server" = "Tapahtui palvelinvirhe";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Tietojen jäsentäminen epäonnistui";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Pyyntö peruutettiin";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Muuntoa  ei löytynyt. Kysy minulta uudelleen";
+

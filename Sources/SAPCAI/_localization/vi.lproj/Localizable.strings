@@ -1,0 +1,14 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Vui lòng hỏi tôi";
+
+"error.server" = "Đã xảy ra lỗi máy chủ";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Không thể phân tích cú pháp dữ liệu";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Yêu cầu đã bị hủy";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Không tìm thấy cuộc hội thoại. Vui lòng hỏi tôi lại";
+
