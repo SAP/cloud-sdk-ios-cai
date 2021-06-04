@@ -27,11 +27,11 @@ struct MockData {
         ], buttonType: .quickReplies)
         arr.append(m)
 
-//        // text message (user)
-//        arr.append(CAIResponseMessageData(text: "Please show me a picture of a Mustang on a race track and some hops", false))
-//
-//        // image (bot)
-//        arr.append(CAIResponseMessageData(imageName: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*"))
+        // text message (user)
+        arr.append(CAIResponseMessageData(text: "Please show me a picture of a Mustang on a race track and some hops", false))
+
+        // image (bot)
+        arr.append(CAIResponseMessageData(imageName: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*"))
 
         // text message (user)
         arr.append(CAIResponseMessageData(text: "I want to watch a video", false))

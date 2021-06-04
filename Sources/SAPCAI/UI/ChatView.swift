@@ -26,6 +26,7 @@ public struct ChatView: View {
             // - we don't want a separator
             // - we can still wrap a NavigationButton around
             UIScrollViewWrapper(self.$contentOffset, geometry: geometry) {
+                Text(self.contentOffset.debugDescription).hidden().frame(width: 0, height: 0) // hidden dummy view to ensure that `ChatView` gets recomputed when contentOffset gets updated as binding usage in UIScrollViewWrapper is not sufficient. Fixes https://github.com/SAP/cloud-sdk-ios-cai/issues/13
                 VStack(spacing: self.vSizeClass == .compact ? 2 : 4) { // minimum spacing between messages
                     ForEach(self.viewModel.model, id: \.id) { model in
                         // each message goes here
