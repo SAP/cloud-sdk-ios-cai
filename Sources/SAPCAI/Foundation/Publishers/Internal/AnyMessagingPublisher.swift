@@ -9,12 +9,12 @@ struct AnyMessagingPublisher<Output, Failure> where Failure: Error {
         self.box = PublisherBox(base: publisher)
     }
 
-    func postMessage(text: String) {
-        self.box.postMessage(text: text)
+    func postMessage(text: String, memoryOptions: MemoryOptions? = nil) {
+        self.box.postMessage(text: text, memoryOptions: memoryOptions)
     }
 
-    func postMessage(type: PostbackType, postbackData: PostbackData) {
-        self.box.postMessage(type: type, postbackData: postbackData)
+    func postMessage(type: PostbackType, postbackData: PostbackData, memoryOptions: MemoryOptions? = nil) {
+        self.box.postMessage(type: type, postbackData: postbackData, memoryOptions: memoryOptions)
     }
 
     func load() {
@@ -35,11 +35,11 @@ class PublisherBoxBase<Output, Failure: Error>: Publisher {
         fatalError("required function to be overriden")
     }
 
-    func postMessage(text: String) {
+    func postMessage(text: String, memoryOptions: MemoryOptions? = nil) {
         fatalError("required function to be overriden")
     }
 
-    func postMessage(type: PostbackType, postbackData: PostbackData) {
+    func postMessage(type: PostbackType, postbackData: PostbackData, memoryOptions: MemoryOptions? = nil) {
         fatalError("required function to be overriden")
     }
 
@@ -64,12 +64,12 @@ final class PublisherBox<PublisherType: MessagingPublisher>: PublisherBoxBase<Pu
         self.base.subscribe(subscriber)
     }
 
-    override func postMessage(text: String) {
-        self.base.postMessage(text: text)
+    override func postMessage(text: String, memoryOptions: MemoryOptions? = nil) {
+        self.base.postMessage(text: text, memoryOptions: memoryOptions)
     }
 
-    override func postMessage(type: PostbackType, postbackData: PostbackData) {
-        self.base.postMessage(type: type, postbackData: postbackData)
+    override func postMessage(type: PostbackType, postbackData: PostbackData, memoryOptions: MemoryOptions? = nil) {
+        self.base.postMessage(type: type, postbackData: postbackData, memoryOptions: memoryOptions)
     }
 
     override func load() {

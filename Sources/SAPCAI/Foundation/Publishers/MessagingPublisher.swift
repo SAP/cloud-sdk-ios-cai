@@ -6,12 +6,12 @@ import Combine
 public protocol MessagingPublisher: Publisher where Output == Result<ResponseMessageData, Error>, Failure == Never {
     /// Tells the publisher to post a message.
     /// - Parameter text: String
-    func postMessage(text: String)
+    func postMessage(text: String, memoryOptions: MemoryOptions?)
     
     /// Tells the publisher to post a message
     /// - Parameter type: PostbackType.
     /// - Parameter postbackData: PostbackData.
-    func postMessage(type: PostbackType, postbackData: PostbackData)
+    func postMessage(type: PostbackType, postbackData: PostbackData, memoryOptions: MemoryOptions?)
     
     /// Tells the publisher that the view is loaded and it's ready to perform any initialization (e.g. fetching data, ...)
     func load()

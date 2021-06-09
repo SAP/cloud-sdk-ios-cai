@@ -157,17 +157,17 @@ public final class CAIConversation: MessagingPublisher {
 
     /// Post a text message to CAI platform
     /// - Parameter text: String
-    public func postMessage(text: String) {
+    public func postMessage(text: String, memoryOptions: MemoryOptions? = nil) {
         let attachmentData = CAITextAttachmentData(text)
-        postMessage(attachmentData)
+        postMessage(attachmentData, memoryOptions: memoryOptions)
     }
     
     /// Post a postback action to CAI platform. Used by buttons and quickReplies
     /// - Parameter type: UIModelPostbackRequestDataType
     /// - Parameter postbackData: ButtonData
-    public func postMessage(type: PostbackType, postbackData: PostbackData) {
+    public func postMessage(type: PostbackType, postbackData: PostbackData, memoryOptions: MemoryOptions? = nil) {
         let attachmentData = CAIPostbackAttachmentData(type, postbackData)
-        postMessage(attachmentData)
+        postMessage(attachmentData, memoryOptions: memoryOptions)
     }
     
     /// Creates a conversation in the backend and returns the newly created conversation ID
@@ -241,7 +241,7 @@ public final class CAIConversation: MessagingPublisher {
             })
     }
 
-    private func postMessage<T: CAIAttachmentData>(_ input: T) {
+    private func postMessage<T: CAIAttachmentData>(_ input: T, memoryOptions: MemoryOptions? = nil) {
         // publish question so it is rendered in the UI right away
         // for now we will wait for the server to push it back
         // publish( .success( CAIConversationResultData( [ CAIResponseMessageData(text: input.text, false) ] ) ) )
@@ -254,7 +254,8 @@ public final class CAIConversation: MessagingPublisher {
                 try CAIPostMessageRequest(input,
                                           channelId: self.channelId,
                                           token: self.channelToken,
-                                          conversationId: self.conversationID!)
+                                          conversationId: self.conversationID!,
+                                          memoryOptions: memoryOptions)
             }
             .sink(receiveCompletion: { completion in
                 switch completion {

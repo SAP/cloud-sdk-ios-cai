@@ -19,6 +19,23 @@ public final class MessagingViewModel: ObservableObject, Identifiable {
     /// messages returned by bot  over time
     @Published public private(set) var acknowledgedMessages: [MessageData] = []
 
+    /**
+     A closure to provide context-specific information before any message is sent to the bot. The arguments are supplied based on the type of message which gets posted (either a text message or a postback message).
+
+     ## Example
+
+     You want to pass user information for every message which will be send to the bot. Here, 'User' is a custom struct (i.e. not part of this package) conforming to `Encodable` and has two stored properties named firstName and lastName
+
+     ```swift
+      let viewModel: MessagingViewModel(publisher: aPublisher)
+
+      viewModel.memoryOptionsProvider = { _, _, _ in
+         return MemoryOptions(merge: true, memory: User(firstName: "John", lastName: "Doe"))
+      }
+      ```
+    */
+    public var memoryOptionsProvider: ((String?, PostbackType?, PostbackData?) -> MemoryOptions)? = nil
+
     // MARK: - Private / Internal properties
 
     /// True when a backend request is pending
@@ -86,7 +103,7 @@ public final class MessagingViewModel: ObservableObject, Identifiable {
         nonAcknowledgedClientMessages.append(userMessage)
         self.model.append(userMessage)
 
-        self.messagePublisher.postMessage(text: text)
+        self.messagePublisher.postMessage(text: text, memoryOptions: memoryOptionsProvider?(text, nil, nil) ?? nil)
     }
     
     public func postMessage(type: PostbackType, postbackData: PostbackData) {
@@ -94,7 +111,7 @@ public final class MessagingViewModel: ObservableObject, Identifiable {
         self.nonAcknowledgedClientMessages.append(userMessage)
         self.model.append(userMessage)
 
-        self.messagePublisher.postMessage(type: type, postbackData: postbackData)
+        self.messagePublisher.postMessage(type: type, postbackData: postbackData, memoryOptions: memoryOptionsProvider?(nil, type, postbackData) ?? nil)
     }
         
     func getHeight(for geometry: GeometryProxy) -> CGFloat {

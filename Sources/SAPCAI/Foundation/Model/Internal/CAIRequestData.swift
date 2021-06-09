@@ -5,6 +5,11 @@ import Foundation
 
 // !!!!!! Keep everything internal for now, do not mark anything public !!!!!!
 
+struct CAIMemoryOptions: Encodable {
+    var merge: Bool
+    var memory: AnyEncodable
+}
+
 protocol CAIAttachmentData: Encodable {
     var type: String { get }
     
@@ -13,11 +18,15 @@ protocol CAIAttachmentData: Encodable {
 
 struct CAIMessageRequestData<T: CAIAttachmentData>: Encodable {
     var message: CAIMessageData<T>
+    var memoryOptions: CAIMemoryOptions?
     
     var chatId: String
         
-    init(_ content: T, _ conversationID: String) {
+    init(_ content: T, _ conversationID: String, memoryOptions: MemoryOptions? = nil) {
         self.message = CAIMessageData(attachment: content)
+        if let memoryOptionsNotNil = memoryOptions {
+            self.memoryOptions = CAIMemoryOptions(merge: memoryOptionsNotNil.merge, memory: AnyEncodable(memoryOptionsNotNil.memory))
+        }
         self.chatId = conversationID
     }
 }
