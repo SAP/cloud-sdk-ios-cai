@@ -17,7 +17,7 @@ public final class MockPublisher: MessagingPublisher {
         // do nothing
     }
 
-    public func postMessage(text: String) {
+    public func postMessage(text: String, memoryOptions: MemoryOptions? = nil) {
         let arr = [CAIResponseMessageData(text: text, false)]
         _ = self.subscriber?.receive(.success(CAIConversationResultData(arr)))
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -26,7 +26,7 @@ public final class MockPublisher: MessagingPublisher {
         }
     }
     
-    public func postMessage(type: PostbackType, postbackData: PostbackData) {
+    public func postMessage(type: PostbackType, postbackData: PostbackData, memoryOptions: MemoryOptions? = nil) {
         let arr = [CAIResponseMessageData(text: postbackData.title, false)]
         _ = self.subscriber?.receive(.success(CAIConversationResultData(arr)))
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

@@ -27,15 +27,15 @@ struct CAIPostMessageRequest: APIRequest {
 
     var channelId: String
 
-    init<T: CAIAttachmentData>(_ input: T, channelId: String, token: String?, conversationId: String) throws {
+    init<T: CAIAttachmentData>(_ input: T, channelId: String, token: String?, conversationId: String, memoryOptions: MemoryOptions? = nil) throws {
         self.channelId = channelId
         self.token = token
         self.conversationID = conversationId
-        self.httpBody = try self.createRequestBody(input: input, conversationID: self.conversationID)
+        self.httpBody = try self.createRequestBody(input: input, conversationID: self.conversationID, memoryOptions: memoryOptions)
     }
 
-    private func createRequestBody<T: CAIAttachmentData>(input: T, conversationID: String) throws -> Data {
-        let reqData = CAIMessageRequestData(input, conversationID)
+    private func createRequestBody<T: CAIAttachmentData>(input: T, conversationID: String, memoryOptions: MemoryOptions? = nil) throws -> Data {
+        let reqData = CAIMessageRequestData(input, conversationID, memoryOptions: memoryOptions)
         return try JSONEncoder().encode(reqData)
     }
 }

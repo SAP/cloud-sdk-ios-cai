@@ -20,22 +20,27 @@ class DataModel: ObservableObject {
         
         let delivery: MessageDelivering = PollMessageDelivery(channelToken: channel.token, channelId: channel.id, serviceConfig: service.serviceConfig)
         let conv = CAIConversation(config: service.serviceConfig, channel: channel, messageDelivery: delivery, withExistingConvID: convId)
-        let m = MessagingViewModel(publisher: conv)
+        let viewModel = MessagingViewModel(publisher: conv)
+
+        // example how to set memory which will be sent to CAI whenever user posts a message
+        viewModel.memoryOptionsProvider = { _, _, _ in
+            return MemoryOptions(merge: true, memory: User(firstName: "John", lastName: "Doe"))
+        }
         
         // load preferences for this channel
         service.loadPreferences(channel: channel) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    m.menu = data?.menu
+                    viewModel.menu = data?.menu
                 case .failure:
                     break
                 }
             }
         }
         
-        self.conversations[channel.id] = (m, conv)
-        return m
+        self.conversations[channel.id] = (viewModel, conv)
+        return viewModel
     }
     
     func clear() {
@@ -45,4 +50,9 @@ class DataModel: ObservableObject {
         }
         self.conversations.removeAll()
     }
+}
+
+fileprivate struct User: Encodable {
+    var firstName: String
+    var lastName: String
 }
