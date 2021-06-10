@@ -716,14 +716,14 @@
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/ViewModel/MessagingViewModel.swift",
-      "line": 84,
+      "line": 101,
       "symbol": "MessagingViewModel.postMessage(text:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/ViewModel/MessagingViewModel.swift",
-      "line": 92,
+      "line": 109,
       "symbol": "MessagingViewModel.postMessage(type:postbackData:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

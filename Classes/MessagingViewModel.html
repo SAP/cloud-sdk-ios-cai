@@ -150,6 +150,42 @@ properties from your SwiftUI view</p>
                       </section>
                     </div>
                   </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI18MessagingViewModelC21memoryOptionsProviderAA06MemoryF0VSSSg_AA12PostbackTypeOSgAA0I4Data_pSgtcSgvp"></a>
+                      <a name="//apple_ref/swift/Property/memoryOptionsProvider" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI18MessagingViewModelC21memoryOptionsProviderAA06MemoryF0VSSSg_AA12PostbackTypeOSgAA0I4Data_pSgtcSgvp">memoryOptionsProvider</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>A closure to provide context-specific information before any message is sent to the bot. The arguments are supplied based on the type of message which gets posted (either a text message or a postback message).</p>
+<h2 id='example' class='heading'>Example</h2>
+
+<p>You want to pass user information for every message which will be send to the bot. Here, &lsquo;User&rsquo; is a custom struct (i.e. not part of this package) conforming to <code>Encodable</code> and has two stored properties named firstName and lastName</p>
+<pre class="highlight swift"><code> <span class="k">let</span> <span class="nv">viewModel</span><span class="p">:</span> <span class="kt">MessagingViewModel</span><span class="p">(</span><span class="nv">publisher</span><span class="p">:</span> <span class="n">aPublisher</span><span class="p">)</span>
+
+ <span class="n">viewModel</span><span class="o">.</span><span class="n">memoryOptionsProvider</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="kt">MemoryOptions</span><span class="p">(</span><span class="nv">merge</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">memory</span><span class="p">:</span> <span class="kt">User</span><span class="p">(</span><span class="nv">firstName</span><span class="p">:</span> <span class="s">"John"</span><span class="p">,</span> <span class="nv">lastName</span><span class="p">:</span> <span class="s">"Doe"</span><span class="p">))</span>
+ <span class="p">}</span>
+</code></pre>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">memoryOptionsProvider</span><span class="p">:</span> <span class="p">((</span><span class="kt">String</span><span class="p">?,</span> <span class="kt"><a href="../Enums/PostbackType.html">PostbackType</a></span><span class="p">?,</span> <span class="kt"><a href="../Protocols/PostbackData.html">PostbackData</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Structs/MemoryOptions.html">MemoryOptions</a></span><span class="p">)?</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div class="task-group">
@@ -572,6 +608,9 @@ The existing model will be cleared.</p>
                 </li>
                 <li class="nav-group-task">
                   <a href="../Structs.html#/s:6SAPCAI12InputBarViewV">InputBarView</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Structs/MemoryOptions.html">MemoryOptions</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="../Structs/QuickReplyButtonStyleContainer.html">QuickReplyButtonStyleContainer</a>
