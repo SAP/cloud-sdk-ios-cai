@@ -24,7 +24,7 @@ class DataModel: ObservableObject {
 
         // example how to set memory which will be sent to CAI whenever user posts a message
         viewModel.memoryOptionsProvider = { _, _, _ in
-            return MemoryOptions(merge: true, memory: User(firstName: "John", lastName: "Doe"))
+            MemoryOptions(merge: true, memory: User(firstName: "John", lastName: "Doe"))
         }
         
         // load preferences for this channel
@@ -52,7 +52,7 @@ class DataModel: ObservableObject {
     }
 }
 
-fileprivate struct User: Encodable {
+private struct User: Encodable {
     var firstName: String
     var lastName: String
 }

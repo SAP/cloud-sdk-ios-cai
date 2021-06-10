@@ -36,7 +36,7 @@ struct CustomView: AnyViewable {
     }
 }
 
-fileprivate struct User: SenderInfo {
+private struct User: SenderInfo {
     var id: String { UUID().uuidString }
     
     var displayName: String { "User" }
