@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.3](https://github.com/SAP/cloud-sdk-ios-cai/compare/1.0.2...1.0.3) (2021-06-10)
+
+Patch version update as new feature(s) are non-breaking and do not change behavior unless app developer adopts actively
+
+### Features
+
+* 🎸 being able to post a message with memory options ([49ee147](https://github.com/SAP/cloud-sdk-ios-cai/commit/49ee147fe06b4a9c88ae9540362aa49259c30da4))
+
 ## [1.0.2](https://github.com/SAP/cloud-sdk-ios-cai/compare/1.0.1...1.0.2) (2021-06-04)
 
 ### Bug Fixes
