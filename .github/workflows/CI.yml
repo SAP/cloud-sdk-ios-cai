@@ -2,29 +2,19 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, matrixBuild ]
   pull_request:
   workflow_dispatch:
 
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: macos-11
+    strategy:
+      matrix:
+        xcode: [Xcode_12.4, Xcode_12.5, Xcode_13.0] # swift-tools-version 5.3, 5.4, 5.5
     env:
-      DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build
-      run: make build
-    - name: Run tests
-      run: make test
-
-  build-beta:
-
-    runs-on: macOS-11
-    env:
-      DEVELOPER_DIR: /Applications/Xcode_13.0.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/${{ matrix.xcode }}.app/Contents/Developer
 
     steps:
     - uses: actions/checkout@v2
