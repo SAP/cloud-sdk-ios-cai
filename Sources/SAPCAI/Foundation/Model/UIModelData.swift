@@ -63,7 +63,15 @@ public struct UIModelData: Decodable {
         }
 
         self.header = try container.decodeIfPresent(UIModelDataHeader.self, forKey: .header)
-        self.content = try container.decodeIfPresent(UIModelDataContent.self, forKey: .content)
+
+        do {
+            self.content = try container.decodeIfPresent(UIModelDataContent.self, forKey: .content)
+        } catch DecodingError.typeMismatch {
+            if let contentAsString = try container.decodeIfPresent(String.self, forKey: .content) {
+                self.content = UIModelDataContent(text: contentAsString)
+            }
+        }
+
         self.detailsAvailable = try container.decodeIfPresent(Bool.self, forKey: .detailsAvailable)
         self.buttons = try container.decodeIfPresent([UIModelDataAction].self, forKey: .buttons)
 
