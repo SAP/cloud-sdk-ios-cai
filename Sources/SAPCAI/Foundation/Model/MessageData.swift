@@ -30,6 +30,9 @@ public protocol MessageData {
     
     /// Return false if there are more pending messages coming.
     var isLastMessage: Bool { get }
+
+    /// Number of seconds for which next message shall be delayed for display
+    var delay: TimeInterval? { get }
 }
 
 /// An enum representing the kind of messages and its underlying content / data.
@@ -250,5 +253,21 @@ extension MessageData {
             return true
         }
         return false
+    }
+}
+
+/// Default behavior for properties of `MessageData` protocol
+public extension MessageData {
+    /// Number of seconds for which next message shall be delayed for display (default: none)
+    var delay: TimeInterval? {
+        nil
+    }
+}
+
+extension Array where Element == MessageData {
+    func delta(to base: [Element]) -> [Element]? {
+        self.filter { aMessage in
+            !base.contains(where: { $0.id == aMessage.id })
+        }
     }
 }
