@@ -81,6 +81,11 @@ class CAIConversationOperation: AsynchronousOperation {
         let urlRequest = request.urlRequest(with: self.serviceConfig.baseURL)
         
         return self.serviceConfig.urlSession.dataTask(with: urlRequest, completionHandler: { data, response, error in
+
+            if self.isCancelled {
+                completionHandler(.failure(.server(nil)))
+                return
+            }
             
             // check for error
             guard error == nil else {
