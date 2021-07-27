@@ -45,7 +45,7 @@ public class PollMessageDelivery: MessageDelivering {
     }
     
     deinit {
-        print("poll deinit")
+        self.logger.debug("poll deinit")
     }
     
     /// Start pollinh. Always return a publisher that emits true, never fails.
@@ -59,20 +59,25 @@ public class PollMessageDelivery: MessageDelivering {
     }
     
     public func stop() {
-        self.requestQueue.cancelAllOperations()
-        self.state = .stopped
+        self.logger.debug("Consumer requested to stop polling")
+        self._stop()
     }
     
     public func start() {
         let typingMsg = CAIConversationResultData.isTyping
         self.onMessages?(.success(typingMsg))
-        
+        guard self.state == .stopped else { return }
         self.startPolling()
+    }
+
+    private func _stop() {
+        self.requestQueue.cancelAllOperations()
+        self.state = .stopped
     }
     
     private func startPolling() {
         // cancel current operation
-        self.stop()
+        self._stop()
         
         // run
         self.state = .running
@@ -88,11 +93,11 @@ public class PollMessageDelivery: MessageDelivering {
                 self.onMessages?(mapped)
 
                 // stop polling in case the server returns a wait time different than 0
-                if let waitTime = data.results?.waitTime, waitTime == 0 {
+                let waitTime = data.results?.waitTime ?? 0
+                DispatchQueue.global().asyncAfter(deadline: .now() + Double(waitTime)) {
                     self.startPolling()
-                } else {
-                    self.stop()
                 }
+
             case .failure(let error):
                 switch error.type {
                 case .server:
@@ -104,7 +109,7 @@ public class PollMessageDelivery: MessageDelivering {
                 case .dataDecoding, .conversationNotFound:
                     self.logger.error(error.debugDescription, error: error)
                     self.onMessages?(.failure(error))
-                    self.stop()
+                    self._stop()
                 }
             }
         }
