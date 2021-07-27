@@ -56,6 +56,7 @@ public class PollMessageDelivery: MessageDelivering {
     
     public func initialize(_ conversationId: String) {
         self.conversationId = conversationId
+        self.startPolling()
     }
     
     public func stop() {
