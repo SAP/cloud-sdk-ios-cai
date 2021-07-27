@@ -248,7 +248,7 @@ public final class CAIConversation: MessagingPublisher {
         
         _ = self.getConversationId()
             .flatMap { _ -> AnyPublisher<Bool, CAIError> in
-                self.messageDeliveryService.reconnect()
+                Result.success(true).publisher.eraseToAnyPublisher()
             }
             .tryMap { _ -> CAIPostMessageRequest in
                 try CAIPostMessageRequest(input,
