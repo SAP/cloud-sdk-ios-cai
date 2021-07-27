@@ -57,6 +57,11 @@ public final class MessagingViewModel: ObservableObject, Identifiable {
 
     /// messages sent by the user but not yet acknowledged / confirmed by the bot
     private var nonAcknowledgedClientMessages: [CAIResponseMessageData] = []
+
+    /// messages received from the bot; may include delayed messages which might not yet added to `model`
+    private var receivedMessages: [MessageData] = []
+
+    private static let defaultDelay: Double = 0
     
     // MARK: - Lifecycle
 
@@ -177,7 +182,18 @@ public final class MessagingViewModel: ObservableObject, Identifiable {
                         if data.isTyping {
                             self.isRequestPending = true
                         } else {
-                            guard !data.messageData.isEmpty, let last = data.messageData.last else {
+                            guard !data.messageData.isEmpty else {
+                                self.isRequestPending = false
+                                return
+                            }
+
+                            guard let newMessages = data.messageData.delta(to: self.receivedMessages) else {
+                                self.isRequestPending = false
+                                return
+                            }
+                            self.receivedMessages.append(contentsOf: newMessages)
+
+                            guard let last = newMessages.last else {
                                 self.isRequestPending = false
                                 return
                             }
@@ -188,8 +204,19 @@ public final class MessagingViewModel: ObservableObject, Identifiable {
 
                             self.removeAcknowledgedUserMessages(data)
 
-                            self.model.append(contentsOf: data.messageData)
-                            self.acknowledgedMessages.append(contentsOf: data.messageData)
+                            _ = newMessages.enumerated().reduce(MessagingViewModel.defaultDelay)
+                                { accumulate, current in
+                                    if accumulate > 0 {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + accumulate) {
+                                            self.model.append(current.element)
+                                            self.acknowledgedMessages.append(current.element)
+                                        }
+                                    } else {
+                                        self.model.append(current.element)
+                                        self.acknowledgedMessages.append(current.element)
+                                    }
+                                    return current.element.delay ?? MessagingViewModel.defaultDelay
+                                }
                         }
 
                     case .failure(let error):

@@ -3,6 +3,8 @@ import SAPCAI
 import SwiftUI
 
 struct CustomMessage: MessageData {
+    var delay: TimeInterval? = 0
+
     var isLastMessage: Bool = true
     
     var id: String
