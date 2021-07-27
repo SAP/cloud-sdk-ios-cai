@@ -158,6 +158,10 @@ extension CAIResponseMessageData: MessageData {
     public var isLastMessage: Bool {
         self.attachment.delay == nil || self.attachment.delay == 0
     }
+
+    public var delay: TimeInterval? {
+        self.attachment.delay
+    }
 }
 
 public struct CAIResponseParticipantData: Decodable {
