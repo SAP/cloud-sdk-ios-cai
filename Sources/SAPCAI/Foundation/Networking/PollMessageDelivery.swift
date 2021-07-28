@@ -24,7 +24,11 @@ public class PollMessageDelivery: MessageDelivering {
     
     private var conversationId: String?
 
-    private var state: State = .stopped
+    private var state: State = .stopped {
+        didSet {
+            self.logger.debug("Polling \(state)")
+        }
+    }
 
     private var logger = Logger.shared(named: "PollMessageDelivery")
     
@@ -100,16 +104,13 @@ public class PollMessageDelivery: MessageDelivering {
                 }
 
             case .failure(let error):
+                self.logger.error(error.debugDescription, error: error)
                 switch error.type {
                 case .server:
-                    self.logger.error(error.debugDescription, error: error)
-                    self.onMessages?(.failure(error))
                     self.startPolling()
                 case .cancelled:
-                    () // this naturally occurs when bot responses early?
+                    ()
                 case .dataDecoding, .conversationNotFound:
-                    self.logger.error(error.debugDescription, error: error)
-                    self.onMessages?(.failure(error))
                     self._stop()
                 }
             }
