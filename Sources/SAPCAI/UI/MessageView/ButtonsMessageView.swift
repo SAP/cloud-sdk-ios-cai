@@ -50,7 +50,7 @@ struct ButtonsMessageView: View {
                                 if i < showLessLen - 1 {
                                     Divider().background(self.themeManager.color(for: .lineColor))
                                 }
-                                if i == 4 {
+                                if i == 4, self.buttons!.buttonsData!.count > showLessLen {
                                     Divider().background(self.themeManager.color(for: .lineColor))
                                     Button(action: {
                                         self.viewModel.contentHeight += 0
@@ -76,10 +76,51 @@ struct ButtonsMessageView: View {
 #if DEBUG
     struct ButtonsMessageView_Previews: PreviewProvider {
         static var previews: some View {
-            GeometryReader { geometry in
-                ButtonsMessageView(model: testData.model[0], geometry: geometry)
-                    .environmentObject(MessagingViewModel(publisher: MockPublisher())).environmentObject(ThemeManager.shared)
+            Group {
+                GeometryReader { geometry in
+                    ButtonsMessageView(
+                        model: self.createButtons(amount: 5, for: "Hide 'View More' button as there are no more buttons"),
+                        geometry: geometry
+                    )
+                    .environmentObject(MessagingViewModel(publisher: MockPublisher()))
+                    .environmentObject(ThemeManager.shared)
+                }
+                .environment(\.sizeCategory, .extraSmall)
+                .previewLayout(.fixed(width: 400, height: 500))
+
+                GeometryReader { geometry in
+                    ButtonsMessageView(
+                        model: self.createButtons(amount: 6, for: "Show 'View More' button visible as there are more buttons"),
+                        geometry: geometry
+                    )
+                    .environmentObject(MessagingViewModel(publisher: MockPublisher()))
+                    .environmentObject(ThemeManager.shared)
+                }
+                .environment(\.sizeCategory, .extraSmall)
+                .previewLayout(.fixed(width: 400, height: 500))
+
+                GeometryReader { geometry in
+                    ScrollView {
+                        ButtonsMessageView(
+                            model: self.createButtons(amount: 20, for: "Show 'View More' button visible as there are more buttons but show only up to 15 buttons"),
+                            geometry: geometry
+                        )
+                        .environmentObject(MessagingViewModel(publisher: MockPublisher()))
+                        .environmentObject(ThemeManager.shared)
+                    }
+                }
+                .environment(\.sizeCategory, .extraSmall)
+                .previewLayout(.fixed(width: 400, height: 500))
+                .previewLayout(.sizeThatFits)
             }
+        }
+
+        static func createButtons(amount: Int, for testDesc: String) -> CAIResponseMessageData {
+            var buttons: [UIModelDataAction] = []
+            for n in 0 ..< amount {
+                buttons.append(UIModelDataAction("button \(n + 1)", "b\(n + 1)", .text))
+            }
+            return CAIResponseMessageData(text: testDesc, buttons, buttonType: .buttons)
         }
     }
 #endif
