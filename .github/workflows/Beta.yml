@@ -1,4 +1,4 @@
-name: CI
+name: Beta
 
 on:
   push:
@@ -7,15 +7,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-beta:
 
-    runs-on: macos-latest
+    runs-on: macOS-11
     env:
-      DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_13.0.app/Contents/Developer
 
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: set -o pipefail && make build | xcpretty
+      run: make build
     - name: Run tests
       run: make test
