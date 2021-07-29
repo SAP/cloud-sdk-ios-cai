@@ -26,7 +26,7 @@ public class PollMessageDelivery: MessageDelivering {
 
     private var state: State = .stopped {
         didSet {
-            self.logger.debug("Polling \(state)")
+            self.logger.debug("Polling \(self.state)")
         }
     }
 
@@ -93,6 +93,7 @@ public class PollMessageDelivery: MessageDelivering {
 
             switch result {
             case .success(let data):
+                self.state = .stopped
                 let mapped = result.map { $0.results! }
                 
                 self.onMessages?(mapped)
