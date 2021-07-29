@@ -46,8 +46,7 @@ public struct AssistantView: View {
         GeometryReader { geometry in
             ZStack(alignment: .top) {
                 if self.viewModel.latestError != nil {
-                    BannerView(self.viewModel.latestError!.localizedDescription)
-                        .background(self.themeManager.color(for: .errorColor))
+                    BannerView(self.viewModel.latestError!.localizedDescription, type: .error, closeIndicator: true)
                         .onTapGesture {
                             self.viewModel.latestError = nil
                         }

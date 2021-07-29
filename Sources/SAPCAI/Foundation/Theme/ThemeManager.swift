@@ -257,6 +257,9 @@ public struct Theme {
             
             /// Error color
             public static let errorColor = Key(rawValue: "errorColor")
+
+            /// Error color
+            public static let errorBannerBorderColor = Key(rawValue: "errorBannerBorderColor")
             
             /// Input bar backgroud color
             public static let inputBarBGColor = Key(rawValue: "inputBarBGColor")
