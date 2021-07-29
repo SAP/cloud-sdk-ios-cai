@@ -59,7 +59,7 @@ public struct BannerView: View {
         VStack {
             HStack(spacing: 0) {
                 Spacer()
-                Text(text).lineLimit(2).font(.system(size: 13).weight(.medium)).foregroundColor(self.textForegroundColor)
+                Text(text).lineLimit(2).font(Font.system(size: 13).weight(Font.Weight.medium)).foregroundColor(self.textForegroundColor)
                 Spacer()
                 if self.closeIndicator {
                     Image(systemName: "xmark").foregroundColor(.gray)
