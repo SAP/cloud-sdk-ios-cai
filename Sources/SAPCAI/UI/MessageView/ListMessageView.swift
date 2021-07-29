@@ -74,7 +74,7 @@ struct ListMessageView: View {
                             self.viewModel.contentHeight += 0
                             self.showMoreListItems = true
                         }, label: {
-                            Text("View more")
+                            Text(Bundle.cai.localizedString(forKey: "View more", value: "View more", table: nil))
                                 .font(.body)
                                 .lineLimit(1)
                                 .padding(16)

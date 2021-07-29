@@ -12,3 +12,6 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Conversation is not found. Please ask me again";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "View more";
+
