@@ -207,9 +207,13 @@ public final class MessagingViewModel: ObservableObject, Identifiable {
                             _ = newMessages.enumerated().reduce(MessagingViewModel.defaultDelay)
                                 { accumulate, current in
                                     if accumulate > 0 {
+                                        self.isRequestPending = true
                                         DispatchQueue.main.asyncAfter(deadline: .now() + accumulate) {
                                             self.model.append(current.element)
                                             self.acknowledgedMessages.append(current.element)
+                                            if self.model.count == self.receivedMessages.count {
+                                                self.isRequestPending = false
+                                            }
                                         }
                                     } else {
                                         self.model.append(current.element)
