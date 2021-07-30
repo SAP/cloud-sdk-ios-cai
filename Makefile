@@ -10,3 +10,6 @@ jazzy:
 	sourcekitten doc --module-name SAPCAI -- -scheme SAPCAI -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 11' clean build > sapcai.json
 	jazzy --sourcekitten-sourcefile sapcai.json --module "SAPCAI" --clean
 	rm sapcai.json
+devtools:
+	brew bundle
+	mint bootstrap --link
