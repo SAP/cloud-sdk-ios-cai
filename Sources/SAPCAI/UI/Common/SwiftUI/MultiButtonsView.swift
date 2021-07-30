@@ -37,8 +37,8 @@ struct MultiButtonsView: View {
                     }
                 })
             }
-            iButtons.append(.destructive(Text("Cancel")))
-            return ActionSheet(title: Text("Actions"), message: nil, buttons: iButtons)
+            iButtons.append(.destructive(Text(Bundle.cai.localizedString(forKey: "Cancel", value: "Cancel", table: nil))))
+            return ActionSheet(title: Text(Bundle.cai.localizedString(forKey: "Actions", value: "Actions", table: nil)), message: nil, buttons: iButtons)
         }
     }
 }

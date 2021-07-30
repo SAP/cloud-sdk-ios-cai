@@ -40,7 +40,7 @@ public struct SearchBar<S>: View where S: StringProtocol {
                 UIApplication.shared.mainWindow?.endEditing(true)
                 self._text.wrappedValue = ""
             }, label: {
-                Text("Clear")
+                Text(Bundle.cai.localizedString(forKey: "Clear", value: "Clear", table: nil))
             })
                 .offset(CGSize(width: isActiveBar ? 0 : 150, height: 0))
         }
