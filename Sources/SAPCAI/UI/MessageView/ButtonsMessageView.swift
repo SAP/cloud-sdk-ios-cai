@@ -34,7 +34,7 @@ struct ButtonsMessageView: View {
                         ForEach(0 ..< showMoreLen, id: \.self) { i in
                         
                             VStack(alignment: .leading, spacing: 0) {
-                                ButtonView(button: self.buttons!.buttonsData![i], type: .button, buttonViewType: "MenuSelectionButton")
+                                ButtonView(button: self.buttons!.buttonsData![i], type: .button, buttonViewType: .menuSelectionButton)
                                 if i < showMoreLen - 1 {
                                     Divider().background(self.themeManager.color(for: .lineColor))
                                 }
@@ -45,7 +45,7 @@ struct ButtonsMessageView: View {
                         ForEach(0 ..< showLessLen, id: \.self) { i in
                         
                             VStack(alignment: .leading, spacing: 0) {
-                                ButtonView(button: self.buttons!.buttonsData![i], type: .button, buttonViewType: "MenuSelectionButton")
+                                ButtonView(button: self.buttons!.buttonsData![i], type: .button, buttonViewType: .menuSelectionButton)
                                 
                                 if i < showLessLen - 1 {
                                     Divider().background(self.themeManager.color(for: .lineColor))

@@ -67,7 +67,7 @@ struct ListMessageView: View {
             if list!.listButtons != nil && !list!.listButtons!.isEmpty {
                 Divider().background(self.themeManager.color(for: .lineColor))
                 HStack(alignment: .top, spacing: 0) {
-                    ButtonView(button: self.list!.listButtons![0], type: .button, buttonViewType: "MenuSelectionButton")
+                    ButtonView(button: self.list!.listButtons![0], type: .button, buttonViewType: .menuSelectionButton)
                     Spacer()
                     if list!.items.count > 6 && !self.showMoreListItems {
                         Button(action: {
