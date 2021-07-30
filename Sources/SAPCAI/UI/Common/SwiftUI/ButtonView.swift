@@ -6,7 +6,14 @@ struct ButtonView: View {
     
     var button: PostbackData
     var type: PostbackType
-    var buttonViewType: String? = "CardButton"
+    var buttonViewType: ButtonViewType = .cardButton
+
+    enum ButtonViewType {
+        case cardButton
+        case menuSelectionButton
+        case quickReply
+    }
+
     var body: some View {
         Button(action: {
             if self.button.dataType == .link {
@@ -21,27 +28,25 @@ struct ButtonView: View {
                 self.viewModel.postMessage(type: self.type, postbackData: self.button)
             }
         }, label: {
-            if self.type == .button {
-                if self.buttonViewType == "MenuSelectionButton" {
-                    HStack {
-                        Text(button.title)
-                            .font(.body)
-                            .lineLimit(1)
-                            .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
-                        Spacer()
-                    }
-                } else {
-                    HStack {
-                        Spacer()
-                        Text(button.title)
-                            .font(.body)
-                            .lineLimit(1)
-                            .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
-                        Spacer()
-                    }
+            if self.buttonViewType == .menuSelectionButton {
+                HStack {
+                    Text(button.title)
+                        .font(.body)
+                        .lineLimit(1)
+                        .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+                    Spacer()
                 }
-            } else if self.type == .quickReply {
+            } else if self.buttonViewType == .quickReply {
                 Text(button.title)
+            } else {
+                HStack {
+                    Spacer()
+                    Text(button.title)
+                        .font(.body)
+                        .lineLimit(1)
+                        .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+                    Spacer()
+                }
             }
         })
     }

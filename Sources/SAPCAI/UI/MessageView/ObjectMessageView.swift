@@ -54,7 +54,7 @@ struct ObjectMessageView: View {
                 Spacer()
                 if self.hasButtons, !self.hasStatus {
                     if model.objectButtons!.count == 1 {
-                        QuickReplyButtonView(button: self.model.objectButtons![0])
+                        QuickReplyButtonView(button: self.model.objectButtons![0], postbackType: .button)
                             .frame(minWidth: 99, maxWidth: 100, alignment: .trailing)
                     } else {
                         MultiButtonsView(buttons: self.model.objectButtons!)
@@ -86,7 +86,7 @@ struct ObjectMessageView: View {
                         }
                         if self.hasButtons {
                             if model.objectButtons!.count == 1 {
-                                QuickReplyButtonView(button: self.model.objectButtons![0])
+                                QuickReplyButtonView(button: self.model.objectButtons![0], postbackType: .button)
                                     .frame(minWidth: 99, maxWidth: 100, alignment: .trailing)
                             } else {
                                 MultiButtonsView(buttons: self.model.objectButtons!)
