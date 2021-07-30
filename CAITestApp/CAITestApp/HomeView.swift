@@ -60,6 +60,7 @@ struct HomeView: View {
                 }
             }
         }
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont.boldSystemFont(ofSize: 28)]
     }
 
     var body: some View {
@@ -155,7 +156,7 @@ struct HomeView: View {
                         .frame(height: 32, alignment: .center)
                 }
                 .padding(10)
-                .navigationBarTitle("SAP Conversation AI")
+                .navigationBarTitle("Testing SAPCAI SDK for iOS")
             }
         }
         .sheet(isPresented: self.$isPresented, onDismiss: {
