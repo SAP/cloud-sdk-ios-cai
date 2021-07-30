@@ -41,7 +41,9 @@ Files:
   .github/**
   .gitignore
   jazzy/**
+  Brewfile
   Makefile
+  Mintfile
   Package.resolved
   translation_v2.json
   *.yaml
