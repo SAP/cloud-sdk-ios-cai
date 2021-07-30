@@ -15,3 +15,11 @@
 /* XBUT: Text for button to reveal more information in a list */
 "View more" = "View more";
 
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Clear";
+
+/* XBUT: Cancel */
+"Cancel" = "Cancel";
+
+/* XBUT: action sheet title */
+"Actions" = "Actions";
