@@ -60,7 +60,7 @@ struct HomeView: View {
                 }
             }
         }
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont.boldSystemFont(ofSize: 28)]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 28)]
     }
 
     var body: some View {
