@@ -39,27 +39,27 @@ class CAIPostMessageOperation: CAIConversationOperation {
 
 class CAIConversationOperation: AsynchronousOperation {
     var dataTask: SAPURLSessionTask?
-    
+
     var finishHandler: (Result<CAIResponseData, CAIError>) -> Void
-    
+
     var serviceConfig: CAIServiceConfig
-    
+
     var request: APIRequest {
-        preconditionFailure("request property must be overriden")
+        preconditionFailure("request property must be overridden")
     }
-    
+
     init(_ serviceConfig: CAIServiceConfig, finishHandler: @escaping (Result<CAIResponseData, CAIError>) -> Void) {
         self.finishHandler = finishHandler
         self.serviceConfig = serviceConfig
-        
+
         super.init()
     }
-    
+
     override func execute() {
         self.dataTask = self.jsonAPIDataTask(request: self.request, completionHandler: { result in
-            
+
             self.finish()
-            
+
             if self.isCancelled {
                 self.finishHandler(.failure(CAIError.cancelled))
             } else {

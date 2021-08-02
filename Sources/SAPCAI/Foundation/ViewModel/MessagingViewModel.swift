@@ -10,7 +10,7 @@ import SwiftUI
 public final class MessagingViewModel: ObservableObject, Identifiable {
     // MARK: - Public properties
 
-    /// Holds informatino about menu preferences
+    /// Holds information about menu preferences
     @Published public var menu: PreferencesMenuData?
 
     /// messages over time (including non-acknowledged client initiated messages which will be removed (and quasi replaced) once bot acknowledges them)
