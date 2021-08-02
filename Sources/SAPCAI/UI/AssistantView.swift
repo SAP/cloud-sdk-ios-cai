@@ -7,7 +7,7 @@ import SwiftUI
 /// - `InputBarView`
 /// This view will apply the accent color defined in your theme.
 ///
-/// Safe Area is ignored at the bottom so the InputBarView can extend and apply the backrgound Blur Effect all the way.
+/// Safe Area is ignored at the bottom so the InputBarView can extend and apply the background Blur Effect all the way.
 ///
 /// To function properly, this view requires 2 @EnvironmentObject objects to be set:
 /// - viewModel: MessagingViewModel
@@ -25,7 +25,7 @@ import SwiftUI
 /// ```
 public struct AssistantView: View {
     @EnvironmentObject private var viewModel: MessagingViewModel
-    
+
     @EnvironmentObject private var themeManager: ThemeManager
 
     @State private var inputBarViewHeight: CGFloat = 0
@@ -40,7 +40,7 @@ public struct AssistantView: View {
 
     /// :nodoc:
     public init() {}
-    
+
     /// :nodoc:
     public var body: some View {
         GeometryReader { geometry in
@@ -52,11 +52,11 @@ public struct AssistantView: View {
                         }
                         .zIndex(1)
                 }
-                
+
                 VStack(spacing: 0) {
                     ZStack(alignment: .bottom) {
                         ChatView(data: self.data, bottomInset: self.$chartViewBottomInsert)
-                        
+
                         InputBarView()
                             .padding(.bottom)
                             .background(BlurView().edgesIgnoringSafeArea(.bottom)) // themeManager.color(for: .inputBarBGColor))
@@ -73,7 +73,7 @@ public struct AssistantView: View {
                         let newBottomInsert = (output > 0) ? self.inputBarViewHeight + extraSpacing : self.inputBarViewHeight
                         self.chartViewBottomInsert = newBottomInsert
                     }
-                    
+
                     Spacer().frame(minHeight: 0, idealHeight: 0, maxHeight: .infinity)
                 }
                 .zIndex(0)

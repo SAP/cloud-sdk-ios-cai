@@ -47,27 +47,27 @@ public class PollMessageDelivery: MessageDelivering {
         self.channelId = channelId
         self.serviceConfig = serviceConfig
     }
-    
+
     deinit {
         self.logger.debug("poll deinit")
     }
-    
-    /// Start pollinh. Always return a publisher that emits true, never fails.
+
+    /// Start polling. Always return a publisher that emits true, never fails.
     public func reconnect() -> AnyPublisher<Bool, CAIError> {
         self.start()
         return Result.success(true).publisher.eraseToAnyPublisher()
     }
-    
+
     public func initialize(_ conversationId: String) {
         self.conversationId = conversationId
         self.startPolling()
     }
-    
+
     public func stop() {
         self.logger.debug("Consumer requested to stop polling")
         self._stop()
     }
-    
+
     public func start() {
         let typingMsg = CAIConversationResultData.isTyping
         self.onMessages?(.success(typingMsg))

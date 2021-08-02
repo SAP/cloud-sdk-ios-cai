@@ -32,19 +32,19 @@ class PublisherBoxBase<Output, Failure: Error>: Publisher {
     internal func receive<SubscriberType: Subscriber>(subscriber: SubscriberType)
         where Failure == SubscriberType.Failure, Output == SubscriberType.Input
     {
-        fatalError("required function to be overriden")
+        fatalError("required function to be overridden")
     }
 
     func postMessage(text: String, memoryOptions: MemoryOptions? = nil) {
-        fatalError("required function to be overriden")
+        fatalError("required function to be overridden")
     }
 
     func postMessage(type: PostbackType, postbackData: PostbackData, memoryOptions: MemoryOptions? = nil) {
-        fatalError("required function to be overriden")
+        fatalError("required function to be overridden")
     }
 
     func load() {
-        fatalError("required function to be overriden")
+        fatalError("required function to be overridden")
     }
 }
 

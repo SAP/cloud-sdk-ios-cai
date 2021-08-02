@@ -9,28 +9,28 @@ import SAPFoundation
 public final class CAIConversation: MessagingPublisher {
     public typealias Output = Result<ResponseMessageData, Error>
     public typealias Failure = Never
-    
+
     // Optional here but mandatory to make a request. Should only be set using `setConversationId(_:)`
     /// CAI Conversation ID.
-    /// Read-only getter to get the current conersation ID set with this object.
+    /// Read-only getter to get the current conversation ID set with this object.
     /// It's created for you in `load()` or you can pass it in constructor
     public private(set) var conversationID: String?
-            
+
     // MARK: - Internal properties
-    
+
     /// CAI Backend Service configuration
     var serviceConfig: CAIServiceConfig { didSet { self.resetConversation() } }
-        
+
     /// Channel ID
     var channelId: String { didSet { self.resetConversation() } }
-    
+
     /// Channel connector token sent in request header X-REQUEST-TOKEN
     var channelToken: String? { didSet { self.resetConversation() } }
-            
+
     // MARK: - Private properties
-    
+
     private var messageDeliveryService: MessageDelivering
-    
+
     /// Operation Queue to make sure only one server request is processed at the same time for one conversation
     private var operationQueue: OperationQueue = {
         let ret = OperationQueue()
@@ -38,20 +38,20 @@ public final class CAIConversation: MessagingPublisher {
         ret.qualityOfService = .userInteractive
         return ret
     }()
-        
+
     // subscriber that subscribes to this publish to get new messages
     private var subscriber: AnySubscriber<Output, Never>?
-    
+
     private let logger = Logger.shared(named: "CAIFoundation.CAIConversation")
-    
+
     private var createConversionPublisher: AnyPublisher<String, CAIError>?
-        
+
     // private let channelService: CAIChannelService
-    
+
     private var isLoaded = false
-    
+
     // MARK: - Lifecycle
-    
+
     /// Creates a new conversation object
     /// - Parameters:
     ///   - config: The configuration object holding central config properties
@@ -66,7 +66,7 @@ public final class CAIConversation: MessagingPublisher {
         self.channelId = channelId
         self.channelToken = channelToken
         self.serviceConfig = config
-                
+
         self.conversationID = conversationID
 
         self.messageDeliveryService = messageDelivery
@@ -74,7 +74,7 @@ public final class CAIConversation: MessagingPublisher {
             self?.publish(result)
         }
     }
-    
+
     /// Creates a new CAI conversation object.
     /// - Parameter config: The configuration object holding central config properties
     /// - Parameter channelId: The channel ID (from channel connector)
@@ -85,10 +85,10 @@ public final class CAIConversation: MessagingPublisher {
     ///                             Default is nil hence a request to the backend will be triggered to create one.
     public convenience init(config: CAIServiceConfig, channelId: String, channelToken: String?, withExistingConvID conversationID: String? = nil) {
         let delivery = PollMessageDelivery(channelToken: channelToken, channelId: channelId, serviceConfig: config)
-        
+
         self.init(config: config, channelId: channelId, channelToken: channelToken, messageDelivery: delivery, withExistingConvID: conversationID)
     }
-    
+
     /// Creates a new CAI conversation object. Convenience init using CAIChannel struct
     /// - Parameter config: CAIServiceConfig
     /// - Parameter channel: CAIChannel. Channel you want to create a conversation to
@@ -99,7 +99,7 @@ public final class CAIConversation: MessagingPublisher {
     public convenience init(config: CAIServiceConfig, channel: CAIChannel, withExistingConvID conversationID: String? = nil) {
         self.init(config: config, channelId: channel.id, channelToken: channel.token, withExistingConvID: conversationID)
     }
-    
+
     /// Creates a new CAI conversation object. Convenience init using CAIChannel struct
     /// - Parameters:
     ///   - config: CAIServiceConfig
@@ -112,21 +112,21 @@ public final class CAIConversation: MessagingPublisher {
     public convenience init(config: CAIServiceConfig, channel: CAIChannel, messageDelivery: MessageDelivering, withExistingConvID conversationID: String? = nil) {
         self.init(config: config, channelId: channel.id, channelToken: channel.token, messageDelivery: messageDelivery, withExistingConvID: conversationID)
     }
-    
+
     deinit {
         dlog("CAIConversation deinit")
     }
-    
+
     // MARK: - Public API
-    
+
     public func load() {
         guard !self.isLoaded else { return }
-        
+
         self.isLoaded = true
-        
+
         if let id = conversationID {
             self.messageDeliveryService.initialize(id)
-            
+
             if self.messageDeliveryService.lastMessageId == nil {
                 // load existing messages
                 self.loadConversation(id) { [weak self] result in
@@ -137,7 +137,7 @@ public final class CAIConversation: MessagingPublisher {
             self.createConversationId()
         }
     }
-    
+
     /// Reset an existing conversation. Next time a message is sent, this will trigger a creation of a new conversation.
     public func resetConversation() {
         self.messageDeliveryService.stop()
@@ -145,7 +145,7 @@ public final class CAIConversation: MessagingPublisher {
         self.createConversionPublisher = nil
         self.conversationID = nil
     }
-    
+
     /// Reset an existing conversation and create a new conversation.
     public func resetAndCreateConversation() {
         self.resetConversation()
@@ -161,7 +161,7 @@ public final class CAIConversation: MessagingPublisher {
         let attachmentData = CAITextAttachmentData(text)
         postMessage(attachmentData, memoryOptions: memoryOptions)
     }
-    
+
     /// Post a postback action to CAI platform. Used by buttons and quickReplies
     /// - Parameter type: UIModelPostbackRequestDataType
     /// - Parameter postbackData: ButtonData
@@ -169,7 +169,7 @@ public final class CAIConversation: MessagingPublisher {
         let attachmentData = CAIPostbackAttachmentData(type, postbackData)
         postMessage(attachmentData, memoryOptions: memoryOptions)
     }
-    
+
     /// Creates a conversation in the backend and returns the newly created conversation ID
     /// - Parameter completionHandler: Handler function
     public func createConversation(_ completionHandler: @escaping ((Result<String, CAIError>) -> Void)) {
@@ -189,7 +189,7 @@ public final class CAIConversation: MessagingPublisher {
             }
         }))
     }
-    
+
     /// Returns a publisher that emits the current conversationId. If no conversationId is available, it will trigger a backend call to
     /// create a new one.
     public func getConversationId() -> AnyPublisher<String, CAIError> {
@@ -198,7 +198,7 @@ public final class CAIConversation: MessagingPublisher {
         }
         return self.createConversionPublisher!
     }
-    
+
     /// Loads content for an existing conversation ID
     /// - Parameter conversationId: String
     /// - Parameter completionHandler: Handler function called once finished
@@ -208,28 +208,28 @@ public final class CAIConversation: MessagingPublisher {
             completionHandler(result)
         }))
     }
-    
+
     // MARK: - Publisher impl
-    
+
     public func receive<S>(subscriber: S) where S: Subscriber, CAIConversation.Failure == S.Failure, CAIConversation.Output == S.Input {
         self.logger.debug("subscribing \(subscriber)")
-        
+
         self.subscriber = AnySubscriber(subscriber)
     }
-        
+
     /// Finishes the initialization of the CAIConversation object once the conversation ID is available.
     func updateConversationId(_ id: String) {
         if self.conversationID != nil {
             self.resetConversation()
         }
-        
+
         self.conversationID = id
-        
+
         self.messageDeliveryService.initialize(id)
     }
-        
+
     // MARK: Private functions
-    
+
     private func createConversationId() {
         self.logger.debug("create conv id")
         _ = self.getConversationId()
@@ -245,7 +245,7 @@ public final class CAIConversation: MessagingPublisher {
         // publish question so it is rendered in the UI right away
         // for now we will wait for the server to push it back
         // publish( .success( CAIConversationResultData( [ CAIResponseMessageData(text: input.text, false) ] ) ) )
-        
+
         _ = self.getConversationId()
             .flatMap { _ -> AnyPublisher<Bool, CAIError> in
                 Result.success(true).publisher.eraseToAnyPublisher()
@@ -266,11 +266,11 @@ public final class CAIConversation: MessagingPublisher {
                 }
 
             }, receiveValue: { request in
-                
+
                 self.logger.debug("Posting message with input: \(input)")
 
                 self.operationQueue.addOperation(CAIPostMessageOperation(self.serviceConfig, request: request, finishHandler: { [weak self] result in
-                                        
+
                     switch result {
                     case .success:
                         self?.logger.debug("CAIPostMessageOperation finished \(result)")
@@ -293,7 +293,7 @@ public final class CAIConversation: MessagingPublisher {
             self.logger.error("Subscriber to CAIConversation cannot be nil")
             return
         }
-        
+
         _ = result.flatMapError { (error) -> Result<CAIConversationResultData, CAIError> in
             if error.type == .conversationNotFound {
                 self.resetAndCreateConversation()

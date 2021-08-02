@@ -2,11 +2,11 @@ import Foundation
 
 /// Prints the filename, function name, line number and textual representation of `object`
 /// and a newline character into the standard output if the build setting for
-/// "Active Complilation Conditions" (SWIFT_ACTIVE_COMPILATION_CONDITIONS) defines `DEBUG`.
+/// "Active Compilation Conditions" (SWIFT_ACTIVE_COMPILATION_CONDITIONS) defines `DEBUG`.
 ///
 /// The current thread is a prefix on the output. <UI> for the main thread, <BG> for anything else.
 ///
-/// Only the first parameter needs to be passed to this funtion.
+/// Only the first parameter needs to be passed to this function.
 ///
 /// The textual representation is obtained from the `object` using `String(reflecting:)`
 /// which works for _any_ type. To provide a custom format for the output make your object conform

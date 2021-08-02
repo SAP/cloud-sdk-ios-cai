@@ -1,4 +1,4 @@
-/// An enumaration of SAP Icon icon names.
+/// An enumeration of SAP Icon icon names.
 
 // swiftlint:disable type_body_length file_length
 public enum SAPIcon: String {
