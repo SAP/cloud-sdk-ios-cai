@@ -53,7 +53,7 @@ struct ButtonView: View {
     
     func optimizePrefix(for phoneNumber: String) -> String {
         if phoneNumber.lowercased().hasPrefix("tel:") {
-            return phoneNumber
+            return phoneNumber.filter { !$0.isWhitespace }
         } else {
             return "tel:" + phoneNumber
         }
