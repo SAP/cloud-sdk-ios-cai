@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "대화가 없습니다. 다시 확인해 주십시오.";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "자세히 보기";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "지우기";
+
+/* XBUT: Cancel */
+"Cancel" = "취소";
+
+/* XBUT: action sheet title */
+"Actions" = "액션";
+

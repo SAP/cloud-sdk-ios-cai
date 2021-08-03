@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Konverzácia sa nenašla. Spýtaj sa ma znovu";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Zobraziť viac";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Vymazať";
+
+/* XBUT: Cancel */
+"Cancel" = "Zrušiť";
+
+/* XBUT: action sheet title */
+"Actions" = "Akcie";
+

@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Η συνομιλία δεν βρέθηκε. Να ερωτηθώ ξανά";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Προβολή περισσότερων";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Εκκαθάριση";
+
+/* XBUT: Cancel */
+"Cancel" = "Ακύρωση";
+
+/* XBUT: action sheet title */
+"Actions" = "Ενέργειες";
+

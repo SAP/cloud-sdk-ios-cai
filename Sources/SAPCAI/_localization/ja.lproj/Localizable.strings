@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "対話が見つかりません。もう一度質問してください。";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "詳細表示";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "クリア";
+
+/* XBUT: Cancel */
+"Cancel" = "キャンセル";
+
+/* XBUT: action sheet title */
+"Actions" = "アクション";
+

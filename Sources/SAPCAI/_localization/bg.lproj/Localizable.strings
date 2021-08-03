@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Разговорът не е намерен. Моля, задайте и нов въпрос!";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Преглед на повече";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Изчистване";
+
+/* XBUT: Cancel */
+"Cancel" = "Отказ";
+
+/* XBUT: action sheet title */
+"Actions" = "Действия";
+

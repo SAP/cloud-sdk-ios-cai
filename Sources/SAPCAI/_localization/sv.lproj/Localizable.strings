@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Konversation hittades ej. Fråga mig igen";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Visa mer";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Rensa";
+
+/* XBUT: Cancel */
+"Cancel" = "Avbryt";
+
+/* XBUT: action sheet title */
+"Actions" = "Åtgärder";
+
