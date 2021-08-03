@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Không tìm thấy cuộc hội thoại. Vui lòng hỏi tôi lại";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Xem thêm";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Xóa";
+
+/* XBUT: Cancel */
+"Cancel" = "Hủy";
+
+/* XBUT: action sheet title */
+"Actions" = "Thao tác";
+

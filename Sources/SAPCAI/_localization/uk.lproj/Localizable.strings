@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Перетворення не знайдено. Запитайте мене знову.";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Переглянути більше";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Очистити";
+
+/* XBUT: Cancel */
+"Cancel" = "Скасувати";
+
+/* XBUT: action sheet title */
+"Actions" = "Операції";
+

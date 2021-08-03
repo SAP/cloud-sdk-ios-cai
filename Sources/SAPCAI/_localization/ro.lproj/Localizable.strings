@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Conversația nu a fost găsită. Întreabă-mă din nou";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Vizualizare mai multe";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Resetare";
+
+/* XBUT: Cancel */
+"Cancel" = "Anulare";
+
+/* XBUT: action sheet title */
+"Actions" = "Acțiuni";
+

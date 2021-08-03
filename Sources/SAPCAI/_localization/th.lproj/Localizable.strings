@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "ไม่พบการติดต่อ กรุณาถามฉันอีกครั้ง";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "ดูเพิ่มเติม";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "ล้าง";
+
+/* XBUT: Cancel */
+"Cancel" = "ยกเลิก";
+
+/* XBUT: action sheet title */
+"Actions" = "การดำเนินการ";
+

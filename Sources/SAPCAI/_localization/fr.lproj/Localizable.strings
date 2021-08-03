@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "Conversation introuvable. Veuillez me reposer la question.";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Voir plus";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Effacer";
+
+/* XBUT: Cancel */
+"Cancel" = "Annuler";
+
+/* XBUT: action sheet title */
+"Actions" = "Actions";
+

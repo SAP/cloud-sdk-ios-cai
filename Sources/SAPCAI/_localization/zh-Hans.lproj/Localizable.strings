@@ -12,3 +12,15 @@
 /* XMSG: Error message for conversation not found */
 "error.conversationNotFound" = "未找到对话。请再问我一次";
 
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "查看更多";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "清除";
+
+/* XBUT: Cancel */
+"Cancel" = "取消";
+
+/* XBUT: action sheet title */
+"Actions" = "操作";
+
