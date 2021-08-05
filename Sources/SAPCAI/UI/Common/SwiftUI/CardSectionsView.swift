@@ -28,6 +28,7 @@ struct CardSectionsView: View {
                         .padding([.leading], 16)
                 }
             }
+            .frame(minHeight: 44)
         }
     }
 }
@@ -94,7 +95,7 @@ extension CardSectionsView {
             return VStack(alignment: .leading, spacing: 3) {
                 if secAttribute.label != nil {
                     Text(secAttribute.label!)
-                        .font(.subheadline)
+                        .font(.body)
                         .foregroundColor(self.themeManager.color(for: .primary2))
                         .lineLimit(1)
                         .padding([.top], 10)
