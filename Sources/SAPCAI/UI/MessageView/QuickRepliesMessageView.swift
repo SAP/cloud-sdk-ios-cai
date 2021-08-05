@@ -10,6 +10,11 @@ struct QuickRepliesMessageView: View {
     @EnvironmentObject private var viewModel: MessagingViewModel
     
     @Environment(\.verticalSizeClass) private var vSizeClass
+    @Environment(\.horizontalSizeClass) private var hSizeClass
+
+    private var isPortrait: Bool {
+        self.hSizeClass == .compact && self.vSizeClass == .regular
+    }
     
     var buttons: ButtonsMessageData? {
         if case .quickReplies(let data) = self.model.type {
@@ -50,19 +55,21 @@ struct QuickRepliesMessageView: View {
 }
 
 #if DEBUG
-    struct QuickRepliesMessageView_Previews: PreviewProvider {
-        static func testData(amountOfButtons: Int) -> CAIResponseMessageData {
-            var buttons: [UIModelDataAction] = []
-            for i in 1 ... amountOfButtons {
-                buttons.append(UIModelDataAction("\(i)", "\(i)", .text))
-            }
-            return CAIResponseMessageData(text: "Show up to limitForVisibleButtons", buttons, buttonType: .quickReplies)
-        }
-
-        static var previews: some View {
-            GeometryReader { geometry in
-                QuickRepliesMessageView(model: QuickRepliesMessageView_Previews.testData(amountOfButtons: 15), geometry: geometry).environmentObject(ThemeManager.shared)
-            }
+struct QuickRepliesMessageView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            QuickRepliesMessageView_Previews.quickReplyPreview
+                .previewLayout(.sizeThatFits)
+            QuickRepliesMessageView_Previews.quickReplyPreview
+                .previewLayout(.fixed(width: 1000, height: 300))
         }
     }
+    
+    static var quickReplyPreview: some View {
+        GeometryReader { geometry in
+            QuickRepliesMessageView(model: PreviewData.quickReply.model[0], geometry: geometry)
+                .environmentObject(ThemeManager.shared)
+        }
+    }
+}
 #endif

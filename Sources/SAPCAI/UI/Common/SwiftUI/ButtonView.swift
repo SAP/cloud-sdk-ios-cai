@@ -31,18 +31,19 @@ struct ButtonView: View {
             if self.buttonViewType == .menuSelectionButton {
                 HStack {
                     Text(button.title)
-                        .font(.body)
+                        .font(.subheadline)
                         .lineLimit(1)
                         .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
                     Spacer()
                 }
             } else if self.buttonViewType == .quickReply {
                 Text(button.title)
+                    .font(.subheadline)
             } else {
                 HStack {
                     Spacer()
                     Text(button.title)
-                        .font(.body)
+                        .font(.subheadline)
                         .lineLimit(1)
                         .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
                     Spacer()
