@@ -13,3 +13,7 @@ jazzy:
 devtools:
 	brew bundle
 	mint bootstrap --link
+lint:
+	swiftlint
+format:
+	swiftformat .
