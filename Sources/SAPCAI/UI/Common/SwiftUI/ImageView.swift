@@ -25,8 +25,18 @@ struct ImageView: View {
     }
 }
 
-struct ImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageView(imageUrl: URL(string: "sap-icon://accept")!)
+#if DEBUG
+    struct ImageView_Previews: PreviewProvider {
+        static var previews: some View {
+            ForEach(ColorScheme.allCases, id: \.self) {
+                ImageView(imageUrl: URL(string: "sap-icon://accept")!)
+                    .preferredColorScheme($0)
+                    .previewLayout(.fixed(width: 200, height: 200))
+                // swiftlint:disable:next line_length
+                ImageView(imageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Tango_style_Wikipedia_Icon.svg/1024px-Tango_style_Wikipedia_Icon.svg.png")!)
+                    .preferredColorScheme($0)
+                    .previewLayout(.fixed(width: 200, height: 200))
+            }
+        }
     }
-}
+#endif
