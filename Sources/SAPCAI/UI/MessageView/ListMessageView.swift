@@ -13,47 +13,65 @@ struct ListMessageView: View {
         return nil
     }
 
+    var safeList: ListMessageData {
+        self.list ?? UIModelData(type: "list")
+    }
+
+    var showBarRow: Bool {
+        // to show first button (if there are any buttons for a list)
+        if let listButtons = self.safeList.listButtons, listButtons.isEmpty == false {
+            return true
+        }
+        // to show "View More" button (if there are more list items to show)
+        if self.safeList.items.count > 6 && !self.showMoreListItems {
+            return true
+        }
+        return false
+    }
+
     @State private var showMoreListItems: Bool = false
     
     var body: some View {
-        var showMoreLen = min(list!.items.count, 12)
-        if let total = list?.listTotal {
-            showMoreLen = min(list!.items.count, 12, total)
+        let listData = self.safeList
+
+        var showMoreLen = min(listData.items.count, 12)
+        if let total = listData.listTotal {
+            showMoreLen = min(listData.items.count, 12, total)
         }
-        let showLessLen = min(list!.items.count, 6)
+        let showLessLen = min(listData.items.count, 6)
         
         return VStack(spacing: 0) {
             if self.showMoreListItems {
-                if list!.listHeader != nil {
-                    HeaderMessageView(model: list!.listHeader!, listItemCount: String(showMoreLen), listTotal: list?.listTotal)
+                if let listHeader = listData.listHeader {
+                    HeaderMessageView(model: listHeader, listItemCount: String(showMoreLen), listTotal: list?.listTotal)
                 }
                 ForEach(0 ..< showMoreLen, id: \.self) { i in
                     VStack(alignment: .leading, spacing: 0) {
                         // each object card goes here
-                        ObjectMessageView(model: self.list!.items[i])
+                        ObjectMessageView(model: listData.items[i])
                         if i < showMoreLen - 1 {
                             Divider().background(self.themeManager.color(for: .lineColor))
                         }
                     }
                 }
             } else {
-                if list!.listHeader != nil {
-                    HeaderMessageView(model: list!.listHeader!, listItemCount: String(showLessLen), listTotal: list?.listTotal)
+                if let listHeader = listData.listHeader {
+                    HeaderMessageView(model: listHeader, listItemCount: String(showLessLen), listTotal: list?.listTotal)
                 }
                 ForEach(0 ..< showLessLen, id: \.self) { i in
                     VStack(alignment: .leading, spacing: 0) {
                         // each object card goes here
-                        ObjectMessageView(model: self.list!.items[i])
+                        ObjectMessageView(model: listData.items[i])
                         if i < showLessLen - 1 {
                             Divider().background(self.themeManager.color(for: .lineColor))
                         }
                     }
                 }
             }
-            if list!.listUpperBoundText != nil && list!.items.count > 12 && self.showMoreListItems {
+            if listData.listUpperBoundText != nil && listData.items.count > 12 && self.showMoreListItems {
                 Divider().background(self.themeManager.color(for: .lineColor))
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
-                    Text(list!.listUpperBoundText!)
+                    Text(listData.listUpperBoundText!)
                         .font(.body)
                         .padding(16)
                         .foregroundColor(themeManager.color(for: .primary2))
@@ -64,12 +82,14 @@ struct ListMessageView: View {
                 }
             }
             // display only the first button
-            if list!.listButtons != nil && !list!.listButtons!.isEmpty {
+            if self.showBarRow {
                 Divider().background(self.themeManager.color(for: .lineColor))
                 HStack(alignment: .top, spacing: 0) {
-                    ButtonView(button: self.list!.listButtons![0], type: .button, buttonViewType: .menuSelectionButton)
+                    if let buttons = listData.listButtons, let firstButton = buttons.first {
+                        ButtonView(button: firstButton, type: .button, buttonViewType: .menuSelectionButton)
+                    }
                     Spacer()
-                    if list!.items.count > 6 && !self.showMoreListItems {
+                    if listData.items.count > 6 && !self.showMoreListItems {
                         Button(action: {
                             self.viewModel.contentHeight += 0
                             self.showMoreListItems = true
@@ -88,8 +108,37 @@ struct ListMessageView: View {
 
 #if DEBUG
     struct ListMessageView_Previews: PreviewProvider {
+        static func previewData(items: Int, hasFooterButton: Bool) -> MessageData {
+            var headerArr = [CAIResponseMessageData]()
+            for n in 1 ... items {
+                headerArr.append(CAIResponseMessageData("MacBook \(n)", "Computer", "sap-icon://desktop-mobile", nil, nil, nil, "Available", "In Stock", nil, true))
+            }
+            // swiftlint:disable:next line_length
+            return CAIResponseMessageData(headerArr.map { $0.attachment.content! }, hasFooterButton ? [UIModelDataAction("Footer button", "Footer button", .text)] : [], "List of Products", "Electronics", "Sample Electronics", false)
+        }
+
         static var previews: some View {
-            ListMessageView(model: testData.model[0])
+            Group {
+                ListMessageView(model: ListMessageView_Previews.previewData(items: 2, hasFooterButton: false))
+                    .environmentObject(ThemeManager.shared)
+                    .previewDisplayName("Few items")
+                    .previewLayout(.sizeThatFits)
+
+                ListMessageView(model: ListMessageView_Previews.previewData(items: 2, hasFooterButton: true))
+                    .environmentObject(ThemeManager.shared)
+                    .previewDisplayName("Few items with footer")
+                    .previewLayout(.sizeThatFits)
+
+                ListMessageView(model: ListMessageView_Previews.previewData(items: 15, hasFooterButton: false))
+                    .environmentObject(ThemeManager.shared)
+                    .previewDisplayName("Lots of items items")
+                    .previewLayout(.sizeThatFits)
+
+                ListMessageView(model: ListMessageView_Previews.previewData(items: 15, hasFooterButton: true))
+                    .environmentObject(ThemeManager.shared)
+                    .previewDisplayName("Lots of items items with footer")
+                    .previewLayout(.sizeThatFits)
+            }
         }
     }
 #endif
