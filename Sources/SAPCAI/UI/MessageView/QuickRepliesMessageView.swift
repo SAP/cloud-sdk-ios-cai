@@ -55,21 +55,21 @@ struct QuickRepliesMessageView: View {
 }
 
 #if DEBUG
-struct QuickRepliesMessageView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            QuickRepliesMessageView_Previews.quickReplyPreview
-                .previewLayout(.sizeThatFits)
-            QuickRepliesMessageView_Previews.quickReplyPreview
-                .previewLayout(.fixed(width: 1000, height: 300))
+    struct QuickRepliesMessageView_Previews: PreviewProvider {
+        static var previews: some View {
+            Group {
+                QuickRepliesMessageView_Previews.quickReplyPreview
+                    .previewLayout(.sizeThatFits)
+                QuickRepliesMessageView_Previews.quickReplyPreview
+                    .previewLayout(.fixed(width: 1000, height: 300))
+            }
         }
-    }
     
-    static var quickReplyPreview: some View {
-        GeometryReader { geometry in
-            QuickRepliesMessageView(model: PreviewData.quickReply.model[0], geometry: geometry)
-                .environmentObject(ThemeManager.shared)
+        static var quickReplyPreview: some View {
+            GeometryReader { geometry in
+                QuickRepliesMessageView(model: PreviewData.quickReply.model[0], geometry: geometry)
+                    .environmentObject(ThemeManager.shared)
+            }
         }
     }
-}
 #endif
