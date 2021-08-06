@@ -31,6 +31,8 @@ public class PollMessageDelivery: MessageDelivering {
     }
 
     private var logger = Logger.shared(named: "PollMessageDelivery")
+
+    private var serverPollingErrors: Int = 0
     
     enum State {
         case stopped
@@ -66,12 +68,14 @@ public class PollMessageDelivery: MessageDelivering {
     public func stop() {
         self.logger.debug("Consumer requested to stop polling")
         self._stop()
+        self.serverPollingErrors = 0
     }
 
     public func start() {
         let typingMsg = CAIConversationResultData.isTyping
         self.onMessages?(.success(typingMsg))
         guard self.state == .stopped else { return }
+        self.serverPollingErrors = 0
         self.startPolling()
     }
 
@@ -83,6 +87,11 @@ public class PollMessageDelivery: MessageDelivering {
     private func startPolling() {
         // cancel current operation
         self._stop()
+
+        guard self.serverPollingErrors < 5 else {
+            self.logger.error("Polling aborted due to too many server errors")
+            return
+        }
         
         // run
         self.state = .running
@@ -94,6 +103,8 @@ public class PollMessageDelivery: MessageDelivering {
             switch result {
             case .success(let data):
                 self.state = .stopped
+                self.serverPollingErrors = 0
+
                 let mapped = result.map { $0.results! }
                 
                 self.onMessages?(mapped)
@@ -108,6 +119,7 @@ public class PollMessageDelivery: MessageDelivering {
                 self.logger.error(error.debugDescription, error: error)
                 switch error.type {
                 case .server:
+                    self.serverPollingErrors += 1
                     self.startPolling()
                 case .cancelled:
                     ()
