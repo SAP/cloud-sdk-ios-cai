@@ -103,11 +103,9 @@ You can choose one of the following package products to be added to your applica
 
 ## Getting Started
 
-The code snippet below illustrates setting up the `CAIConversation` Combine publisher to initialize the `MessagingViewModel` for the `AssistantView`.
+The code snippet below illustrates setting up the `CAIConversation` Combine publisher to initialize the `MessagingViewModel` for the `AssistantView`. For prototyping you can connect the iOS client directly with SAP Conversational AI *Community Edition*. You have to replace variable values in angle brackets (e.g. `<channelId>`) with your bot-specific values.
 
 See [Enterprise Configuration](https://github.com/SAP/cloud-sdk-ios-cai/blob/main/ENTERPRISE_CONFIG.md) guide for required configuration steps to use `SAPCAI` Swift package and connect indirectly with SAP Conversational AI *Enterprise Edition* through SAP Mobile Services.
-
-The code snippet below contains example values specific for connecting the iOS client directly with SAP Conversational AI *Community Edition* for prototyping. You have to replace variable values in angle brackets (e.g. `<channelId>`) with your bot-specific values
 
 ### Setting up the data publisher
 
@@ -123,25 +121,8 @@ import SwiftUI
 */
 let caiChannel = CAIChannel(id: "<channelId>", token: "<channelToken>", slug: "<channelSlug>").
 
- /*
-  Create and attach OAuthObserver to `SAPURLSession`
-
-  Example-specific extension for `CAIServiceConfig` to build OAuth observer (see following code snippet for implementation details)
-
-  Use CAI OAuth credentials for prototyping & direct communication between iOS client and SAP Conversational AI *Community Edition* 
-  
-  Use Mobile Service OAuth credentials to connect indirectly with SAP Conversational AI *Enterprise Edition* through SAP Mobile Services. In this case, you have to reuse the `SAPURLSession` instance used for authentication against Mobile Services.
-*/
-let session = SAPURLSession()
-if let observer = CAIServiceConfig.buildOAuthObserver(systemBaseURL: URL(string: "<Example: https://sapcai-community.sap.eu10.hana.ondemand.com>")!,                                                  
-                                                       authenticationBaseURL: URL(string: "<Example: https://sapcai-community.authentication.eu10.hana.ondemand.com>")!,                                
-                                                       clientId: "<OAuth client id>",                                                       
-                                                       clientSecret: "<OAuth client secret>") {
-    session.register(observer)
-}
-
-// Create CAI service config for the provided SAPURLSession and URL pointing to CAI API endpoint
-let serviceConfig = CAIServiceConfig(urlSession: session, host: URL(string:"<Example: https://api.cai.tools.sap>")!)
+// Create CAI service config for a SAPURLSession and URL pointing to CAI API endpoint
+let serviceConfig = CAIServiceConfig(urlSession: SAPURLSession(), host: URL(string:"<Example: https://api.cai.tools.sap>")!)
      
 // Provide the message delivery object for polling
 let polling: MessageDelivering = PollMessageDelivery(channelId: "<channelId>", serviceConfig: serviceConfig)
@@ -152,39 +133,6 @@ let dataPublisher = CAIConversation(config: serviceConfig, channel: caiChannel, 
 // Create view model for `AssistantView`
 let viewModel = MessagingViewModel(publisher: dataPublisher)
 ```
-
-Example-specific extension for `CAIServiceConfig` to build OAuth observer
-
-```swift
-extension CAIServiceConfig {
-    public static func buildOAuthObserver(systemBaseURL: URL, authenticationBaseURL: URL, clientId: String, clientSecret: String) -> OAuth2Observer? {
-
-        let compositeStore = CompositeStorage()
-        do {
-            let secureKeyValueStore = SecureKeyValueStore()
-            try secureKeyValueStore.open(with: "cai_secure_store")
-            try compositeStore.setPersistentStore(secureKeyValueStore)
-
-            let params = OAuth2AuthenticationParameters(authorizationEndpointURL: authenticationBaseURL.appendingPathComponent("/oauth/authorize"),
-                                                        clientID: clientId,
-                                                        redirectURL: systemBaseURL.appendingPathComponent("login/callback"),
-                                                        tokenEndpointURL: authenticationBaseURL.appendingPathComponent("/oauth/token"),
-                                                        clientSecret: clientSecret)
-
-            let authenticator = OAuth2Authenticator(authenticationParameters: params, webViewPresenter: WKWebViewPresenter())
-            let oauthObserver = OAuth2Observer(authenticator: authenticator, tokenStore: OAuth2TokenStorage(store: compositeStore))
-
-            return oauthObserver
-        }
-        catch  {
-            // error handling
-            return nil
-        }
-    }
-}
-```
-
-Note: If you are developing your iOS application with SAP BTP SDK for iOS and Mobile Services, then you can ignore the previous code snippet as you (probably) already have attached an `OAuth2Observer` pointing to Mobile Services.
 
 ### User Interface
 
