@@ -1,24 +1,18 @@
 import SwiftUI
-import URLImage
 
 struct AvatarView: View {
     var imageUrl: String
     
     var body: some View {
-        URLImage(url: URL(string: imageUrl)!,
-                 inProgress: { _ -> Image in
-                     Image(systemName: "person.crop.circle")
-                 },
-                 failure: { error, _ in
-                     Text(error.localizedDescription)
-                 },
-                 content: { image in
-                     image
-                         .resizable() // Make image resizable
-                         .aspectRatio(contentMode: .fill) // Fill the frame
-                         .clipped() // Clip overlaping parts
-                 })
-            .frame(width: 32, height: 32, alignment: .center)
+        if let url = URL(string: imageUrl) {
+            ImageViewWrapper(url: url) { $0 }
+                .scaledToFill()
+                .placeholder(Image(systemName: "person.crop.circle"))
+                .frame(width: 32, height: 32, alignment: .center)
+                .clipped()
+        } else {
+            Image(systemName: "icloud.slash")
+        }
     }
 }
 

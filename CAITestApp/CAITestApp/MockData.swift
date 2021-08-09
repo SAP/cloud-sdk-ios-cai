@@ -15,7 +15,7 @@ struct MockData {
 
         // text message (user)
         arr.append(CAIResponseMessageData(text: "Can you show me a really, really, really long text message to verify that text wraps and looks pretty. And then some next with quick reply buttons!", false))
-        
+
         // text message (bot)
         arr.append(CAIResponseMessageData(text: "Sure, no problem at all. Here you go! In the next message I will send you a text with quick reply buttons. What would you like to see next?", true))
 
@@ -32,6 +32,19 @@ struct MockData {
 
         // image (bot)
         arr.append(CAIResponseMessageData(imageName: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*"))
+        
+        // text message (user)
+        arr.append(CAIResponseMessageData(text: "give me some pics", false))
+
+        // image (bot)
+        arr.append(CAIResponseMessageData(imageName: "https://via.placeholder.com/800x100.jpg"))
+        arr.append(CAIResponseMessageData(imageName: "https://via.placeholder.com/100x800.jpg"))
+
+        // text message (user)
+        arr.append(CAIResponseMessageData(text: "Please show me a gif", false))
+
+        // image (bot)
+        arr.append(CAIResponseMessageData(imageName: "http://assets.sbnation.com/assets/2512203/dogflops.gif"))
 
         // text message (user)
         arr.append(CAIResponseMessageData(text: "I want to watch a video", false))
