@@ -40,7 +40,7 @@ extension CardSectionsView {
         var body: some View {
             var urlVal = secAttribute.value!
             if secAttribute.type == .phoneNumber {
-                urlVal = "tel:" + secAttribute.value!
+                urlVal = secAttribute.value!.toTelURLString()
             }
             if secAttribute.type == .email {
                 urlVal = "mailto:" + secAttribute.value!
@@ -55,14 +55,7 @@ extension CardSectionsView {
                 }
                 Spacer()
                 if secAttribute.value != nil {
-                    if secAttribute.type == .text {
-                        Text(secAttribute.value!)
-                            .font(.body)
-                            .foregroundColor(self.themeManager.color(for: .primary1))
-                            .lineLimit(1)
-                            .padding([.top, .bottom], 10)
-                            .padding([.trailing], 16)
-                    } else {
+                    if secAttribute.isClickable {
                         Button(action: {
                             self.viewModel.urlOpenerData.url = urlVal
                             URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: urlVal)
@@ -73,6 +66,13 @@ extension CardSectionsView {
                                 .padding([.top, .bottom], 10)
                                 .padding([.trailing], 16)
                         })
+                    } else {
+                        Text(secAttribute.value!)
+                            .font(.body)
+                            .foregroundColor(self.themeManager.color(for: .primary1))
+                            .lineLimit(1)
+                            .padding([.top, .bottom], 10)
+                            .padding([.trailing], 16)
                     }
                 }
             }
@@ -86,7 +86,7 @@ extension CardSectionsView {
         var body: some View {
             var urlVal = secAttribute.value!
             if secAttribute.type == .phoneNumber {
-                urlVal = "tel:" + secAttribute.value!
+                urlVal = secAttribute.value!.toTelURLString()
             }
             if secAttribute.type == .email {
                 urlVal = "mailto:" + secAttribute.value!
@@ -102,16 +102,7 @@ extension CardSectionsView {
                         .padding([.trailing], 16)
                 }
                 if secAttribute.value != nil {
-                    if secAttribute.type == .text {
-                        Text(secAttribute.value!)
-                            .font(.body)
-                            .foregroundColor(self.themeManager.color(for: .primary1))
-                            .padding([.leading], 16)
-                            .padding([.trailing], 16)
-                            .padding([.bottom], 10)
-                            .lineLimit(2)
-                            .fixedSize(horizontal: false, vertical: true)
-                    } else {
+                    if secAttribute.isClickable {
                         Button(action: {
                             self.viewModel.urlOpenerData.url = urlVal
                             URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: urlVal)
@@ -124,6 +115,15 @@ extension CardSectionsView {
                                 .lineLimit(2)
                                 .fixedSize(horizontal: false, vertical: true)
                         })
+                    } else {
+                        Text(secAttribute.value!)
+                            .font(.body)
+                            .foregroundColor(self.themeManager.color(for: .primary1))
+                            .padding([.leading], 16)
+                            .padding([.trailing], 16)
+                            .padding([.bottom], 10)
+                            .lineLimit(2)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                 }
             }
@@ -133,6 +133,7 @@ extension CardSectionsView {
 
 struct CardSectionsView_Previews: PreviewProvider {
     static var previews: some View {
-        CardSectionsView(section: UIModelDataSection("title", [UIModelDataValue(value: "val1", dataType: nil, rawValue: nil, label: nil, valueState: nil)]))
+        CardSectionsView(section: PreviewData.cardSectionData)
+            .environmentObject(ThemeManager.shared)
     }
 }
