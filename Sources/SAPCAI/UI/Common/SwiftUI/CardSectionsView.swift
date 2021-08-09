@@ -131,9 +131,11 @@ extension CardSectionsView {
     }
 }
 
+#if DEBUG
 struct CardSectionsView_Previews: PreviewProvider {
     static var previews: some View {
         CardSectionsView(section: PreviewData.cardSectionData)
             .environmentObject(ThemeManager.shared)
     }
 }
+#endif
