@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ObjectMessageView: View {
     @EnvironmentObject private var themeManager: ThemeManager
+    @Environment(\.horizontalSizeClass) private var hSizeClass
+    @Environment(\.verticalSizeClass) private var vSizeClass
     
     let model: ObjectMessageData
     
@@ -10,6 +12,10 @@ struct ObjectMessageView: View {
             return url
         }
         return nil
+    }
+    
+    private var isPortrait: Bool {
+        self.hSizeClass == .compact && self.vSizeClass == .regular
     }
     
     private var hasButtons: Bool {
@@ -55,7 +61,7 @@ struct ObjectMessageView: View {
                 if self.hasButtons, !self.hasStatus {
                     if model.objectButtons!.count == 1 {
                         QuickReplyButtonView(button: self.model.objectButtons![0], postbackType: .button)
-                            .frame(minWidth: 99, maxWidth: 100, alignment: .trailing)
+                            .frame(minWidth: 99, maxWidth: self.isPortrait ? 100 : 200, alignment: .trailing)
                     } else {
                         MultiButtonsView(buttons: self.model.objectButtons!)
                     }
@@ -87,7 +93,7 @@ struct ObjectMessageView: View {
                         if self.hasButtons {
                             if model.objectButtons!.count == 1 {
                                 QuickReplyButtonView(button: self.model.objectButtons![0], postbackType: .button)
-                                    .frame(minWidth: 99, maxWidth: 100, alignment: .trailing)
+                                    .frame(minWidth: 99, maxWidth: self.isPortrait ? 100 : 200, alignment: .trailing)
                             } else {
                                 MultiButtonsView(buttons: self.model.objectButtons!)
                             }
@@ -103,22 +109,23 @@ struct ObjectMessageView: View {
 #if DEBUG
     struct ObjectMessageView_Previews: PreviewProvider {
         static var previews: some View {
-            ObjectMessageView(model: UIModelDataContent(text: "text1", list: nil, form: nil, picture: nil, video: nil,
-                                                        header: UIModelDataHeader(title: UIModelDataValue(value: "title", dataType: UIModelData.ValueType.text.rawValue, rawValue: nil,
-                                                                                                          label: nil,
-                                                                                                          valueState: nil),
-                                                                                  subtitle: UIModelDataValue(value: "subtitle", dataType: UIModelData.ValueType.text.rawValue,
-                                                                                                             rawValue: nil,
-                                                                                                             label: nil,
-                                                                                                             valueState: nil),
-                                                                                  description: UIModelDataValue(value: "desc", dataType: UIModelData.ValueType.text.rawValue,
-                                                                                                                rawValue: nil,
-                                                                                                                label: nil,
-                                                                                                                valueState: nil)),
-                                                        buttons: [
-                                                            UIModelDataAction("b1", "b1", .text),
-                                                            UIModelDataAction("b2", "b2", .text)
-                                                        ])).environmentObject(ThemeManager.shared)
+            Group {
+                ObjectMessageView_Previews.imageWithTtitleAndButtonPreview
+                    .previewLayout(.sizeThatFits)
+                ObjectMessageView_Previews.imageWithTtitleAndButtonPreview
+                    .previewLayout(.fixed(width: 800, height: 300))
+            }
+        }
+        
+        static var imageWithTtitleAndButtonPreview: some View {
+            VStack {
+                ForEach(PreviewData.objectMessage, id: \.id) { data in
+                    VStack(alignment: .leading, spacing: 0) {
+                        ObjectMessageView(model: data).environmentObject(ThemeManager.shared)
+                        Divider().background(Color.black)
+                    }
+                }
+            }
         }
     }
 #endif
