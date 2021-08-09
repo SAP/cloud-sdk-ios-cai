@@ -4,6 +4,15 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      module_version:
+        description: 'Module Version'
+        required: true
+        default: 'Latest'
+      deploy:
+        description: 'Deploy'
+        required: true
+        default: 'false'
 
 jobs:
   Jazzy:
@@ -15,14 +24,25 @@ jobs:
         run: |
           brew install sourcekitten
           gem install jazzy
-      - name: Generate Documentation (Jazzy)
-        run: make jazzy
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+      - name: Get tag name from release
+        if: github.event_name == 'release'
+        uses: actions/github-script@v4
+        id: release-version
         with:
-          name: API Docs
-          path: docs
+          script: return context.payload.release.tag_name
+          result-encoding: string
+      - name: Set MVERSION (Release)
+        if: github.event_name == 'release'
+        run: |
+          echo "MVERSION=${{ steps.release-version.outputs.result }}" >> $GITHUB_ENV
+      - name: Set MVERSION (Manual Dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "MVERSION=${{ github.event.inputs.module_version }}" >> $GITHUB_ENV
+      - name: Generate Documentation (Jazzy)
+        run: make jazzy VERSION="${{ env.MVERSION }}"
       - name: Push to gh-pages
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch' &&  github.event.inputs.deploy == 'true'
         run: |
           git config --global user.email "${GITHUB_ACTOR}"
           git config --global user.name "${GITHUB_ACTOR}@users.noreply.github.com"
@@ -38,3 +58,9 @@ jobs:
           git push origin gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload documentation as artifact
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v1
+        with:
+          name: documentation
+          path: docs
