@@ -1,10 +1,3 @@
-//
-//  File.swift
-//
-//
-//  Created by C5330036 on 2021/8/6.
-//
-
 // swiftlint:disable all
 #if DEBUG
     import Foundation
