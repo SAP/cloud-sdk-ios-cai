@@ -2,7 +2,6 @@
 import XCTest
 
 final class SimpleTypeExtensionTests: XCTestCase {
-    
     /// String  Extension
     func testStringtoTelString() {
         var telString = "tel: +86 13463637643 "
