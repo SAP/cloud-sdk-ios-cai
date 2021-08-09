@@ -58,6 +58,27 @@
             viewModel.addMessages(contentsOf: [responseData])
             return viewModel
         }
+
+        static var cardSectionData: UIModelDataSection {
+            func makeDataValue(label: String? = nil, value: String? = nil, dataType: String? = nil) -> UIModelDataValue {
+                UIModelDataValue(value: value, dataType: dataType, rawValue: nil, label: label, valueState: nil)
+            }
+            return UIModelDataSection("title", [makeDataValue(label: "text",
+                                                              value: "Just text",
+                                                              dataType: "text"),
+                                                makeDataValue(label: "link address",
+                                                              value: "https://www.sap.com",
+                                                              dataType: "link"),
+                                                makeDataValue(label: "email address",
+                                                              value: "example@sap.com",
+                                                              dataType: "email"),
+                                                makeDataValue(label: "tel",
+                                                              value: "+1 23 388913 23 ",
+                                                              dataType: "phonenumber"),
+                                                makeDataValue(label: "real address",
+                                                              value: "1234, CA, USA",
+                                                              dataType: "address")])
+        }
     }
 
 #endif

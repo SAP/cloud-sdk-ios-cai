@@ -22,7 +22,7 @@ struct ButtonView: View {
                 URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: self.button.value)
             } else if self.button.dataType == .phoneNumber {
                 // link navigation feature code
-                self.viewModel.urlOpenerData.url = optimizePrefix(for: button.value)
+                self.viewModel.urlOpenerData.url = button.value.toTelURLString()
                 URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: self.viewModel.urlOpenerData.url)
             } else {
                 self.viewModel.postMessage(type: self.type, postbackData: self.button)
@@ -50,14 +50,6 @@ struct ButtonView: View {
                 }
             }
         })
-    }
-    
-    func optimizePrefix(for phoneNumber: String) -> String {
-        if phoneNumber.lowercased().hasPrefix("tel:") {
-            return phoneNumber.filter { !$0.isWhitespace }
-        } else {
-            return "tel:" + phoneNumber
-        }
     }
 }
 

@@ -141,6 +141,12 @@ public protocol ValueData {
     var rawValue: String? { get }
 }
 
+extension ValueData {
+    var isClickable: Bool {
+        type == .link || type == .email || type == .phoneNumber
+    }
+}
+
 /// Enumeration for possible postback types
 public enum PostbackDataType: String {
     /// text
