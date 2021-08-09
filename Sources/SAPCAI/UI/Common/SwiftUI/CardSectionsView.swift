@@ -40,7 +40,7 @@ extension CardSectionsView {
         var body: some View {
             var urlVal = secAttribute.value!
             if secAttribute.type == .phoneNumber {
-                urlVal = "tel:" + secAttribute.value!
+                urlVal = secAttribute.value!.toTelURLString()
             }
             if secAttribute.type == .email {
                 urlVal = "mailto:" + secAttribute.value!
@@ -86,7 +86,7 @@ extension CardSectionsView {
         var body: some View {
             var urlVal = secAttribute.value!
             if secAttribute.type == .phoneNumber {
-                urlVal = "tel:" + secAttribute.value!
+                urlVal = secAttribute.value!.toTelURLString()
             }
             if secAttribute.type == .email {
                 urlVal = "mailto:" + secAttribute.value!

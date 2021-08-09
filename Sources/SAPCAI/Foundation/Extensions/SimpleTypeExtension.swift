@@ -67,6 +67,14 @@ extension String {
             return nil
         }
     }
+    
+    func toTelURLString() -> String {
+        if lowercased().hasPrefix("tel:") {
+            return replacingOccurrences(of: " ", with: "", options: .literal)
+        } else {
+            return "tel:" + replacingOccurrences(of: " ", with: "", options: .literal)
+        }
+    }
 }
 
 // MARK: - URL Extension
