@@ -56,8 +56,8 @@ class CAIConversationOperation: AsynchronousOperation {
     }
 
     override func execute() {
-        self.dataTask = self.jsonAPIDataTask(request: self.request, completionHandler: { result in
-
+        self.dataTask = self.jsonAPIDataTask(request: self.request, completionHandler: { [weak self] result in
+            guard let self = self else { return }
             self.finish()
 
             if self.isCancelled {
@@ -80,8 +80,11 @@ class CAIConversationOperation: AsynchronousOperation {
     func jsonAPIDataTask(request: APIRequest, completionHandler: @escaping ((Result<CAIResponseData, CAIError>) -> Void)) -> SAPURLSessionTask {
         let urlRequest = request.urlRequest(with: self.serviceConfig.baseURL)
         
-        return self.serviceConfig.urlSession.dataTask(with: urlRequest, completionHandler: { data, response, error in
-
+        return self.serviceConfig.urlSession.dataTask(with: urlRequest, completionHandler: { [weak self] data, response, error in
+            guard let self = self else {
+                completionHandler(.failure(.cancelled))
+                return
+            }
             if self.isCancelled {
                 completionHandler(.failure(.server(nil)))
                 return
