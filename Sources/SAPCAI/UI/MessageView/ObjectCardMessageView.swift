@@ -32,7 +32,7 @@ struct ObjectCardMessageView: View {
                         .frame(width: 50, height: 50)
                 }
                 HStack(alignment: .firstTextBaseline) {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 6) {
                         if model.headline != nil {
                             Text(model.headline!)
                                 .font(.headline)
@@ -107,6 +107,7 @@ struct ObjectCardMessageView: View {
                             Divider().background(self.themeManager.color(for: .lineColor))
                         }
                     }
+                    .frame(minHeight: 44)
                 }
             }
         }
