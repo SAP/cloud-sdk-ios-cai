@@ -33,7 +33,7 @@ struct ObjectMessageView: View {
                     .frame(width: 50, height: 50)
             }
             HStack(alignment: self.hasButtons && !self.hasStatus ? .center : .firstTextBaseline) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 6) {
                     if model.headline != nil {
                         Text(model.headline!)
                             .font(.headline)
