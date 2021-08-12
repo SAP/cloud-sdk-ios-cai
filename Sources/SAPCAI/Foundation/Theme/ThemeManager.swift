@@ -275,6 +275,9 @@ public struct Theme {
 
             /// Information color
             public static let infoColor = Key(rawValue: "infoColor")
+            
+            /// default button selected state color
+            public static let buttonSelectedColor = Key(rawValue: "buttonSelectedColor")
         }
     }
 }

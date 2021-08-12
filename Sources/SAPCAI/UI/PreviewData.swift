@@ -58,7 +58,8 @@
             viewModel.addMessages(contentsOf: [responseData])
             return viewModel
         }
-
+        
+        /// for CardSectionsView
         static var cardSectionData: UIModelDataSection {
             func makeDataValue(label: String? = nil, value: String? = nil, dataType: String? = nil) -> UIModelDataValue {
                 UIModelDataValue(value: value, dataType: dataType, rawValue: nil, label: label, valueState: nil)
@@ -78,6 +79,35 @@
                                                 makeDataValue(label: "real address",
                                                               value: "1234, CA, USA",
                                                               dataType: "address")])
+        }
+        
+        /// for CarouselMessageView
+        static var carouselMessageData: MessagingViewModel {
+            let viewModel = MessagingViewModel(publisher: MockPublisher())
+            var carouselArr = [CAIResponseMessageData]()
+            var iButtons = [
+                UIModelDataAction("Submit review", "Submit review", .text)
+            ]
+            let c1 = CAIResponseMessageData("Mustang", "Car on race track", "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*", nil, iButtons, nil, nil, nil, nil, true)
+                
+            carouselArr.append(c1)
+            iButtons = [
+                UIModelDataAction("See more", "See more", .text)
+            ]
+            let c2 = CAIResponseMessageData("Dog", "Without the cutiest animal on the planet, am I right?", "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", nil, iButtons, nil, nil, nil, nil, true)
+            
+            carouselArr.append(c2)
+            
+            let c3 = CAIResponseMessageData("Card", "Card in Carousel", nil, nil, iButtons, nil, nil, nil, nil, true)
+            
+            carouselArr.append(c3)
+            
+            let c4 = CAIResponseMessageData("Different Card", "Another Card in Carousel", nil, nil, iButtons, nil, nil, nil, nil, true)
+            
+            carouselArr.append(c4)
+            let fourPages = CAIResponseMessageData(carouselArr.map { $0.attachment.content! })
+            viewModel.addMessages(contentsOf: [fourPages])
+            return viewModel
         }
     }
 

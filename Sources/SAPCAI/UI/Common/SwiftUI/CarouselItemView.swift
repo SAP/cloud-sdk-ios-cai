@@ -17,6 +17,7 @@ struct CarouselItemView: View {
                 if carouselItem!.itemButtons != nil {
                     CarouselButtonsView(buttonsData: carouselItem!.itemButtons)
                         .frame(minHeight: 44)
+                        .buttonStyle(PlainCellButtonStyle())
                 }
             }
         }

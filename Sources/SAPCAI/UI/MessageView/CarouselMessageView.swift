@@ -79,7 +79,8 @@ struct CarouselMessageView: View {
     struct CarouselMessageView_Previews: PreviewProvider {
         static var previews: some View {
             GeometryReader { geometry in
-                CarouselMessageView(model: testData.model[0], geometry: geometry)
+                CarouselMessageView(model: PreviewData.carouselMessageData.model[0], geometry: geometry)
+                    .environmentObject(ThemeManager.shared)
             }
         }
     }
