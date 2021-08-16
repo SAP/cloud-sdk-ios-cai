@@ -93,9 +93,9 @@ public struct CasualQuickReplyButtonStyle: ButtonStyle {
 /// Plain Button Style
 public struct PlainCellButtonStyle: ButtonStyle {
     @EnvironmentObject private var themeManager: ThemeManager
+    
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(.body)
             .background(configuration.isPressed ? self.themeManager.color(for: .buttonSelectedColor) : Color.clear)
             .foregroundColor(configuration.isPressed ? Color.accentColor.opacity(0.5) : Color.accentColor)
     }

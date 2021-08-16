@@ -52,19 +52,22 @@ struct ButtonsMessageView: View {
                                 }
                                 if i == 4, self.buttons!.buttonsData!.count > showLessLen {
                                     Divider().background(self.themeManager.color(for: .lineColor))
-                                    Button(action: {
-                                        self.viewModel.contentHeight += 0
-                                        self.showMoreButtons = true
-                                    }, label: {
+                                    HStack {
                                         Spacer()
-                                        Text(Bundle.cai.localizedString(forKey: "View more", value: "View more", table: nil))
-                                            .font(.body)
-                                            .lineLimit(1)
-                                            .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+                                        Button(action: {
+                                            self.viewModel.contentHeight += 0
+                                            self.showMoreButtons = true
+                                        }, label: {
+                                            Text(Bundle.cai.localizedString(forKey: "View more", value: "View more", table: nil))
+                                                .font(.body)
+                                                .lineLimit(1)
+                                                .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
+                                        })
                                         Spacer()
-                                    })
+                                    }
                                 }
                             }
+                            .buttonStyle(PlainCellButtonStyle())
                         }
                     }
                 }.background(roundedBorder(for: self.themeManager.theme))

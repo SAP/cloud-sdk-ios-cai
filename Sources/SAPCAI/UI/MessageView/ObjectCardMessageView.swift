@@ -111,6 +111,7 @@ struct ObjectCardMessageView: View {
                 }
             }
         }
+        .buttonStyle(PlainCellButtonStyle())
         .background(roundedBorder(for: self.themeManager.theme))
     }
 }

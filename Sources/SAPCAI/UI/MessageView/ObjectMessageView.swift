@@ -64,6 +64,7 @@ struct ObjectMessageView: View {
                             .frame(minWidth: 99, maxWidth: self.isPortrait ? 100 : 200, alignment: .trailing)
                     } else {
                         MultiButtonsView(buttons: self.model.objectButtons!)
+                            .buttonStyle(PlainCellButtonStyle())
                     }
                 } else {
                     VStack(alignment: .trailing, spacing: 6) {
@@ -96,6 +97,7 @@ struct ObjectMessageView: View {
                                     .frame(minWidth: 99, maxWidth: self.isPortrait ? 100 : 200, alignment: .trailing)
                             } else {
                                 MultiButtonsView(buttons: self.model.objectButtons!)
+                                    .buttonStyle(PlainCellButtonStyle())
                             }
                         }
                     }

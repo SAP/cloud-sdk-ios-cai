@@ -101,6 +101,7 @@ struct ListMessageView: View {
                         })
                     }
                 }
+                .buttonStyle(PlainCellButtonStyle())
             }
         }
     }
