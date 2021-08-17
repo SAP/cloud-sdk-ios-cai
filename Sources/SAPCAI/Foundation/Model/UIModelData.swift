@@ -483,6 +483,10 @@ extension UIModelDataContent: CarouselItemMessageData {
     public var itemButtons: [PostbackData]? {
         self.buttons
     }
+    
+    public var itemSections: [UIModelDataSection]? {
+        self.sections
+    }
 }
 
 extension UIModelDataHeader: HeaderMessageData {

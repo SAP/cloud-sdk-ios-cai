@@ -135,4 +135,7 @@ public protocol CarouselItemMessageData {
 
     /// List of actions
     var itemButtons: [PostbackData]? { get }
+    
+    /// List of attributes
+    var itemSections: [UIModelDataSection]? { get }
 }

@@ -79,6 +79,32 @@
                                                               value: "1234, CA, USA",
                                                               dataType: "address")])
         }
+        
+        /// carsoul item data
+        static var carsoulDetail: CarouselItemMessageData? {
+            let iButtons = [
+                UIModelDataAction("See more", "See more", .text),
+                UIModelDataAction("See more again", "See more again", .text)
+            ]
+            let iAttributes = [UIModelDataValue(value: "This is item 1", dataType: "text", rawValue: nil, label: "Item 1", valueState: nil),
+                               UIModelDataValue(value: "This is item 2", dataType: "text", rawValue: nil, label: "Item 2", valueState: nil),
+                               UIModelDataValue(value: "https://www.sap.com", dataType: "text", rawValue: nil, label: "Link 1", valueState: nil),
+                               UIModelDataValue(value: "https://www.youtube.com", dataType: "text", rawValue: nil, label: "Link 2", valueState: nil),
+                               UIModelDataValue(value: "+1-408-999-9999", dataType: "text", rawValue: nil, label: "Phone", valueState: nil),
+                               UIModelDataValue(value: "john.smith@sap.com", dataType: "text", rawValue: nil, label: "Email", valueState: nil),
+                               UIModelDataValue(value: "this is a long text. this is a long text. this is a long text. ", dataType: "text", rawValue: nil, label: "label for long text", valueState: nil),
+                               UIModelDataValue(value: "john.smith@sap.com", dataType: "text", rawValue: nil, label: "short label", valueState: nil)]
+            
+            let iSections = [UIModelDataSection("Section1", iAttributes)]
+            
+            let data = CAIResponseMessageData("Dog", "Without the cutiest animal on the planet, am I right?", "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", nil, iButtons, iSections, nil, nil, nil, true)
+            let viewModel = MessagingViewModel(publisher: MockPublisher())
+            viewModel.addMessage(CAIResponseMessageData([data.attachment.content!], true))
+            if case .carousel(let data) = viewModel.model[0].type {
+                return data.carouselItems[0]
+            }
+            return nil
+        }
     }
 
 #endif
