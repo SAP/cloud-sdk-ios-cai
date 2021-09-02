@@ -52,7 +52,6 @@ struct ImageUIView: View {
                     })
                 }
                 .scaledToFill()
-                .sizeInto(box: boundingBox)
             } else {
                 fallback
             }

@@ -12,8 +12,10 @@ struct CarouselImageView: View {
     var body: some View {
         Group {
             if let mediaItem = media, let sourceUrl = mediaItem.sourceUrl {
-                ImageViewWrapper(url: sourceUrl) { $0 }
-                    .placeholder(mediaItem.placeholder)
+                ImageViewWrapper(url: sourceUrl,
+                                 placeholder: { mediaItem.placeholder },
+                                 failure: { Text($0.localizedDescription) },
+                                 content: { $0 })
                     .scaledToFill()
                     .frame(width: self.itemWidth, height: self.vSizeClass == .regular ? 180 : 80)
                     .clipped()

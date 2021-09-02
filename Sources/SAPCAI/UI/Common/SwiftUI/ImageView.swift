@@ -9,8 +9,11 @@ struct ImageView: View {
             if imageUrl.absoluteString.range(of: "sap-icon") != nil {
                 IconImageView(iconUrl: imageUrl.absoluteString, iconSize: CGSize(width: 50, height: 50))
             } else {
-                ImageViewWrapper(url: imageUrl) { $0 }
-                    .errorImage(Image(systemName: "photo"))
+                ImageViewWrapper(url: imageUrl,
+                                 failure: { _ in
+                                     Image(systemName: "photo")
+                                 },
+                                 content: { $0 })
                     .scaledToFit()
                     .cornerRadius(8)
             }

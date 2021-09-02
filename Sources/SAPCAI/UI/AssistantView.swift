@@ -1,4 +1,5 @@
 import Combine
+import SDWebImage
 import SwiftUI
 
 /// SwiftUI main view. Use this when you want a full screen out-of-the box view that contains:
