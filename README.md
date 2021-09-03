@@ -87,7 +87,7 @@ curl -X POST "<BaseUrl>/connect/v1/channels" \
 
 - [SAPCommon](https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPCommon/index.html) for Logging
 - [SAPFoundation](https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPFoundation/index.html) for Network Connectivity and Authentication
-- [SDWebImage](https://github.com/SDWebImage/SDWebImage) for asynchronous image loading in SwiftUI
+- [SDWebImage](https://github.com/SDWebImage/SDWebImage) for asynchronous image loading and gif animation in SwiftUI
 - [Down](https://github.com/johnxnguyen/Down) for Markdown / CommonMark rendering in Swift
 
 ## Installation
@@ -146,7 +146,7 @@ AssistantView()
   .onDisappear {
     viewModel.cancelSubscriptions()
     dataPublisher.resetConversation()
-    //Clear SDImage Cache
+    //SAPCAI uses `SDWebImage` and its image caching capabilities but it is the app developers responsibility to clear the cache if that is desired
     SDImageCache.shared.clearMemory()
     SDImageCache.shared.clearDisk(onCompletion: nil)
   })
