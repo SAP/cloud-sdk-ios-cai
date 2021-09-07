@@ -8,7 +8,7 @@ struct CarouselMessageView: View {
     @Environment(\.verticalSizeClass) private var verticalSizeClass: UserInterfaceSizeClass?
     
     @State private var currentIndex: Int = 0
-    @State private var offset: CGFloat = 0
+    @GestureState private var offset: CGFloat = 0
     
     var carousel: CarouselMessageData? {
         if case .carousel(let data) = self.model.type {
@@ -55,9 +55,28 @@ struct CarouselMessageView: View {
     }
     
     private var itemWidth: CGFloat {
-        self.geometry.size.width - (self.paddingLT * 3)
+        self.geometry.size.width - (self.paddingLT * 2) - self.trailPadding
     }
     
+    private var trailPadding: CGFloat {
+        if self.horizontalSizeClass == .compact && self.verticalSizeClass == .regular {
+            return 30
+        } else {
+            return 228
+        }
+    }
+    
+    private var contentOffset: CGFloat {
+        let pageOffset = (CGFloat(currentIndex) * -(itemWidth + self.paddingLT)) + self.offset
+        if self.currentIndex == 0 {
+            return pageOffset
+        } else if self.currentIndex == self.pageCount - 1 {
+            return pageOffset + self.trailPadding
+        } else {
+            return pageOffset + (self.trailPadding / 2)
+        }
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
@@ -72,21 +91,19 @@ struct CarouselMessageView: View {
                 .padding([.leading, .trailing], paddingLT)
                 .padding([.top, .bottom], paddingTB)
             }
-            .content.offset(x: self.offset)
+            .content.offset(x: contentOffset)
             .animation(.easeInOut)
             .background(Color(white: 0.9, opacity: 1))
             .highPriorityGesture(
                 DragGesture(minimumDistance: 20, coordinateSpace: .local)
-                    .onChanged { value in
-                        self.offset = value.translation.width + self.calculateOffset()
-                    }
+                    .updating($offset, body: { value, out, _ in
+                        out = value.translation.width
+                    })
                     .onEnded { value in
-                        if abs(value.predictedEndTranslation.width) >= geometry.size.width / 2 {
-                            var nextIndex: Int = (value.predictedEndTranslation.width < 0) ? 1 : -1
-                            nextIndex += self.currentIndex
-                            self.currentIndex = nextIndex.keepIndexInRange(min: 0, max: self.pageCount - 1)
-                        }
-                        self.offset = self.calculateOffset()
+                        let offsetX = value.translation.width
+                        let progress = -offsetX / (itemWidth + paddingLT)
+                        let roundIndex = progress.rounded()
+                        currentIndex = max(min(currentIndex + Int(roundIndex), pageCount - 1), 0)
                     }
             )
             
@@ -96,14 +113,6 @@ struct CarouselMessageView: View {
                 .padding(.zero)
         }
         .padding([.leading, .trailing], 0 - padding)
-        .onChange(of: currentIndex) { _ in
-            self.offset = self.calculateOffset()
-        }
-    }
-    
-    func calculateOffset() -> CGFloat {
-        let newOffset = -(geometry.size.width - 2 * self.paddingLT) * CGFloat(self.currentIndex)
-        return self.currentIndex == self.pageCount - 1 ? (newOffset + self.padding) : newOffset
     }
 }
 
