@@ -4,7 +4,10 @@ struct CarouselPageControlView: View {
     @EnvironmentObject private var themeManager: ThemeManager
     @Binding var currentIndex: Int
     let pageCount: Int
-    
+    @Binding var previousButtonDisabled: Bool
+    @Binding var nextButtonDisabled: Bool
+    @Binding var groupItemsCount: Int
+
     var body: some View {
         VStack(spacing: 0) {
             Divider().background(self.themeManager.color(for: .lineColor))
@@ -12,7 +15,11 @@ struct CarouselPageControlView: View {
             HStack {
                 Button {
                     if self.currentIndex > 0 {
-                        self.currentIndex -= 1
+                        if currentIndex > pageCount - groupItemsCount {
+                            self.currentIndex = pageCount - groupItemsCount - 1
+                        } else {
+                            self.currentIndex -= 1
+                        }
                     }
                 } label: {
                     Image(systemName: "chevron.left.circle")
@@ -20,8 +27,9 @@ struct CarouselPageControlView: View {
                         .font(.system(size: 30, weight: .thin))
                         .frame(width: 30, height: 30)
                 }
+                .disabled(previousButtonDisabled)
                 Spacer()
-                PageControl(selectedIndex: $currentIndex, pageCount: self.pageCount)
+                PageControl(selectedIndex: $currentIndex, groupItemsCount: $groupItemsCount, pageCount: self.pageCount)
                 Spacer()
                 Button {
                     if self.currentIndex < self.pageCount - 1 {
@@ -33,10 +41,10 @@ struct CarouselPageControlView: View {
                         .font(.system(size: 30, weight: .thin))
                         .frame(width: 30, height: 30)
                 }
+                .disabled(nextButtonDisabled)
             }
             .padding([.leading, .trailing], 50)
             Spacer()
-            Divider().background(self.themeManager.color(for: .lineColor))
         }
     }
 }
@@ -45,7 +53,12 @@ struct CarouselPageControlView: View {
     struct CarouselPageControlView_Previews: PreviewProvider {
         @State static var selectedIndex = 1
         static var previews: some View {
-            CarouselPageControlView(currentIndex: $selectedIndex, pageCount: 5)
+            CarouselPageControlView(currentIndex: $selectedIndex,
+                                    pageCount: 5,
+                                    previousButtonDisabled: .constant(false),
+                                    nextButtonDisabled: .constant(false),
+                                    groupItemsCount: .constant(1))
+                .environmentObject(ThemeManager.shared)
         }
     }
 #endif

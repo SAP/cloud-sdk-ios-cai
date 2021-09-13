@@ -5,7 +5,16 @@ struct CarouselDetailPage: View {
     @EnvironmentObject private var themeManager: ThemeManager
     @Environment(\.presentationMode) private var presentationMode
     
-    let screenWidth = UIScreen.main.bounds.size.width
+    var screenWidth: CGFloat {
+        UIScreen.main.bounds.size.width
+    }
+
+    let padding: CGFloat = 20
+    let hStackSpacing: CGFloat = 8
+    var minTextWidth: CGFloat {
+        (self.screenWidth - 2 * self.padding - self.hStackSpacing) / 2
+    }
+    
     var carouselItem: CarouselItemMessageData?
     
     var body: some View {
@@ -17,6 +26,7 @@ struct CarouselDetailPage: View {
                     Divider().background(self.themeManager.color(for: .lineColor))
                     carouselAttributesTable
                 }
+                Spacer().frame(height: 20)
             }
             Divider().background(self.themeManager.color(for: .lineColor))
             if let buttonsData = carouselItem?.itemButtons {
@@ -46,7 +56,7 @@ struct CarouselDetailPage: View {
            let headline = itemHeader.headline,
            let subheadline = itemHeader.subheadline
         {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(headline)
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -58,13 +68,13 @@ struct CarouselDetailPage: View {
     }
     
     @ViewBuilder
-    func makeGroupCells(group: [UIModelDataValue], lineLimit: Int? = 1) -> some View {
+    func makeGroupCells(group: [UIModelDataValue]) -> some View {
         HStack {
             ForEach(0 ..< group.count) { index in
                 if let title = group[index].label,
                    let detail = group[index].value
                 {
-                    CarouselDetailInfoCell(title: title, detail: detail, lineLimit: lineLimit)
+                    CarouselDetailInfoCell(title: title, detail: detail)
                         .frame(maxWidth: .infinity)
                         .clipped()
                 }
@@ -85,34 +95,62 @@ struct CarouselDetailPage: View {
                 .padding([.leading, .trailing], 20)
             
             VStack(spacing: 16) {
-                ForEach(0 ..< groupedAttributes.count) { index in
-                    makeGroupCells(group: groupedAttributes[index], lineLimit: index < 3 ? 1 : nil)
+                ForEach(groupedAttributes) {
+                    makeGroupCells(group: $0.datas)
                 }
             }
             .padding([.leading, .trailing], 20)
         }
     }
     
-    func convertAttributes(_ attributes: [UIModelDataValue]) -> [[UIModelDataValue]] {
-        var groupedAttributes: [[UIModelDataValue]] = []
-        var pairedAttributes: [UIModelDataValue] = []
+    struct ModelsContainer: Identifiable {
+        let id = UUID()
+        var datas: [UIModelDataValue]
+    }
+    
+    func convertAttributes(_ attributes: [UIModelDataValue]) -> [ModelsContainer] {
+        var groupedAttributes: [ModelsContainer] = []
+        var pairedAttributes = ModelsContainer(datas: [])
+        var startNewPaired = true
+        
         for (index, item) in attributes.enumerated() {
-            if index < 6 {
-                if index.isMultiple(of: 2) {
-                    pairedAttributes = []
-                    pairedAttributes.append(item)
-                    if index == attributes.count - 1 {
+            if let label = item.label, let value = item.value {
+                if self.shouldAddNewLine(for: label) || self.shouldAddNewLine(for: value) {
+                    if startNewPaired {
+                        groupedAttributes.append(ModelsContainer(datas: [item]))
+                    } else {
                         groupedAttributes.append(pairedAttributes)
+                        groupedAttributes.append(ModelsContainer(datas: [item]))
+                        startNewPaired = true
                     }
+                    pairedAttributes = ModelsContainer(datas: [])
                 } else {
-                    pairedAttributes.append(item)
-                    groupedAttributes.append(pairedAttributes)
+                    if startNewPaired {
+                        pairedAttributes = ModelsContainer(datas: [])
+                        pairedAttributes.datas.append(item)
+                        startNewPaired = false
+                        if index == attributes.count - 1 {
+                            groupedAttributes.append(pairedAttributes)
+                        }
+                    } else {
+                        pairedAttributes.datas.append(item)
+                        groupedAttributes.append(pairedAttributes)
+                        startNewPaired = true
+                    }
                 }
-            } else {
-                groupedAttributes.append([item])
             }
         }
         return groupedAttributes
+    }
+    
+    func shouldAddNewLine(for text: String) -> Bool {
+        let uiFont = UIFont.preferredFont(forTextStyle: .subheadline)
+        let textSize = text.boundingRect(with: CGSize(width: self.minTextWidth, height: CGFloat.greatestFiniteMagnitude),
+                                         options: .usesLineFragmentOrigin,
+                                         attributes: [.font: uiFont], context: nil)
+        let charSize = uiFont.lineHeight
+        let linesRoundedUp = Int(ceil(textSize.height / charSize))
+        return linesRoundedUp > 1
     }
 }
 
@@ -122,15 +160,12 @@ struct CarouselDetailInfoCell: View {
     
     let title: String
     let detail: String
-    let lineLimit: Int?
     
     init(title: String,
-         detail: String,
-         lineLimit: Int? = nil)
+         detail: String)
     {
         self.title = title
         self.detail = detail
-        self.lineLimit = lineLimit
     }
     
     var body: some View {
@@ -138,12 +173,10 @@ struct CarouselDetailInfoCell: View {
             Text(self.title)
                 .font(.subheadline)
                 .foregroundColor(themeManager.color(for: .primary2))
-                .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text(self.detail)
                 .font(.subheadline)
                 .foregroundColor(themeManager.color(for: .primary1))
-                .lineLimit(lineLimit)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
     }

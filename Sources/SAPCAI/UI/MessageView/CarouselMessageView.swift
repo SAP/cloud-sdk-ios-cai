@@ -55,31 +55,67 @@ struct CarouselMessageView: View {
     }
     
     private var itemWidth: CGFloat {
-        self.geometry.size.width - (self.paddingLT * 2) - self.trailPadding
+        let blankSpace = CGFloat(groupItemsCount + 1) * self.paddingLT + 2 * self.padding + self.trailPadding
+        return (self.geometry.size.width - blankSpace) / CGFloat(self.groupItemsCount)
     }
     
     private var trailPadding: CGFloat {
         if self.horizontalSizeClass == .compact && self.verticalSizeClass == .regular {
             return 30
         } else {
-            return 228
+            return 172
+        }
+    }
+    
+    private var groupItemsCount: Int {
+        if self.horizontalSizeClass == .compact && self.verticalSizeClass == .regular {
+            return 1
+        } else {
+            return 2
         }
     }
     
     private var contentOffset: CGFloat {
-        let pageOffset = (CGFloat(currentIndex) * -(itemWidth + self.paddingLT)) + self.offset
-        if self.currentIndex == 0 {
+        let displayedIndex: Int
+        if self.currentIndex > self.pageCount - self.groupItemsCount {
+            displayedIndex = self.pageCount - self.groupItemsCount
+        } else {
+            displayedIndex = self.currentIndex
+        }
+        
+        let pageOffset = (CGFloat(displayedIndex) * -(itemWidth + self.paddingLT)) + self.offset
+        
+        if displayedIndex == 0 {
             return pageOffset
-        } else if self.currentIndex == self.pageCount - 1 {
+        } else if self.currentIndex >= self.pageCount - self.groupItemsCount {
             return pageOffset + self.trailPadding
         } else {
             return pageOffset + (self.trailPadding / 2)
         }
     }
-
+    
+    var previousDisableBinding: Binding<Bool> {
+        Binding { self.currentIndex == 0 || (self.currentIndex > pageCount - groupItemsCount && groupItemsCount == pageCount) } set: { _ in }
+    }
+    
+    var nextDisableBinding: Binding<Bool> {
+        Binding { self.currentIndex >= (self.pageCount - groupItemsCount) } set: { _ in }
+    }
+    
+    var groupItemsCountBinding: Binding<Int> {
+        Binding { groupItemsCount } set: { _ in }
+    }
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            ScrollView(.horizontal, showsIndicators: false) {
+        if carousel?.carouselItems.count == 1,
+           let uimodel = carousel?.carouselItems.first
+        {
+            CarouselItemView(carouselItem: uimodel, itemWidth: self.itemWidth)
+                .frame(width: self.itemWidth, alignment: .leading)
+                .clipShape(RoundedRectangle(cornerRadius: self.themeManager.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 8)))
+                .background(roundedBorder(for: self.themeManager.theme))
+        } else {
+            VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top, spacing: paddingLT) {
                     ForEach(carousel!.carouselItems, id: \.id) { uimodel in
                         CarouselItemView(carouselItem: uimodel, itemWidth: self.itemWidth)
@@ -90,10 +126,18 @@ struct CarouselMessageView: View {
                 }
                 .padding([.leading, .trailing], paddingLT)
                 .padding([.top, .bottom], paddingTB)
+                .offset(x: contentOffset)
+                .animation(.easeInOut)
+                .frame(width: geometry.size.width - 2 * self.padding, alignment: .leading)
+                .clipped()
+                
+                CarouselPageControlView(currentIndex: $currentIndex, pageCount: pageCount,
+                                        previousButtonDisabled: previousDisableBinding,
+                                        nextButtonDisabled: nextDisableBinding,
+                                        groupItemsCount: groupItemsCountBinding)
+                    .frame(width: geometry.size.width - 2 * self.padding, height: 50)
             }
-            .content.offset(x: contentOffset)
-            .animation(.easeInOut)
-            .background(Color(white: 0.9, opacity: 1))
+            .background(roundedBorder(for: self.themeManager.theme))
             .highPriorityGesture(
                 DragGesture(minimumDistance: 20, coordinateSpace: .local)
                     .updating($offset, body: { value, out, _ in
@@ -103,16 +147,14 @@ struct CarouselMessageView: View {
                         let offsetX = value.translation.width
                         let progress = -offsetX / (itemWidth + paddingLT)
                         let roundIndex = progress.rounded()
-                        currentIndex = max(min(currentIndex + Int(roundIndex), pageCount - 1), 0)
+                        if currentIndex > pageCount - groupItemsCount {
+                            currentIndex = max(min(pageCount - groupItemsCount + Int(roundIndex), pageCount - groupItemsCount), 0)
+                        } else {
+                            currentIndex = max(min(currentIndex + Int(roundIndex), pageCount - groupItemsCount), 0)
+                        }
                     }
             )
-            
-            CarouselPageControlView(currentIndex: $currentIndex, pageCount: pageCount)
-                .frame(width: geometry.size.width, height: 50)
-                .background(Color.white)
-                .padding(.zero)
         }
-        .padding([.leading, .trailing], 0 - padding)
     }
 }
 
@@ -120,7 +162,8 @@ struct CarouselMessageView: View {
     struct CarouselMessageView_Previews: PreviewProvider {
         static var previews: some View {
             GeometryReader { geometry in
-                CarouselMessageView(model: testData.model[0], geometry: geometry)
+                CarouselMessageView(model: PreviewData.carsoulMessageData, geometry: geometry)
+                    .environmentObject(ThemeManager.shared)
             }
         }
     }
