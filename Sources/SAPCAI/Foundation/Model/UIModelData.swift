@@ -509,6 +509,14 @@ extension UIModelDataHeader: HeaderMessageData {
     public var imageUrl: String? {
         self.image?.imageUrl
     }
+    
+    public var status: ValueData? {
+        self.status1
+    }
+    
+    public var headerDescription: String? {
+        self.description?.value
+    }
 }
 
 extension UIModelData: ListMessageData {

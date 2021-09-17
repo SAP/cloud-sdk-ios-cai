@@ -57,11 +57,23 @@ struct CarouselDetailPage: View {
            let subheadline = itemHeader.subheadline
         {
             VStack(alignment: .leading, spacing: 8) {
-                Text(headline)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack {
+                    Text(headline)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer()
+                    statusView
+                }
                 Text(subheadline)
+                    .font(.subheadline)
+                    .foregroundColor(themeManager.color(for: .primary2))
                     .frame(maxWidth: .infinity, alignment: .leading)
+                if let carouselDesc = carouselItem?.itemHeader?.headerDescription {
+                    Text(carouselDesc)
+                        .font(.subheadline)
+                        .foregroundColor(themeManager.color(for: .primary2))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
             .padding([.leading, .trailing], 20)
         }
@@ -100,6 +112,34 @@ struct CarouselDetailPage: View {
                 }
             }
             .padding([.leading, .trailing], 20)
+        }
+    }
+    
+    @ViewBuilder var statusView: some View {
+        if let itemHeader = carouselItem?.itemHeader,
+           let status = itemHeader.status
+        {
+            if status.valState == .success {
+                Text(status.value!)
+                    .font(.subheadline)
+                    .foregroundColor(themeManager.color(for: .successColor))
+            } else if status.valState == .error {
+                Text(status.value!)
+                    .font(.subheadline)
+                    .foregroundColor(themeManager.color(for: .errorColor))
+            } else if status.valState == .warn {
+                Text(status.value!)
+                    .font(.subheadline)
+                    .foregroundColor(themeManager.color(for: .warnColor))
+            } else if status.valState == .info {
+                Text(status.value!)
+                    .font(.subheadline)
+                    .foregroundColor(themeManager.color(for: .infoColor))
+            } else {
+                Text(status.value!)
+                    .font(.subheadline)
+                    .foregroundColor(themeManager.color(for: .primary2))
+            }
         }
     }
     

@@ -77,6 +77,10 @@ public protocol HeaderMessageData {
 
     /// URL of the image. Ignored if hasImage is false.
     var imageUrl: String? { get }
+    
+    var status: ValueData? { get }
+    
+    var headerDescription: String? { get }
 }
 
 /// Protocol describing a list
