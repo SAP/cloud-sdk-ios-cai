@@ -1,6 +1,6 @@
 import Foundation
 import SAPCAI
-
+// swiftlint:disable all
 struct MockData {
     static let viewModel: MessagingViewModel = {
         let vm = MessagingViewModel(publisher: MockPublisher())
@@ -167,7 +167,6 @@ struct MockData {
         arr.append(CAIResponseMessageData(text: "Show me a single card (technically embedded in carousel", false))
         var cs1 = CAIResponseMessageData("Card Title", "Card SubTitle", "https://miro.medium.com/max/1400/1*j8CdLYOjjiWWWmsXs-48KA.png", "Card Description", iButtons, [UIModelDataSection("Section 1", [UIModelDataValue(value: "Value 1", dataType: "text", rawValue: "Value 1", label: "Label 1", valueState: nil), UIModelDataValue(value: "Value 2", dataType: "text", rawValue: "Value 2", label: "Label 2", valueState: nil), UIModelDataValue(value: "A very long text as value 3 to take call the available space, a very long text as value 3 to take call the available space, a very long text as value 3 to take call the available space indeed.", dataType: "text", rawValue: "A very long text as value 3 to take call the available space", label: "Label 3", valueState: nil), UIModelDataValue(value: "Value 4", dataType: "text", rawValue: "Value 4", label: "Label 4", valueState: nil)])], "Status 1", "Status 2", "Status 3", true)
         
-        
         arr.append(CAIResponseMessageData([cs1.attachment.content!], true))
         
         // text message (user)
@@ -290,3 +289,4 @@ struct MockData {
         return vm
     }()
 }
+// swiftlint:enable all
