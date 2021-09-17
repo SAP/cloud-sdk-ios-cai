@@ -156,7 +156,6 @@ struct CarouselDetailPage: View {
 
 struct CarouselDetailInfoCell: View {
     @EnvironmentObject private var themeManager: ThemeManager
-    @EnvironmentObject private var viewModel: MessagingViewModel
     
     let title: String
     let detail: String
@@ -178,6 +177,7 @@ struct CarouselDetailInfoCell: View {
                 .font(.subheadline)
                 .foregroundColor(themeManager.color(for: .primary1))
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
@@ -185,7 +185,7 @@ struct CarouselDetailInfoCell: View {
 #if DEBUG
     struct CarouselDetailPage_Previews: PreviewProvider {
         static var previews: some View {
-            CarouselDetailPage(carouselItem: PreviewData.carsoulDetail)
+            CarouselDetailPage(carouselItem: PreviewData.carouselDetail)
                 .environmentObject(ThemeManager.shared)
         }
     }

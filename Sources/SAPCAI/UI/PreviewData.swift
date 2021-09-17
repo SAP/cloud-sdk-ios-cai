@@ -80,8 +80,8 @@
                                                               dataType: "address")])
         }
         
-        /// carsoul item data
-        static var carsoulMessageData: MessageData {
+        /// carousel item data
+        static var carouselMessageData: MessageData {
             let iButtons = [
                 UIModelDataAction("See more", "See more", .text),
                 UIModelDataAction("See more again", "See more again", .text)
@@ -103,8 +103,8 @@
             return viewModel.model[0]
         }
         
-        static var carsoulDetail: CarouselItemMessageData? {
-            if case .carousel(let data) = carsoulMessageData.type {
+        static var carouselDetail: CarouselItemMessageData? {
+            if case .carousel(let data) = carouselMessageData.type {
                 return data.carouselItems[0]
             }
             return nil
