@@ -2,20 +2,26 @@ import SwiftUI
 
 struct CarouselItemView: View {
     var carouselItem: CarouselItemMessageData?
-    
+
     var itemWidth: CGFloat
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            if carouselItem != nil {
-                if carouselItem!.itemPicture != nil {
-                    CarouselImageView(media: carouselItem!.itemPicture, itemWidth: itemWidth)
+            if let item = carouselItem {
+                NavigationLink(destination: CarouselDetailPage(carouselItem: item)
+                    .environmentObject(ThemeManager.shared)) {
+                    VStack(spacing: 0) {
+                        if let picture = item.itemPicture {
+                            CarouselImageView(media: picture, itemWidth: itemWidth)
+                        }
+                        
+                        if let headerModel = item.itemHeader {
+                            HeaderMessageView(model: headerModel, listItemCount: nil, listTotal: nil)
+                        }
+                    }
                 }
-                if carouselItem!.itemHeader != nil {
-                    HeaderMessageView(model: carouselItem!.itemHeader!, listItemCount: nil, listTotal: nil)
-                }
-                if carouselItem!.itemButtons != nil {
-                    CarouselButtonsView(buttonsData: carouselItem!.itemButtons)
+                if let buttonsData = item.itemButtons {
+                    CarouselButtonsView(buttonsData: buttonsData)
                         .frame(minHeight: 44)
                 }
             }
