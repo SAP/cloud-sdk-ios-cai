@@ -21,3 +21,13 @@ extension EdgeInsets {
         UIEdgeInsets(top: self.top, left: self.leading, bottom: self.bottom, right: self.trailing)
     }
 }
+
+extension Int {
+    func keepIndexInRange(min: Int, max: Int) -> Int {
+        switch self {
+        case ..<min: return min
+        case max...: return max
+        default: return self
+        }
+    }
+}

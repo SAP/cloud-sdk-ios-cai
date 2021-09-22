@@ -483,6 +483,10 @@ extension UIModelDataContent: CarouselItemMessageData {
     public var itemButtons: [PostbackData]? {
         self.buttons
     }
+    
+    public var itemSections: [UIModelDataSection]? {
+        self.sections
+    }
 }
 
 extension UIModelDataHeader: HeaderMessageData {
@@ -504,6 +508,14 @@ extension UIModelDataHeader: HeaderMessageData {
     
     public var imageUrl: String? {
         self.image?.imageUrl
+    }
+    
+    public var status: ValueData? {
+        self.status1
+    }
+    
+    public var headerDescription: String? {
+        self.description?.value
     }
 }
 

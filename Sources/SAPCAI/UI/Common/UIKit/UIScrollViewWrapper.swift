@@ -133,7 +133,7 @@ final class UIScrollViewController<Content: View>: UIViewController, UIScrollVie
         self.automaticallyScrollsToBottom = automaticallyScrollsToBottom
         
         super.init(nibName: nil, bundle: nil)
-        
+        addChild(self.hostingController)
         self.scrollView.addSubview(self.hostingController.view)
     }
     
