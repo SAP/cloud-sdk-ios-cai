@@ -77,6 +77,10 @@ public protocol HeaderMessageData {
 
     /// URL of the image. Ignored if hasImage is false.
     var imageUrl: String? { get }
+    
+    var status: ValueData? { get }
+    
+    var headerDescription: String? { get }
 }
 
 /// Protocol describing a list
@@ -135,4 +139,7 @@ public protocol CarouselItemMessageData {
 
     /// List of actions
     var itemButtons: [PostbackData]? { get }
+    
+    /// List of attributes
+    var itemSections: [UIModelDataSection]? { get }
 }

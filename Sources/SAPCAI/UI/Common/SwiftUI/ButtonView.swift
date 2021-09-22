@@ -8,6 +8,8 @@ struct ButtonView: View {
     var type: PostbackType
     var buttonViewType: ButtonViewType = .cardButton
 
+    var actionBlock: (() -> Void)?
+    
     enum ButtonViewType {
         case cardButton
         case menuSelectionButton
@@ -27,6 +29,7 @@ struct ButtonView: View {
             } else {
                 self.viewModel.postMessage(type: self.type, postbackData: self.button)
             }
+            actionBlock?()
         }, label: {
             if self.buttonViewType == .menuSelectionButton {
                 HStack {
