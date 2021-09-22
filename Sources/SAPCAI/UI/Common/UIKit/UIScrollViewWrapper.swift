@@ -171,7 +171,8 @@ final class UIScrollViewController<Content: View>: UIViewController, UIScrollVie
         super.viewDidLoad()
         
         self.view.addSubview(self.scrollView)
-        self.createConstraints()
+        self.scrollView.pin(to: self.view)
+        self.hostingController.view.pin(to: self.scrollView)
         self.view.layoutIfNeeded()
     }
     
@@ -181,16 +182,5 @@ final class UIScrollViewController<Content: View>: UIViewController, UIScrollVie
 //        DispatchQueue.main.async {
 //            self.offset.wrappedValue = scrollView.contentOffset
 //        }
-    }
-    
-    // MARK: - Constraints
-
-    fileprivate func createConstraints() {
-        NSLayoutConstraint.activate([
-            self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        ])
     }
 }
