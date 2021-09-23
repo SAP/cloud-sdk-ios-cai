@@ -7,7 +7,7 @@ struct ImageView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            if imageUrl.absoluteString.range(of: "sap-icon") != nil {
+            if imageUrl.isSAPIcon {
                 IconImageView(iconUrl: imageUrl.absoluteString, iconSize: CGSize(width: 50, height: 50))
             } else {
                 URLImage(url: imageUrl,
