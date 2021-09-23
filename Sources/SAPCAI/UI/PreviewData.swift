@@ -97,7 +97,7 @@
             
             let iSections = [UIModelDataSection("Section1", iAttributes)]
             
-            let data = CAIResponseMessageData("Dog", "Without the cutiest animal on the planet, am I right?", "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", nil, iButtons, iSections, nil, nil, nil, true)
+            let data = CAIResponseMessageData("Dog", "Without the cutiest animal on the planet, am I right?", "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", nil, nil, iButtons, iSections, nil, nil, nil, true)
             let viewModel = MessagingViewModel(publisher: MockPublisher())
             viewModel.addMessage(CAIResponseMessageData([data.attachment.content!], true))
             return viewModel.model[0]

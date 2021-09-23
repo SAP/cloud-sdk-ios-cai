@@ -111,7 +111,7 @@ struct ListMessageView: View {
         static func previewData(items: Int, hasFooterButton: Bool) -> MessageData {
             var headerArr = [CAIResponseMessageData]()
             for n in 1 ... items {
-                headerArr.append(CAIResponseMessageData("MacBook \(n)", "Computer", "sap-icon://desktop-mobile", nil, nil, nil, "Available", "In Stock", nil, true))
+                headerArr.append(CAIResponseMessageData("MacBook \(n)", "Computer", "sap-icon://desktop-mobile", nil, nil, nil, nil, "Available", "In Stock", nil, true))
             }
             // swiftlint:disable:next line_length
             return CAIResponseMessageData(headerArr.map { $0.attachment.content! }, hasFooterButton ? [UIModelDataAction("Footer button", "Footer button", .text)] : [], "List of Products", "Electronics", "Sample Electronics", false)

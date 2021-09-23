@@ -226,7 +226,8 @@ public extension CAIResponseMessageData {
     
     init(_ title: String,
          _ subtitle: String,
-         _ imageName: String? = nil,
+         _ headerImageName: String? = nil, // e.g. image in object card
+         _ contentPictureName: String? = nil, // e.g. image for carousel card
          _ description: String? = nil,
          _ inlineButtons: [UIModelDataAction]? = nil,
          _ sections: [UIModelDataSection]? = nil,
@@ -254,8 +255,10 @@ public extension CAIResponseMessageData {
                                             status2: UIModelDataValue(value: status2, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: nil),
                                             status3: UIModelDataValue(value: status3, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: nil),
                                             image: nil)
-        if let img = imageName {
+        if let img = headerImageName {
             content?.header?.image = UIModelDataImage(imageUrl: img)
+        }
+        if let img = contentPictureName {
             content?.picture = UIModelDataMedia(url: img)
         }
                
@@ -284,7 +287,7 @@ public extension CAIResponseMessageData {
                                     detailsAvailable: false,
                                     buttons: nil)
         
-        if let img = imageName {
+        if let img = headerImageName {
             modelData.header?.image = UIModelDataImage(imageUrl: img)
         }
         
