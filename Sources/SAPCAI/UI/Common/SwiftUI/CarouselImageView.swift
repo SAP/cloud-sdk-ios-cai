@@ -13,20 +13,29 @@ struct CarouselImageView: View {
     var body: some View {
         Group {
             if let mediaItem = media, let sourceUrl = mediaItem.sourceUrl {
-                URLImage(url: sourceUrl,
-                         inProgress: { _ -> Image in
-                             mediaItem.placeholder
-                         },
-                         failure: { error, _ in
-                             Text(error.localizedDescription)
-                         },
-                         content: { image in
-                             image
-                                 .resizable()
-                                 .aspectRatio(contentMode: .fill)
-                         })
-                    .frame(width: self.itemWidth, height: self.vSizeClass == .regular ? 180 : 80)
-                    .clipped()
+                if sourceUrl.isSAPIcon == true {
+                    VStack(alignment: .leading, spacing: 0) {
+                        ImageView(imageUrl: sourceUrl)
+                            .frame(width: 50, height: 50)
+                            .padding([.leading, .top])
+                    }
+                    .frame(width: self.itemWidth, alignment: .leading)
+                } else {
+                    URLImage(url: sourceUrl,
+                             inProgress: { _ -> Image in
+                                 mediaItem.placeholder
+                             },
+                             failure: { error, _ in
+                                 Text(error.localizedDescription)
+                             },
+                             content: { image in
+                                 image
+                                     .resizable()
+                                     .aspectRatio(contentMode: .fill)
+                             })
+                        .frame(width: self.itemWidth, height: self.vSizeClass == .regular ? 180 : 80)
+                        .clipped()
+                }
             } else {
                 Image(systemName: "icloud.slash")
             }
