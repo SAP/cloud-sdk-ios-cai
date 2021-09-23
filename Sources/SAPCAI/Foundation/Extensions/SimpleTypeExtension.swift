@@ -103,6 +103,10 @@ extension URL {
     var isHTTPURL: Bool {
         !self.isCustomURLScheme
     }
+
+    var isSAPIcon: Bool {
+        self.absoluteString.hasPrefix("sap-icon://")
+    }
 }
 
 extension Data {
