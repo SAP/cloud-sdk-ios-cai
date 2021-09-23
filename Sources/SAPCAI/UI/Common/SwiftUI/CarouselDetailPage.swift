@@ -60,13 +60,14 @@ struct CarouselDetailPage: View {
                 HStack {
                     Text(headline)
                         .font(.headline)
+                        .foregroundColor(themeManager.color(for: .primary1))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
                     statusView
                 }
                 Text(subheadline)
-                    .font(.subheadline)
-                    .foregroundColor(themeManager.color(for: .primary2))
+                    .font(.body)
+                    .foregroundColor(themeManager.color(for: .primary1))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 if let carouselDesc = carouselItem?.itemHeader?.headerDescription {
                     Text(carouselDesc)
