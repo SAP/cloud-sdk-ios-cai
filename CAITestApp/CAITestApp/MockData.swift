@@ -53,18 +53,18 @@ struct MockData {
         var iButtons = [
             UIModelDataAction("b1", "b1", .text)
         ]
-        var h1 = CAIResponseMessageData("HP Laptop", "HP Laptop - 15 inch touch screen with Intel i7 processor.", "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05962448.png", nil, iButtons, nil, "Available", nil, nil, true)
+        var h1 = CAIResponseMessageData("HP Laptop", "HP Laptop - 15 inch touch screen with Intel i7 processor.", "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c05962448.png", nil, nil, iButtons, nil, "Available", nil, nil, true)
 
         headerArr.append(h1)
 
         iButtons = [
             UIModelDataAction("List postback", "List postback", .postback)
         ]
-        var h2 = CAIResponseMessageData("iPhone XR", "iPhone", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xr/iphone-xr-black-select-201809?wid=470&hei=556&fmt=png-alpha&.v=1551226038992", nil, iButtons, nil, "Out of Stock", nil, nil, true)
+        var h2 = CAIResponseMessageData("iPhone XR", "iPhone", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xr/iphone-xr-black-select-201809?wid=470&hei=556&fmt=png-alpha&.v=1551226038992", nil, nil, iButtons, nil, "Out of Stock", nil, nil, true)
         h2.attachment.buttons = iButtons
         headerArr.append(h2)
 
-        var h3 = CAIResponseMessageData("Samsung Galaxy s10", "samsung galaxy", nil, nil, nil, nil, "Available", "In Stock", nil, true)
+        var h3 = CAIResponseMessageData("Samsung Galaxy s10", "samsung galaxy", nil, nil, nil, nil, nil, "Available", "In Stock", nil, true)
         headerArr.append(h3)
 
         iButtons = [
@@ -74,34 +74,34 @@ struct MockData {
             UIModelDataAction("Phone2", "14081231235", .phoneNumber),
             UIModelDataAction("Phone3", "14081231235", .phoneNumber)
         ]
-        var h4 = CAIResponseMessageData("Product4", "Product 4", "https://freeicons.io/laravel/public/uploads/icons/png/12835256891551942291-128.png", nil, iButtons, nil, "Available", nil, nil, true)
+        var h4 = CAIResponseMessageData("Product4", "Product 4", "https://freeicons.io/laravel/public/uploads/icons/png/12835256891551942291-128.png", nil, nil, iButtons, nil, "Available", nil, nil, true)
         headerArr.append(h4)
 
         iButtons = [
             UIModelDataAction("List icon very large text", "List icon very large text", .text)
         ]
-        var h5 = CAIResponseMessageData("iPhone", "iPhone", "sap-icon://desktop-mobile", nil, iButtons, nil, nil, nil, nil, true)
+        var h5 = CAIResponseMessageData("iPhone", "iPhone", "sap-icon://desktop-mobile", nil, nil, iButtons, nil, nil, nil, nil, true)
         h5.attachment.buttons = iButtons
         headerArr.append(h5)
 
         iButtons = [
             UIModelDataAction("List icon", "List icon", .text)
         ]
-        var h6 = CAIResponseMessageData("iPhone", "iPhone", "sap-icon://desktop-mobile", nil, iButtons, nil, nil, nil, nil, true)
+        var h6 = CAIResponseMessageData("iPhone", "iPhone", "sap-icon://desktop-mobile", nil, nil, iButtons, nil, nil, nil, nil, true)
         h6.attachment.buttons = iButtons
         headerArr.append(h6)
 
         iButtons = [
             UIModelDataAction("List icon", "List icon", .text)
         ]
-        var h7 = CAIResponseMessageData("iPhone", "iPhone", "sap-icon://desktop-mobile", nil, iButtons, nil, nil, nil, nil, true)
+        var h7 = CAIResponseMessageData("iPhone", "iPhone", "sap-icon://desktop-mobile", nil, nil, iButtons, nil, nil, nil, nil, true)
         h7.attachment.buttons = iButtons
         headerArr.append(h7)
 
         iButtons = [
             UIModelDataAction("List icon", "List icon", .text)
         ]
-        var h8 = CAIResponseMessageData("iPhone", "iPhone", "sap-icon://desktop-mobile", nil, iButtons, nil, nil, nil, nil, true)
+        var h8 = CAIResponseMessageData("iPhone", "iPhone", "sap-icon://desktop-mobile", nil, nil, iButtons, nil, nil, nil, nil, true)
         h8.attachment.buttons = iButtons
         headerArr.append(h8)
 
@@ -143,21 +143,21 @@ struct MockData {
         iButtons = [
             UIModelDataAction("Submit review", "Submit review", .text)
         ]
-        var c1 = CAIResponseMessageData("Mustang", "Car on race track", "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*", nil, iButtons, nil, nil, nil, nil, true)
+        var c1 = CAIResponseMessageData("Mustang", "Car on race track", nil, "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*", nil, iButtons, nil, nil, nil, nil, true)
             
         carouselArr.append(c1)
         iButtons = [
             UIModelDataAction("See more", "See more", .text)
         ]
-        var c2 = CAIResponseMessageData("Dog", "Without the cutiest animal on the planet, am I right?", "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", nil, iButtons, nil, nil, nil, nil, true)
+        var c2 = CAIResponseMessageData("Dog", "Without the cutiest animal on the planet, am I right?", nil, "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", nil, iButtons, nil, nil, nil, nil, true)
         
         carouselArr.append(c2)
         
-        var c3 = CAIResponseMessageData("Card", "Card in Carousel", nil, nil, iButtons, nil, nil, nil, nil, true)
+        var c3 = CAIResponseMessageData("A simple card with icon", "Card in Carousel with sap-icon", nil, "sap-icon://desktop-mobile", nil, iButtons, nil, nil, nil, nil, true)
         
         carouselArr.append(c3)
         
-        var c4 = CAIResponseMessageData("Different Card", "Another Card in Carousel", nil, nil, iButtons, nil, nil, nil, nil, true)
+        var c4 = CAIResponseMessageData("Simplest card", "Card in Carousel without image/icon", nil, nil, nil, iButtons, nil, nil, nil, nil, true)
         
         carouselArr.append(c4)
         
@@ -167,7 +167,7 @@ struct MockData {
         arr.append(CAIResponseMessageData(text: "Show me a single card (technically embedded in carousel", false))
         
         // swiftlint:disable:next line_length
-        var cs1 = CAIResponseMessageData("Card Title", "Card SubTitle", "https://miro.medium.com/max/1400/1*j8CdLYOjjiWWWmsXs-48KA.png", "Card Description", iButtons, [UIModelDataSection("Section 1", [UIModelDataValue(value: "Value 1", dataType: "text", rawValue: "Value 1", label: "Label 1", valueState: nil), UIModelDataValue(value: "Value 2", dataType: "text", rawValue: "Value 2", label: "Label 2", valueState: nil), UIModelDataValue(value: "A very long text as value 3 to take call the available space, a very long text as value 3 to take call the available space, a very long text as value 3 to take call the available space indeed.", dataType: "text", rawValue: "A very long text as value 3 to take call the available space", label: "Label 3", valueState: nil), UIModelDataValue(value: "Value 4", dataType: "text", rawValue: "Value 4", label: "Label 4", valueState: nil)])], "Status 1", "Status 2", "Status 3", true)
+        var cs1 = CAIResponseMessageData("Card Title", "Card SubTitle", nil, "https://miro.medium.com/max/1400/1*j8CdLYOjjiWWWmsXs-48KA.png", "Card Description", iButtons, [UIModelDataSection("Section 1", [UIModelDataValue(value: "Value 1", dataType: "text", rawValue: "Value 1", label: "Label 1", valueState: nil), UIModelDataValue(value: "Value 2", dataType: "text", rawValue: "Value 2", label: "Label 2", valueState: nil), UIModelDataValue(value: "A very long text as value 3 to take call the available space, a very long text as value 3 to take call the available space, a very long text as value 3 to take call the available space indeed.", dataType: "text", rawValue: "A very long text as value 3 to take call the available space", label: "Label 3", valueState: nil), UIModelDataValue(value: "Value 4", dataType: "text", rawValue: "Value 4", label: "Label 4", valueState: nil)])], "Status 1", "Status 2", "Status 3", true)
         
         arr.append(CAIResponseMessageData([cs1.attachment.content!], true))
         
@@ -179,6 +179,7 @@ struct MockData {
         var hp1 = CAIResponseMessageData("Laptop Lenovo",
                                          "Card image as sap-icon",
                                          "sap-icon://order-status",
+                                         nil,
                                          nil,
                                          iButtons,
                                          nil,
@@ -199,6 +200,7 @@ struct MockData {
                                          "Card with attributes",
                                          "sap-icon://order-status",
                                          nil,
+                                         nil,
                                          iButtons,
                                          iSections,
                                          "Not Available")
@@ -216,18 +218,20 @@ struct MockData {
                                          "Card with long attribute values",
                                          "sap-icon://order-status",
                                          nil,
+                                         nil,
                                          iButtons,
                                          iSections,
                                          "Not Available")
         arr.append(hp3)
 
         // card
-        arr.append(CAIResponseMessageData("Laptop Lenovo", "This is a great Laptop", "https://cdn.cnetcontent.com/d7/8d/d78d88da-e0a1-4607-abc5-991c92223a39.jpg", nil, nil, nil, "Available", "$1,200"))
+        arr.append(CAIResponseMessageData("Laptop Lenovo", "This is a great Laptop", "https://cdn.cnetcontent.com/d7/8d/d78d88da-e0a1-4607-abc5-991c92223a39.jpg", nil, nil, nil, nil, "Available", "$1,200"))
 
         // card
         iButtons = [UIModelDataAction("Order", "Order", .text), UIModelDataAction("Video", "https://www.youtube.com/watch?v=owlqMEzgTUo", .link)]
         var hp4 = CAIResponseMessageData("Laptop Lenovo",
                                          "Card image loaded remotely", "https://cdn.cnetcontent.com/d7/8d/d78d88da-e0a1-4607-abc5-991c92223a39.jpg",
+                                         nil,
                                          nil,
                                          iButtons,
                                          nil,
