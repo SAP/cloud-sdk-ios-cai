@@ -59,28 +59,8 @@ struct ObjectCardMessageView: View {
                     Spacer()
                     
                     VStack(alignment: .trailing) {
-                        if model.status != nil, model.status!.value != nil {
-                            if model.status!.valState == .success {
-                                Text(model.status!.value!)
-                                    .font(.subheadline)
-                                    .foregroundColor(themeManager.color(for: .successColor))
-                            } else if model.status!.valState == .error {
-                                Text(model.status!.value!)
-                                    .font(.subheadline)
-                                    .foregroundColor(themeManager.color(for: .errorColor))
-                            } else if model.status!.valState == .warn {
-                                Text(model.status!.value!)
-                                    .font(.subheadline)
-                                    .foregroundColor(themeManager.color(for: .warnColor))
-                            } else if model.status!.valState == .info {
-                                Text(model.status!.value!)
-                                    .font(.subheadline)
-                                    .foregroundColor(themeManager.color(for: .infoColor))
-                            } else {
-                                Text(model.status!.value!)
-                                    .font(.subheadline)
-                                    .foregroundColor(themeManager.color(for: .primary2))
-                            }
+                        if let status = model.status {
+                            ItemStatus(status: status)
                         }
                         if model.substatus != nil {
                             Text(model.substatus!)
