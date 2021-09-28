@@ -117,31 +117,8 @@ struct CarouselDetailPage: View {
     }
     
     @ViewBuilder var statusView: some View {
-        if let itemHeader = carouselItem?.itemHeader,
-           let status = itemHeader.status,
-           let statusText = status.value
-        {
-            if status.valState == .success {
-                Text(statusText)
-                    .font(.subheadline)
-                    .foregroundColor(themeManager.color(for: .successColor))
-            } else if status.valState == .error {
-                Text(statusText)
-                    .font(.subheadline)
-                    .foregroundColor(themeManager.color(for: .errorColor))
-            } else if status.valState == .warn {
-                Text(statusText)
-                    .font(.subheadline)
-                    .foregroundColor(themeManager.color(for: .warnColor))
-            } else if status.valState == .info {
-                Text(statusText)
-                    .font(.subheadline)
-                    .foregroundColor(themeManager.color(for: .infoColor))
-            } else {
-                Text(statusText)
-                    .font(.subheadline)
-                    .foregroundColor(themeManager.color(for: .primary2))
-            }
+        if let status = carouselItem?.itemHeader?.status {
+            ItemStatus(status: status)
         }
     }
     
