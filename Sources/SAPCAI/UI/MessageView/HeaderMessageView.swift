@@ -36,12 +36,12 @@ struct HeaderMessageView: View {
                         .foregroundColor(themeManager.color(for: .primary1))
                     Text(model.subheadline ?? "-")
                         .lineLimit(1)
-                        .font(.subheadline)
+                        .font(.body)
                         .foregroundColor(themeManager.color(for: .primary2))
-                    if model.footnote != nil {
-                        Text(model.footnote!)
+                    if let footnote = model.footnote {
+                        Text(footnote)
                             .lineLimit(1)
-                            .font(.caption)
+                            .font(.subheadline)
                             .foregroundColor(themeManager.color(for: .primary2))
                     }
                 }

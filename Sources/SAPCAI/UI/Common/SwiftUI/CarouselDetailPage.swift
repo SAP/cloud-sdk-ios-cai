@@ -69,7 +69,7 @@ struct CarouselDetailPage: View {
                     .font(.body)
                     .foregroundColor(themeManager.color(for: .primary1))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                if let carouselDesc = carouselItem?.itemHeader?.headerDescription {
+                if let carouselDesc = carouselItem?.itemHeader?.footnote {
                     Text(carouselDesc)
                         .font(.subheadline)
                         .foregroundColor(themeManager.color(for: .primary2))
