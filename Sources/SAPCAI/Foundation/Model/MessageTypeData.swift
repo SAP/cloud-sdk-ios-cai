@@ -79,8 +79,6 @@ public protocol HeaderMessageData {
     var imageUrl: String? { get }
     
     var status: ValueData? { get }
-    
-    var headerDescription: String? { get }
 }
 
 /// Protocol describing a list
