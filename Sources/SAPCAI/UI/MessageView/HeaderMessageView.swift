@@ -30,18 +30,24 @@ struct HeaderMessageView: View {
                         .frame(width: 50, height: 50)
                 }
                 VStack(alignment: .leading, spacing: 6) {
-                    Text(model.headline ?? "-")
-                        .lineLimit(1)
-                        .font(.headline)
-                        .foregroundColor(themeManager.color(for: .primary1))
+                    HStack(alignment: .top, spacing: 0) {
+                        Text(model.headline ?? "-")
+                            .lineLimit(1)
+                            .font(.headline)
+                            .foregroundColor(themeManager.color(for: .primary1))
+                        if let status = model.status {
+                            Spacer()
+                            ItemStatus(status: status)
+                        }
+                    }
                     Text(model.subheadline ?? "-")
                         .lineLimit(1)
-                        .font(.subheadline)
+                        .font(.body)
                         .foregroundColor(themeManager.color(for: .primary2))
-                    if model.footnote != nil {
-                        Text(model.footnote!)
+                    if let footnote = model.footnote {
+                        Text(footnote)
                             .lineLimit(1)
-                            .font(.caption)
+                            .font(.subheadline)
                             .foregroundColor(themeManager.color(for: .primary2))
                     }
                 }
