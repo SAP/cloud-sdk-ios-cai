@@ -20,6 +20,7 @@ struct CarouselItemView: View {
                         }
                     }
                 }
+                .buttonStyle(PlainButtonStyle()) // needed for iOS 13 to avoid whole image will be be covered with an opaque blue color, see https://www.hackingwithswift.com/quick-start/swiftui/how-to-disable-the-overlay-color-for-images-inside-button-and-navigationlink
                 if let buttonsData = item.itemButtons {
                     CarouselButtonsView(buttonsData: buttonsData)
                         .frame(minHeight: 44)
