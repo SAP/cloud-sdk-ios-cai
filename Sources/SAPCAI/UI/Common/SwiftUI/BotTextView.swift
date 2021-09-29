@@ -50,7 +50,6 @@ struct BotTextView: View {
                     }
                     .foregroundColor(themeManager.color(for: .incomingTextColor))
                     if isTruncated && !forceFullText {
-                        // TODO: need see more localization
                         Button(Bundle.cai.localizedString(forKey: "View more", value: "View more", table: nil)) {
                             forceFullText = true
                         }
