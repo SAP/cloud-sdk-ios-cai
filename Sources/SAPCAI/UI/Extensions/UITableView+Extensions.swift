@@ -24,8 +24,8 @@ extension UIScrollView {
     /// Scrolls to bottom of the scrollview if content size is higher than scroll view bounds size
     ///
     /// - Parameter animated: Animates the scroll
-    func scrollToBottom(animated: Bool) {
-        let bottomOffset = CGPoint(x: 0, y: contentSize.height - (bounds.size.height - contentInset.bottom))
+    func scrollToBottom(animated: Bool, adjust safeAreaTop: CGFloat = 0) {
+        let bottomOffset = CGPoint(x: 0, y: contentSize.height - (bounds.size.height - contentInset.bottom) - safeAreaTop)
 //        dlog(bottomOffset)
         if bottomOffset.y > 0 {
             setContentOffset(bottomOffset, animated: animated)
