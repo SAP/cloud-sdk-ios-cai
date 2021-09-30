@@ -1,5 +1,4 @@
 import SwiftUI
-import URLImage
 
 /// Renders an image from a MediaItem data model
 ///
@@ -34,28 +33,25 @@ struct ImageUIView: View {
         self.fallback = fallback
     }
     
+    var boundingBox: BoundingBox {
+        BoundingBox(minWidth: 44,
+                    minHeight: 44,
+                    maxWidth: self.hSizeClass == .regular ? 480 : self.geometry.size.width * 0.75,
+                    maxHeight: self.vSizeClass == .regular ? 400 : 240)
+    }
+    
     // :nodoc:
     var body: some View {
         Group {
             if let sourceUrl = media?.sourceUrl {
-                URLImage(url: sourceUrl) { image, info in
-                    SizeConverter(
-                        CGSize(width: CGFloat(info.cgImage.width), height: CGFloat(info.cgImage.height)),
-                        BoundingBox(minWidth: 44,
-                                    minHeight: 44,
-                                    maxWidth: self.hSizeClass == .regular ? 480 : self.geometry.size.width * 0.75,
-                                    maxHeight: self.vSizeClass == .regular ? 400 : 240),
-                        content: { targetSize in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: targetSize.width, height: targetSize.height)
-                        }
-                    )
-                    .preference(key: ImageSizeInfoPrefKey.self,
-                                value: CGSize(width: info.cgImage.width,
-                                              height: info.cgImage.height))
+                ImageViewWrapper(url: sourceUrl) { imgView in
+                    let size = imgView.imageManager.imgSize
+                    SizeConverter(size, boundingBox, content: { targetSize in
+                        imgView.frame(width: targetSize.width, height: targetSize.height)
+                            .preference(key: ImageSizeInfoPrefKey.self, value: targetSize)
+                    })
                 }
+                .scaledToFill()
             } else {
                 fallback
             }
