@@ -147,12 +147,14 @@ final class UIScrollViewController<Content: View>: UIViewController {
         self.hostingController.didMove(toParent: self)
     }
     
-    @available(iOS 15.0, *)
-    override func contentScrollView(for edge: NSDirectionalRectEdge) -> UIScrollView? {
-        if self.hostingController.view.frame.size != self.hostingController.view.intrinsicContentSize {
-            self.hostingController.view.frame.size = self.hostingController.view.intrinsicContentSize
-            self.scrollView.contentSize = self.hostingController.view.intrinsicContentSize
+    #if swift(>=5.5)
+        @available(iOS 15.0, *)
+        override func contentScrollView(for edge: NSDirectionalRectEdge) -> UIScrollView? {
+            if self.hostingController.view.frame.size != self.hostingController.view.intrinsicContentSize {
+                self.hostingController.view.frame.size = self.hostingController.view.intrinsicContentSize
+                self.scrollView.contentSize = self.hostingController.view.intrinsicContentSize
+            }
+            return super.contentScrollView(for: edge)
         }
-        return super.contentScrollView(for: edge)
-    }
+    #endif
 }
