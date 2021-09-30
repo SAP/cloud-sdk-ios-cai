@@ -14,6 +14,13 @@ struct MockData {
         arr.append(CAIResponseMessageData(text: "Hello, what can I do for you today?", true))
 
         // text message (user)
+        arr.append(CAIResponseMessageData(text: "What long message looks like?", false))
+
+        // text message (bot)
+        // swiftlint:disable:next line_length
+        arr.append(CAIResponseMessageData(text: "I will show you a really, really, really long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long text message to verify that text wraps and looks pretty.", true))
+
+        // text message (user)
         arr.append(CAIResponseMessageData(text: "Can you show me a really, really, really long text message to verify that text wraps and looks pretty. And then some next with quick reply buttons!", false))
         
         // text message (bot)
