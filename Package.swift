@@ -5,7 +5,7 @@ let package = Package(
     name: "SAPCAI",
     defaultLocalization: "en",
     platforms: [
-        .iOS("13.0")
+        .iOS("14.0")
     ],
     products: [
         .library(
