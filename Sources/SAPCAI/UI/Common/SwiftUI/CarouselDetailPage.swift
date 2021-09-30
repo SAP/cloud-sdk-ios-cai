@@ -1,5 +1,4 @@
 import SwiftUI
-import URLImage
 
 struct CarouselDetailPage: View {
     @EnvironmentObject private var themeManager: ThemeManager
@@ -40,12 +39,10 @@ struct CarouselDetailPage: View {
     
     @ViewBuilder var carouselHeaderImage: some View {
         if let imgURL = carouselItem?.itemPicture?.sourceUrl {
-            URLImage(url: imgURL) { image in
+            ImageViewWrapper(url: imgURL) { image in
                 image
-                    .resizable()
                     .scaledToFill()
                     .frame(width: screenWidth, height: 180.0 / 375 * screenWidth)
-                    .aspectRatio(contentMode: .fill)
                     .clipped()
             }
         }

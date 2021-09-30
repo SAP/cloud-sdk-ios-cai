@@ -1,5 +1,4 @@
 import SwiftUI
-import URLImage
 
 /// Renders an image from a MediaItem data model
 struct ImageView: View {
@@ -10,16 +9,13 @@ struct ImageView: View {
             if imageUrl.isSAPIcon {
                 IconImageView(iconUrl: imageUrl.absoluteString, iconSize: CGSize(width: 50, height: 50))
             } else {
-                URLImage(url: imageUrl,
-                         failure: { _, _ in
-                             Image(systemName: "photo")
-                         },
-                         content: { image in
-                             image
-                                 .resizable()
-                                 .aspectRatio(contentMode: .fit)
-                                 .cornerRadius(8)
-                         })
+                ImageViewWrapper(url: imageUrl,
+                                 failure: { _ in
+                                     Image(systemName: "photo")
+                                 },
+                                 content: { $0 })
+                    .scaledToFit()
+                    .cornerRadius(8)
             }
         }
     }
