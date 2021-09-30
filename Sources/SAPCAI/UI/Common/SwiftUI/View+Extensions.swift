@@ -21,6 +21,19 @@ extension View {
     }
 }
 
+extension View {
+    func readSize(onChange: @escaping (CGSize) -> Void) -> some View {
+        background(
+            GeometryReader { geometryProxy in
+                Color.clear
+                    .preference(key: CAITextSizePreferenceKey.self, value: geometryProxy.size)
+            }
+            .hidden()
+        )
+        .onPreferenceChange(CAITextSizePreferenceKey.self, perform: onChange)
+    }
+}
+
 struct EdgeBorder: Shape {
     var width: CGFloat
     var edges: [Edge]
@@ -70,4 +83,10 @@ struct RoundedCorner: Shape {
                                 cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
     }
+}
+
+private struct CAITextSizePreferenceKey: PreferenceKey {
+    static var defaultValue: CGSize = .zero
+    
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
 }

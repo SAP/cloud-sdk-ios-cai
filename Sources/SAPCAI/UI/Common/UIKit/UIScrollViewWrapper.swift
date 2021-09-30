@@ -65,41 +65,11 @@ struct UIScrollViewWrapper<Content: View>: UIViewControllerRepresentable {
         viewController.view.layoutIfNeeded()
 
         viewController.updateContent(self.content)
-        
-//        let duration: TimeInterval = self.duration(viewController)
-//        guard duration != .zero else {
-//            viewController.scrollView.contentOffset = self.offset.wrappedValue
-//            return
-//        }
-//
-//        UIView.animate(withDuration: duration, delay: 0, options: .allowUserInteraction, animations: {
-//            viewController.scrollView.contentOffset = self.offset.wrappedValue
-//        }, completion: nil)
-    }
-    
-    // Calculate animation speed
-    private func duration(_ viewController: UIViewControllerType) -> TimeInterval {
-        var diff: CGFloat = 0
-        
-        switch self.axis {
-        case .horizontal:
-            diff = abs(viewController.scrollView.contentOffset.x - self.offset.wrappedValue.x)
-        default:
-            diff = abs(viewController.scrollView.contentOffset.y - self.offset.wrappedValue.y)
-        }
-        
-        if diff == 0 {
-            return .zero
-        }
-        
-        let percentageMoved = diff / UIScreen.main.bounds.height
-        
-        return self.animationDuration * min(max(TimeInterval(percentageMoved), 0.25), 1)
     }
 }
 
 /// :nodoc:
-final class UIScrollViewController<Content: View>: UIViewController, UIScrollViewDelegate, ObservableObject {
+final class UIScrollViewController<Content: View>: UIViewController {
     // MARK: - Properties
 
     private var offset: Binding<CGPoint>
@@ -112,12 +82,10 @@ final class UIScrollViewController<Content: View>: UIViewController, UIScrollVie
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.delegate = self
         scrollView.alwaysBounceVertical = true
         scrollView.backgroundColor = .clear
         scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
+        scrollView.contentInset = .zero
         return scrollView
     }()
 
@@ -133,8 +101,6 @@ final class UIScrollViewController<Content: View>: UIViewController, UIScrollVie
         self.automaticallyScrollsToBottom = automaticallyScrollsToBottom
         
         super.init(nibName: nil, bundle: nil)
-        addChild(self.hostingController)
-        self.scrollView.addSubview(self.hostingController.view)
     }
     
     // MARK: - Update
@@ -157,7 +123,7 @@ final class UIScrollViewController<Content: View>: UIViewController, UIScrollVie
         self.logger.debug("contentSize: \(contentSize)")
         if self.automaticallyScrollsToBottom, contentSize != self.currentContentSize {
             // scroll to bottom
-            self.scrollView.scrollToBottom(animated: true)
+            self.scrollView.scrollToBottom(animated: true, adjust: self.hostingController.view.safeAreaInsets.top)
             self.currentContentSize = contentSize
         }
     }
@@ -171,26 +137,24 @@ final class UIScrollViewController<Content: View>: UIViewController, UIScrollVie
         super.viewDidLoad()
         
         self.view.addSubview(self.scrollView)
-        self.createConstraints()
-        self.view.layoutIfNeeded()
+        self.scrollView.pin(to: self.view)
+        addChild(self.hostingController)
+        self.scrollView.addSubview(self.hostingController.view)
+        if #available(iOS 15, *) {
+        } else {
+            self.hostingController.view.pin(to: self.scrollView)
+        }
+        self.hostingController.didMove(toParent: self)
     }
     
-    // MARK: - UIScrollViewDelegate
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        DispatchQueue.main.async {
-//            self.offset.wrappedValue = scrollView.contentOffset
-//        }
-    }
-    
-    // MARK: - Constraints
-
-    fileprivate func createConstraints() {
-        NSLayoutConstraint.activate([
-            self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        ])
-    }
+    #if swift(>=5.5)
+        @available(iOS 15.0, *)
+        override func contentScrollView(for edge: NSDirectionalRectEdge) -> UIScrollView? {
+            if self.hostingController.view.frame.size != self.hostingController.view.intrinsicContentSize {
+                self.hostingController.view.frame.size = self.hostingController.view.intrinsicContentSize
+                self.scrollView.contentSize = self.hostingController.view.intrinsicContentSize
+            }
+            return super.contentScrollView(for: edge)
+        }
+    #endif
 }
