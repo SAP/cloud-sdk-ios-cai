@@ -145,11 +145,10 @@ AssistantView()
   .environmentObject(viewModel)
   .environmentObject(ThemeManager.shared)
   .onDisappear {
-    viewModel.cancelSubscriptions()
-    dataPublisher.resetConversation()
-    //SAPCAI uses `SDWebImage` and its image caching capabilities but it is the app developers responsibility to clear the cache if that is desired
-    SDImageCache.shared.clearMemory()
-    SDImageCache.shared.clearDisk(onCompletion: nil)
+    // you cannot rely that onDisappear will be called only once
+    // because `AssistantView` might trigger further navigations
+    // causing the `AssistantView` to disappear and re-appear.
+    // Therefore cleanup logic should be handled elsewhere.
   })
 ```
 
@@ -159,6 +158,21 @@ but `SAPCAI` also provides a UIKit wrapper
 let vc = MessagingViewController(MessagingViewModel(publisher: dataPublisher))
 
 self.navigationController?.pushViewController(vc, animated: true)
+```
+
+### Cleanup
+
+Once a conversation ended you need to call the following functions to avoid memory leaks and unnecessary network requests. Also `MessagingViewModel` cannot be deallocated otherwise.
+
+```swift
+viewModel.cancelSubscriptions()
+dataPublisher.resetConversation()
+```
+
+SAPCAI uses `SDWebImage` and its image caching capabilities but it is the app developers responsibility to clear the cache if that is desired. Example:
+```Swift
+SDImageCache.shared.clearMemory()
+SDImageCache.shared.clearDisk(onCompletion: nil)
 ```
 
 ## Theming
