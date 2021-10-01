@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct CarouselItemView: View {
+    @EnvironmentObject private var viewModel: MessagingViewModel
+
     var carouselItem: CarouselItemMessageData?
 
     var itemWidth: CGFloat
@@ -9,7 +11,9 @@ struct CarouselItemView: View {
         VStack(alignment: .leading, spacing: 0) {
             if let item = carouselItem {
                 NavigationLink(destination: CarouselDetailPage(carouselItem: item)
-                    .environmentObject(ThemeManager.shared)) {
+                    .environmentObject(ThemeManager.shared)
+                    .environmentObject(self.viewModel)
+                ) {
                     VStack(spacing: 0) {
                         if let picture = item.itemPicture {
                             CarouselImageView(media: picture, itemWidth: itemWidth)
