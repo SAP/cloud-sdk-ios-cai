@@ -157,6 +157,9 @@ struct HomeView: View {
                 }
                 .padding(10)
                 .navigationBarTitle("Testing SAPCAI SDK for iOS")
+                .onAppear {
+                    self.dataModel.clear()
+                }
             }
         }
         .sheet(isPresented: self.$isPresented, onDismiss: {
