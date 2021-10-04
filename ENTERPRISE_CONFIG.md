@@ -16,7 +16,7 @@ If not already done create OAuth client for Designtime API in your bot
 Destination and SSO Mechanism depend on the deployment scenario:
 * Use `OAuth2 User Token Exchange` when both services run on the same Business Technology Platform (BTP) subaccount
 * Use `OAuth2 SAML Bearer Assertion` when services run on different subaccounts or regions
-  * Prerequisite: [trust established between subaccounts](https://help.sap.com/viewer/cca91383641e40ffbe03bdc78f00f681/Cloud/en-US/8ebf60c82a8e4cfc904f441c0c0acd6b.html#loio8ebf60c82a8e4cfc904f441c0c0acd6b__establish)
+  
 ### OAuth2 User Token Exchange
 
 Create a destination with the following information:
@@ -29,7 +29,7 @@ Create a destination with the following information:
   * Client ID: Client ID for CAI Designtime API for your bot
   * Client Secret: Client Secret of CAI Designtime API for your bot
 
-### OAuth2 SAML Beaer Assertion
+### OAuth2 SAML Bearer Assertion
 
 Create a destination with the following information:
 
@@ -46,7 +46,27 @@ Create a destination with the following information:
   * Name ID Format: urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
   * Authentication Context: urn:oasis:names:tc:SAML:2.0:ac:classes:PreviousSession
 
-See [User Propagation between Cloud Foundry Applications](https://help.sap.com/viewer/cca91383641e40ffbe03bdc78f00f681/Cloud/en-US/8ebf60c82a8e4cfc904f441c0c0acd6b.html) for more information.
+Navigate to the details page of the destination and download **SAML Metadata**.
+
+## Configuration Steps - SAP BTP Subaccount
+
+*Needed when using `OAuth2 SAML Bearer Assertion`*
+
+### Establish Trust
+
+In the subaccount running SAP Conversational AI (Subaccount 2), you have to trust the subaccount running SAP Mobile Services (Subaccount 1).
+
+In the subaccount running SAP Conversational AI:
+<kbd>Security</kbd> > <kbd> Trust Configuration</kbd> > <kbd> New Trust Configuration</kbd>
+
+* Metadata: Upload SAML Metadata xml of SAP Mobile Service destination created in previous step
+* Name: specify a name as you see fit
+* Origin Key: SAML Assertion Issuer as defined in SAP Mobile Service destination
+* Status: Active
+* Available for User Logon: false
+* Create shadow users during login: true
+
+Steps are equivalent to [Establish Trust between Subaccount 1 and Subaccount 2](https://help.sap.com/viewer/cca91383641e40ffbe03bdc78f00f681/Cloud/en-US/8ebf60c82a8e4cfc904f441c0c0acd6b.html#loio8ebf60c82a8e4cfc904f441c0c0acd6b__establish) in [User Propagation between Cloud Foundry Applications](https://help.sap.com/viewer/cca91383641e40ffbe03bdc78f00f681/Cloud/en-US/8ebf60c82a8e4cfc904f441c0c0acd6b.html) documentation, the only difference is to use the SAML Metadata xml of SAP Mobile Service destination created in previous step.
 
 ### iOS App
 
