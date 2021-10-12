@@ -145,6 +145,21 @@ extension ValueData {
     var isClickable: Bool {
         type == .link || type == .email || type == .phoneNumber
     }
+
+    /// either original value (if present), formatted value for phoneNumber/email or empty string
+    var formattedValue: String {
+        if let content = value, let type = type {
+            switch type {
+            case .phoneNumber:
+                return content.toTelURLString()
+            case .email:
+                return "mailto:" + content
+            default:
+                return content
+            }
+        }
+        return ""
+    }
 }
 
 /// Enumeration for possible postback types

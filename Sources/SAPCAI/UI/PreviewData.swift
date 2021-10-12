@@ -79,7 +79,7 @@
                                                               value: "1234, CA, USA",
                                                               dataType: "address")])
         }
-        
+
         /// carousel item data
         static var carouselMessageData: MessageData {
             let iButtons = [
@@ -88,27 +88,92 @@
             ]
             let iAttributes = [UIModelDataValue(value: "This is item 1", dataType: "text", rawValue: nil, label: "Item 1", valueState: nil),
                                UIModelDataValue(value: "This is item 2", dataType: "text", rawValue: nil, label: "Item 2", valueState: nil),
-                               UIModelDataValue(value: "https://www.sap.com", dataType: "text", rawValue: nil, label: "Link 1", valueState: nil),
-                               UIModelDataValue(value: "https://www.youtube.com", dataType: "text", rawValue: nil, label: "Link 2", valueState: nil),
-                               UIModelDataValue(value: "+1-408-999-9999", dataType: "text", rawValue: nil, label: "Phone", valueState: nil),
-                               UIModelDataValue(value: "john.smith@sap.com", dataType: "text", rawValue: nil, label: "Email", valueState: nil),
+                               UIModelDataValue(value: "https://www.sap.com", dataType: "link", rawValue: nil, label: "Link 1", valueState: nil),
+                               UIModelDataValue(value: "https://www.youtube.com", dataType: "link", rawValue: nil, label: "Link 2", valueState: nil),
+                               UIModelDataValue(value: "+1-408-999-9999", dataType: "phonenumber", rawValue: nil, label: "Phone", valueState: nil),
+                               UIModelDataValue(value: "john.smith@sap.com", dataType: "email", rawValue: nil, label: "Email", valueState: nil),
                                UIModelDataValue(value: "this is a long text. this is a long text. this is a long text. ", dataType: "text", rawValue: nil, label: "label for long text", valueState: nil),
-                               UIModelDataValue(value: "john.smith@sap.com", dataType: "text", rawValue: nil, label: "short label", valueState: nil)]
-            
+                               UIModelDataValue(value: "great job!", dataType: "text", rawValue: nil, label: "short label", valueState: nil)]
+
             let iSections = [UIModelDataSection("Section1", iAttributes)]
-            
-            let data = CAIResponseMessageData("Dog", "Without the cutiest animal on the planet, am I right?", "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", nil, nil, iButtons, iSections, nil, nil, nil, true)
+
+            let data = CAIResponseMessageData(title: "Dog", subtitle: "Without the cutiest animal on the planet, am I right?", featuredImageName: "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", inlineButtons: iButtons, sections: iSections, isBot: true)
             let viewModel = MessagingViewModel(publisher: MockPublisher())
             viewModel.addMessage(CAIResponseMessageData([data.attachment.content!], true))
             return viewModel.model[0]
         }
-        
+
         static var carouselDetail: CarouselItemMessageData? {
             if case .carousel(let data) = carouselMessageData.type {
                 return data.carouselItems[0]
             }
             return nil
         }
+
+        static var cardWithoutImage: CardMessageData? {
+            let cardMessageData = CAIResponseMessageData(title: "Laptop Lenovo",
+                                                         subtitle: "Card image as sap-icon",
+                                                         headerImageName: "sap-icon://order-status",
+                                                         status1: "Available")
+            if case .object(let data) = cardMessageData.type {
+                return data
+            }
+            return nil
+        }
+
+        static func card(title: Bool, subtitle: Bool, image: PreviewImage?, status: Bool) -> CardMessageData? {
+            let titleText: String = title ? "Title" : ""
+            let subtitleText: String = title ? "Sub" : ""
+            let statusText: String = title ? "Available" : ""
+            var cardMessageData: CAIResponseMessageData!
+            var imageAddress: String = ""
+            if let image = image {
+                switch image.type {
+                case .icon:
+                    imageAddress = "sap-icon://order-status"
+                case .regular:
+                    imageAddress = "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg"
+                }
+
+                switch image.placement {
+                case .header:
+                    cardMessageData = CAIResponseMessageData(title: titleText,
+                                                             subtitle: subtitleText,
+                                                             headerImageName: imageAddress,
+                                                             status1: statusText)
+                case .content:
+                    cardMessageData = CAIResponseMessageData(title: titleText,
+                                                             subtitle: subtitleText,
+                                                             featuredImageName: imageAddress,
+                                                             inlineButtons: [],
+                                                             status1: statusText)
+                }
+            } else {
+                cardMessageData = CAIResponseMessageData(title: titleText,
+                                                         subtitle: subtitleText,
+                                                         status1: statusText)
+            }
+
+            if case .object(let data) = cardMessageData.type {
+                return data as! CarouselItemMessageData
+            }
+            return nil
+        }
+    }
+
+    struct PreviewImage {
+        var type: CardImageType
+        var placement: CardImagePlacement
+    }
+
+    enum CardImagePlacement {
+        case header
+        case content
+    }
+
+    enum CardImageType {
+        case icon
+        case regular
     }
 
 #endif

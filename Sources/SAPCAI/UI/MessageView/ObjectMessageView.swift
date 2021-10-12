@@ -56,6 +56,7 @@ struct ObjectMessageView: View {
                             .fixedSize(horizontal: false, vertical: true)
                     }
                 }
+                .multilineTextAlignment(.leading)
                 
                 Spacer()
                 if self.hasButtons, !self.hasStatus {

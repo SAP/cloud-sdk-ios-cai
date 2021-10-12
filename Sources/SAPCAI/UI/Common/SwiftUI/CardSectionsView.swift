@@ -39,16 +39,9 @@ extension CardSectionsView {
         @EnvironmentObject private var viewModel: MessagingViewModel
         @EnvironmentObject private var themeManager: ThemeManager
         var body: some View {
-            var urlVal = secAttribute.value!
-            if secAttribute.type == .phoneNumber {
-                urlVal = secAttribute.value!.toTelURLString()
-            }
-            if secAttribute.type == .email {
-                urlVal = "mailto:" + secAttribute.value!
-            }
-            return HStack(alignment: .firstTextBaseline) {
-                if secAttribute.label != nil {
-                    Text(secAttribute.label!)
+            HStack(alignment: .firstTextBaseline) {
+                if let label = secAttribute.label {
+                    Text(label)
                         .font(.body)
                         .foregroundColor(self.themeManager.color(for: .primary1))
                         .lineLimit(1)
@@ -58,8 +51,8 @@ extension CardSectionsView {
                 if secAttribute.value != nil {
                     if secAttribute.isClickable {
                         Button(action: {
-                            self.viewModel.urlOpenerData.url = urlVal
-                            URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: urlVal)
+                            self.viewModel.urlOpenerData.url = secAttribute.formattedValue
+                            URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: secAttribute.formattedValue)
                         }, label: {
                             Text(secAttribute.value!)
                                 .font(.body)
@@ -68,7 +61,7 @@ extension CardSectionsView {
                                 .padding([.trailing], 16)
                         })
                     } else {
-                        Text(secAttribute.value!)
+                        Text(secAttribute.formattedValue)
                             .font(.body)
                             .foregroundColor(self.themeManager.color(for: .primary1))
                             .lineLimit(1)
@@ -85,16 +78,9 @@ extension CardSectionsView {
         @EnvironmentObject private var viewModel: MessagingViewModel
         @EnvironmentObject private var themeManager: ThemeManager
         var body: some View {
-            var urlVal = secAttribute.value!
-            if secAttribute.type == .phoneNumber {
-                urlVal = secAttribute.value!.toTelURLString()
-            }
-            if secAttribute.type == .email {
-                urlVal = "mailto:" + secAttribute.value!
-            }
-            return VStack(alignment: .leading, spacing: 3) {
-                if secAttribute.label != nil {
-                    Text(secAttribute.label!)
+            VStack(alignment: .leading, spacing: 3) {
+                if let label = secAttribute.label {
+                    Text(label)
                         .font(.body)
                         .foregroundColor(self.themeManager.color(for: .primary2))
                         .lineLimit(1)
@@ -105,8 +91,8 @@ extension CardSectionsView {
                 if secAttribute.value != nil {
                     if secAttribute.isClickable {
                         Button(action: {
-                            self.viewModel.urlOpenerData.url = urlVal
-                            URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: urlVal)
+                            self.viewModel.urlOpenerData.url = secAttribute.formattedValue
+                            URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: secAttribute.formattedValue)
                         }, label: {
                             Text(secAttribute.value!)
                                 .font(.body)
@@ -117,7 +103,7 @@ extension CardSectionsView {
                                 .fixedSize(horizontal: false, vertical: true)
                         })
                     } else {
-                        Text(secAttribute.value!)
+                        Text(secAttribute.formattedValue)
                             .font(.body)
                             .foregroundColor(self.themeManager.color(for: .primary1))
                             .padding([.leading], 16)

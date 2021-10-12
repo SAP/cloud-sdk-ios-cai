@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CarouselButtonsView: View {
+struct CardPageButtonsView: View {
     @EnvironmentObject private var themeManager: ThemeManager
 
     var buttonsData: [PostbackData]?
@@ -25,8 +25,8 @@ struct CarouselButtonsView: View {
     }
 }
 
-struct CarouselButtonsView_Previews: PreviewProvider {
+struct CardPageButtonsView_Previews: PreviewProvider {
     static var previews: some View {
-        CarouselButtonsView(buttonsData: nil)
+        CardPageButtonsView(buttonsData: nil)
     }
 }
