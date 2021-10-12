@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CarouselImageView: View {
+struct FeaturedImageView: View {
     var media: MediaItem?
     
     var itemWidth: CGFloat
@@ -35,8 +35,8 @@ struct CarouselImageView: View {
     }
 }
 
-struct CarouselImageView_Previews: PreviewProvider {
+struct FeaturedImageView_Previews: PreviewProvider {
     static var previews: some View {
-        CarouselImageView(media: nil, itemWidth: CGFloat(integerLiteral: 300))
+        FeaturedImageView(media: nil, itemWidth: CGFloat(integerLiteral: 300))
     }
 }

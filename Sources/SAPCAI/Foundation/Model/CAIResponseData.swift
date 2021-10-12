@@ -223,7 +223,8 @@ public extension CAIResponseMessageData {
                   conversation: "",
                   receivedAt: Date())
     }
-    
+
+    @available(*, deprecated, message: "Use init(title:subtitle:headerImageName:contentPictureName:description:inlineButtons:sections:status1:status1ValueState:status2:status3:isBot)")
     init(_ title: String,
          _ subtitle: String,
          _ headerImageName: String? = nil, // e.g. image in object card
@@ -291,6 +292,83 @@ public extension CAIResponseMessageData {
             modelData.header?.image = UIModelDataImage(imageUrl: img)
         }
         
+        self.init(id: UUID().uuidString,
+                  participant: CAIResponseParticipantData(isBot: isBot, senderId: "botA"),
+                  attachment: modelData,
+                  conversation: "",
+                  receivedAt: Date())
+    }
+
+    init(title: String,
+         subtitle: String,
+         headerImageName: String? = nil, // e.g. image in object card
+         featuredImageName: String? = nil, // e.g. image for carousel card
+         description: String? = nil,
+         inlineButtons: [UIModelDataAction]? = nil,
+         sections: [UIModelDataSection]? = nil,
+         status1: String? = nil,
+         status1_state: UIModelData.ValueState? = nil,
+         status2: String? = nil,
+         status2_state: UIModelData.ValueState? = nil,
+         status3: String? = nil,
+         status3_state: UIModelData.ValueState? = nil,
+         isBot: Bool = true)
+    {
+        var content: UIModelDataContent?
+        content = UIModelDataContent()
+        if inlineButtons != nil {
+            content?.buttons = inlineButtons
+        }
+        if sections != nil {
+            content?.sections = sections
+        }
+        content?.header = UIModelDataHeader(title: UIModelDataValue(value: title, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: nil),
+                                            subtitle: UIModelDataValue(value: subtitle, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: nil),
+                                            description: UIModelDataValue(value: description,
+                                                                          dataType: UIModelData.ValueType.text.rawValue,
+                                                                          rawValue: nil,
+                                                                          label: nil,
+                                                                          valueState: nil),
+                                            status1: UIModelDataValue(value: status1, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: status1_state?.rawValue),
+                                            status2: UIModelDataValue(value: status2, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: status2_state?.rawValue),
+                                            status3: UIModelDataValue(value: status3, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: status3_state?.rawValue),
+                                            image: nil)
+        if let img = headerImageName {
+            content?.header?.image = UIModelDataImage(imageUrl: img)
+        }
+        if let img = featuredImageName {
+            content?.picture = UIModelDataMedia(url: img)
+        }
+
+        var modelData = UIModelData(type: VisualizationType.object.rawValue,
+                                    delay: nil,
+                                    header: UIModelDataHeader(title: UIModelDataValue(value: title,
+                                                                                      dataType: UIModelData.ValueType.text.rawValue,
+                                                                                      rawValue: nil,
+                                                                                      label: nil,
+                                                                                      valueState: nil),
+                                                              subtitle: UIModelDataValue(value: subtitle,
+                                                                                         dataType: UIModelData.ValueType.text.rawValue,
+                                                                                         rawValue: nil,
+                                                                                         label: nil,
+                                                                                         valueState: nil),
+                                                              description: UIModelDataValue(value: description,
+                                                                                            dataType: UIModelData.ValueType.text.rawValue,
+                                                                                            rawValue: nil,
+                                                                                            label: nil,
+                                                                                            valueState: nil),
+                                                              status1: UIModelDataValue(value: status1, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: nil),
+                                                              status2: UIModelDataValue(value: status2, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: nil),
+                                                              status3: UIModelDataValue(value: status3, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: nil),
+                                                              image: nil),
+                                    content: content,
+                                    detailsAvailable: false,
+                                    buttons: nil)
+
+        if let img = headerImageName {
+            modelData.header?.image = UIModelDataImage(imageUrl: img)
+        }
+
         self.init(id: UUID().uuidString,
                   participant: CAIResponseParticipantData(isBot: isBot, senderId: "botA"),
                   attachment: modelData,

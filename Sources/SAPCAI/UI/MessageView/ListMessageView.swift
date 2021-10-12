@@ -48,7 +48,7 @@ struct ListMessageView: View {
                 ForEach(0 ..< showMoreLen, id: \.self) { i in
                     VStack(alignment: .leading, spacing: 0) {
                         // each object card goes here
-                        ObjectMessageView(model: listData.items[i])
+                        ListItemView(model: listData.items[i])
                         if i < showMoreLen - 1 {
                             Divider().background(self.themeManager.color(for: .lineColor))
                         }
@@ -61,7 +61,7 @@ struct ListMessageView: View {
                 ForEach(0 ..< showLessLen, id: \.self) { i in
                     VStack(alignment: .leading, spacing: 0) {
                         // each object card goes here
-                        ObjectMessageView(model: listData.items[i])
+                        ListItemView(model: listData.items[i])
                         if i < showLessLen - 1 {
                             Divider().background(self.themeManager.color(for: .lineColor))
                         }
@@ -111,7 +111,7 @@ struct ListMessageView: View {
         static func previewData(items: Int, hasFooterButton: Bool) -> MessageData {
             var headerArr = [CAIResponseMessageData]()
             for n in 1 ... items {
-                headerArr.append(CAIResponseMessageData("MacBook \(n)", "Computer", "sap-icon://desktop-mobile", nil, nil, nil, nil, "Available", "In Stock", nil, true))
+                headerArr.append(CAIResponseMessageData(title: "MacBook \(n)", subtitle: "Computer", headerImageName: "sap-icon://desktop-mobile", status1: "Available", status1_state: .success, status2: "In Stock", isBot: true))
             }
             // swiftlint:disable:next line_length
             return CAIResponseMessageData(headerArr.map { $0.attachment.content! }, hasFooterButton ? [UIModelDataAction("Footer button", "Footer button", .text)] : [], "List of Products", "Electronics", "Sample Electronics", false)
