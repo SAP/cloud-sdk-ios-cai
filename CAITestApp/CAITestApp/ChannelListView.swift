@@ -25,7 +25,7 @@ public struct ChannelListView: View {
                     .navigationBarTitle(Text(channel.slug), displayMode: .inline)
                     .environmentObject(self.dataModel.getModelFor(channel, self.channelService))
                     .environmentObject(ThemeManager.shared)
-                    ) {
+                ) {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(channel.slug)
                         Text(channel.id)

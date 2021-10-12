@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CarouselDetailPage: View {
+struct CardPageView: View {
     @EnvironmentObject private var themeManager: ThemeManager
     @Environment(\.presentationMode) private var presentationMode
     
@@ -14,22 +14,22 @@ struct CarouselDetailPage: View {
         (self.screenWidth - 2 * self.padding - self.hStackSpacing) / 2
     }
     
-    var carouselItem: CarouselItemMessageData?
+    var card: CardMessageData?
     
     var body: some View {
         VStack(spacing: 0) {
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 16) {
-                    carouselHeaderImage
-                    carouselHeader
+                    featuredImage
+                    header
                     Divider().background(self.themeManager.color(for: .lineColor))
-                    carouselAttributesTable
+                    attributesTable
                 }
                 Spacer().frame(height: 20)
             }
-            Divider().background(self.themeManager.color(for: .lineColor))
-            if let buttonsData = carouselItem?.itemButtons {
-                CarouselButtonsView(buttonsData: buttonsData, actionBlock: {
+            if let buttonsData = card?.cardButtons, buttonsData.count > 0 {
+                Divider().background(self.themeManager.color(for: .lineColor))
+                CardPageButtonsView(buttonsData: buttonsData, actionBlock: {
                     presentationMode.wrappedValue.dismiss()
                 })
                     .frame(minHeight: 44)
@@ -37,8 +37,8 @@ struct CarouselDetailPage: View {
         }
     }
     
-    @ViewBuilder var carouselHeaderImage: some View {
-        if let imgURL = carouselItem?.itemPicture?.sourceUrl {
+    @ViewBuilder var featuredImage: some View {
+        if let imgURL = card?.featuredImage?.sourceUrl {
             ImageViewWrapper(url: imgURL) { image in
                 image
                     .scaledToFill()
@@ -48,32 +48,41 @@ struct CarouselDetailPage: View {
         }
     }
     
-    @ViewBuilder var carouselHeader: some View {
-        if let itemHeader = carouselItem?.itemHeader,
+    @ViewBuilder var header: some View {
+        if let itemHeader = card?.cardHeader,
            let headline = itemHeader.headline,
            let subheadline = itemHeader.subheadline
         {
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text(headline)
-                        .font(.headline)
+            HStack(alignment: .top) {
+                if let imageUrl = itemHeader.imageUrl,
+                   let imageURL = URL(string: imageUrl)
+                {
+                    ImageView(imageUrl: imageURL)
+                        .frame(width: 50, height: 50)
+                        .padding(.leading)
+                }
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Text(headline)
+                            .font(.headline)
+                            .foregroundColor(themeManager.color(for: .primary1))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Spacer()
+                        statusView
+                    }
+                    Text(subheadline)
+                        .font(.body)
                         .foregroundColor(themeManager.color(for: .primary1))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Spacer()
-                    statusView
+                    if let carouselDesc = card?.cardHeader?.footnote {
+                        Text(carouselDesc)
+                            .font(.subheadline)
+                            .foregroundColor(themeManager.color(for: .primary2))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
-                Text(subheadline)
-                    .font(.body)
-                    .foregroundColor(themeManager.color(for: .primary1))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                if let carouselDesc = carouselItem?.itemHeader?.footnote {
-                    Text(carouselDesc)
-                        .font(.subheadline)
-                        .foregroundColor(themeManager.color(for: .primary2))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
+                .padding([.leading, .trailing], 20)
             }
-            .padding([.leading, .trailing], 20)
         }
     }
     
@@ -81,10 +90,8 @@ struct CarouselDetailPage: View {
     func makeGroupCells(group: [UIModelDataValue]) -> some View {
         HStack {
             ForEach(0 ..< group.count) { index in
-                if let title = group[index].label,
-                   let detail = group[index].value
-                {
-                    CarouselDetailInfoCell(title: title, detail: detail)
+                if let attribute = group[index] {
+                    CardSectionAttributeView(sectionAttribute: attribute)
                         .frame(maxWidth: .infinity)
                         .clipped()
                 }
@@ -93,8 +100,8 @@ struct CarouselDetailPage: View {
         .frame(maxWidth: .infinity)
     }
     
-    @ViewBuilder var carouselAttributesTable: some View {
-        if let sections = carouselItem?.itemSections,
+    @ViewBuilder var attributesTable: some View {
+        if let sections = card?.cardSections,
            !sections.isEmpty,
            let attributeTitle = sections[0].title,
            let attributes = sections[0].attributes
@@ -110,11 +117,20 @@ struct CarouselDetailPage: View {
                 }
             }
             .padding([.leading, .trailing], 20)
+        } else {
+            EmptyView()
+//            VStack(alignment: .center) {
+//                Image(systemName: "info.circle")
+//                Text("No detailed content available")
+//            }
+//            .font(.headline)
+//            .foregroundColor(themeManager.color(for: .primary1))
+//            .frame(maxWidth: .infinity)
         }
     }
     
     @ViewBuilder var statusView: some View {
-        if let status = carouselItem?.itemHeader?.status {
+        if let status = card?.cardHeader?.status {
             ItemStatus(status: status)
         }
     }
@@ -170,39 +186,57 @@ struct CarouselDetailPage: View {
     }
 }
 
-struct CarouselDetailInfoCell: View {
+struct CardSectionAttributeView: View {
+    @EnvironmentObject private var viewModel: MessagingViewModel
     @EnvironmentObject private var themeManager: ThemeManager
-    
-    let title: String
-    let detail: String
-    
-    init(title: String,
-         detail: String)
-    {
-        self.title = title
-        self.detail = detail
-    }
-    
+
+    let sectionAttribute: ValueData
+
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(self.title)
+            Text(self.sectionAttribute.label ?? "")
                 .font(.subheadline)
                 .foregroundColor(themeManager.color(for: .primary2))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(self.detail)
-                .font(.subheadline)
-                .foregroundColor(themeManager.color(for: .primary1))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
+
+            if sectionAttribute.isClickable {
+                Button(action: {
+                    self.viewModel.urlOpenerData.url = self.sectionAttribute.formattedValue
+                    URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: self.sectionAttribute.formattedValue)
+                }, label: {
+                    Text(self.sectionAttribute.value!)
+                        .font(.subheadline)
+                        .foregroundColor(themeManager.color(for: .accentColor))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                })
+            } else {
+                Text(self.sectionAttribute.formattedValue)
+                    .font(.subheadline)
+                    .foregroundColor(themeManager.color(for: .primary1))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
         }
     }
 }
 
 #if DEBUG
-    struct CarouselDetailPage_Previews: PreviewProvider {
+    struct CardPageView_Previews: PreviewProvider {
         static var previews: some View {
-            CarouselDetailPage(carouselItem: PreviewData.carouselDetail)
-                .environmentObject(ThemeManager.shared)
+            Group {
+                CardPageView(card: PreviewData.objectMessage.first!)
+
+                CardPageView(card: PreviewData.carouselDetail)
+
+                CardPageView(card: PreviewData.card(title: true, subtitle: true, image: .init(type: .regular, placement: .content), status: true))
+
+                CardPageView(card: PreviewData.card(title: true, subtitle: true, image: .init(type: .icon, placement: .header), status: true))
+
+                CardPageView(card: PreviewData.card(title: true, subtitle: true, image: nil, status: true))
+            }
+            .environmentObject(testData)
+            .environmentObject(ThemeManager.shared)
         }
     }
 #endif
