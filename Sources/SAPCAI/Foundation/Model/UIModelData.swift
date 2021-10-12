@@ -471,20 +471,20 @@ extension UIModelDataContent: ObjectMessageData {
     }
 }
 
-extension UIModelDataContent: CarouselItemMessageData {
-    public var itemPicture: MediaItem? {
+extension UIModelDataContent: CarouselItemMessageData, CardMessageData {
+    public var featuredImage: MediaItem? {
         self.picture
     }
     
-    public var itemHeader: HeaderMessageData? {
+    public var cardHeader: HeaderMessageData? {
         self.header
     }
     
-    public var itemButtons: [PostbackData]? {
+    public var cardButtons: [PostbackData]? {
         self.buttons
     }
     
-    public var itemSections: [UIModelDataSection]? {
+    public var cardSections: [UIModelDataSection]? {
         self.sections
     }
 }

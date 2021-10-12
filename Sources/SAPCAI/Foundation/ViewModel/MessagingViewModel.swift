@@ -302,14 +302,12 @@ public struct URLOpenerData {
             CAIResponseMessageData(text: "Hi! What can I do for you?", true),
             CAIResponseMessageData(text: "Show me the latest product", false),
             CAIResponseMessageData(text: "This product was just released today, hurry up before it is gone !!!", true, markdown: true),
-            CAIResponseMessageData("Laptop Lenovo",
-                                   "This is a great Laptop",
-                                   "sap-icon://order-status",
-                                   nil,
-                                   nil,
-                                   [UIModelDataAction("Order", "Order", .text), UIModelDataAction("Call Support", "Call Support", .text)],
-                                   nil,
-                                   "Available")
+            CAIResponseMessageData(title: "Laptop Lenovo",
+                                   subtitle: "This is a great Laptop",
+                                   headerImageName: "sap-icon://order-status",
+                                   inlineButtons: [UIModelDataAction("Order", "Order", .text), UIModelDataAction("Call Support", "Call Support", .text)],
+                                   status1: "Available",
+                                   status1_state: .success)
         ])
         return viewModel
     

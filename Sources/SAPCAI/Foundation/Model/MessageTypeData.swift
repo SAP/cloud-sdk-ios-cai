@@ -29,7 +29,7 @@ public protocol ObjectSectionData {
 }
 
 /// Protocol describing the content of an object card
-public protocol ObjectMessageData {
+public protocol ObjectMessageData: CardMessageData {
     /// ID
     var id: String { get }
 
@@ -125,19 +125,22 @@ public protocol CarouselMessageData {
 }
 
 /// Protocol describing the content of a carousel item
-public protocol CarouselItemMessageData {
+public protocol CarouselItemMessageData: CardMessageData {}
+
+/// Protocol describing a card
+public protocol CardMessageData {
     /// ID
     var id: String { get }
 
     /// Picture
-    var itemPicture: MediaItem? { get }
+    var featuredImage: MediaItem? { get }
 
     /// Header
-    var itemHeader: HeaderMessageData? { get }
+    var cardHeader: HeaderMessageData? { get }
 
     /// List of actions
-    var itemButtons: [PostbackData]? { get }
-    
+    var cardButtons: [PostbackData]? { get }
+
     /// List of attributes
-    var itemSections: [UIModelDataSection]? { get }
+    var cardSections: [UIModelDataSection]? { get }
 }
