@@ -1,0 +1,26 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Me demander";
+
+"error.server" = "Une erreur de serveur s'est produite.";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "L'analyse des données a échoué.";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "La demande a été annulée.";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Conversation introuvable. Veuillez me reposer la question.";
+
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Voir plus";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Réinitialiser";
+
+/* XBUT: Cancel */
+"Cancel" = "Annuler";
+
+/* XBUT: action sheet title */
+"Actions" = "Actions";
+
