@@ -1,0 +1,26 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "कृपया मुझसे पूछ लें";
+
+"error.server" = "सर्वर त्रुटि हुई";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "डेटा पार्स करने में विफल";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "अनुरोध रद्द कर दिया गया";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "बातचीत नहीं मिली. कृपया मुझसे फिर से पूछें";
+
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "अधिक देखें";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "साफ करें";
+
+/* XBUT: Cancel */
+"Cancel" = "रद्द करें";
+
+/* XBUT: action sheet title */
+"Actions" = "कार्यवाई";
+
