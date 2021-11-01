@@ -185,9 +185,7 @@ struct HomeView: View {
                         .navigationBarTitle(Text(self.liveConnection.channelSlug), displayMode: .inline)
                         .environmentObject(self.dataModel.getModelFor(self.liveConnection))
                         .environmentObject(ThemeManager.shared)
-                        .onDisappear {
-                            self.dataModel.clear()
-                        })) {
+                )) {
                     Text("Connect")
                 }
             } else {
