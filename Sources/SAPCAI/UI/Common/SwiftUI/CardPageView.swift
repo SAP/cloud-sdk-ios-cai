@@ -118,14 +118,13 @@ struct CardPageView: View {
             }
             .padding([.leading, .trailing], 20)
         } else {
-            EmptyView()
-//            VStack(alignment: .center) {
-//                Image(systemName: "info.circle")
-//                Text("No detailed content available")
-//            }
-//            .font(.headline)
-//            .foregroundColor(themeManager.color(for: .primary1))
-//            .frame(maxWidth: .infinity)
+            VStack(alignment: .center) {
+                Image("noDetailedContentAvailable", bundle: Bundle.cai)
+                Text(NSLocalizedString("NoDetailedContentAvailable", tableName: "Localizable", bundle: Bundle.cai, comment: ""))
+            }
+            .font(.headline)
+            .foregroundColor(themeManager.color(for: .primary1))
+            .frame(maxWidth: .infinity)
         }
     }
     
