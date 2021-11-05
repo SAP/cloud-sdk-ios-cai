@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "การดำเนินการ";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "ไม่มีเนื้อหาโดยละเอียด";
+

@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "Действия";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Подробный контент недоступен";
+

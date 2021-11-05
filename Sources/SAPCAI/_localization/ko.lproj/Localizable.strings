@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "액션";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "사용 가능한 세부 컨텐트가 없습니다.";
+
