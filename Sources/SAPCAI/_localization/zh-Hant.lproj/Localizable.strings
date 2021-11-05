@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "動作";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "沒有詳細內容";
+

@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "Thao tác";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Không có nội dung chi tiết nào khả dụng";
+
