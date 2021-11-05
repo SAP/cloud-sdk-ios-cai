@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "कार्यवाई";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "कोई विस्तृत सामग्री उपलब्ध नहीं है";
+

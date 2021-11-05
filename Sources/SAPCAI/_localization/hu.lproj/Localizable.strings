@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "Műveletek";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Nem áll rendelkezésre részletes tartalom";
+

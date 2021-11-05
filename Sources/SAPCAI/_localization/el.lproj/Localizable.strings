@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "Ενέργειες";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Λεπτομερή περιεχόμενα μη διαθέσιμα";
+

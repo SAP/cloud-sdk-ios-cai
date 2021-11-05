@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "Toimet";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Yksityiskohtaista sisältöä ei ole käytettävissä";
+

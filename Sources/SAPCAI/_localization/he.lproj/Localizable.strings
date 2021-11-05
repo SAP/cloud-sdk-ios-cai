@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "פעולות";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "אין תוכן מפורט זמין";
+

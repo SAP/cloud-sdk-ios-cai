@@ -24,3 +24,6 @@
 /* XBUT: action sheet title */
 "Actions" = "Akce";
 
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Detailní obsah není dostupný.";
+
