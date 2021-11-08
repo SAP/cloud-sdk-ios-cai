@@ -54,7 +54,7 @@ This Swift Package is an open-source addition to the [SAP BTP SDK for iOS](https
 
 ## Requirements
 
-- iOS 13 or higher
+- iOS 14 or higher
 - Xcode 12 (Swift 5.3) or higher
 
 ## Prerequisites
