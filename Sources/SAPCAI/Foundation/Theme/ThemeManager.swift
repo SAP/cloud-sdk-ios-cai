@@ -18,8 +18,11 @@ import SwiftUI
 /// @see Theme.Key to know what keys you can configure.
 ///
 public enum CAITheme: CustomStringConvertible {
+    @available(*, deprecated, message: "The casual theme is no longer maintained and will be removed in a future version. Use the standard Fiori theme or a custom theme")
+    /// **No longer maintained!** Use the standard Fiori theme or a custom theme
     case casual(ColorPalette)
 
+    ///Fiori theme follows SAP Fiori Design Language
     case fiori(ColorPalette)
 
     case custom(Theme, ColorPalette)
