@@ -179,7 +179,7 @@ SDImageCache.shared.clearDisk(onCompletion: nil)
 
 `SAPCAI` will provide two standard themes
 - a Fiori theme and
-- a Casual theme
+- a Casual theme (**no longer maintained**)
 
 <img width="663" alt="Themes" src="https://user-images.githubusercontent.com/4176826/119032300-e1217f80-b960-11eb-8d65-e068958aff36.png">
 
@@ -192,6 +192,8 @@ ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
 ```
 
 ### Casual theme
+
+**No longer maintained and therefore marked as deprecated. Do not use!**
     
 ```swift
 ThemeManager.shared.setCurrentTheme( .casual(CasualColorPalette()) )
