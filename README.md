@@ -65,23 +65,11 @@ This Swift Package is an open-source addition to the [SAP BTP SDK for iOS](https
 
 ### Create a mobile channel
 
-In the *Enterprise Edition* you create a mobile channel via the UI.
+In SAP Conversational AI you create a mobile channel via the "Connect" tab of your bot.
 
 <img width="1093" alt="CreateMobileChannel" src="https://user-images.githubusercontent.com/4176826/119203198-549dbc80-ba47-11eb-8b65-d813324c3cc8.png">
 
 <img alt="CreateMobileChannelResults" src="https://user-images.githubusercontent.com/4176826/119582931-6a2e2180-bd7a-11eb-8faf-1b801a03d146.png">
-
-However, the option is currently hidden by default and must be enabled by filing a [ticket](http://help.sap.com/disclaimer?site=https%3A%2F%2Flaunchpad.support.sap.com%2F%23incident%2Fsolution).
-
-In the *Community Edition* you create a mobile channel via the [/channel](https://reverseproxy.cai.tools.sap/docs/api-reference/#channels) API.
- 
-```bash
-# create a mobile channel
-curl -X POST "<BaseUrl>/connect/v1/channels" \
--H "X-Token: Token <DeveloperToken>" \
--H "Content-Type: application/json" \
--d '{"type":"mobile","slug":"<desiredChannelSlug>","connectionTarget": "SAP_Product","targetSystem": "MobileBot","isActivated":true}'
-```
 
 ## Dependencies
 
@@ -115,7 +103,7 @@ import SAPFoundation
 import SwiftUI
 
 /*
-  Create the `CAIChannel` object by providing the channel id, channel token, and channel slug, which were created in CAI Platform.
+  Create the `CAIChannel` object by providing the channel id, channel token, and channel slug of your mobile channel. Values can be looked up in CAI platform.
 
   If you do not want to hardcode channel information on the client, you can retrieve a list of channels for a given Application ID with `CAIChannelService`.
 */
