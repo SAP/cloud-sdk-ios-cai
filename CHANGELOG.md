@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/SAP/cloud-sdk-ios-cai/compare/1.0.4...2.0.0) (2021-11-10)
+
+### ⚠ BREAKING CHANGES
+
+* 🧨 new minimum deployment target is iOS 14 (previously: iOS 13)
+* 🧨 [SDWebImage](https://github.com/SDWebImage/SDWebImage) replaces [URLImage](https://github.com/dmytro-anokhin/url-image) as package dependency 
+* 🧨 no cleanup logic in `onDisappear` !! 
+
+  For previous release(s) it was suggested to implement cleanup logic in `onDisappear` but you cannot rely that `onDisappear` will be called only once. The `AssistantView` might trigger further navigations causing the `AssistantView` to disappear and re-appear. Therefore cleanup logic should be handled elsewhere.
+* 🧨 `NavigationView` is required in view hierarchy.
+
+### Features
+
+* 🎸 CardPageView to be used in Carousel and List ([a585c84](https://github.com/SAP/cloud-sdk-ios-cai/commit/a585c84cc16125263424f7b4fbc7d373d986ca6c))
+* 🎸 carousel image: support sap-icon ([a1ef423](https://github.com/SAP/cloud-sdk-ios-cai/commit/a1ef423dcd6bd7b020809ec2e9567e8e3e2a13d5))
+* 🎸 expandable plain long text messages with "View more" button ([#42](https://github.com/SAP/cloud-sdk-ios-cai/issues/42)) ([7437316](https://github.com/SAP/cloud-sdk-ios-cai/commit/7437316fee74f8bee11a9fbe1a902dc0f27b026c))
+* 🎸 gif supported through SDWebImage ([#32](https://github.com/SAP/cloud-sdk-ios-cai/issues/32)) ([8280053](https://github.com/SAP/cloud-sdk-ios-cai/commit/8280053136dc4bebfd3f0aaa2009feace77c9bcf))
+
+
+### Bug Fixes
+
+* 🐛 resolve cycle reference for conversation operation ([3310416](https://github.com/SAP/cloud-sdk-ios-cai/commit/331041683d504fa4a29792e2bd8581f51f113ebf))
+* 🐛 UI improvement for spacing and heights ([#33](https://github.com/SAP/cloud-sdk-ios-cai/issues/33)) ([aa7ff09](https://github.com/SAP/cloud-sdk-ios-cai/commit/aa7ff09212a07e1c60cc7f7012e9968485141774))
+
 ## [1.0.4](https://github.com/SAP/cloud-sdk-ios-cai/compare/1.0.3...1.0.4) (2021-08-09)
 
 ### Features
