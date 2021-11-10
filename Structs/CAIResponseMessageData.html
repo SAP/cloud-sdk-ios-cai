@@ -16,13 +16,13 @@
     <header>
       <div class="content-wrapper">
         <p>
-          <a href="../index.html">SAPCAI 1.0.4 Docs</a>
+          <a href="../index.html">SAPCAI 2.0.0 Docs</a>
           <span class="no-mobile"></span>
         </p>
     
         <p class="header-right">
           <a href="https://github.com/SAP/cloud-sdk-ios-cai">
-            <img src="../img/gh.png"/>
+            <img src="../img/gh.png" alt="GitHub"/>
             <span class="no-mobile">View on GitHub</span>
           </a>
         </p>
@@ -34,7 +34,7 @@
         <p id="breadcrumbs">
           <span class="no-mobile">
             <a href="../index.html">SAPCAI Reference</a>
-            <img id="carat" src="../img/carat.png" />
+            <img id="carat" src="../img/carat.png" alt=""/>
           </span>
           CAIResponseMessageData Structure Reference
         </p>
@@ -282,7 +282,7 @@
                   <a name="//apple_ref/swift/Section/Conformance to MessageData protocol" class="dashAnchor"></a>
                   <div class="section-name-container">
                     <a class="section-name-link" href="#/Conformance%20to%20MessageData%20protocol"></a>
-                    <h3 class="section-name"><p>Conformance to MessageData protocol</p>
+                    <h3 class="section-name"><span>Conformance to MessageData protocol</span>
 </h3>
                   </div>
                 </div>
@@ -451,7 +451,7 @@
                   <a name="//apple_ref/swift/Section/Helper functions to create CAI message data objects" class="dashAnchor"></a>
                   <div class="section-name-container">
                     <a class="section-name-link" href="#/Helper%20functions%20to%20create%20CAI%20message%20data%20objects"></a>
-                    <h3 class="section-name"><p>Helper functions to create CAI message data objects</p>
+                    <h3 class="section-name"><span>Helper functions to create CAI message data objects</span>
 </h3>
                   </div>
                 </div>
@@ -513,9 +513,9 @@
                   <li class="item">
                     <div>
                       <code>
-                      <a name="/s:6SAPCAI22CAIResponseMessageDataVyACSS_S2SSgADSayAA07UIModelD6ActionVGSgSayAA0eD7SectionVGSgA3DSbtcfc"></a>
-                      <a name="//apple_ref/swift/Method/init(_:_:_:_:_:_:_:_:_:_:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataVyACSS_S2SSgADSayAA07UIModelD6ActionVGSgSayAA0eD7SectionVGSgA3DSbtcfc">init(_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataVyACSS_S2SSgA2DSayAA07UIModelD6ActionVGSgSayAA0eD7SectionVGSgA3DSbtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(_:_:_:_:_:_:_:_:_:_:_:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataVyACSS_S2SSgA2DSayAA07UIModelD6ActionVGSgSayAA0eD7SectionVGSgA3DSbtcfc">init(_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>_:<wbr>)</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -532,7 +532,8 @@
                             <p class="aside-title">Swift</p>
                             <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
      <span class="n">_</span> <span class="nv">subtitle</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
-     <span class="n">_</span> <span class="nv">imageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="n">_</span> <span class="nv">headerImageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="c1">// e.g. image in object card</span>
+     <span class="n">_</span> <span class="nv">contentPictureName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="c1">// e.g. image for carousel card</span>
      <span class="n">_</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
      <span class="n">_</span> <span class="nv">inlineButtons</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataAction.html">UIModelDataAction</a></span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
      <span class="n">_</span> <span class="nv">sections</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataSection.html">UIModelDataSection</a></span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
@@ -540,6 +541,46 @@
      <span class="n">_</span> <span class="nv">status2</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
      <span class="n">_</span> <span class="nv">status3</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
      <span class="n">_</span> <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI22CAIResponseMessageDataV5title8subtitle15headerImageName08featuredhI011description13inlineButtons8sections7status10O6_state7status20q1_P07status30r1_P05isBotACSS_S2SSgA2RSayAA07UIModelD6ActionVGSgSayAA0uD7SectionVGSgArA0uD0V10ValueStateOSgARA3_ARA3_Sbtcfc"></a>
+                      <a name="//apple_ref/swift/Method/init(title:subtitle:headerImageName:featuredImageName:description:inlineButtons:sections:status1:status1_state:status2:status2_state:status3:status3_state:isBot:)" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI22CAIResponseMessageDataV5title8subtitle15headerImageName08featuredhI011description13inlineButtons8sections7status10O6_state7status20q1_P07status30r1_P05isBotACSS_S2SSgA2RSayAA07UIModelD6ActionVGSgSayAA0uD7SectionVGSgArA0uD0V10ValueStateOSgARA3_ARA3_Sbtcfc">init(title:<wbr>subtitle:<wbr>headerImageName:<wbr>featuredImageName:<wbr>description:<wbr>inlineButtons:<wbr>sections:<wbr>status1:<wbr>status1_state:<wbr>status2:<wbr>status2_state:<wbr>status3:<wbr>status3_state:<wbr>isBot:<wbr>)</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>Undocumented</p>
+
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+     <span class="nv">subtitle</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+     <span class="nv">headerImageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="c1">// e.g. image in object card</span>
+     <span class="nv">featuredImageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="c1">// e.g. image for carousel card</span>
+     <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">inlineButtons</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataAction.html">UIModelDataAction</a></span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">sections</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataSection.html">UIModelDataSection</a></span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">status1</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">status1_state</span><span class="p">:</span> <span class="kt"><a href="../Structs/UIModelData.html">UIModelData</a></span><span class="o">.</span><span class="kt">ValueState</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">status2</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">status2_state</span><span class="p">:</span> <span class="kt"><a href="../Structs/UIModelData.html">UIModelData</a></span><span class="o">.</span><span class="kt">ValueState</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">status3</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">status3_state</span><span class="p">:</span> <span class="kt"><a href="../Structs/UIModelData.html">UIModelData</a></span><span class="o">.</span><span class="kt">ValueState</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+     <span class="nv">isBot</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
 
                           </div>
                         </div>
@@ -754,7 +795,10 @@
                   <a href="../Protocols/ButtonsMessageData.html">ButtonsMessageData</a>
                 </li>
                 <li class="nav-group-task">
-                  <a href="../Protocols/CarouselItemMessageData.html">CarouselItemMessageData</a>
+                  <a href="../Protocols/CardMessageData.html">CardMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols.html#/s:6SAPCAI23CarouselItemMessageDataP">CarouselItemMessageData</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="../Protocols/CarouselMessageData.html">CarouselMessageData</a>
@@ -944,11 +988,10 @@
       </div>
       <div class="footer-wrapper">
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://www.sap.com" target="_blank" rel="external">SAP SE</a>. All rights reserved. (Last updated: 2021-08-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2021 <a class="link" href="https://www.sap.com" target="_blank" rel="external noopener">SAP SE</a>. All rights reserved. (Last updated: 2021-11-10)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </div>
     </div>
   </body>
-</div>
 </html>

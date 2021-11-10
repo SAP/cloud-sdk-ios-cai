@@ -15,13 +15,13 @@
     <header>
       <div class="content-wrapper">
         <p>
-          <a href="index.html">SAPCAI 1.0.4 Docs</a>
+          <a href="index.html">SAPCAI 2.0.0 Docs</a>
           <span class="no-mobile"></span>
         </p>
     
         <p class="header-right">
           <a href="https://github.com/SAP/cloud-sdk-ios-cai">
-            <img src="img/gh.png"/>
+            <img src="img/gh.png" alt="GitHub"/>
             <span class="no-mobile">View on GitHub</span>
           </a>
         </p>
@@ -33,7 +33,7 @@
         <p id="breadcrumbs">
           <span class="no-mobile">
             <a href="index.html">SAPCAI Reference</a>
-            <img id="carat" src="img/carat.png" />
+            <img id="carat" src="img/carat.png" alt=""/>
           </span>
           SAPCAI  Reference
         </p>
@@ -45,15 +45,14 @@
           <section>
             <section class="section">
               
-              <p align="center">
-  <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
-  </br>
-  <span><b>SAP Conversational AI SDK for iOS</b></span>
-</p>
-
-<hr>
-
-<div align="center">
+              <div>
+  <p align="center">
+    <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
+    </br>
+    <span><b>SAP Conversational AI SDK for iOS</b></span>
+  </p>
+  <hr>
+  <div align="center">
     <a href="https://github.com/SAP/cloud-sdk-ios-cai#installation">Installation
     </a>
     |
@@ -65,30 +64,28 @@
     |
     <a href="https://github.com/SAP/cloud-sdk-ios-cai/blob/main/CHANGELOG.md"> Changelog
     </a>
-</div>
-
-<hr>
-
-<div align="center">
+  </div>
+  <hr>
+  <div align="center">
     <a href="https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22">
-        <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
-             alt="Build Status">
+    <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
+      alt="Build Status">
     </a>
     <a href="https://conventionalcommits.org">
-        <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
-             alt="Conventional Commits">
+    <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
+      alt="Conventional Commits">
     </a>
     <a href="http://commitizen.github.io/cz-cli/">
-        <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
-             alt="Commitizen friendly">
+    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
+      alt="Commitizen friendly">
     </a>
     <a href="https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai">
-        <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
-             alt="REUSE status">
+    <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
+      alt="REUSE status">
     </a>
+    <hr>
+  </div>
 </div>
-
-<hr>
 
 <p>The <code>SAPCAI</code> Swift Package is a module to connect to a bot on the end-to-end chatbot platform <a href="https://www.sap.com/products/conversational-ai.html">SAP Conversational AI</a> (CAI). It provides a pluggable SwiftUI <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> to initiate a conversation and render the various <a href="https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html">message types</a> of a bot.</p>
 
@@ -99,10 +96,21 @@
 </p>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
+<p>Latest version</p>
+
 <ul>
-<li>iOS 13 or higher</li>
+<li>iOS 14 or higher</li>
 <li>Xcode 12 (Swift 5.3) or higher</li>
 </ul>
+
+<details>
+  <summary><strong>Previous versions</strong></summary>
+
+Version 1.0.x
+- iOS 13 or higher
+- Xcode 12 (Swift 5.3) or higher
+
+</details>
 <h2 id='prerequisites' class='heading'>Prerequisites</h2>
 
 <ul>
@@ -112,27 +120,17 @@
 </ul>
 <h3 id='create-a-mobile-channel' class='heading'>Create a mobile channel</h3>
 
-<p>In the <em>Enterprise Edition</em> you create a mobile channel via the UI.</p>
+<p>In SAP Conversational AI you create a mobile channel via the &ldquo;Connect&rdquo; tab of your bot.</p>
 
 <p><img width="1093" alt="CreateMobileChannel" src="https://user-images.githubusercontent.com/4176826/119203198-549dbc80-ba47-11eb-8b65-d813324c3cc8.png"></p>
 
 <p><img alt="CreateMobileChannelResults" src="https://user-images.githubusercontent.com/4176826/119582931-6a2e2180-bd7a-11eb-8faf-1b801a03d146.png"></p>
-
-<p>However, the option is currently hidden by default and must be enabled by filing a <a href="http://help.sap.com/disclaimer?site=https%3A%2F%2Flaunchpad.support.sap.com%2F%23incident%2Fsolution">ticket</a>.</p>
-
-<p>In the <em>Community Edition</em> you create a mobile channel via the <a href="https://reverseproxy.cai.tools.sap/docs/api-reference/#channels">/channel</a> API.</p>
-<pre class="highlight shell"><code><span class="c"># create a mobile channel</span>
-curl -X POST <span class="s2">"&lt;BaseUrl&gt;/connect/v1/channels"</span> <span class="se">\</span>
--H <span class="s2">"X-Token: Token &lt;DeveloperToken&gt;"</span> <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
--d <span class="s1">'{"type":"mobile","slug":"&lt;desiredChannelSlug&gt;","connectionTarget": "SAP_Product","targetSystem": "MobileBot","isActivated":true}'</span>
-</code></pre>
 <h2 id='dependencies' class='heading'>Dependencies</h2>
 
 <ul>
 <li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPCommon/index.html">SAPCommon</a> for Logging</li>
 <li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPFoundation/index.html">SAPFoundation</a> for Network Connectivity and Authentication</li>
-<li><a href="https://github.com/dmytro-anokhin/url-image">URLImage</a> for asynchronous image loading in SwiftUI</li>
+<li><a href="https://github.com/SDWebImage/SDWebImage">SDWebImage</a> for asynchronous image loading and gif animation in SwiftUI</li>
 <li><a href="https://github.com/johnxnguyen/Down">Down</a> for Markdown / CommonMark rendering in Swift</li>
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
@@ -167,7 +165,7 @@ import SAPFoundation
 import SwiftUI
 
 /*
-  Create the `CAIChannel` object by providing the channel id, channel token, and channel slug, which were created in CAI Platform.
+  Create the `CAIChannel` object by providing the channel id, channel token, and channel slug of your mobile channel. Values can be looked up in CAI platform.
 
   If you do not want to hardcode channel information on the client, you can retrieve a list of channels for a given Application ID with `CAIChannelService`.
 */
@@ -188,13 +186,16 @@ let viewModel = MessagingViewModel(publisher: dataPublisher)
 <h3 id='user-interface' class='heading'>User Interface</h3>
 
 <p>Using the SwiftUI implementation is the <strong>preferred</strong> approach.</p>
-<pre class="highlight plaintext"><code>AssistantView()
+<pre class="highlight plaintext"><code>// `NavigationView` must be present in your view hierachy as `AssistantView` makes use of `NavigationLink`
+AssistantView()
   .navigationBarTitle(Text("Chat"), displayMode: .inline) // if you are in navigation controller
   .environmentObject(viewModel)
   .environmentObject(ThemeManager.shared)
   .onDisappear {
-    viewModel.cancelSubscriptions()
-    dataPublisher.resetConversation()
+    // you cannot rely that onDisappear will be called only once
+    // because `AssistantView` might trigger further navigations
+    // causing the `AssistantView` to disappear and re-appear.
+    // Therefore cleanup logic should be handled elsewhere.
   })
 </code></pre>
 
@@ -203,13 +204,24 @@ let viewModel = MessagingViewModel(publisher: dataPublisher)
 
 self.navigationController?.pushViewController(vc, animated: true)
 </code></pre>
+<h3 id='cleanup' class='heading'>Cleanup</h3>
+
+<p>Once a conversation ended you need to call the following functions to avoid memory leaks and unnecessary network requests. Also <code><a href="Classes/MessagingViewModel.html">MessagingViewModel</a></code> cannot be deallocated otherwise.</p>
+<pre class="highlight swift"><code><span class="n">viewModel</span><span class="o">.</span><span class="nf">cancelSubscriptions</span><span class="p">()</span>
+<span class="n">dataPublisher</span><span class="o">.</span><span class="nf">resetConversation</span><span class="p">()</span>
+</code></pre>
+
+<p>SAPCAI uses <code>SDWebImage</code> and its image caching capabilities but it is the app developers responsibility to clear the cache if that is desired. Example:</p>
+<pre class="highlight plaintext"><code>SDImageCache.shared.clearMemory()
+SDImageCache.shared.clearDisk(onCompletion: nil)
+</code></pre>
 <h2 id='theming' class='heading'>Theming</h2>
 
 <p><code>SAPCAI</code> will provide two standard themes</p>
 
 <ul>
 <li>a Fiori theme and</li>
-<li>a Casual theme</li>
+<li>a Casual theme (<strong>no longer maintained</strong>)</li>
 </ul>
 
 <p><img width="663" alt="Themes" src="https://user-images.githubusercontent.com/4176826/119032300-e1217f80-b960-11eb-8d65-e068958aff36.png"></p>
@@ -219,6 +231,8 @@ self.navigationController?.pushViewController(vc, animated: true)
 <pre class="highlight swift"><code><span class="kt">ThemeManager</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">setCurrentTheme</span><span class="p">(</span> <span class="o">.</span><span class="nf">fiori</span><span class="p">(</span><span class="kt">FioriColorPalette</span><span class="p">())</span> <span class="p">)</span>
 </code></pre>
 <h3 id='casual-theme' class='heading'>Casual theme</h3>
+
+<p><strong>No longer maintained and therefore marked as deprecated. Do not use!</strong></p>
 <pre class="highlight swift"><code><span class="kt">ThemeManager</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">setCurrentTheme</span><span class="p">(</span> <span class="o">.</span><span class="nf">casual</span><span class="p">(</span><span class="kt">CasualColorPalette</span><span class="p">())</span> <span class="p">)</span>
 </code></pre>
 <h3 id='create-your-own-custom-theme' class='heading'>Create your own custom theme</h3>
@@ -239,7 +253,6 @@ self.navigationController?.pushViewController(vc, animated: true)
 
 <ul>
 <li>Not being able to save, copy, or share an image as part of a bot response. Currently, there is no gesture handler attached to an image view which could allow opening a contextual menu offering such features (similar to iMessage or WhatsApp).</li>
-<li>Animated images (GIF), as part of a bot response, will be viewed as a static image (dependency to <a href="https://github.com/dmytro-anokhin/url-image/issues/43">https://github.com/dmytro-anokhin/url-image/issues/43</a>)</li>
 </ul>
 <h2 id='how-to-obtain-support' class='heading'>How to obtain support</h2>
 
@@ -364,7 +377,10 @@ self.navigationController?.pushViewController(vc, animated: true)
                   <a href="Protocols/ButtonsMessageData.html">ButtonsMessageData</a>
                 </li>
                 <li class="nav-group-task">
-                  <a href="Protocols/CarouselItemMessageData.html">CarouselItemMessageData</a>
+                  <a href="Protocols/CardMessageData.html">CardMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols.html#/s:6SAPCAI23CarouselItemMessageDataP">CarouselItemMessageData</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="Protocols/CarouselMessageData.html">CarouselMessageData</a>
@@ -554,11 +570,10 @@ self.navigationController?.pushViewController(vc, animated: true)
       </div>
       <div class="footer-wrapper">
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://www.sap.com" target="_blank" rel="external">SAP SE</a>. All rights reserved. (Last updated: 2021-08-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2021 <a class="link" href="https://www.sap.com" target="_blank" rel="external noopener">SAP SE</a>. All rights reserved. (Last updated: 2021-11-10)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </div>
     </div>
   </body>
-</div>
 </html>
