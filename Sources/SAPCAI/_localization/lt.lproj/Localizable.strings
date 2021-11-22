@@ -1,0 +1,29 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Klauskite manęs";
+
+"error.server" = "Įvyko serverio klaida";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Nepavyko išanalizuoti duomenų sintaksės";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Užklausa atšaukta";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Pokalbis nerastas. Klauskite manęs dar kartą";
+
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Peržiūrėti daugiau";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Išvalyti";
+
+/* XBUT: Cancel */
+"Cancel" = "Atšaukti";
+
+/* XBUT: action sheet title */
+"Actions" = "Veiksmai";
+
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Nėra prieinamo išsamaus turinio";
+
