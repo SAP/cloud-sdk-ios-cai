@@ -22,7 +22,7 @@ public enum CAITheme: CustomStringConvertible {
     /// **No longer maintained!** Use the standard Fiori theme or a custom theme
     case casual(ColorPalette)
 
-    ///Fiori theme follows SAP Fiori Design Language
+    /// Fiori theme follows SAP Fiori Design Language
     case fiori(ColorPalette)
 
     case custom(Theme, ColorPalette)
