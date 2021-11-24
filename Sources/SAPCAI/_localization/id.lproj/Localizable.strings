@@ -1,0 +1,29 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Silakan tanya saya";
+
+"error.server" = "Terjadi kesalahan server";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Gagal mengurai data";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Permintaan dibatalkan";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Percakapan tidak ditemukan. Silakan tanya saya lagi";
+
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Tampilkan lainnya";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Hapus";
+
+/* XBUT: Cancel */
+"Cancel" = "Batal";
+
+/* XBUT: action sheet title */
+"Actions" = "Tindakan";
+
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Konten detail tidak tersedia";
+
