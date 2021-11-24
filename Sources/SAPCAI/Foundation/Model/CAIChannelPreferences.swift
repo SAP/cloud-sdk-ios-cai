@@ -28,7 +28,7 @@ public struct CAIChannelPreferencesMenuData: Decodable {
 /// Holds model for a channel menu object
 public struct CAIChannelMenuData: Decodable {
     var locale: String
-    var call_to_actions: [CAIChannelMenuDataAction]
+    var call_to_actions: [CAIChannelMenuDataAction]?
 
     /// Initializer
     public init(_ locale: String, _ callToActions: [CAIChannelMenuDataAction]) {
@@ -39,15 +39,18 @@ public struct CAIChannelMenuData: Decodable {
 
 /// Holds model for a channel menu call to actions
 public struct CAIChannelMenuDataAction: Decodable {
-    let id: String
+    var id: String = UUID().uuidString
     var title: String
     var type: String
     var payload: String?
     var call_to_actions: [CAIChannelMenuDataAction]?
 
+    private enum CodingKeys: String, CodingKey {
+        case title, type, payload, call_to_actions
+    }
+
     /// Initializer
     public init(_ title: String, _ type: String, _ payload: String?, _ callToActions: [CAIChannelMenuDataAction]?) {
-        self.id = UUID().uuidString
         self.title = title
         self.type = type
         self.payload = payload
@@ -93,7 +96,8 @@ extension CAIChannelPreferencesMenuData: PreferencesMenuData {
 extension CAIChannelMenuData: MenuData {
     /// menu actions
     public var menuActions: [MenuAction] {
-        self.call_to_actions
+        guard let actions = self.call_to_actions else { return [] }
+        return actions
     }
 }
 
