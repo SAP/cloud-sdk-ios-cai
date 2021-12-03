@@ -113,7 +113,7 @@ import SwiftUI
 
   If you do not want to hardcode channel information on the client, you can retrieve a list of channels for a given Application ID with `CAIChannelService`.
 */
-let caiChannel = CAIChannel(id: "<channelId>", token: "<channelToken>", slug: "<channelSlug>").
+let caiChannel = CAIChannel(id: "<channelId>", token: "<channelToken>", slug: "<channelSlug>")
 
 // Create CAI service config for a SAPURLSession and URL pointing to CAI API endpoint
 let serviceConfig = CAIServiceConfig(urlSession: SAPURLSession(), host: URL(string:"<Example: https://api.cai.tools.sap>")!)
