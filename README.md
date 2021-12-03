@@ -135,7 +135,7 @@ Using the SwiftUI implementation is the **preferred** approach.
 ```Swift
 // `NavigationView` must be present in your view hierachy as `AssistantView` makes use of `NavigationLink`
 AssistantView()
-  .navigationBarTitle(Text("Chat"), displayMode: .inline) // if you are in navigation controller
+  .navigationTitle(Text("Chat")) // if you are in navigation controller
   .environmentObject(viewModel)
   .environmentObject(ThemeManager.shared)
   .onDisappear {
