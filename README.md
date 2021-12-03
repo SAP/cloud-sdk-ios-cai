@@ -86,7 +86,7 @@ In SAP Conversational AI you create a mobile channel via the "Connect" tab of yo
 
 ## Installation
 
-The package is intended for consumption via Swift Package Manager. To add `SAPCAI` to your application target, navigate to the  <kbd>File </kbd> >  <kbd>Swift Packages </kbd> >  <kbd>Add Package Dependency... </kbd>, then add the repository URL https://github.com/SAP/cloud-sdk-ios-cai.
+The package is intended for consumption via Swift Package Manager. To add `SAPCAI` to your application target, navigate to the  <kbd>File </kbd> >  <kbd>Add Packages... </kbd> >. Use the <kbd>Search or Enter Package URL</kbd> field to find the package using the repository URL https://github.com/SAP/cloud-sdk-ios-cai.
 
 You can choose one of the following package products to be added to your application/framework target.
 
