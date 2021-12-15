@@ -66,7 +66,7 @@ Version 1.0.x
 ## Prerequisites
 
 - You have existing bot(s) on the SAP Conversational AI platform
-- You created an OAuth client for Designtime API for your bot (<kbd>Settings</kbd> > <kbd> Tokens</kbd>)
+- You have created an OAuth client for Designtime API for your bot (<kbd>Settings</kbd> > <kbd> Tokens</kbd>)
 - Your bot(s) are connected to a mobile channel
 
 ### Create a mobile channel
@@ -99,7 +99,7 @@ You can choose one of the following package products to be added to your applica
 
 The code snippet below illustrates setting up the `CAIConversation` Combine publisher to initialize the `MessagingViewModel` for the `AssistantView`. For prototyping you can connect the iOS client directly with SAP Conversational AI *Community Edition*. You have to replace variable values in angle brackets (e.g. `<channelId>`) with your bot-specific values.
 
-See [Enterprise Configuration](https://github.com/SAP/cloud-sdk-ios-cai/blob/main/ENTERPRISE_CONFIG.md) guide for required configuration steps to use `SAPCAI` Swift package and connect indirectly with SAP Conversational AI *Enterprise Edition* through SAP Mobile Services.
+See the [Enterprise Configuration](https://github.com/SAP/cloud-sdk-ios-cai/blob/main/ENTERPRISE_CONFIG.md) guide for the required configuration steps to use `SAPCAI` Swift package and connect indirectly with SAP Conversational AI *Enterprise Edition* through SAP Mobile Services.
 
 ### Setting up the data publisher
 
@@ -139,7 +139,7 @@ AssistantView()
   .environmentObject(viewModel)
   .environmentObject(ThemeManager.shared)
   .onDisappear {
-    // you cannot rely that onDisappear will be called only once
+    // you cannot rely on the fact that onDisappear will be called only once
     // because `AssistantView` might trigger further navigations
     // causing the `AssistantView` to disappear and re-appear.
     // Therefore cleanup logic should be handled elsewhere.
@@ -156,7 +156,7 @@ self.navigationController?.pushViewController(vc, animated: true)
 
 ### Cleanup
 
-Once a conversation ended you need to call the following functions to avoid memory leaks and unnecessary network requests. Also `MessagingViewModel` cannot be deallocated otherwise.
+Once a conversation has ended you need to call the following functions to avoid memory leaks and unnecessary network requests. Also `MessagingViewModel` cannot be deallocated otherwise.
 
 ```swift
 viewModel.cancelSubscriptions()
@@ -205,7 +205,7 @@ You can also provide an alternative color palette or provide a custom theme.
 
 ### Trigger Skill button related
 
-- `Trigger Skill` buttons are still enabled after execution / next interaction. This behavior differs from SAP CAI WebClient. Once you click the button or type an utterance, the corresponding skill can't be triggered anymore at a later point in time since the context in which it was created might not be valid anymore.
+- `Trigger Skill` buttons are still enabled after execution / next interaction. This behavior differs from the SAP CAI Web Client. Once you click the button or type an utterance, the corresponding skill can't be triggered anymore at a later point in time since the context in which it was created might not be valid anymore.
 
 ### Image related
 
