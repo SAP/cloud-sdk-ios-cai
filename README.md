@@ -69,7 +69,7 @@ Version 1.0.x
 - You have created an OAuth client for Designtime API for your bot (<kbd>Settings</kbd> > <kbd> Tokens</kbd>)
 - Your bot(s) are connected to a mobile channel
 
-### Create a mobile channel
+### Create a Mobile Channel
 
 In SAP Conversational AI you create a mobile channel via the "Connect" tab of your bot.
 
@@ -101,7 +101,7 @@ The code snippet below illustrates setting up the `CAIConversation` Combine publ
 
 See the [Enterprise Configuration](https://github.com/SAP/cloud-sdk-ios-cai/blob/main/ENTERPRISE_CONFIG.md) guide for the required configuration steps to use `SAPCAI` Swift package and connect indirectly with SAP Conversational AI *Enterprise Edition* through SAP Mobile Services.
 
-### Setting up the data publisher
+### Setting up the Data Publisher
 
 ```Swift
 import SAPCAI
@@ -179,13 +179,13 @@ SDImageCache.shared.clearDisk(onCompletion: nil)
 
 Each theme will come with a color palette that supports both light and dark modes.
 
-### Fiori theme
+### Fiori Theme
 
 ```swift
 ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
 ```
 
-### Casual theme
+### Casual Theme
 
 **No longer maintained and therefore marked as deprecated. Do not use!**
     
@@ -193,25 +193,25 @@ ThemeManager.shared.setCurrentTheme( .fiori(FioriColorPalette()) )
 ThemeManager.shared.setCurrentTheme( .casual(CasualColorPalette()) )
 ```
 
-### Create your own custom theme
+### Create Your Own Custom Theme
 
 You can also provide an alternative color palette or provide a custom theme.
 
 ## Limitations
 
-### Markdown related
+### Markdown Related
 
 - **No support for [GitHub Flavored Markdown](https://github.github.com/gfm/)** (e.g. ~~strikethrough~~). Bot responses containing [Markdown](https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/3a3b6e09e96249b884dcf6e69eecd830.html#loio3a3b6e09e96249b884dcf6e69eecd830__section_markdown) will be rendered by the `AssistantView` according to the [Commonmark specification](https://spec.commonmark.org/0.29/) only, and unknown syntax will be treated as text. 
 
-### Trigger Skill button related
+### Trigger Skill Button Related
 
 - `Trigger Skill` buttons are still enabled after execution / next interaction. This behavior differs from the SAP CAI Web Client. Once you click the button or type an utterance, the corresponding skill can't be triggered anymore at a later point in time since the context in which it was created might not be valid anymore.
 
-### Image related
+### Image Related
 
 - Not being able to save, copy, or share an image as part of a bot response. Currently, there is no gesture handler attached to an image view which could allow opening a contextual menu offering such features (similar to iMessage or WhatsApp).
 
-## How to obtain support
+## How to Obtain Support
 
 Please [raise an issue on GitHub](https://github.com/SAP/cloud-sdk-ios-cai/issues/new/choose). SAP customers can continue to report issues through OSS for SLA tracking.  
 
