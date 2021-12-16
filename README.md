@@ -139,8 +139,8 @@ AssistantView()
   .environmentObject(viewModel)
   .environmentObject(ThemeManager.shared)
   .onDisappear {
-    // you cannot rely on the fact that onDisappear will be called only once
-    // because `AssistantView` might trigger further navigations
+    // you cannot rely on the fact that onDisappear will be called only
+    // once because `AssistantView` might trigger further navigations
     // causing the `AssistantView` to disappear and re-appear.
     // Therefore cleanup logic should be handled elsewhere.
   })
