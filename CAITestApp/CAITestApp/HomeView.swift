@@ -134,6 +134,10 @@ struct HomeView: View {
                                 Text("Explicit").tag(ChannelSelection.token)
                             }.pickerStyle(SegmentedPickerStyle())
 
+                            if self.selectedChannelSelection == ChannelSelection.appId {
+                                Text("*Note: Channel Search via AppId does not work with SAP Conversational AI Community Edition. Use \"Explict\" in such case*. ")
+                            }
+
                             if self.selectedChannelSelection == ChannelSelection.token {
                                 VStack {
                                     FloatingTextField(title: "Channel ID", text: $liveConnection.channelId, placeholder: "Channel ID")
