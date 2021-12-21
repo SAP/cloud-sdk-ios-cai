@@ -15,7 +15,7 @@
     <header>
       <div class="content-wrapper">
         <p>
-          <a href="index.html">SAPCAI 1.0.5 Docs</a>
+          <a href="index.html">SAPCAI 2.0.1 Docs</a>
           <span class="no-mobile"></span>
         </p>
     
@@ -45,15 +45,14 @@
           <section>
             <section class="section">
               
-              <p align="center">
-  <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
-  </br>
-  <span><b>SAP Conversational AI SDK for iOS</b></span>
-</p>
-
-<hr>
-
-<div align="center">
+              <div>
+  <p align="center">
+    <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
+    </br>
+    <span><b>SAP Conversational AI SDK for iOS</b></span>
+  </p>
+  <hr>
+  <div align="center">
     <a href="https://github.com/SAP/cloud-sdk-ios-cai#installation">Installation
     </a>
     |
@@ -65,30 +64,28 @@
     |
     <a href="https://github.com/SAP/cloud-sdk-ios-cai/blob/main/CHANGELOG.md"> Changelog
     </a>
-</div>
-
-<hr>
-
-<div align="center">
+  </div>
+  <hr>
+  <div align="center">
     <a href="https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22">
-        <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
-             alt="Build Status">
+    <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
+      alt="Build Status">
     </a>
     <a href="https://conventionalcommits.org">
-        <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
-             alt="Conventional Commits">
+    <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg"
+      alt="Conventional Commits">
     </a>
     <a href="http://commitizen.github.io/cz-cli/">
-        <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
-             alt="Commitizen friendly">
+    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"
+      alt="Commitizen friendly">
     </a>
     <a href="https://api.reuse.software/info/github.com/SAP/cloud-sdk-ios-cai">
-        <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
-             alt="REUSE status">
+    <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
+      alt="REUSE status">
     </a>
+    <hr>
+  </div>
 </div>
-
-<hr>
 
 <p>The <code>SAPCAI</code> Swift Package is a module to connect to a bot on the end-to-end chatbot platform <a href="https://www.sap.com/products/conversational-ai.html">SAP Conversational AI</a> (CAI). It provides a pluggable SwiftUI <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> to initiate a conversation and render the various <a href="https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html">message types</a> of a bot.</p>
 
@@ -99,45 +96,46 @@
 </p>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
+<p>Latest version</p>
+
 <ul>
-<li>iOS 13 or higher</li>
+<li>iOS 14 or higher</li>
 <li>Xcode 12 (Swift 5.3) or higher</li>
 </ul>
+
+<details>
+  <summary><strong>Previous versions</strong></summary>
+
+Version 1.0.x
+- iOS 13 or higher
+- Xcode 12 (Swift 5.3) or higher
+
+</details>
 <h2 id='prerequisites' class='heading'>Prerequisites</h2>
 
 <ul>
 <li>You have existing bot(s) on the SAP Conversational AI platform</li>
-<li>You created an OAuth client for Designtime API for your bot (<kbd>Settings</kbd> &gt; <kbd> Tokens</kbd>)</li>
+<li>You have created an OAuth client for Designtime API for your bot (<kbd>Settings</kbd> &gt; <kbd> Tokens</kbd>)</li>
 <li>Your bot(s) are connected to a mobile channel</li>
 </ul>
-<h3 id='create-a-mobile-channel' class='heading'>Create a mobile channel</h3>
+<h3 id='create-a-mobile-channel' class='heading'>Create a Mobile Channel</h3>
 
-<p>In the <em>Enterprise Edition</em> you create a mobile channel via the UI.</p>
+<p>In SAP Conversational AI you create a mobile channel via the &ldquo;Connect&rdquo; tab of your bot.</p>
 
 <p><img width="1093" alt="CreateMobileChannel" src="https://user-images.githubusercontent.com/4176826/119203198-549dbc80-ba47-11eb-8b65-d813324c3cc8.png"></p>
 
 <p><img alt="CreateMobileChannelResults" src="https://user-images.githubusercontent.com/4176826/119582931-6a2e2180-bd7a-11eb-8faf-1b801a03d146.png"></p>
-
-<p>However, the option is currently hidden by default and must be enabled by filing a <a href="http://help.sap.com/disclaimer?site=https%3A%2F%2Flaunchpad.support.sap.com%2F%23incident%2Fsolution">ticket</a>.</p>
-
-<p>In the <em>Community Edition</em> you create a mobile channel via the <a href="https://reverseproxy.cai.tools.sap/docs/api-reference/#channels">/channel</a> API.</p>
-<pre class="highlight shell"><code><span class="c"># create a mobile channel</span>
-curl -X POST <span class="s2">"&lt;BaseUrl&gt;/connect/v1/channels"</span> <span class="se">\</span>
--H <span class="s2">"X-Token: Token &lt;DeveloperToken&gt;"</span> <span class="se">\</span>
--H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
--d <span class="s1">'{"type":"mobile","slug":"&lt;desiredChannelSlug&gt;","connectionTarget": "SAP_Product","targetSystem": "MobileBot","isActivated":true}'</span>
-</code></pre>
 <h2 id='dependencies' class='heading'>Dependencies</h2>
 
 <ul>
 <li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPCommon/index.html">SAPCommon</a> for Logging</li>
 <li><a href="https://help.sap.com/doc/978e4f6c968c4cc5a30f9d324aa4b1d7/Latest/en-US/Documents/Frameworks/SAPFoundation/index.html">SAPFoundation</a> for Network Connectivity and Authentication</li>
-<li><a href="https://github.com/dmytro-anokhin/url-image">URLImage</a> for asynchronous image loading in SwiftUI</li>
+<li><a href="https://github.com/SDWebImage/SDWebImage">SDWebImage</a> for asynchronous image loading and gif animation in SwiftUI</li>
 <li><a href="https://github.com/johnxnguyen/Down">Down</a> for Markdown / CommonMark rendering in Swift</li>
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
 
-<p>The package is intended for consumption via Swift Package Manager. To add <code>SAPCAI</code> to your application target, navigate to the  <kbd>File </kbd> &gt;  <kbd>Swift Packages </kbd> &gt;  <kbd>Add Package Dependency... </kbd>, then add the repository URL <a href="https://github.com/SAP/cloud-sdk-ios-cai">https://github.com/SAP/cloud-sdk-ios-cai</a>.</p>
+<p>The package is intended for consumption via Swift Package Manager. To add <code>SAPCAI</code> to your application target, navigate to the  <kbd>File </kbd> &gt;  <kbd>Add Packages... </kbd> &gt;. Use the <kbd>Search or Enter Package URL</kbd> field to find the package using the repository URL <a href="https://github.com/SAP/cloud-sdk-ios-cai">https://github.com/SAP/cloud-sdk-ios-cai</a>.</p>
 
 <p>You can choose one of the following package products to be added to your application/framework target.</p>
 
@@ -160,18 +158,18 @@ curl -X POST <span class="s2">"&lt;BaseUrl&gt;/connect/v1/channels"</span> <span
 
 <p>The code snippet below illustrates setting up the <code><a href="Classes/CAIConversation.html">CAIConversation</a></code> Combine publisher to initialize the <code><a href="Classes/MessagingViewModel.html">MessagingViewModel</a></code> for the <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code>. For prototyping you can connect the iOS client directly with SAP Conversational AI <em>Community Edition</em>. You have to replace variable values in angle brackets (e.g. <code>&lt;channelId&gt;</code>) with your bot-specific values.</p>
 
-<p>See <a href="https://github.com/SAP/cloud-sdk-ios-cai/blob/main/ENTERPRISE_CONFIG.md">Enterprise Configuration</a> guide for required configuration steps to use <code>SAPCAI</code> Swift package and connect indirectly with SAP Conversational AI <em>Enterprise Edition</em> through SAP Mobile Services.</p>
-<h3 id='setting-up-the-data-publisher' class='heading'>Setting up the data publisher</h3>
+<p>See the <a href="https://github.com/SAP/cloud-sdk-ios-cai/blob/main/ENTERPRISE_CONFIG.md">Enterprise Configuration</a> guide for the required configuration steps to use <code>SAPCAI</code> Swift package and connect indirectly with SAP Conversational AI <em>Enterprise Edition</em> through SAP Mobile Services.</p>
+<h3 id='setting-up-the-data-publisher' class='heading'>Setting up the Data Publisher</h3>
 <pre class="highlight plaintext"><code>import SAPCAI
 import SAPFoundation
 import SwiftUI
 
 /*
-  Create the `CAIChannel` object by providing the channel id, channel token, and channel slug, which were created in CAI Platform.
+  Create the `CAIChannel` object by providing the channel id, channel token, and channel slug of your mobile channel. Values can be looked up in CAI platform.
 
   If you do not want to hardcode channel information on the client, you can retrieve a list of channels for a given Application ID with `CAIChannelService`.
 */
-let caiChannel = CAIChannel(id: "&lt;channelId&gt;", token: "&lt;channelToken&gt;", slug: "&lt;channelSlug&gt;").
+let caiChannel = CAIChannel(id: "&lt;channelId&gt;", token: "&lt;channelToken&gt;", slug: "&lt;channelSlug&gt;")
 
 // Create CAI service config for a SAPURLSession and URL pointing to CAI API endpoint
 let serviceConfig = CAIServiceConfig(urlSession: SAPURLSession(), host: URL(string:"&lt;Example: https://api.cai.tools.sap&gt;")!)
@@ -188,13 +186,16 @@ let viewModel = MessagingViewModel(publisher: dataPublisher)
 <h3 id='user-interface' class='heading'>User Interface</h3>
 
 <p>Using the SwiftUI implementation is the <strong>preferred</strong> approach.</p>
-<pre class="highlight plaintext"><code>AssistantView()
-  .navigationBarTitle(Text("Chat"), displayMode: .inline) // if you are in navigation controller
+<pre class="highlight plaintext"><code>// `NavigationView` must be present in your view hierachy as `AssistantView` makes use of `NavigationLink`
+AssistantView()
+  .navigationTitle(Text("Chat")) // if you are in navigation controller
   .environmentObject(viewModel)
   .environmentObject(ThemeManager.shared)
   .onDisappear {
-    viewModel.cancelSubscriptions()
-    dataPublisher.resetConversation()
+    // you cannot rely on the fact that onDisappear will be called only
+    // once because `AssistantView` might trigger further navigations
+    // causing the `AssistantView` to disappear and re-appear.
+    // Therefore cleanup logic should be handled elsewhere.
   })
 </code></pre>
 
@@ -203,25 +204,38 @@ let viewModel = MessagingViewModel(publisher: dataPublisher)
 
 self.navigationController?.pushViewController(vc, animated: true)
 </code></pre>
+<h3 id='cleanup' class='heading'>Cleanup</h3>
+
+<p>Once a conversation has ended you need to call the following functions to avoid memory leaks and unnecessary network requests. Also <code><a href="Classes/MessagingViewModel.html">MessagingViewModel</a></code> cannot be deallocated otherwise.</p>
+<pre class="highlight swift"><code><span class="n">viewModel</span><span class="o">.</span><span class="nf">cancelSubscriptions</span><span class="p">()</span>
+<span class="n">dataPublisher</span><span class="o">.</span><span class="nf">resetConversation</span><span class="p">()</span>
+</code></pre>
+
+<p>SAPCAI uses <code>SDWebImage</code> and its image caching capabilities but it is the app developers responsibility to clear the cache if that is desired. Example:</p>
+<pre class="highlight plaintext"><code>SDImageCache.shared.clearMemory()
+SDImageCache.shared.clearDisk(onCompletion: nil)
+</code></pre>
 <h2 id='theming' class='heading'>Theming</h2>
 
 <p><code>SAPCAI</code> will provide two standard themes</p>
 
 <ul>
 <li>a Fiori theme and</li>
-<li>a Casual theme</li>
+<li>a Casual theme (<strong>no longer maintained</strong>)</li>
 </ul>
 
 <p><img width="663" alt="Themes" src="https://user-images.githubusercontent.com/4176826/119032300-e1217f80-b960-11eb-8d65-e068958aff36.png"></p>
 
 <p>Each theme will come with a color palette that supports both light and dark modes.</p>
-<h3 id='fiori-theme' class='heading'>Fiori theme</h3>
+<h3 id='fiori-theme' class='heading'>Fiori Theme</h3>
 <pre class="highlight swift"><code><span class="kt">ThemeManager</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">setCurrentTheme</span><span class="p">(</span> <span class="o">.</span><span class="nf">fiori</span><span class="p">(</span><span class="kt">FioriColorPalette</span><span class="p">())</span> <span class="p">)</span>
 </code></pre>
-<h3 id='casual-theme' class='heading'>Casual theme</h3>
+<h3 id='casual-theme' class='heading'>Casual Theme</h3>
+
+<p><strong>No longer maintained and therefore marked as deprecated. Do not use!</strong></p>
 <pre class="highlight swift"><code><span class="kt">ThemeManager</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">setCurrentTheme</span><span class="p">(</span> <span class="o">.</span><span class="nf">casual</span><span class="p">(</span><span class="kt">CasualColorPalette</span><span class="p">())</span> <span class="p">)</span>
 </code></pre>
-<h3 id='create-your-own-custom-theme' class='heading'>Create your own custom theme</h3>
+<h3 id='create-your-own-custom-theme' class='heading'>Create Your Own Custom Theme</h3>
 
 <p>You can also provide an alternative color palette or provide a custom theme.</p>
 <h2 id='persistent-static-menu' class='heading'>Persistent Static Menu</h2>
@@ -245,23 +259,22 @@ self.navigationController?.pushViewController(vc, animated: true)
 
 <p><img src="https://user-images.githubusercontent.com/4176826/146965541-0288dfe5-99bf-47e9-9779-d196583d6253.png" alt="Persistent Static Menu Rendered by SAP CAI SDK for iOS"></p>
 <h2 id='limitations' class='heading'>Limitations</h2>
-<h3 id='markdown-related' class='heading'>Markdown related</h3>
+<h3 id='markdown-related' class='heading'>Markdown Related</h3>
 
 <ul>
 <li><strong>No support for <a href="https://github.github.com/gfm/">GitHub Flavored Markdown</a></strong> (e.g. <del>strikethrough</del>). Bot responses containing <a href="https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/3a3b6e09e96249b884dcf6e69eecd830.html#loio3a3b6e09e96249b884dcf6e69eecd830__section_markdown">Markdown</a> will be rendered by the <code><a href="Structs.html#/s:6SAPCAI13AssistantViewV">AssistantView</a></code> according to the <a href="https://spec.commonmark.org/0.29/">Commonmark specification</a> only, and unknown syntax will be treated as text.</li>
 </ul>
-<h3 id='trigger-skill-button-related' class='heading'>Trigger Skill button related</h3>
+<h3 id='trigger-skill-button-related' class='heading'>Trigger Skill Button Related</h3>
 
 <ul>
-<li><code>Trigger Skill</code> buttons are still enabled after execution / next interaction. This behavior differs from SAP CAI WebClient. Once you click the button or type an utterance, the corresponding skill can&rsquo;t be triggered anymore at a later point in time since the context in which it was created might not be valid anymore.</li>
+<li><code>Trigger Skill</code> buttons are still enabled after execution / next interaction. This behavior differs from the SAP CAI Web Client. Once you click the button or type an utterance, the corresponding skill can&rsquo;t be triggered anymore at a later point in time since the context in which it was created might not be valid anymore.</li>
 </ul>
-<h3 id='image-related' class='heading'>Image related</h3>
+<h3 id='image-related' class='heading'>Image Related</h3>
 
 <ul>
 <li>Not being able to save, copy, or share an image as part of a bot response. Currently, there is no gesture handler attached to an image view which could allow opening a contextual menu offering such features (similar to iMessage or WhatsApp).</li>
-<li>Animated images (GIF), as part of a bot response, will be viewed as a static image (dependency to <a href="https://github.com/dmytro-anokhin/url-image/issues/43">https://github.com/dmytro-anokhin/url-image/issues/43</a>)</li>
 </ul>
-<h2 id='how-to-obtain-support' class='heading'>How to obtain support</h2>
+<h2 id='how-to-obtain-support' class='heading'>How to Obtain Support</h2>
 
 <p>Please <a href="https://github.com/SAP/cloud-sdk-ios-cai/issues/new/choose">raise an issue on GitHub</a>. SAP customers can continue to report issues through OSS for SLA tracking.  </p>
 
@@ -384,7 +397,10 @@ self.navigationController?.pushViewController(vc, animated: true)
                   <a href="Protocols/ButtonsMessageData.html">ButtonsMessageData</a>
                 </li>
                 <li class="nav-group-task">
-                  <a href="Protocols/CarouselItemMessageData.html">CarouselItemMessageData</a>
+                  <a href="Protocols/CardMessageData.html">CardMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols.html#/s:6SAPCAI23CarouselItemMessageDataP">CarouselItemMessageData</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="Protocols/CarouselMessageData.html">CarouselMessageData</a>

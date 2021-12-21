@@ -16,7 +16,7 @@
     <header>
       <div class="content-wrapper">
         <p>
-          <a href="../index.html">SAPCAI 1.0.5 Docs</a>
+          <a href="../index.html">SAPCAI 2.0.1 Docs</a>
           <span class="no-mobile"></span>
         </p>
     
@@ -51,7 +51,7 @@
                     
                     <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UIModelDataContent</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UIModelDataContent</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ObjectMessageData.html">ObjectMessageData</a></span></code></pre>
-<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UIModelDataContent</span><span class="p">:</span> <span class="kt"><a href="../Protocols/CarouselItemMessageData.html">CarouselItemMessageData</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">UIModelDataContent</span><span class="p">:</span> <span class="kt"><a href="../Protocols.html#/s:6SAPCAI23CarouselItemMessageDataP">CarouselItemMessageData</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/CardMessageData.html">CardMessageData</a></span></code></pre>
 
                   </div>
                 </div>
@@ -715,9 +715,9 @@
                   <li class="item">
                     <div>
                       <code>
-                      <a name="/s:6SAPCAI23CarouselItemMessageDataP11itemPictureAA05MediaC0_pSgvp"></a>
-                      <a name="//apple_ref/swift/Property/itemPicture" class="dashAnchor"></a>
-                      <a class="token" href="#/s:6SAPCAI23CarouselItemMessageDataP11itemPictureAA05MediaC0_pSgvp">itemPicture</a>
+                      <a name="/s:6SAPCAI15CardMessageDataP13featuredImageAA9MediaItem_pSgvp"></a>
+                      <a name="//apple_ref/swift/Property/featuredImage" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CardMessageDataP13featuredImageAA9MediaItem_pSgvp">featuredImage</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -731,7 +731,7 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">itemPicture</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MediaItem.html">MediaItem</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">featuredImage</span><span class="p">:</span> <span class="kt"><a href="../Protocols/MediaItem.html">MediaItem</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                           </div>
                         </div>
@@ -741,9 +741,9 @@
                   <li class="item">
                     <div>
                       <code>
-                      <a name="/s:6SAPCAI23CarouselItemMessageDataP10itemHeaderAA0gdE0_pSgvp"></a>
-                      <a name="//apple_ref/swift/Property/itemHeader" class="dashAnchor"></a>
-                      <a class="token" href="#/s:6SAPCAI23CarouselItemMessageDataP10itemHeaderAA0gdE0_pSgvp">itemHeader</a>
+                      <a name="/s:6SAPCAI15CardMessageDataP10cardHeaderAA0fcD0_pSgvp"></a>
+                      <a name="//apple_ref/swift/Property/cardHeader" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CardMessageDataP10cardHeaderAA0fcD0_pSgvp">cardHeader</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -757,7 +757,7 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">itemHeader</span><span class="p">:</span> <span class="kt"><a href="../Protocols/HeaderMessageData.html">HeaderMessageData</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cardHeader</span><span class="p">:</span> <span class="kt"><a href="../Protocols/HeaderMessageData.html">HeaderMessageData</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                           </div>
                         </div>
@@ -767,9 +767,9 @@
                   <li class="item">
                     <div>
                       <code>
-                      <a name="/s:6SAPCAI23CarouselItemMessageDataP11itemButtonsSayAA08PostbackE0_pGSgvp"></a>
-                      <a name="//apple_ref/swift/Property/itemButtons" class="dashAnchor"></a>
-                      <a class="token" href="#/s:6SAPCAI23CarouselItemMessageDataP11itemButtonsSayAA08PostbackE0_pGSgvp">itemButtons</a>
+                      <a name="/s:6SAPCAI15CardMessageDataP11cardButtonsSayAA08PostbackD0_pGSgvp"></a>
+                      <a name="//apple_ref/swift/Property/cardButtons" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CardMessageDataP11cardButtonsSayAA08PostbackD0_pGSgvp">cardButtons</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -783,7 +783,33 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">itemButtons</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/PostbackData.html">PostbackData</a></span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cardButtons</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/PostbackData.html">PostbackData</a></span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:6SAPCAI15CardMessageDataP12cardSectionsSayAA07UIModelD7SectionVGSgvp"></a>
+                      <a name="//apple_ref/swift/Property/cardSections" class="dashAnchor"></a>
+                      <a class="token" href="#/s:6SAPCAI15CardMessageDataP12cardSectionsSayAA07UIModelD7SectionVGSgvp">cardSections</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cardSections</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Structs/UIModelDataSection.html">UIModelDataSection</a></span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                           </div>
                         </div>
@@ -890,7 +916,10 @@
                   <a href="../Protocols/ButtonsMessageData.html">ButtonsMessageData</a>
                 </li>
                 <li class="nav-group-task">
-                  <a href="../Protocols/CarouselItemMessageData.html">CarouselItemMessageData</a>
+                  <a href="../Protocols/CardMessageData.html">CardMessageData</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Protocols.html#/s:6SAPCAI23CarouselItemMessageDataP">CarouselItemMessageData</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="../Protocols/CarouselMessageData.html">CarouselMessageData</a>
