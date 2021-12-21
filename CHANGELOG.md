@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.1](https://github.com/SAP/cloud-sdk-ios-cai/compare/2.0.0...2.0.1) (2021-12-21)
+
+### Features
+
+* 🎸 localized texts in 2 new language ([433324c](https://github.com/SAP/cloud-sdk-ios-cai/commit/433324cad8e175b2629cb7390e7a09c9c7bcd066)), closes [/github.com/SAP/cloud-sdk-ios-cai/pull/58#issuecomment-978019153](https://github.com/SAP//github.com/SAP/cloud-sdk-ios-cai/pull/58/issues/issuecomment-978019153) [#48](https://github.com/SAP/cloud-sdk-ios-cai/issues/48) [#58](https://github.com/SAP/cloud-sdk-ios-cai/issues/58)
+
+### Bug Fixes
+
+* 🐛 decoding error when loading channel preferences/menu ([8d8853b](https://github.com/SAP/cloud-sdk-ios-cai/commit/8d8853b8ff65e3e945ff0ac67011c19ae900b2e2)), closes [#64](https://github.com/SAP/cloud-sdk-ios-cai/issues/64)
+* 🐛 postback/link value was shown in persistent static menu ([04f7881](https://github.com/SAP/cloud-sdk-ios-cai/commit/04f788125fd50864e6bd7d904dc432a96186c05c)), closes [#66](https://github.com/SAP/cloud-sdk-ios-cai/issues/66)
+---
+
+### [1.0.5](https://github.com/SAP/cloud-sdk-ios-cai/compare/1.0.4...1.0.5) (2021-12-21)
+
+### Bug Fixes
+
+* 🐛 decoding error when loading channel preferences/menu ([f9c5fd8](https://github.com/SAP/cloud-sdk-ios-cai/commit/f9c5fd8fe3bbf50ce27e0595fccc2295604d0162)), closes [#64](https://github.com/SAP/cloud-sdk-ios-cai/issues/64)
+* 🐛 postback/link value was shown in persistent static menu ([987d3a4](https://github.com/SAP/cloud-sdk-ios-cai/commit/987d3a400886845258bbe882417dc8dcb5059001)), closes [#66](https://github.com/SAP/cloud-sdk-ios-cai/issues/66)
+
 ## [2.0.0](https://github.com/SAP/cloud-sdk-ios-cai/compare/1.0.4...2.0.0) (2021-11-10)
 
 ### ⚠ BREAKING CHANGES
