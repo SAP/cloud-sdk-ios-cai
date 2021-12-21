@@ -149,42 +149,35 @@
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/CAIResponseData.swift",
-      "line": 228,
-      "symbol": "CAIResponseMessageData.init(_:_:_:_:_:_:_:_:_:_:_:)",
+      "line": 227,
+      "symbol": "CAIResponseMessageData.init(_:_:_:_:_:_:_:_:_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/CAIResponseData.swift",
-      "line": 302,
-      "symbol": "CAIResponseMessageData.init(title:subtitle:headerImageName:featuredImageName:description:inlineButtons:sections:status1:status1_state:status2:status2_state:status3:status3_state:isBot:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/CAIResponseData.swift",
-      "line": 379,
+      "line": 298,
       "symbol": "CAIResponseMessageData.init(imageName:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/CAIResponseData.swift",
-      "line": 396,
+      "line": 315,
       "symbol": "CAIResponseMessageData.init(videoUrl:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/CAIResponseData.swift",
-      "line": 413,
+      "line": 332,
       "symbol": "CAIResponseMessageData.init(_:_:_:_:_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/CAIResponseData.swift",
-      "line": 470,
+      "line": 389,
       "symbol": "CAIResponseMessageData.init(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -257,13 +250,6 @@
       "line": 28,
       "symbol": "MenuActionType.nested",
       "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/MessageTypeData.swift",
-      "line": 81,
-      "symbol": "HeaderMessageData.status",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -597,16 +583,9 @@
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/UIModelData.swift",
-      "line": 492,
+      "line": 488,
       "symbol": "UIModelDataHeader",
       "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Model/UIModelData.swift",
-      "line": 513,
-      "symbol": "UIModelDataHeader.status",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -674,21 +653,28 @@
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/ThemeManager.swift",
-      "line": 23,
+      "line": 21,
       "symbol": "CAITheme.casual(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/ThemeManager.swift",
-      "line": 28,
+      "line": 23,
+      "symbol": "CAITheme.fiori(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/ThemeManager.swift",
+      "line": 25,
       "symbol": "CAITheme.custom(_:_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/cloud-sdk-ios-cai/cloud-sdk-ios-cai/Sources/SAPCAI/Foundation/Theme/ThemeManager.swift",
-      "line": 214,
+      "line": 211,
       "symbol": "Theme.Color.Key",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
