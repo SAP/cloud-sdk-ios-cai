@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* 🎸 localized texts in 2 new language ([433324c](https://github.com/SAP/cloud-sdk-ios-cai/commit/433324cad8e175b2629cb7390e7a09c9c7bcd066)), closes [/github.com/SAP/cloud-sdk-ios-cai/pull/58#issuecomment-978019153](https://github.com/SAP//github.com/SAP/cloud-sdk-ios-cai/pull/58/issues/issuecomment-978019153) [#48](https://github.com/SAP/cloud-sdk-ios-cai/issues/48) [#58](https://github.com/SAP/cloud-sdk-ios-cai/issues/58)
+* 🎸 localized texts in 2 new language ([433324c](https://github.com/SAP/cloud-sdk-ios-cai/commit/433324cad8e175b2629cb7390e7a09c9c7bcd066)), closes [#58](https://github.com/SAP/cloud-sdk-ios-cai/issues/58)
 
 ### Bug Fixes
 
