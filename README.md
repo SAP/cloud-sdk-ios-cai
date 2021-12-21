@@ -197,6 +197,30 @@ ThemeManager.shared.setCurrentTheme( .casual(CasualColorPalette()) )
 
 You can also provide an alternative color palette or provide a custom theme.
 
+## Persistent Static Menu
+
+In SAP Conversational AI you can add persistent static menu options to your chatbot enabling your users to quickly trigger links or skills at any point during the conversation.
+
+<img width="525" alt="Persistent Static Menu In Bot Builder" src="https://user-images.githubusercontent.com/4176826/146964912-6cceec20-ea57-4bda-90f1-b6fa339eb470.png">
+
+Use `CAIChannelService.loadPreferences` to fetch your channel's preferences (incl. the persistent static menu) asynchronously, then set `MessagingViewModel.menu`.
+
+```Swift
+service.loadPreferences(channel: channel) { result in
+  DispatchQueue.main.async {
+    switch result {
+      case .success(let data):
+        viewModel.menu = data?.menu
+      case .failure:
+        break
+    }
+  }
+}
+```
+
+![Persistent Static Menu Rendered by SAP CAI SDK for iOS](https://user-images.githubusercontent.com/4176826/146965541-0288dfe5-99bf-47e9-9779-d196583d6253.png)
+
+
 ## Limitations
 
 ### Markdown Related
