@@ -1,4 +1,5 @@
 import Combine
+import FioriThemeManager
 import Foundation
 import SwiftUI
 
@@ -135,16 +136,18 @@ public enum CAITheme: CustomStringConvertible {
         .incomingTextContainerInset: EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12),
         .outgoingTextContainerInset: EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12),
         .quickReplyButtonStyle: QuickReplyButtonStyleContainer(CasualQuickReplyButtonStyle()),
+        .roundedCornerButtonStyle: RoundedCornerButtonStyleContainer(CasualRoundedCornerButtonStyle()),
         .sendButton: "arrow.up.circle.fill",
         .borderWidth: CGFloat(0.33)
     ])
     
     private static var fioriTheme = Theme(name: "fiori", values: [
-        .cornerRadius: CGFloat(8),
+        .cornerRadius: CGFloat(10),
         .containerLTPadding: CGFloat(16),
         .incomingTextContainerInset: EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0),
         .outgoingTextContainerInset: EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12),
         .quickReplyButtonStyle: QuickReplyButtonStyleContainer(FioriQuickReplyButtonStyle()),
+        .roundedCornerButtonStyle: RoundedCornerButtonStyleContainer(FioriRoundedCornerButtonStyle()),
         .sendButton: "arrow.up.square.fill",
         .borderWidth: CGFloat(1)
     ])
@@ -201,6 +204,9 @@ public struct Theme {
     
         /// `QuickReplyButtonStyleContainer` wrapping a struct/enum conforming to `ButtonStyle`
         public static let quickReplyButtonStyle = Key(rawValue: "quickReplyButtonStyle")
+
+        /// `CardListButtonStyleContainer` wrapping a struct/enum conforming to `ButtonStyle`
+        public static let roundedCornerButtonStyle = Key(rawValue: "roundedCornerButtonStyle")
         
         /// Send Button SF Symbol name. String
         public static let sendButton = Key(rawValue: "sendButton")
@@ -295,7 +301,7 @@ public final class ThemeManager: ObservableObject, Identifiable {
     public let objectWillChange = PassthroughSubject<CAITheme, Never>()
     
     /// Returns the current active CAITheme
-    public private(set) var theme: CAITheme = .fiori(FioriColorPalette())
+    public private(set) var theme: CAITheme = .fiori(FioriV6ColorPalette())
 
     /// Singleton instance
     public static let shared = ThemeManager()

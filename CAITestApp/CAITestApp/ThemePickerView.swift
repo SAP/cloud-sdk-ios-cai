@@ -4,20 +4,24 @@ import SwiftUI
 struct ThemePickerView: View {
     @Binding var selectedTheme: Int
 
-    private let themes: [CAITheme] = [.fiori(FioriColorPalette()), .casual(CasualColorPalette())]
+    private let themes: [CAITheme] = [.fiori(FioriV6ColorPalette()), .casual(CasualColorPalette())]
 
     var body: some View {
-        Picker(selection: Binding<Int>(get: {
-            self.selectedTheme
-        }, set: { value in
-            self.selectedTheme = value
-            let theme = self.themes[self.selectedTheme]
-            ThemeManager.shared.setCurrentTheme(theme)
-        }), label: Text("Theme")) {
-            ForEach(0 ..< themes.count) {
-                Text(self.themes[$0].theme.name).tag($0)
-            }
-        }.pickerStyle(SegmentedPickerStyle())
+        VStack {
+            Picker(selection: Binding<Int>(get: {
+                self.selectedTheme
+            }, set: { value in
+                self.selectedTheme = value
+                let theme = self.themes[self.selectedTheme]
+                ThemeManager.shared.setCurrentTheme(theme)
+            }), label: Text("Theme")) {
+                ForEach(0 ..< themes.count) {
+                    Text(self.themes[$0].theme.name).tag($0)
+                }
+            }.pickerStyle(SegmentedPickerStyle())
+
+            NavigationLink("View Colors", destination: ThemingView())
+        }
     }
 }
 

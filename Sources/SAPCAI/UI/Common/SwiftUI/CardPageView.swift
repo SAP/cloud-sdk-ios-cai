@@ -3,7 +3,7 @@ import SwiftUI
 struct CardPageView: View {
     @EnvironmentObject private var themeManager: ThemeManager
     @Environment(\.presentationMode) private var presentationMode
-    
+
     var screenWidth: CGFloat {
         UIScreen.main.bounds.size.width
     }
@@ -13,9 +13,9 @@ struct CardPageView: View {
     var minTextWidth: CGFloat {
         (self.screenWidth - 2 * self.padding - self.hStackSpacing) / 2
     }
-    
+
     var card: CardMessageData?
-    
+
     var body: some View {
         VStack(spacing: 0) {
             ScrollView(.vertical) {
@@ -36,7 +36,7 @@ struct CardPageView: View {
             }
         }
     }
-    
+
     @ViewBuilder var featuredImage: some View {
         if let imgURL = card?.featuredImage?.sourceUrl {
             ImageViewWrapper(url: imgURL) { image in
@@ -47,7 +47,7 @@ struct CardPageView: View {
             }
         }
     }
-    
+
     @ViewBuilder var header: some View {
         if let itemHeader = card?.cardHeader {
             HStack(alignment: .top) {
@@ -62,8 +62,7 @@ struct CardPageView: View {
                     HStack {
                         if let headline = itemHeader.headline {
                             Text(headline)
-                                .font(.headline)
-                                .foregroundColor(themeManager.color(for: .primary1))
+                                .font(Font.fiori(forTextStyle: .headline).weight(.bold))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                         Spacer()
@@ -71,13 +70,12 @@ struct CardPageView: View {
                     }
                     if let subheadline = itemHeader.subheadline {
                         Text(subheadline)
-                            .font(.body)
+                            .font(Font.fiori(forTextStyle: .body))
                             .foregroundColor(themeManager.color(for: .primary1))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     if let carouselDesc = card?.cardHeader?.footnote {
                         Text(carouselDesc)
-                            .font(.subheadline)
                             .foregroundColor(themeManager.color(for: .primary2))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -86,7 +84,7 @@ struct CardPageView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     func makeGroupCells(group: [UIModelDataValue]) -> some View {
         HStack {
@@ -100,7 +98,7 @@ struct CardPageView: View {
         }
         .frame(maxWidth: .infinity)
     }
-    
+
     @ViewBuilder var attributesTable: some View {
         if let sections = card?.cardSections,
            !sections.isEmpty,
@@ -109,10 +107,10 @@ struct CardPageView: View {
             let groupedAttributes = convertAttributes(attributes)
             if let attributeTitle = sections[0].title {
                 Text(attributeTitle)
-                    .font(.headline)
+                    .font(Font.fiori(forTextStyle: .headline))
                     .padding([.leading, .trailing], 20)
             }
-            
+
             VStack(spacing: 16) {
                 ForEach(groupedAttributes) {
                     makeGroupCells(group: $0.datas)
@@ -124,28 +122,28 @@ struct CardPageView: View {
                 Image("noDetailedContentAvailable", bundle: Bundle.cai)
                 Text(NSLocalizedString("NoDetailedContentAvailable", tableName: "Localizable", bundle: Bundle.cai, comment: ""))
             }
-            .font(.headline)
+            .font(Font.fiori(forTextStyle: .headline))
             .foregroundColor(themeManager.color(for: .primary1))
             .frame(maxWidth: .infinity)
         }
     }
-    
+
     @ViewBuilder var statusView: some View {
         if let status = card?.cardHeader?.status {
             ItemStatus(status: status)
         }
     }
-    
+
     struct ModelsContainer: Identifiable {
         let id = UUID()
         var datas: [UIModelDataValue]
     }
-    
+
     func convertAttributes(_ attributes: [UIModelDataValue]) -> [ModelsContainer] {
         var groupedAttributes: [ModelsContainer] = []
         var pairedAttributes = ModelsContainer(datas: [])
         var startNewPaired = true
-        
+
         for (index, item) in attributes.enumerated() {
             if let label = item.label, let value = item.value {
                 if self.shouldAddNewLine(for: label) || self.shouldAddNewLine(for: value) {
@@ -175,9 +173,9 @@ struct CardPageView: View {
         }
         return groupedAttributes
     }
-    
+
     func shouldAddNewLine(for text: String) -> Bool {
-        let uiFont = UIFont.preferredFont(forTextStyle: .subheadline)
+        let uiFont = UIFont.preferredFioriFont(forTextStyle: .subheadline)
         let textSize = text.boundingRect(with: CGSize(width: self.minTextWidth, height: CGFloat.greatestFiniteMagnitude),
                                          options: .usesLineFragmentOrigin,
                                          attributes: [.font: uiFont], context: nil)
@@ -196,7 +194,7 @@ struct CardSectionAttributeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(self.sectionAttribute.label ?? "")
-                .font(.subheadline)
+                .font(Font.fiori(forTextStyle: .subheadline))
                 .foregroundColor(themeManager.color(for: .primary2))
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -206,14 +204,14 @@ struct CardSectionAttributeView: View {
                     URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: self.sectionAttribute.formattedValue)
                 }, label: {
                     Text(self.sectionAttribute.value!)
-                        .font(.subheadline)
+                        .font(Font.fiori(forTextStyle: .subheadline))
                         .foregroundColor(themeManager.color(for: .accentColor))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
                 })
             } else {
                 Text(self.sectionAttribute.formattedValue)
-                    .font(.subheadline)
+                    .font(Font.fiori(forTextStyle: .subheadline))
                     .foregroundColor(themeManager.color(for: .primary1))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)

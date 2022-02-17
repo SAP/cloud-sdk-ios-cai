@@ -13,7 +13,7 @@ class AssistantViewTestCase: XCTestCase {
         fatalError("Needs to be provided by actual test case")
     }
 
-    func getAssistantView(with messsageData: [MessageData], theme: CAITheme = CAITheme.fiori(FioriColorPalette()), menu: CAIChannelPreferencesMenuData? = nil) -> some View {
+    func getAssistantView(with messsageData: [MessageData], theme: CAITheme = CAITheme.fiori(FioriV6ColorPalette()), menu: CAIChannelPreferencesMenuData? = nil) -> some View {
         ThemeManager.shared.setCurrentTheme(theme)
         let model = self.getMessagingViewModel(with: messsageData)
         return AssistantView().environmentObject(model).environmentObject(ThemeManager.shared)

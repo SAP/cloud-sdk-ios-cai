@@ -6,7 +6,7 @@ func roundedBorder(cornerRadius radius: CGFloat, color: Color, lineWidth: CGFloa
 }
 
 func roundedBorder(for theme: CAITheme) -> some View {
-    let radius = theme.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 8)
+    let radius = theme.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 10)
     
     return RoundedRectangle(cornerRadius: radius)
         .fill(theme.color(for: .objectBgColor))
@@ -15,7 +15,7 @@ func roundedBorder(for theme: CAITheme) -> some View {
 }
 
 func roundedBackground(for theme: CAITheme, key: Theme.Color.Key) -> some View {
-    RoundedCorner(radius: theme.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 8),
+    RoundedCorner(radius: theme.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 10),
                   corners: [.topLeft, .topRight, .bottomLeft])
         .fill(theme.color(for: key))
 }

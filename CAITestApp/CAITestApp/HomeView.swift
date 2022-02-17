@@ -1,3 +1,4 @@
+import FioriThemeManager
 import SAPCAI
 import SwiftUI
 
@@ -60,13 +61,19 @@ struct HomeView: View {
                 }
             }
         }
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 28)]
+
+        // UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 28)]
+
+        // largeTitle with 72 fonts is
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.preferredFioriColor(forStyle: .primaryLabel), .font: UIFont.preferredFioriFont(forTextStyle: .largeTitle, weight: .black)]
     }
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .center, spacing: 15) {
+                    // NavigationLink("Choose Colors", destination: ThemingView())
+
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Theme")
                         ThemePickerView(selectedTheme: $selectedTheme)
@@ -160,7 +167,8 @@ struct HomeView: View {
                         .frame(height: 32, alignment: .center)
                 }
                 .padding(10)
-                .navigationBarTitle("Testing SAPCAI SDK for iOS")
+                .navigationBarTitle("SAPCAI SDK for iOS")
+                // .font(Font.fiori(forTextStyle: .largeTitle))
                 .onAppear {
                     self.dataModel.clear()
                 }
@@ -170,7 +178,7 @@ struct HomeView: View {
             self.isPresented = false
         }, content: {
             NavigationView {
-                AssistantView().navigationBarTitle(Text("Chat"), displayMode: .inline)
+                AssistantView().navigationBarTitle(Text("Chat"), displayMode: .inline) // TODO: .large
                     .navigationBarItems(trailing: Button("Done", action: {
                         self.isPresented = false
                     }))
@@ -199,9 +207,10 @@ struct HomeView: View {
             if self.selectedViewRepresentation == ViewRepresentation.fullscreen {
                 NavigationLink(destination:
                     NavigationLazyView(
-                        AssistantView().navigationBarTitle(Text("Chat"), displayMode: .inline)
+                        AssistantView().navigationBarTitle(Text("Chat"), displayMode: .inline) // TODO: large
                             .environmentObject(MockData.viewModel)
-                            .environmentObject(ThemeManager.shared))
+                            .environmentObject(ThemeManager.shared)
+                    )
                 ) {
                     Text("Connect")
                 }
@@ -246,5 +255,16 @@ struct NavigationLazyView<Content: View>: View {
 
     var body: Content {
         self.build()
+    }
+}
+
+// ONLY FOR THIS TEST APP
+// The following code is NOT needed in apps built with SAPFiori.xcframework as such methods are available there
+// Introduced as `UINavigationBar.appearance().largeTitleTextAttributes` expects UIKit-based representations of color and font
+private extension UIColor {
+    static func preferredFioriColor(forStyle style: ColorStyle) -> UIColor {
+        let color = Color.preferredColor(style)
+        let uiColor = UIColor(color)
+        return uiColor
     }
 }

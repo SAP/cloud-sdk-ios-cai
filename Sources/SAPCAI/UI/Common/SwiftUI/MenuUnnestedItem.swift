@@ -10,7 +10,7 @@ struct MenuUnnestedItem: View {
             VStack(alignment: .leading) {
                 Text(menuAction.menuTitle)
                     .lineLimit(1)
-                    .font(.headline)
+                    .font(Font.fiori(forTextStyle: .headline))
                     .foregroundColor(themeManager.color(for: .primary1))
                     .padding([.top, .bottom], 10)
             }

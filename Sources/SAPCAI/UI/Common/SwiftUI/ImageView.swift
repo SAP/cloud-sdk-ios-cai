@@ -15,7 +15,7 @@ struct ImageView: View {
                                  },
                                  content: { $0 })
                     .scaledToFit()
-                    .cornerRadius(8)
+                    .cornerRadius(10)
             }
         }
     }

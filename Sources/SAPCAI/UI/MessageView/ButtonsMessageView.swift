@@ -58,7 +58,7 @@ struct ButtonsMessageView: View {
                                     }, label: {
                                         Spacer()
                                         Text(Bundle.cai.localizedString(forKey: "View more", value: "View more", table: nil))
-                                            .font(.body)
+                                            .font(Font.fiori(forTextStyle: .body))
                                             .lineLimit(1)
                                             .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16))
                                         Spacer()

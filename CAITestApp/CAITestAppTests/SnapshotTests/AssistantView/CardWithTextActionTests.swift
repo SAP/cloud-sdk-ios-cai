@@ -21,7 +21,7 @@ class CardWithTextActionTests: AssistantViewTestCase {
     // MARK: - Tests
 
     func testFioriTheme() throws {
-        let view = getAssistantView(with: messsageData, theme: CAITheme.fiori(FioriColorPalette()))
+        let view = getAssistantView(with: messsageData, theme: CAITheme.fiori(FioriV6ColorPalette()))
 
         for c in configs {
             assertSnapshot(view, configs: [c], style: .light)

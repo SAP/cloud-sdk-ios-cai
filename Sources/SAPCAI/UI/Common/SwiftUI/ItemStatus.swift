@@ -9,23 +9,23 @@ struct ItemStatus: View {
         if let statusText = status.value {
             if status.valState == .success {
                 Text(statusText)
-                    .font(.subheadline)
+                    .font(Font.fiori(forTextStyle: .subheadline))
                     .foregroundColor(themeManager.color(for: .successColor))
             } else if status.valState == .error {
                 Text(statusText)
-                    .font(.subheadline)
+                    .font(Font.fiori(forTextStyle: .subheadline))
                     .foregroundColor(themeManager.color(for: .errorColor))
             } else if status.valState == .warn {
                 Text(statusText)
-                    .font(.subheadline)
+                    .font(Font.fiori(forTextStyle: .subheadline))
                     .foregroundColor(themeManager.color(for: .warnColor))
             } else if status.valState == .info {
                 Text(statusText)
-                    .font(.subheadline)
+                    .font(Font.fiori(forTextStyle: .subheadline))
                     .foregroundColor(themeManager.color(for: .infoColor))
             } else {
                 Text(statusText)
-                    .font(.subheadline)
+                    .font(Font.fiori(forTextStyle: .subheadline))
                     .foregroundColor(themeManager.color(for: .primary2))
             }
         } else {

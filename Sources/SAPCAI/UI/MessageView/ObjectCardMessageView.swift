@@ -2,28 +2,28 @@ import SwiftUI
 
 struct ObjectCardMessageView: View {
     @EnvironmentObject private var themeManager: ThemeManager
-    
+
     let model: ObjectMessageData
-    
+
     var imageUrl: URL? {
         if let sUrl = model.imageUrl, let url = URL(string: sUrl) {
             return url
         }
         return nil
     }
-    
+
     private var hasButtons: Bool {
         self.model.objectButtons != nil && !self.model.objectButtons!.isEmpty
     }
-    
+
     private var hasSections: Bool {
         self.model.objectSections != nil && !self.model.objectSections!.isEmpty
     }
-    
+
     private var buttonsLen: Int {
         min(self.model.objectButtons != nil ? self.model.objectButtons!.count : 0, 3)
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .top) {
@@ -35,36 +35,36 @@ struct ObjectCardMessageView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         if let headline = model.headline {
                             Text(headline)
-                                .font(.headline)
+                                .font(Font.fiori(forTextStyle: .headline).weight(.bold))
                                 .foregroundColor(themeManager.color(for: .primary1))
                                 .lineLimit(3)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                         if let subheadline = model.subheadline {
                             Text(subheadline)
-                                .font(.body)
+                                .font(Font.fiori(forTextStyle: .body))
                                 .foregroundColor(themeManager.color(for: .primary2))
                                 .lineLimit(2)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                         if let footnote = model.footnote {
                             Text(footnote)
-                                .font(.subheadline)
+                                .font(Font.fiori(forTextStyle: .subheadline))
                                 .foregroundColor(themeManager.color(for: .primary2))
                                 .lineLimit(5)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                     }
-                    
+
                     Spacer()
-                    
+
                     VStack(alignment: .trailing) {
                         if let status = model.status {
                             ItemStatus(status: status)
                         }
                         if let substatus = model.substatus {
                             Text(substatus)
-                                .font(.subheadline)
+                                .font(Font.fiori(forTextStyle: .subheadline))
                                 .foregroundColor(themeManager.color(for: .primary2))
                         }
                     }
@@ -82,7 +82,7 @@ struct ObjectCardMessageView: View {
                 ForEach(0 ..< buttonsLen) { i in
                     VStack(alignment: .center, spacing: 0) {
                         ButtonView(button: self.model.objectButtons![i], type: .button)
-                        
+
                         if i < self.buttonsLen - 1 {
                             Divider().background(self.themeManager.color(for: .lineColor))
                         }

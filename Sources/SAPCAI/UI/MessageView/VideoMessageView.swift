@@ -21,7 +21,7 @@ struct VideoMessageView: View {
     
     var body: some View {
         VideoView(self.media?.sourceUrl?.absoluteString)
-            .clipShape(RoundedRectangle(cornerRadius: self.themeManager.theme.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 8)))
+            .clipShape(RoundedRectangle(cornerRadius: self.themeManager.theme.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 10)))
             .frame(height: targetHeight)
         // !!!!!
         // Calling GeometryReader within ScrollView mess up the rendering as content view is called via closure

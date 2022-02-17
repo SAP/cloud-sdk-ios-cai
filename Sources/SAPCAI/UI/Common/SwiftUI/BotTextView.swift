@@ -43,7 +43,7 @@ struct BotTextView: View {
             } else {
                 VStack(alignment: .leading) {
                     TruncableText(
-                        text: Text(value.string),
+                        text: Text(value.string).font(Font.fiori(forTextStyle: .body)),
                         lineLimit: forceFullText ? nil : lineLimit
                     ) {
                         isTruncated = $0

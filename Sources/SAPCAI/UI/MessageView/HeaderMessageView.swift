@@ -2,19 +2,19 @@ import SwiftUI
 
 struct HeaderMessageView: View {
     @EnvironmentObject private var themeManager: ThemeManager
-    
+
     let model: HeaderMessageData
-    
+
     var imageUrl: URL? {
         if let sUrl = model.imageUrl, let url = URL(string: sUrl) {
             return url
         }
         return nil
     }
-    
+
     let listItemCount: String?
     let listTotal: Int?
-    
+
     var total: String? {
         if let iTotal = listTotal {
             return String(iTotal)
@@ -34,19 +34,19 @@ struct HeaderMessageView: View {
                         if let headline = model.headline {
                             Text(headline)
                                 .lineLimit(1)
-                                .font(.headline)
+                                .font(Font.fiori(forTextStyle: .headline).weight(.bold))
                                 .foregroundColor(themeManager.color(for: .primary1))
                         }
                         if let subheadline = model.subheadline {
                             Text(subheadline)
                                 .lineLimit(1)
-                                .font(.body)
+                                .font(Font.fiori(forTextStyle: .body))
                                 .foregroundColor(themeManager.color(for: .primary2))
                         }
                         if let footnote = model.footnote {
                             Text(footnote)
                                 .lineLimit(1)
-                                .font(.subheadline)
+                                .font(Font.fiori(forTextStyle: .subheadline))
                                 .foregroundColor(themeManager.color(for: .primary2))
                         }
                     }
@@ -56,7 +56,7 @@ struct HeaderMessageView: View {
                         if listItemCount != nil && total != nil {
                             Text("\(listItemCount!) of \(total!)")
                                 .lineLimit(1)
-                                .font(.subheadline)
+                                .font(Font.fiori(forTextStyle: .subheadline))
                                 .foregroundColor(themeManager.color(for: .primary2))
                         }
                         if let status = model.status {
