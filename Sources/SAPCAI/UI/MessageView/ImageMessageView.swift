@@ -19,8 +19,8 @@ struct ImageMessageView: View {
         HStack(spacing: 0) {
             ImageUIView(geometry: self.geometry, media: media)
         }
-        .clipShape(RoundedRectangle(cornerRadius: self.themeManager.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 8)))
-        .background(roundedBorder(cornerRadius: themeManager.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 8),
+        .clipShape(RoundedRectangle(cornerRadius: self.themeManager.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 10)))
+        .background(roundedBorder(cornerRadius: themeManager.value(for: .cornerRadius, type: CGFloat.self, defaultValue: 10),
                                   color: themeManager.color(for: .borderColor)))
     }
 }

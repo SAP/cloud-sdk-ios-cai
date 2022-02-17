@@ -90,7 +90,7 @@ public struct AssistantView: View {
     struct AssistantView_Previews: PreviewProvider {
         static func getFioriThemeManager() -> ThemeManager {
             let t = ThemeManager()
-            t.setCurrentTheme(.fiori(FioriColorPalette()))
+            t.setCurrentTheme(.fiori(FioriV6ColorPalette()))
             return t
         }
 

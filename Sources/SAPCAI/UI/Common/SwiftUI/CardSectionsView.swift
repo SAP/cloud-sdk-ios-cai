@@ -42,7 +42,7 @@ extension CardSectionsView {
             HStack(alignment: .firstTextBaseline) {
                 if let label = secAttribute.label {
                     Text(label)
-                        .font(.body)
+                        .font(Font.fiori(forTextStyle: .body))
                         .foregroundColor(self.themeManager.color(for: .primary1))
                         .lineLimit(1)
                         .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 8))
@@ -55,14 +55,14 @@ extension CardSectionsView {
                             URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: secAttribute.formattedValue)
                         }, label: {
                             Text(secAttribute.value!)
-                                .font(.body)
+                                .font(Font.fiori(forTextStyle: .body))
                                 .lineLimit(1)
                                 .padding([.top, .bottom], 10)
                                 .padding([.trailing], 16)
                         })
                     } else {
                         Text(secAttribute.formattedValue)
-                            .font(.body)
+                            .font(Font.fiori(forTextStyle: .body))
                             .foregroundColor(self.themeManager.color(for: .primary1))
                             .lineLimit(1)
                             .padding([.top, .bottom], 10)
@@ -81,7 +81,7 @@ extension CardSectionsView {
             VStack(alignment: .leading, spacing: 3) {
                 if let label = secAttribute.label {
                     Text(label)
-                        .font(.body)
+                        .font(Font.fiori(forTextStyle: .subheadline))
                         .foregroundColor(self.themeManager.color(for: .primary2))
                         .lineLimit(1)
                         .padding([.top], 10)
@@ -95,7 +95,7 @@ extension CardSectionsView {
                             URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: secAttribute.formattedValue)
                         }, label: {
                             Text(secAttribute.value!)
-                                .font(.body)
+                                .font(Font.fiori(forTextStyle: .body))
                                 .padding([.leading], 16)
                                 .padding([.trailing], 16)
                                 .padding([.bottom], 10)
@@ -104,7 +104,7 @@ extension CardSectionsView {
                         })
                     } else {
                         Text(secAttribute.formattedValue)
-                            .font(.body)
+                            .font(Font.fiori(forTextStyle: .body))
                             .foregroundColor(self.themeManager.color(for: .primary1))
                             .padding([.leading], 16)
                             .padding([.trailing], 16)

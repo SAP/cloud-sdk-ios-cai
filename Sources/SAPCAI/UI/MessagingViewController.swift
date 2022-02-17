@@ -17,7 +17,7 @@ open class MessagingViewController: UIHostingController<MessagingView> {
     /// Constructor
     /// - Parameter viewModel: MessagingViewModel
     /// - Parameter theme: CAITheme. Default is Fiori with Fiori colors
-    public convenience init(_ viewModel: MessagingViewModel, theme: CAITheme = .fiori(FioriColorPalette())) {
+    public convenience init(_ viewModel: MessagingViewModel, theme: CAITheme = .fiori(FioriV6ColorPalette())) {
         ThemeManager.shared.setCurrentTheme(theme)
         
         // swiftlint:disable:next force_cast

@@ -56,13 +56,13 @@ struct StaticMenuView: View {
                                 HStack(alignment: .top, spacing: 10) {
                                     Text(menuAction.menuTitle)
                                         .lineLimit(1)
-                                        .font(.headline)
+                                        .font(Font.fiori(forTextStyle: .headline))
                                         .foregroundColor(self.themeManager.color(for: .primary2))
                                         .padding([.top, .bottom], 10)
                                     Spacer()
                                     Text(String(menuAction.menuActions!.count))
                                         .lineLimit(1)
-                                        .font(.headline)
+                                        .font(Font.fiori(forTextStyle: .headline))
                                         .foregroundColor(self.themeManager.color(for: .primary2))
                                         .padding([.top, .bottom], 10)
                                 }

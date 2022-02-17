@@ -35,21 +35,21 @@ struct ObjectCardMessageView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         if model.headline != nil {
                             Text(model.headline!)
-                                .font(.headline)
+                                .font(Font.fiori(forTextStyle: .headline).weight(.bold))
                                 .foregroundColor(themeManager.color(for: .primary1))
                                 .lineLimit(3)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                         if model.subheadline != nil {
                             Text(model.subheadline!)
-                                .font(.body)
+                                .font(Font.fiori(forTextStyle: .body))
                                 .foregroundColor(themeManager.color(for: .primary2))
                                 .lineLimit(2)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                         if model.footnote != nil {
                             Text(model.footnote!)
-                                .font(.subheadline)
+                                .font(Font.fiori(forTextStyle: .subheadline))
                                 .foregroundColor(themeManager.color(for: .primary2))
                                 .lineLimit(5)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -64,7 +64,7 @@ struct ObjectCardMessageView: View {
                         }
                         if model.substatus != nil {
                             Text(model.substatus!)
-                                .font(.subheadline)
+                                .font(Font.fiori(forTextStyle: .subheadline))
                                 .foregroundColor(themeManager.color(for: .primary2))
                         }
                     }

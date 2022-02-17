@@ -1,3 +1,4 @@
+import FioriThemeManager
 import SAPCAI
 import SwiftUI
 
@@ -7,6 +8,7 @@ struct MainUIView: View {
     var body: some View {
         Group {
             HomeView(dataModel: dataModel)
+            // FioriColorPaletteView()
         }
     }
 }

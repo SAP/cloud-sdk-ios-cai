@@ -15,17 +15,17 @@
         "repositoryURL": "https://github.com/SAP/cloud-sdk-ios",
         "state": {
           "branch": null,
-          "revision": "8084e4b72d8a9e586c10408fa1151378754eeb34",
-          "version": "5.1.3-xcfrwk"
+          "revision": "d7057b09fb199637cd0fb488dd1c89006d885ba6",
+          "version": "6.1.2-xcfrwk"
         }
       },
       {
         "package": "FioriSwiftUI",
-        "repositoryURL": "https://github.com/SAP/cloud-sdk-ios-fiori.git",
+        "repositoryURL": "https://github.com/SAP/cloud-sdk-ios-fiori",
         "state": {
           "branch": null,
-          "revision": "8ae0813ae6279669f74912bfdb417173964041ac",
-          "version": "0.9.0"
+          "revision": "6f3ad8491dbacbad22b6ea8bd51b99f0e778e0d9",
+          "version": "2.0.1"
         }
       },
       {
@@ -56,21 +56,12 @@
         }
       },
       {
-        "package": "TinyNetworking",
-        "repositoryURL": "https://github.com/objcio/tiny-networking",
-        "state": {
-          "branch": null,
-          "revision": "a9af2917018e513c77061139fe3ce4e4d67cf259",
-          "version": "0.4.1"
-        }
-      },
-      {
         "package": "Zip",
-        "repositoryURL": "https://github.com/marmelroy/Zip.git",
+        "repositoryURL": "https://github.com/MarcoEidinger/Zip.git",
         "state": {
           "branch": null,
-          "revision": "bd19d974e8a38cc8d3a88c90c8a107386c3b8ccf",
-          "version": "2.1.1"
+          "revision": "059e7346082d02de16220cd79df7db18ddeba8c3",
+          "version": "2.1.2"
         }
       }
     ]

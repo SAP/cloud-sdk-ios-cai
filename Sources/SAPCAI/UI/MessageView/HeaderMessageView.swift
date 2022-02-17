@@ -33,7 +33,7 @@ struct HeaderMessageView: View {
                     HStack(alignment: .top, spacing: 0) {
                         Text(model.headline ?? "-")
                             .lineLimit(1)
-                            .font(.headline)
+                            .font(Font.fiori(forTextStyle: .headline).weight(.bold))
                             .foregroundColor(themeManager.color(for: .primary1))
                         if let status = model.status {
                             Spacer()
@@ -42,12 +42,12 @@ struct HeaderMessageView: View {
                     }
                     Text(model.subheadline ?? "-")
                         .lineLimit(1)
-                        .font(.body)
+                        .font(Font.fiori(forTextStyle: .body))
                         .foregroundColor(themeManager.color(for: .primary2))
                     if let footnote = model.footnote {
                         Text(footnote)
                             .lineLimit(1)
-                            .font(.subheadline)
+                            .font(Font.fiori(forTextStyle: .subheadline))
                             .foregroundColor(themeManager.color(for: .primary2))
                     }
                 }
@@ -55,7 +55,7 @@ struct HeaderMessageView: View {
                 if listItemCount != nil && total != nil {
                     Text("\(listItemCount!) of \(total!)")
                         .lineLimit(1)
-                        .font(.subheadline)
+                        .font(Font.fiori(forTextStyle: .subheadline))
                         .foregroundColor(themeManager.color(for: .primary2))
                 }
             }

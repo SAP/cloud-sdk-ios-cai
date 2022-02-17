@@ -64,19 +64,18 @@ struct CardPageView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
                         Text(headline)
-                            .font(.headline)
+                            .font(Font.fiori(forTextStyle: .headline).weight(.bold))
                             .foregroundColor(themeManager.color(for: .primary1))
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Spacer()
                         statusView
                     }
                     Text(subheadline)
-                        .font(.body)
+                        .font(Font.fiori(forTextStyle: .body))
                         .foregroundColor(themeManager.color(for: .primary1))
                         .frame(maxWidth: .infinity, alignment: .leading)
                     if let carouselDesc = card?.cardHeader?.footnote {
                         Text(carouselDesc)
-                            .font(.subheadline)
                             .foregroundColor(themeManager.color(for: .primary2))
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -108,7 +107,7 @@ struct CardPageView: View {
         {
             let groupedAttributes = convertAttributes(attributes)
             Text(attributeTitle)
-                .font(.headline)
+                .font(Font.fiori(forTextStyle: .headline))
                 .padding([.leading, .trailing], 20)
             
             VStack(spacing: 16) {
@@ -122,7 +121,7 @@ struct CardPageView: View {
                 Image("noDetailedContentAvailable", bundle: Bundle.cai)
                 Text(NSLocalizedString("NoDetailedContentAvailable", tableName: "Localizable", bundle: Bundle.cai, comment: ""))
             }
-            .font(.headline)
+            .font(Font.fiori(forTextStyle: .headline))
             .foregroundColor(themeManager.color(for: .primary1))
             .frame(maxWidth: .infinity)
         }
@@ -194,7 +193,7 @@ struct CardSectionAttributeView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(self.sectionAttribute.label ?? "")
-                .font(.subheadline)
+                .font(Font.fiori(forTextStyle: .subheadline))
                 .foregroundColor(themeManager.color(for: .primary2))
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -204,14 +203,14 @@ struct CardSectionAttributeView: View {
                     URLNavigation(isUrlSheetPresented: self.$viewModel.urlOpenerData.isLinkModalPresented).performURLNavigation(value: self.sectionAttribute.formattedValue)
                 }, label: {
                     Text(self.sectionAttribute.value!)
-                        .font(.subheadline)
+                        .font(Font.fiori(forTextStyle: .subheadline))
                         .foregroundColor(themeManager.color(for: .accentColor))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
                 })
             } else {
                 Text(self.sectionAttribute.formattedValue)
-                    .font(.subheadline)
+                    .font(Font.fiori(forTextStyle: .subheadline))
                     .foregroundColor(themeManager.color(for: .primary1))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)

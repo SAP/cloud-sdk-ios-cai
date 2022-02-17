@@ -25,6 +25,7 @@
 		8A4CD1AB2612C1330015FA6B /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD1AA2612C1330015FA6B /* FloatingTextField.swift */; };
 		8A4CD1B02612C1630015FA6B /* ThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CD1AF2612C1630015FA6B /* ThemePickerView.swift */; };
 		8A93AA7A2632548000592180 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93AA792632548000592180 /* Connection.swift */; };
+		8A9624D627C5A760008E5F5A /* ThemingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9624D527C5A760008E5F5A /* ThemingView.swift */; };
 		8ABFCEB7261D26E300FFDFD4 /* EditableConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABFCEB6261D26E300FFDFD4 /* EditableConnectionView.swift */; };
 		8AD02E4826041512003C0437 /* CAITestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD02E4726041512003C0437 /* CAITestAppUITests.swift */; };
 		8AD02E7026041751003C0437 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD02E6F26041751003C0437 /* SnapshotTesting */; };
@@ -107,6 +108,7 @@
 		8A4CD1AA2612C1330015FA6B /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		8A4CD1AF2612C1630015FA6B /* ThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePickerView.swift; sourceTree = "<group>"; };
 		8A93AA792632548000592180 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		8A9624D527C5A760008E5F5A /* ThemingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemingView.swift; sourceTree = "<group>"; };
 		8ABFCEB6261D26E300FFDFD4 /* EditableConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableConnectionView.swift; sourceTree = "<group>"; };
 		8AD02E4526041512003C0437 /* CAITestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CAITestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD02E4726041512003C0437 /* CAITestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAITestAppUITests.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				8ABFCEB6261D26E300FFDFD4 /* EditableConnectionView.swift */,
 				771D8C70231704A000EE43EC /* ChannelListView.swift */,
 				8A4CD1AF2612C1630015FA6B /* ThemePickerView.swift */,
+				8A9624D527C5A760008E5F5A /* ThemingView.swift */,
 				8A4CD1AA2612C1330015FA6B /* FloatingTextField.swift */,
 				77B8AC1A22A07BC30029168B /* CAIServiceHelper.swift */,
 				8A93AA792632548000592180 /* Connection.swift */,
@@ -429,6 +432,7 @@
 				77D48FDC231EDD6D005DCA16 /* MainUIView.swift in Sources */,
 				77D44339237F33D2004553B7 /* DataModel.swift in Sources */,
 				8A4CD164260D4F880015FA6B /* HomeView.swift in Sources */,
+				8A9624D627C5A760008E5F5A /* ThemingView.swift in Sources */,
 				8A4CD1B02612C1630015FA6B /* ThemePickerView.swift in Sources */,
 				77CF1FE62284C474000472A0 /* AppDelegate.swift in Sources */,
 				8ABFCEB7261D26E300FFDFD4 /* EditableConnectionView.swift in Sources */,

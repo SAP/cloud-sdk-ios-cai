@@ -12,7 +12,7 @@ struct TruncableText: View {
             .lineLimit(lineLimit)
             .truncationMode(.tail)
             .multilineTextAlignment(.leading)
-            .font(.body)
+            .font(Font.fiori(forTextStyle: .body))
             .fixedSize(horizontal: false, vertical: true)
             .readSize { size in
                 truncatedSize = size

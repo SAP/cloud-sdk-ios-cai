@@ -72,7 +72,7 @@ struct ListMessageView: View {
                 Divider().background(self.themeManager.color(for: .lineColor))
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
                     Text(listData.listUpperBoundText!)
-                        .font(.body)
+                        .font(Font.fiori(forTextStyle: .body))
                         .padding(16)
                         .foregroundColor(themeManager.color(for: .primary2))
                         .lineLimit(3)
@@ -95,7 +95,7 @@ struct ListMessageView: View {
                             self.showMoreListItems = true
                         }, label: {
                             Text(Bundle.cai.localizedString(forKey: "View more", value: "View more", table: nil))
-                                .font(.subheadline)
+                                .font(Font.fiori(forTextStyle: .subheadline))
                                 .lineLimit(1)
                                 .padding(16)
                         })

@@ -47,7 +47,7 @@ struct TextView: UIViewRepresentable {
         case .casual:
             textView.layer.cornerRadius = self.initialHeight / 2
         default:
-            textView.layer.cornerRadius = 8
+            textView.layer.cornerRadius = 10
         }
         
         textView.font = UIFont.preferredFont(forTextStyle: .body)

@@ -1,3 +1,5 @@
+import FioriSwiftUICore
+import FioriThemeManager
 import SwiftUI
 
 /// Fiori Color Palette. Follows SAP Fiori Design Language.

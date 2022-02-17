@@ -38,7 +38,7 @@ struct TextMessageView: View {
                         .truncationMode(.tail)
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
-                        .font(.body)
+                        .font(Font.fiori(forTextStyle: .body))
                         .foregroundColor(themeManager.color(for: .outgoingTextColor))
                         .padding(
                             themeManager.value(for: .outgoingTextContainerInset,

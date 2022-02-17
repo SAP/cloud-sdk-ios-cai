@@ -14,7 +14,7 @@ import SwiftUI
 
            return AnyView(
                configuration.label
-                   .font(.body)
+                   .font(Font.fiori(forTextStyle: .body))
                    .lineLimit(1)
                    .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
            )
@@ -54,13 +54,13 @@ public struct BaseQuickReplyButtonStyle: ButtonStyle {
 /// QuickReply button style applied when using Fiori theme
 public struct FioriQuickReplyButtonStyle: ButtonStyle {
     var radius: CGFloat {
-        8
+        22
     }
 
     public func makeBody(configuration: FioriQuickReplyButtonStyle.Configuration) -> AnyView {
         AnyView(
             configuration.label
-                .font(.body)
+                .font(Font.fiori(forTextStyle: .body))
                 .lineLimit(1)
                 .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
                 .background(configuration.isPressed ? Color.accentColor : Color.clear)
@@ -80,7 +80,96 @@ public struct CasualQuickReplyButtonStyle: ButtonStyle {
 
         return AnyView(
             configuration.label
-                .font(.body)
+                .font(Font.fiori(forTextStyle: .body))
+                .lineLimit(1)
+                .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+                .background(configuration.isPressed ? Color.gray.opacity(0.6) : Color.gray.opacity(0.3))
+                .foregroundColor(configuration.isPressed ? Color.accentColor.opacity(0.5) : Color.accentColor)
+                .cornerRadius(radius)
+        )
+    }
+}
+
+/**
+   Type-erased container to be used when setting own rounded corner button style (used in list items)
+   If you wish to create your own RoundedCorner button style, do so by conforming to `ButtonStyle`, put it into `RoundedCornerButtonStyleContainer`
+   and use `Theme.Key` enum `roundedCornerButtonStyle()` to apply it.
+
+   ## Example: define style
+   ```swift
+
+   public struct MyCustomRoundedCornerButtonStyle: ButtonStyle {
+       public func makeBody(configuration: MyCustomRoundedCornerButtonStyle.Configuration) -> AnyView {
+
+           return AnyView(
+               configuration.label
+                   .font(Font.fiori(forTextStyle: .body))
+                   .lineLimit(1)
+                   .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+           )
+       }
+   }
+  ```
+
+  ## Example: apply style
+
+   ```swift
+   Theme(name: "myCustomTheme", values: [
+       .cardListButtonStyle: CardListButtonStyleContainer(MyCustomCardListButtonStyle())
+   ])
+   ```
+ */
+public struct RoundedCornerButtonStyleContainer: ButtonStyle {
+    let view: (ButtonStyleConfiguration) -> AnyView
+
+    init<S: ButtonStyle>(_ style: S) {
+        self.view = {
+            AnyView(style.makeBody(configuration: $0))
+        }
+    }
+
+    public func makeBody(configuration: Configuration) -> some View {
+        self.view(configuration)
+    }
+}
+
+/// RoundedCorner button style applied when using custom theme and no specific button style was provided
+public struct BaseRoundedCornerButtonStyle: ButtonStyle {
+    public func makeBody(configuration: BaseRoundedCornerButtonStyle.Configuration) -> AnyView {
+        AnyView(configuration.label)
+    }
+}
+
+/// RoundedCorner button style applied when using Fiori theme
+public struct FioriRoundedCornerButtonStyle: ButtonStyle {
+    var radius: CGFloat {
+        10
+    }
+
+    public func makeBody(configuration: FioriRoundedCornerButtonStyle.Configuration) -> AnyView {
+        AnyView(
+            configuration.label
+                .font(Font.fiori(forTextStyle: .body))
+                .lineLimit(1)
+                .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
+                .background(configuration.isPressed ? Color.accentColor : Color.clear)
+                .foregroundColor(configuration.isPressed ? Color.white : Color.accentColor)
+                .overlay(RoundedRectangle(cornerRadius: self.radius).stroke(Color.accentColor, lineWidth: 1))
+                .cornerRadius(self.radius)
+        )
+    }
+}
+
+/// RoundedCorner button style applied when using Casual theme
+public struct CasualRoundedCornerButtonStyle: ButtonStyle {
+    public func makeBody(configuration: CasualRoundedCornerButtonStyle.Configuration) -> AnyView {
+        var radius: CGFloat {
+            10
+        }
+
+        return AnyView(
+            configuration.label
+                .font(Font.fiori(forTextStyle: .body))
                 .lineLimit(1)
                 .padding(EdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16))
                 .background(configuration.isPressed ? Color.gray.opacity(0.6) : Color.gray.opacity(0.3))
