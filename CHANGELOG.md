@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.2](https://github.com/SAP/cloud-sdk-ios-cai/compare/2.0.1...2.0.2) (2022-03-11)
+
+### Bug Fixes
+
+* 🐛 Card Details: crash if clicking on button ([576e929](https://github.com/SAP/cloud-sdk-ios-cai/commit/576e929e06c0362bb4050931ec3b6132842c20f7))
+* 🐛 fix runtime exception in ObjectMesssageView ([f0565f6](https://github.com/SAP/cloud-sdk-ios-cai/commit/f0565f69605fec223faf97301c1af3e718f8b5f8))
+
 ## [2.0.1](https://github.com/SAP/cloud-sdk-ios-cai/compare/2.0.0...2.0.1) (2021-12-21)
 
 ### Features
