@@ -41,7 +41,7 @@ struct ObjectMessageView: View {
                             .lineLimit(3)
                             .fixedSize(horizontal: false, vertical: true)
                     }
-                    if model.headline != nil {
+                    if model.subheadline != nil {
                         Text(model.subheadline!)
                             .font(.body)
                             .foregroundColor(themeManager.color(for: .primary2))
