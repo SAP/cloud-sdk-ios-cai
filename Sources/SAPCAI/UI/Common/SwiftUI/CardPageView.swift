@@ -103,13 +103,14 @@ struct CardPageView: View {
     @ViewBuilder var attributesTable: some View {
         if let sections = card?.cardSections,
            !sections.isEmpty,
-           let attributeTitle = sections[0].title,
            let attributes = sections[0].attributes
         {
             let groupedAttributes = convertAttributes(attributes)
-            Text(attributeTitle)
-                .font(.headline)
-                .padding([.leading, .trailing], 20)
+            if let attributeTitle = sections[0].title {
+                Text(attributeTitle)
+                    .font(.headline)
+                    .padding([.leading, .trailing], 20)
+            }
             
             VStack(spacing: 16) {
                 ForEach(groupedAttributes) {
