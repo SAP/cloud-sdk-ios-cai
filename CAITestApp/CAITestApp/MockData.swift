@@ -171,7 +171,17 @@ struct MockData {
         iButtons = [
             UIModelDataAction("Submit review", "Submit review", .text)
         ]
-        var c1 = CAIResponseMessageData(title: "Mustang", subtitle: "Car on race track", featuredImageName: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*", inlineButtons: iButtons)
+        var c1 = CAIResponseMessageData(
+            title: "Mustang",
+            subtitle: "Car on race track",
+            featuredImageName: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*",
+            inlineButtons: iButtons,
+            sections: [
+                UIModelDataSection(nil, [
+                    UIModelDataValue(value: "High", dataType: "text", rawValue: "Very Cool", label: "Wow Factor", valueState: nil)
+                ])
+            ]
+        )
             
         carouselArr.append(c1)
         iButtons = [
