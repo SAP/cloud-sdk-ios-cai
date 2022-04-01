@@ -584,3 +584,47 @@ extension UIModelDataMedia: MediaItem {
         CGSize(width: CGFloat(self.iWidth), height: CGFloat(self.iHeight))
     }
 }
+
+#if DEBUG
+    struct UIModelDataValueOptions: OptionSet {
+        let rawValue: Int
+
+        static let title = UIModelDataValueOptions(rawValue: 1 << 0)
+        static let subtitle = UIModelDataValueOptions(rawValue: 1 << 1)
+        static let description = UIModelDataValueOptions(rawValue: 1 << 2)
+        static let status1 = UIModelDataValueOptions(rawValue: 1 << 3)
+
+        static let all: UIModelDataValueOptions = [.title, .subtitle, .description, .status1]
+    }
+
+    extension UIModelDataHeader {
+        init(options: UIModelDataValueOptions) {
+            var titleDataValue: UIModelDataValue?
+            if options.contains(.title) {
+                titleDataValue = UIModelDataValue(text: "Title")
+            }
+            var subTitleDataValue: UIModelDataValue?
+            if options.contains(.subtitle) {
+                subTitleDataValue = UIModelDataValue(text: "SubTitle")
+            }
+            var descriptionDataValue: UIModelDataValue?
+            if options.contains(.description) {
+                descriptionDataValue = UIModelDataValue(text: "Description")
+            }
+            var status1DataValue: UIModelDataValue?
+            if options.contains(.status1) {
+                status1DataValue = UIModelDataValue(text: "Status")
+            }
+            self.init(title: titleDataValue,
+                      subtitle: subTitleDataValue,
+                      description: descriptionDataValue,
+                      status1: status1DataValue)
+        }
+    }
+
+    extension UIModelDataValue {
+        init(text: String) {
+            self.init(value: text, dataType: UIModelData.ValueType.text.rawValue, rawValue: nil, label: nil, valueState: nil)
+        }
+    }
+#endif

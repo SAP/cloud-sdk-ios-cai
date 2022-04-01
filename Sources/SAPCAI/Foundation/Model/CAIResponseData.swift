@@ -225,8 +225,8 @@ public extension CAIResponseMessageData {
     }
 
     @available(*, deprecated, message: "Use init(title:subtitle:headerImageName:contentPictureName:description:inlineButtons:sections:status1:status1ValueState:status2:status3:isBot)")
-    init(_ title: String,
-         _ subtitle: String,
+    init(_ title: String? = nil,
+         _ subtitle: String? = nil,
          _ headerImageName: String? = nil, // e.g. image in object card
          _ contentPictureName: String? = nil, // e.g. image for carousel card
          _ description: String? = nil,
@@ -299,8 +299,8 @@ public extension CAIResponseMessageData {
                   receivedAt: Date())
     }
 
-    init(title: String,
-         subtitle: String,
+    init(title: String? = nil,
+         subtitle: String? = nil,
          headerImageName: String? = nil, // e.g. image in object card
          featuredImageName: String? = nil, // e.g. image for carousel card
          description: String? = nil,
@@ -410,7 +410,7 @@ public extension CAIResponseMessageData {
                   receivedAt: Date())
     }
     
-    init(_ mockData: [UIModelDataContent], _ inlineButtons: [UIModelDataAction]? = nil, _ title: String, _ subtitle: String, _ description: String? = nil, _ isBot: Bool = true) {
+    init(_ mockData: [UIModelDataContent], _ inlineButtons: [UIModelDataAction]? = nil, _ title: String?, _ subtitle: String?, _ description: String? = nil, _ isBot: Bool = true) {
         var content = UIModelDataContent()
         content.list = mockData
         content.header = UIModelDataHeader(title: UIModelDataValue(value: title,

@@ -49,10 +49,7 @@ struct CardPageView: View {
     }
     
     @ViewBuilder var header: some View {
-        if let itemHeader = card?.cardHeader,
-           let headline = itemHeader.headline,
-           let subheadline = itemHeader.subheadline
-        {
+        if let itemHeader = card?.cardHeader {
             HStack(alignment: .top) {
                 if let imageUrl = itemHeader.imageUrl,
                    let imageURL = URL(string: imageUrl)
@@ -63,17 +60,21 @@ struct CardPageView: View {
                 }
                 VStack(alignment: .leading, spacing: 8) {
                     HStack {
-                        Text(headline)
-                            .font(.headline)
-                            .foregroundColor(themeManager.color(for: .primary1))
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        if let headline = itemHeader.headline {
+                            Text(headline)
+                                .font(.headline)
+                                .foregroundColor(themeManager.color(for: .primary1))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                         Spacer()
                         statusView
                     }
-                    Text(subheadline)
-                        .font(.body)
-                        .foregroundColor(themeManager.color(for: .primary1))
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if let subheadline = itemHeader.subheadline {
+                        Text(subheadline)
+                            .font(.body)
+                            .foregroundColor(themeManager.color(for: .primary1))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                     if let carouselDesc = card?.cardHeader?.footnote {
                         Text(carouselDesc)
                             .font(.subheadline)
