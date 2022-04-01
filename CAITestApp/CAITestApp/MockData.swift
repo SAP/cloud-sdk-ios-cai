@@ -197,9 +197,13 @@ struct MockData {
         
         carouselArr.append(c3)
         
-        var c4 = CAIResponseMessageData(title: "Simplest card", subtitle: "Card in Carousel without image/icon")
+        var c4 = CAIResponseMessageData(title: "A simple card", subtitle: "No image/icon", description: "Desc/Footnote")
         
         carouselArr.append(c4)
+
+        var c5 = CAIResponseMessageData(title: "A simple card", subtitle: nil, description: "Just Desc/Footnote", status1: "Status")
+
+        carouselArr.append(c5)
         
         arr.append(CAIResponseMessageData(carouselArr.map { $0.attachment.content! }, true))
 

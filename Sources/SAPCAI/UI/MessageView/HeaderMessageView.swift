@@ -29,34 +29,40 @@ struct HeaderMessageView: View {
                     ImageView(imageUrl: imageUrl!)
                         .frame(width: 50, height: 50)
                 }
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack(alignment: .top, spacing: 0) {
-                        Text(model.headline ?? "-")
-                            .lineLimit(1)
-                            .font(.headline)
-                            .foregroundColor(themeManager.color(for: .primary1))
+                HStack(alignment: .firstTextBaseline) {
+                    VStack(alignment: .leading, spacing: 6) {
+                        if let headline = model.headline {
+                            Text(headline)
+                                .lineLimit(1)
+                                .font(.headline)
+                                .foregroundColor(themeManager.color(for: .primary1))
+                        }
+                        if let subheadline = model.subheadline {
+                            Text(subheadline)
+                                .lineLimit(1)
+                                .font(.body)
+                                .foregroundColor(themeManager.color(for: .primary2))
+                        }
+                        if let footnote = model.footnote {
+                            Text(footnote)
+                                .lineLimit(1)
+                                .font(.subheadline)
+                                .foregroundColor(themeManager.color(for: .primary2))
+                        }
+                    }
+                    Spacer()
+
+                    VStack(alignment: .trailing) {
+                        if listItemCount != nil && total != nil {
+                            Text("\(listItemCount!) of \(total!)")
+                                .lineLimit(1)
+                                .font(.subheadline)
+                                .foregroundColor(themeManager.color(for: .primary2))
+                        }
                         if let status = model.status {
-                            Spacer()
                             ItemStatus(status: status)
                         }
                     }
-                    Text(model.subheadline ?? "-")
-                        .lineLimit(1)
-                        .font(.body)
-                        .foregroundColor(themeManager.color(for: .primary2))
-                    if let footnote = model.footnote {
-                        Text(footnote)
-                            .lineLimit(1)
-                            .font(.subheadline)
-                            .foregroundColor(themeManager.color(for: .primary2))
-                    }
-                }
-                Spacer()
-                if listItemCount != nil && total != nil {
-                    Text("\(listItemCount!) of \(total!)")
-                        .lineLimit(1)
-                        .font(.subheadline)
-                        .foregroundColor(themeManager.color(for: .primary2))
                 }
             }
             .padding(16)
@@ -69,13 +75,54 @@ struct HeaderMessageView: View {
 #if DEBUG
     struct HeaderMessageView_Previews: PreviewProvider {
         static var previews: some View {
-            HeaderMessageView(model: UIModelDataHeader(title: UIModelDataValue(value: "title1", dataType: UIModelData.ValueType.text.rawValue,
-                                                                               rawValue: nil,
-                                                                               label: nil,
-                                                                               valueState: nil), subtitle: UIModelDataValue(value: "subtitle1", dataType: UIModelData.ValueType.text.rawValue,
-                                                                                                                            rawValue: nil,
-                                                                                                                            label: nil,
-                                                                                                                            valueState: nil), description: nil), listItemCount: nil, listTotal: nil).environmentObject(ThemeManager.shared)
+            Group {
+                HeaderMessageView(model: UIModelDataHeader(options: [.title, .subtitle, .description]),
+                                  listItemCount: "5",
+                                  listTotal: 10)
+                    .previewDisplayName("List Header")
+
+                HeaderMessageView(model: UIModelDataHeader(options: .all),
+                                  listItemCount: nil,
+                                  listTotal: nil)
+                    .previewDisplayName("Card Header")
+
+                HeaderMessageView(model: UIModelDataHeader(options: .all),
+                                  listItemCount: "5",
+                                  listTotal: 10)
+                    .previewDisplayName("Mixing List Info & Status will probably never happen")
+
+                HeaderMessageView(model: UIModelDataHeader(options: [.title, .subtitle, .status1]),
+                                  listItemCount: nil,
+                                  listTotal: nil)
+                    .previewDisplayName("No Description")
+
+                HeaderMessageView(model: UIModelDataHeader(options: [.title, .description, .status1]),
+                                  listItemCount: nil,
+                                  listTotal: nil)
+                    .previewDisplayName("No Subtitle")
+
+                HeaderMessageView(model: UIModelDataHeader(options: [.title]),
+                                  listItemCount: nil,
+                                  listTotal: nil)
+                    .previewDisplayName("Only Title")
+
+                HeaderMessageView(model: UIModelDataHeader(options: [.subtitle, .status1]),
+                                  listItemCount: nil,
+                                  listTotal: nil)
+                    .previewDisplayName("Subtitle and Status shall be on the same line if Title is missing")
+
+                HeaderMessageView(model: UIModelDataHeader(options: [.description, .status1]),
+                                  listItemCount: nil,
+                                  listTotal: nil)
+                    .previewDisplayName("Description and Status shall be on the same line if Title & Subtitle are missing")
+
+                HeaderMessageView(model: UIModelDataHeader(options: [.description]),
+                                  listItemCount: nil,
+                                  listTotal: nil)
+                    .previewDisplayName("Only Description")
+            }
+            .environmentObject(ThemeManager.shared)
+            .previewLayout(.sizeThatFits)
         }
     }
 #endif

@@ -120,25 +120,20 @@ struct ListMessageView: View {
         static var previews: some View {
             Group {
                 ListMessageView(model: ListMessageView_Previews.previewData(items: 2, hasFooterButton: false))
-                    .environmentObject(ThemeManager.shared)
                     .previewDisplayName("Few items")
-                    .previewLayout(.sizeThatFits)
 
                 ListMessageView(model: ListMessageView_Previews.previewData(items: 2, hasFooterButton: true))
-                    .environmentObject(ThemeManager.shared)
                     .previewDisplayName("Few items with footer")
-                    .previewLayout(.sizeThatFits)
 
                 ListMessageView(model: ListMessageView_Previews.previewData(items: 15, hasFooterButton: false))
-                    .environmentObject(ThemeManager.shared)
                     .previewDisplayName("Lots of items items")
-                    .previewLayout(.sizeThatFits)
 
                 ListMessageView(model: ListMessageView_Previews.previewData(items: 15, hasFooterButton: true))
-                    .environmentObject(ThemeManager.shared)
                     .previewDisplayName("Lots of items items with footer")
-                    .previewLayout(.sizeThatFits)
             }
+            .environmentObject(MessagingViewModel(publisher: MockPublisher()))
+            .environmentObject(ThemeManager.shared)
+            .previewLayout(.sizeThatFits)
         }
     }
 #endif

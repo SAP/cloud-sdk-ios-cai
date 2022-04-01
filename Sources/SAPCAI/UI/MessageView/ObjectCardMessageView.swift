@@ -33,22 +33,22 @@ struct ObjectCardMessageView: View {
                 }
                 HStack(alignment: .firstTextBaseline) {
                     VStack(alignment: .leading, spacing: 6) {
-                        if model.headline != nil {
-                            Text(model.headline!)
+                        if let headline = model.headline {
+                            Text(headline)
                                 .font(.headline)
                                 .foregroundColor(themeManager.color(for: .primary1))
                                 .lineLimit(3)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
-                        if model.subheadline != nil {
-                            Text(model.subheadline!)
+                        if let subheadline = model.subheadline {
+                            Text(subheadline)
                                 .font(.body)
                                 .foregroundColor(themeManager.color(for: .primary2))
                                 .lineLimit(2)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
-                        if model.footnote != nil {
-                            Text(model.footnote!)
+                        if let footnote = model.footnote {
+                            Text(footnote)
                                 .font(.subheadline)
                                 .foregroundColor(themeManager.color(for: .primary2))
                                 .lineLimit(5)
@@ -62,8 +62,8 @@ struct ObjectCardMessageView: View {
                         if let status = model.status {
                             ItemStatus(status: status)
                         }
-                        if model.substatus != nil {
-                            Text(model.substatus!)
+                        if let substatus = model.substatus {
+                            Text(substatus)
                                 .font(.subheadline)
                                 .foregroundColor(themeManager.color(for: .primary2))
                         }
@@ -98,22 +98,23 @@ struct ObjectCardMessageView: View {
 #if DEBUG
     struct ObjectCardMessageView_Previews: PreviewProvider {
         static var previews: some View {
-            ObjectCardMessageView(model: UIModelDataContent(text: "text1", list: nil, form: nil, picture: nil, video: nil,
-                                                            header: UIModelDataHeader(title: UIModelDataValue(value: "title", dataType: UIModelData.ValueType.text.rawValue, rawValue: nil,
-                                                                                                              label: nil,
-                                                                                                              valueState: nil),
-                                                                                      subtitle: UIModelDataValue(value: "subtitle", dataType: UIModelData.ValueType.text.rawValue,
-                                                                                                                 rawValue: nil,
-                                                                                                                 label: nil,
-                                                                                                                 valueState: nil),
-                                                                                      description: UIModelDataValue(value: "desc", dataType: UIModelData.ValueType.text.rawValue,
-                                                                                                                    rawValue: nil,
-                                                                                                                    label: nil,
-                                                                                                                    valueState: nil)),
-                                                            buttons: [
-                                                                UIModelDataAction("b1", "b1", .text),
-                                                                UIModelDataAction("b2", "b2", .text)
-                                                            ])).environmentObject(ThemeManager.shared)
+            Group {
+                ObjectCardMessageView(model: UIModelDataContent(text: "text1", list: nil, form: nil, picture: nil, video: nil,
+                                                                header: UIModelDataHeader(options: .all),
+                                                                buttons: [
+                                                                    UIModelDataAction("b1", "b1", .text),
+                                                                    UIModelDataAction("b2", "b2", .text)
+                                                                ]))
+
+                ObjectCardMessageView(model: UIModelDataContent(text: "text1", list: nil, form: nil, picture: nil, video: nil,
+                                                                header: UIModelDataHeader(options: [.description, .status1]),
+                                                                buttons: [
+                                                                    UIModelDataAction("b1", "b1", .text),
+                                                                    UIModelDataAction("b2", "b2", .text)
+                                                                ]))
+            }
+            .environmentObject(ThemeManager.shared)
+            .previewLayout(.sizeThatFits)
         }
     }
 #endif
