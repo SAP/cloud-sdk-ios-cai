@@ -1,0 +1,29 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Gofynnwch i mi";
+
+"error.server" = "Gwall gyda'r gweinydd";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Wedi methu dosrannu data";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Y cais wedi'i ganslo";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Heb ddod o hyd i'r sgwrs. Gofynnwch i mi eto";
+
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Gweld mwy";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Clirio";
+
+/* XBUT: Cancel */
+"Cancel" = "Canslo";
+
+/* XBUT: action sheet title */
+"Actions" = "Gweithredoedd";
+
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Dim cynnwys manwl ar gael";
+
