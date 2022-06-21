@@ -1,0 +1,29 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Küsi minult";
+
+"error.server" = "Ilmnes serveritõrge";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Andmete sõelumine nurjus";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Taotlus on tühistatud";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Vestlust ei leitud. Küsi minult uuesti";
+
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Kuva rohkem";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Eemalda";
+
+/* XBUT: Cancel */
+"Cancel" = "Tühista";
+
+/* XBUT: action sheet title */
+"Actions" = "Toimingud";
+
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Üksikasjalikku sisu pole saadaval";
+
