@@ -4,6 +4,10 @@
     </br>
     <span><b>SAP Conversational AI SDK for iOS</b></span>
   </p>
+    <hr>
+  <div align="center">
+    <a href="https://help.sap.com/docs/SAP_CONVERSATIONAL_AI/3aab817a03be4432abbfd00c42b23cb8/2e5adae21210469787e7ba351a868902.html"><b><i>Starting January 2023, SAP Conversational AI, SAP’s chatbot building platform has been set to maintenance mode. Existing customers can continue to use the product until the end of their contract.</i></b></a>
+  </div>
   <hr>
   <div align="center">
     <a href="https://github.com/SAP/cloud-sdk-ios-cai#installation">Installation
