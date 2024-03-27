@@ -1,0 +1,29 @@
+/* Localizable.strings\n  CAIFoundation\n\n  Created by Syren, Franck on 6/24/19.\n  Copyright © 2019 Syren, Franck. All rights reserved. */
+"Write a message" = "Поставете прашање";
+
+"error.server" = "Настана грешка на серверот";
+
+/* XMSG: Failure to parse JSON data */
+"error.JSONParserError" = "Не успеа разложувањето на податоците";
+
+/* XMSG: Error message for request cancelled */
+"error.RequestCancelled" = "Барањето е откажано";
+
+/* XMSG: Error message for conversation not found */
+"error.conversationNotFound" = "Разговорот не е пронајден. Поставете прашање повторно.";
+
+/* XBUT: Text for button to reveal more information in a list */
+"View more" = "Прикажи повеќе";
+
+/* XBUT: button label in searchbar to clear search field */
+"Clear" = "Исчисти";
+
+/* XBUT: Cancel */
+"Cancel" = "Откажи";
+
+/* XBUT: action sheet title */
+"Actions" = "Дејства";
+
+/* XMSG: message in detailed page if no sections/attributes exist */
+"NoDetailedContentAvailable" = "Нема достапна детална содржина";
+
